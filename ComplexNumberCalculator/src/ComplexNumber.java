@@ -18,10 +18,6 @@ public class ComplexNumber
 	{
 	}
 	
-	// number1.equals(number2)
-	// public class Object {
-	//   public boolean equals(Object otherObject)
-	
 	public boolean equals(Object otherObject)
 	{
 		ComplexNumber otherNumber = (ComplexNumber)otherObject;
