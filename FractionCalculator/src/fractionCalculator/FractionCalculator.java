@@ -5,7 +5,7 @@ public class FractionCalculator {
 	private double denominator=1;
 		
 	public FractionCalculator() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public FractionCalculator(double num, double denom) {
@@ -30,7 +30,7 @@ public class FractionCalculator {
 	}
 
 	public String showFraction() {
-		// TODO Auto-generated method stub
+		
 		return numerator+"/"+denominator;
 	}
 
