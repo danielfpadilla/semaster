@@ -6,6 +6,7 @@ import junit.framework.Assert;
 public class FractionCalculatorTest {
 	double denom=1;
 	double num=1;
+	
 	@Test public void createFractionCalculator()
 	{
 		FractionCalculator fractionCalculator=new FractionCalculator();
@@ -49,4 +50,5 @@ public class FractionCalculatorTest {
 	   Assert.assertNotNull(fractionCalculator);
    }
    
+      
 }
