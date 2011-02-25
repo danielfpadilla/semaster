@@ -1,12 +1,18 @@
 package surfaceAreaTestingFrameWork;
 import surfaceAreaCalculator.Cone;
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ConeTest  {
 	private double delta = 0.00001;
-
+	@Test
+	public void CanCreateACone()
+	{
+		Cone cone = new Cone();
+		Assert.assertNotNull(cone);	
+	}
 	@Test
 	public void CanSetRadiusAndHeightOfCone()
 	{
@@ -62,7 +68,10 @@ public class ConeTest  {
   @Test
   public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()throws Exception
   {
-	 //TODO - Exception little bit complicated
-	  
+	  //TODO
+  }
+  public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()throws Exception
+  {
+	  //TODO
   }
 }

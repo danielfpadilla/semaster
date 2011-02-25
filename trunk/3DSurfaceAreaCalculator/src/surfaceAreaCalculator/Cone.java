@@ -9,6 +9,10 @@ public class Cone
 	  c_radius  = radius;
 	  c_height = height;
   }
+  public Cone()
+  {
+	  
+  }
   
  public boolean equals(Object firstObject)
  {
