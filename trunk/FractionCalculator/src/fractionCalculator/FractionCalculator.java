@@ -1,49 +1,73 @@
 package fractionCalculator;
 
 public class FractionCalculator {
-	private double numerator=1;
-	private double denominator=1;
+	private int numerator;
 		
-	public FractionCalculator() {
+	private int denominator;
 		
-	}
-
-	public FractionCalculator(double num, double denom) {
-		numerator=num;
-		denominator=denom;
-	}
-
-	public double getNumerator() {
-		
-		return numerator;
-	}
-
-	public double getDenominator() {
-		
-		return denominator;
-	}
-
-	public void setNumeratorAndDenominator(int inNum, int inDeno) {
-		numerator=inNum;
-		denominator=inDeno;
-		
-	}
-
-	public String showFraction() {
-		
-		return numerator+"/"+denominator;
-	}
-
-	public void reduce() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	                
 	
-
-
-
+	        public FractionCalculator() 
+	        {
+	           numerator=0;
+	           denominator=1;
+	        }  		
+	        public FractionCalculator(int num, int denom) {
+	        	if(denom!=0)
+	        	{
+	              numerator=num;
+	              denominator=denom;
+	        	}
+	        	else
+	        		System.exit(0);
+		
+	        }
+		
+		
+	        public int getNumerator() {
+		
+	                
+		
+	                return numerator;
 	
+	        }
+		
+		
+	        public int getDenominator() {
+		
+	                
+		
+	              return denominator;
+		
+	        }
+		
 	
+	        public void setNum(int inNum) {
+	
+	                numerator=inNum;
+	        }
+		
+	        public void setDenom(int inDenom) {
+	        	
+                denominator=inDenom;
+           }   
+		
+	                public String showFraction() {
+	             
+		
+	                return numerator+"/"+denominator;
+		
+	        }
+		
+
+	        public void reduce() {
+		
+	                // TODO Auto-generated method stub
+	
+	                
+		
+	        }
+
+			
 
 }
