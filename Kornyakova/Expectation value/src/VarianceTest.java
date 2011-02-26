@@ -20,4 +20,11 @@ public class VarianceTest {
 		double variance = stat.Variance(array);
 		assertEquals( 0.666666666, variance, delta);
 	}
+	
+	@Test (expected = ArrayIndexOutOfBoundsException.class) public void ThrowExceptionIfSizeLess1(){
+		double array[];
+		array = new double[0];
+		double variance = stat.Variance(array);
+		assertEquals( 0.666666666, variance, delta);
+	}
 }
