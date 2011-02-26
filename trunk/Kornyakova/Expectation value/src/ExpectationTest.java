@@ -28,14 +28,25 @@ public class ExpectationTest {
 		assertEquals(0.7,  probability2, 1e-8);
 	}
 	
-	@Test public void CanSetNegativeProbability1() throws IndexOutOfBoundsException{
+	@Test public void CanSetNegativeProbability1() throws IndexOutOfBoundsException/**/{
 		
 		Expectation expectation = new Expectation(1, 2, 1.3, 0.8);
 							
 	}
 	
+	@Test public void CanSetSum(){
+		
+		Expectation expectation = new Expectation(2, 3, 0.4, 0.6);
+	}
+	
 	@Test public void CanSetNegativeSum() throws IndexOutOfBoundsException{
 		
-		Expectation expectation = new Expectation(1, 2, 0.4, 0.8);
+		Expectation expectation = new Expectation(1, 2, 0.4, 0.6);
+	}
+	
+	@Test public void CanSetExpectation(){
+		
+		Expectation expectation = new Expectation(1, 1, 0.6, 0.4);
+		assertEquals(0.2, expectation);
 	}
 }
