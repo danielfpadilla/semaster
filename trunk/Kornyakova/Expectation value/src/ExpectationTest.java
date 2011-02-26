@@ -3,50 +3,35 @@ import org.junit.Test;
 
 
 public class ExpectationTest {
+	
+	private final double delta = 1e-8;	
+	Statistics stat = new Statistics();
 
-	@Test public void CanSetValue1(){
-		
-		int value1 = 1;
-		assertEquals(1, value1);
+	@Test public void CanCalcualteExpectation() {
+		double[] array;
+        array = new double[3];
+        array[0] = 0.0;
+        array[1] = -1.0;
+        array[2] = 1.0;
+              
+		double expectation = stat.Expectation(array);
+		assertEquals(0.0, expectation, delta);
 	}
 	
-	@Test public void CanSetValue2(){
-		
-		int value2 = 2;
-		assertEquals(2, value2);
-	}
-
-	@Test public void CanSetProbability1(){
-		
-		double probability1 = 0.3;
-		assertEquals(0.3,  probability1, 1e-8);
+	@Test public void CanCalcualteExpectationForArrayOfDoubles() {
+		double[] array;
+        array = new double[6];
+        array[0] = 1.0; array[1] = 1.0; array[2] = 1.0;
+        array[3] = 1.0; array[4] = 1.0; array[5] = 1.0;
+              
+		double expectation = stat.Expectation(array);
+		assertEquals(1.0, expectation, delta);
 	}
 	
-	@Test public void CanSetProbability2(){
+	@Test (expected = IndexOutOfBoundsException.class) public void ThrowExceptionIfSizeLessThen1(){
 		
-		double probability2 = 0.7;
-		assertEquals(0.7,  probability2, 1e-8);
-	}
-	
-	@Test public void CanSetNegativeProbability1() throws IndexOutOfBoundsException/**/{
-		
-		Expectation expectation = new Expectation(1, 2, 1.3, 0.8);
-							
-	}
-	
-	@Test public void CanSetSum(){
-		
-		Expectation expectation = new Expectation(2, 3, 0.4, 0.6);
-	}
-	
-	@Test public void CanSetNegativeSum() throws IndexOutOfBoundsException{
-		
-		Expectation expectation = new Expectation(1, 2, 0.4, 0.6);
-	}
-	
-	@Test public void CanSetExpectation(){
-		
-		Expectation expectation = new Expectation(1, 1, 0.6, 0.4);
-		assertEquals(0.2, expectation);
+		double[] array;
+		array = new double[0];
+		double expectation = stat.Expectation(array);
 	}
 }
