@@ -10,7 +10,7 @@ public class Pyramid
 		this.NumberOfEdge = NOE;
 		this.height = hei;
 	}
-	public Pyramid(){};
+	public Pyramid(){}
 	public int GetEdge()
 	{
 		return this.edge;
