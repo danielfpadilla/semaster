@@ -2,78 +2,79 @@ package surfaceAreaTestingFrameWork;
 
 import surfaceAreaCalculator.Cylinder;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 
 public class CylinderTests {
-private final double delta = 0.0001;
- @ Test
-  public void CanCreateACylinder()
+	Cylinder cylinder  = new Cylinder(7,10);
+    private final double delta = 0.0001;
+
+ @ Test public void CanCreateACylinder()
    {
 	Cylinder cylinder = new Cylinder();
-	Assert.assertNotNull(cylinder);	
+	assertNotNull(cylinder);	
   }
- @Test
-  public void canSetRadiusAndHeightOfCylinder()
+ @Test public void canSetRadiusAndHeightOfCylinder()
   {
-	Cylinder cylinder  = new Cylinder(7,10);
-	Assert.assertNotNull(cylinder);
+	assertNotNull(cylinder);
   }
- @Test
-  
- public void canSetRadiusofCylinder()
+ @Test public void canSetRadiusofCylinder()
  {
-	 Cylinder cylinder  = new Cylinder(7,10);
-	 Assert.assertEquals(7,cylinder.c_radius, delta);
+	 assertEquals(7,cylinder.getRadius(), delta);
 	
  }
- @Test
- public void canSetheightOfCylinder()
+ @Test public void canSetheightOfCylinder()
  {
-	 Cylinder cylinder = new Cylinder(7, 10);
-	 Assert.assertEquals(10, cylinder.c_height, delta);
+	 assertEquals(10, cylinder.getHeight(), delta);
  }
- @Test
- public void AreTheTwoCylinderEqual()
+ @Test public void AreTheTwoCylinderEqual()
  {
 	  Cylinder cylinder1 = new Cylinder(12.5, 23.4);
 	  Cylinder cylinder2 = new Cylinder(12.5, 23.4);
-	 Assert.assertEquals(cylinder1,cylinder2);
+	  assertEquals(cylinder1,cylinder2);
 	  
  }
  
- @Test
- public void TwoCylinderAreNotEqual()
+ @Test public void TwoCylinderAreNotEqual()
  {
 	  Cylinder cylinder1 = new Cylinder(15, 23.4);
 	  Cylinder cylinder2 = new Cylinder(12.5, 23.4);
-	  Assert.assertTrue(!cylinder1.equals(cylinder2));
+	 assertTrue(!cylinder1.equals(cylinder2));
  }
 @Test
 public void CanCalculateAreaOfCylinderWithRadiusEqualsToSevenAndHeightEqualsToTen()
 {
-	Cylinder cylinder= new Cylinder(7,10);
 	double actual = cylinder.calculateArea();
 	double expected = 747.6990;
-	Assert.assertEquals(expected, actual, delta);
+	assertEquals(expected, actual, delta);
 }
-@Test
-public void CalculateAreaOfCylinderWithRadiusEqualsTo50Point75AndHeightEqualsTo70Point35()
+@Test public void CalculateAreaOfCylinderWithRadiusEqualsTo50Point75AndHeightEqualsTo70Point35()
 {
 	Cylinder cylinder= new Cylinder(50.75,70.35);
 	double actual = cylinder.calculateArea();
 	double expected = 38615.357343;
-	Assert.assertEquals(expected, actual, delta);
+	assertEquals(expected, actual, delta);
 }
-@Test
-public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()throws Exception
+@Test public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
+throws Exception
 {
-	  //TODO
+	  try
+	  {
+		  Cylinder cylinder = new Cylinder(-10, 10);
+		  fail("Negative radius");
+	  }
+	  catch (IllegalArgumentException expected)
+	  {}
 }
-public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()throws Exception
+@Test public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()throws Exception
+{  try
 {
-	  //TODO
+	  Cylinder cylinder = new Cylinder(10, -10);
+	  fail("Negative height");
+}
+     catch (IllegalArgumentException expected)
+        {}
 }
 
 }

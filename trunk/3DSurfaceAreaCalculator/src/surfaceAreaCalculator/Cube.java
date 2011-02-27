@@ -1,13 +1,14 @@
 package surfaceAreaCalculator;
 
 public class Cube {
-	public double c_faceLength;
+	private double c_faceLength;
+	private final int numOfFaces = 6; 
 	public Cube()
-	{
-		
-	}
+	{}
 	public Cube(double facelength)
 	{
+		if(facelength <= 0.0 )
+			throw new IllegalArgumentException("Negative faceLength");
 		c_faceLength = facelength;
 	}
 	public boolean equals(Object firstObject)
@@ -18,12 +19,17 @@ public class Cube {
 		else
 			return false;
 	}
-	public double calculateArea() {
-		double faceArea = c_faceLength * c_faceLength;
-		double result = faceArea * 6;
-		
+   public double getFaceLength() 
+    {
+		return c_faceLength;
+	}
+	public double calculateArea() 
+	{
+		double faceArea = Math.pow(c_faceLength, 2);
+		double result = faceArea * numOfFaces;
 		return result;
 	}
+	
 	
 	
 	  

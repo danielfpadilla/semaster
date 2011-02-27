@@ -1,5 +1,6 @@
 package surfaceAreaTestingFrameWork;
 
+import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -8,56 +9,60 @@ import surfaceAreaCalculator.Cube;
 
 
 public class CubeTest {
+	Cube cube = new Cube(10);
 	private final double delta = 0.0001;
-	@Test
-	public void CubeIsNotNull()
+	@Test public void CubeIsNotNull()
 	{
-		Cube cube = new Cube();
-		Assert.assertNotNull(cube);
+		assertNotNull(cube);
 	}
-	@Test
-	public void CanSetFaceLengthOfCube()
+	@Test public void CanSetFaceLengthOfCube()
 	{
-		Cube cube = new Cube(10);
 		Assert.assertNotNull(cube);
-		Assert.assertEquals(10, cube.c_faceLength, delta);
+		assertEquals(10, cube.getFaceLength(), delta);
 	}
-	@Test 
-	public void AreTwoCubesEquals()
+	@Test public void AreTwoCubesEquals()
 	{
 		Cube cube1 = new Cube(10);
 		Cube cube2 = new Cube(10);
-		Assert.assertEquals(cube1,cube2);
+		assertEquals(cube1,cube2);
 	
 		
 	}
-	@Test
-	public void AreTwoCubesNotEqual()
+	@Test public void AreTwoCubesNotEqual()
 	{
 		Cube cube1 = new Cube(10);
 		Cube cube2 = new Cube(20);
-        Assert.assertTrue(!cube1.equals(cube2));
+        assertTrue(!cube1.equals(cube2));
 	}
-	@Test
-	public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo10()
+	@Test public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo10()
 	{
-		Cube cube = new Cube(10);
 		double actual = cube.calculateArea();
 		double expected  = 600;
-		Assert.assertEquals(expected, actual, delta);
+		assertTrue("Checking Whether face length is greater than zero",
+				cube.getFaceLength() >= 0);
+		assertEquals(expected, actual, delta);
 	}
-	@Test
-	public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo78point89()
+	@Test public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo78point89()
 	{
 		Cube cube = new Cube(78.89);
 		double actual = cube.calculateArea();
 		double expected  = 37341.7926;
+		Assert.assertTrue("Checking Whether face length is greater than zero",
+				cube.getFaceLength() >= 0);
 		Assert.assertEquals(expected, actual, delta);
 	}
-	  @Test
-	  public void CheckWhetherAnExceptionIsThrownWhenFaceLengthThanOrEqualToZero()throws Exception
+	  @Test public void CheckWhetherAnExceptionIsThrownWhenFaceLengthIsLessThanOrEqualToZero()
+	  throws Exception
 	  {
-		  //TODO
+		  try
+		  {
+			  Cube cube = new Cube(-10);
+			  fail("Negative faceLength");
+			  
+		  }
+		  catch (IllegalArgumentException expected)
+		  {}
 	  }
+	}
 
-}
+
