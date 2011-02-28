@@ -7,11 +7,10 @@ import org.junit.Test;
 public class ConeTest  {
 	Cone cone = new Cone(3.0,4.0);
 	private double delta = 0.00001;
-	@Test public void CanCreateACone()
-	{
-		Cone cone = new Cone();
-		assertNotNull(cone);	
-	}
+   @Test public void ConeIsNotNull()
+   {
+	   assertNotNull(cone);
+   }
 	@Test public void CanSetRadiusAndHeightOfCone()
 	{
 	    assertNotNull(cone);
@@ -24,18 +23,6 @@ public class ConeTest  {
   @Test public void CanSetHeightOfCone()
   {
 	  assertEquals(4, cone.getHeight(), delta);
-  }
-  @Test public void AreTheTwoConesEqual()
-  {
-	  Cone cone1 = new Cone(12.5, 23.4);
-	  Cone cone2 = new Cone(12.5, 23.4);
-	  assertEquals(cone1,cone2); 
-  }
-  @Test public void TwoConesAreNotEqual()
-  {
-	  Cone cone1 = new Cone(15, 23.4);
-	  Cone cone2 = new Cone(12.5, 23.4);
-	  assertTrue(!cone1.equals(cone2));
   }
   @Test public void CanCalculateAreaOfConeGivenRadiusEquals3pointZeroAndHeightEquals4pointZero()
   {
@@ -56,7 +43,7 @@ public class ConeTest  {
   {
 	  try
 	  {
-		  Cone cone= new Cone(-10, 19);
+		  new Cone(-10, 19);
 		  fail("Negative radius");
 	  }
 	  catch (IllegalArgumentException expected)
@@ -67,7 +54,7 @@ public class ConeTest  {
   {
 	  try
 	  {
-		  Cone cone= new Cone(10, -19);
+		  new Cone(10, -19);
 		  fail("Negative Height");
 	  }
 	  catch (IllegalArgumentException expected)

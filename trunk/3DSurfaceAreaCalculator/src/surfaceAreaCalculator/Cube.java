@@ -3,21 +3,11 @@ package surfaceAreaCalculator;
 public class Cube {
 	private double c_faceLength;
 	private final int numOfFaces = 6; 
-	public Cube()
-	{}
 	public Cube(double facelength)
 	{
 		if(facelength <= 0.0 )
 			throw new IllegalArgumentException("Negative faceLength");
 		c_faceLength = facelength;
-	}
-	public boolean equals(Object firstObject)
-	{
-		Cube secondObject = (Cube)firstObject;
-		if(secondObject.c_faceLength == c_faceLength)
-			return true;
-		else
-			return false;
 	}
    public double getFaceLength() 
     {

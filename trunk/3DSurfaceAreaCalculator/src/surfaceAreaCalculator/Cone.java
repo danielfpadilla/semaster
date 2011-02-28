@@ -1,9 +1,5 @@
 package surfaceAreaCalculator;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Test;
-
 public class Cone 
 {
 	 private double c_radius;
@@ -15,16 +11,6 @@ public class Cone
 	  c_radius  = radius;
 	  c_height = height;
   }
-  public Cone()
-  {} 
- public boolean equals(Object firstObject)
- {
-	 Cone secondObject= (Cone)firstObject;
-	if ((c_radius - secondObject.c_radius)==(c_height - secondObject.c_height))
-		 return true;
-	 else
-		 return false; 
- }
  public double getRadius() 
     {
 	  return c_radius;

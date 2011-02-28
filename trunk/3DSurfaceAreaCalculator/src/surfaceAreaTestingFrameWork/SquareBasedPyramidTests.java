@@ -1,8 +1,6 @@
 package surfaceAreaTestingFrameWork;
 
 import static org.junit.Assert.*;
-
-import org.junit.Assert;
 import org.junit.Test;
 
 import surfaceAreaCalculator.SquareBasedPyramid;
@@ -28,19 +26,7 @@ public class SquareBasedPyramidTests {
 	double actual = sqPyramid.getHeight();
 	assertEquals(4, actual, delta);
 }
-@Test public void AreTwoSquareBasedPyramidsEqual()
-{
-	SquareBasedPyramid sqPyramid1 = new SquareBasedPyramid(10, 17);
-	SquareBasedPyramid sqPyramid2  = new SquareBasedPyramid(10, 17);
-	Assert.assertEquals(sqPyramid1, sqPyramid2);
-}
-@Test
-public void AreTwoSquareBasedPyramidsNotEqual()
-{
-	SquareBasedPyramid sqPyramid1 = new SquareBasedPyramid(10, 17);
-	SquareBasedPyramid sqPyramid2  = new SquareBasedPyramid(20, 17);
-	assertTrue(!sqPyramid1.equals(sqPyramid2));
-}
+
 @Test public void CanCalculateAreaOfSquarePyramidGivenRadiusEquals10pointZeroAndHeightEquals4pointZero()
 {
 	double actual = sqPyramid.calculateArea();
@@ -60,7 +46,7 @@ throws Exception
 {
 	  try
 	  {
-		  SquareBasedPyramid sqPyramid = new SquareBasedPyramid(-23, 54);
+		   new SquareBasedPyramid(-23, 54);
 		  fail("Negative radius");
 	  }
 	  catch (IllegalArgumentException expected)
@@ -72,7 +58,7 @@ throws Exception
 {
 	  try
 	  {
-		  SquareBasedPyramid sqPyramid = new SquareBasedPyramid(23, -54);
+		  new SquareBasedPyramid(23, -54);
 		  fail("Negative height");
 	  }
 	  catch (IllegalArgumentException expected)
