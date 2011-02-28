@@ -12,7 +12,6 @@ public class CylinderTests {
 
  @ Test public void CanCreateACylinder()
    {
-	Cylinder cylinder = new Cylinder();
 	assertNotNull(cylinder);	
   }
  @Test public void canSetRadiusAndHeightOfCylinder()
@@ -27,20 +26,6 @@ public class CylinderTests {
  @Test public void canSetheightOfCylinder()
  {
 	 assertEquals(10, cylinder.getHeight(), delta);
- }
- @Test public void AreTheTwoCylinderEqual()
- {
-	  Cylinder cylinder1 = new Cylinder(12.5, 23.4);
-	  Cylinder cylinder2 = new Cylinder(12.5, 23.4);
-	  assertEquals(cylinder1,cylinder2);
-	  
- }
- 
- @Test public void TwoCylinderAreNotEqual()
- {
-	  Cylinder cylinder1 = new Cylinder(15, 23.4);
-	  Cylinder cylinder2 = new Cylinder(12.5, 23.4);
-	 assertTrue(!cylinder1.equals(cylinder2));
  }
 @Test
 public void CanCalculateAreaOfCylinderWithRadiusEqualsToSevenAndHeightEqualsToTen()
@@ -61,7 +46,7 @@ throws Exception
 {
 	  try
 	  {
-		  Cylinder cylinder = new Cylinder(-10, 10);
+		   new Cylinder(-10, 10);
 		  fail("Negative radius");
 	  }
 	  catch (IllegalArgumentException expected)
@@ -70,7 +55,7 @@ throws Exception
 @Test public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()throws Exception
 {  try
 {
-	  Cylinder cylinder = new Cylinder(10, -10);
+	  new Cylinder(10, -10);
 	  fail("Negative height");
 }
      catch (IllegalArgumentException expected)

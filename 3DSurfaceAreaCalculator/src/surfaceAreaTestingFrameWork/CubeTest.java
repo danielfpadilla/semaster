@@ -20,20 +20,6 @@ public class CubeTest {
 		Assert.assertNotNull(cube);
 		assertEquals(10, cube.getFaceLength(), delta);
 	}
-	@Test public void AreTwoCubesEquals()
-	{
-		Cube cube1 = new Cube(10);
-		Cube cube2 = new Cube(10);
-		assertEquals(cube1,cube2);
-	
-		
-	}
-	@Test public void AreTwoCubesNotEqual()
-	{
-		Cube cube1 = new Cube(10);
-		Cube cube2 = new Cube(20);
-        assertTrue(!cube1.equals(cube2));
-	}
 	@Test public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo10()
 	{
 		double actual = cube.calculateArea();
@@ -47,16 +33,16 @@ public class CubeTest {
 		Cube cube = new Cube(78.89);
 		double actual = cube.calculateArea();
 		double expected  = 37341.7926;
-		Assert.assertTrue("Checking Whether face length is greater than zero",
+		assertTrue("Checking Whether face length is greater than zero",
 				cube.getFaceLength() >= 0);
-		Assert.assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, delta);
 	}
 	  @Test public void CheckWhetherAnExceptionIsThrownWhenFaceLengthIsLessThanOrEqualToZero()
 	  throws Exception
 	  {
 		  try
 		  {
-			  Cube cube = new Cube(-10);
+			  new Cube(-10);
 			  fail("Negative faceLength");
 			  
 		  }

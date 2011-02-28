@@ -5,14 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import surfaceAreaCalculator.Torus;
 
-
-
 public class TorusTestCase {
 	Torus torus= new Torus(3.0, 10.0);
 	private final double  delta = 0.0001;
 	@Test public void canCreateATorus()
 	{
-		Torus torus = new Torus();
 		assertNotNull(torus);
 	}
 	@Test public void canSetTubeRadiusAndMajorRadius()
@@ -26,18 +23,6 @@ public class TorusTestCase {
     @Test public void CanSetDistanceFromTorusCenterToTubeCenterOfTorus()
     {
 	   assertEquals(10, torus.getmajorRadius(), delta);
-    }
-   @Test public void AreTwoTorusesEqual()
-    {
-	  Torus torus1= new Torus(10.0, 80.0);
-	  Torus torus2= new Torus(10.0, 80.0);
-	  assertEquals(torus1, torus2); 
-    }
-  @Test public void AreTwoTorusesNotEqual()
-    {
-  	  Torus torus1= new Torus(10.0, 280.0);
-  	  Torus torus2= new Torus(102.0, 830.0);
-  	  assertTrue(!torus1. equals(torus2)); 
     }
     @Test public void CanCalculateAreaOfTorusGivenMinorRadiusEquals3pointZeroAndmajortEquals10pointZero()
     {
@@ -57,7 +42,7 @@ public class TorusTestCase {
     {
    	  try
    	  {
-   		  Torus torus= new Torus(-10, 19);
+   		  new Torus(-10, 19);
    		  fail("Negative minor radius");
    	  }
    	  catch (IllegalArgumentException expected)
@@ -68,7 +53,7 @@ public class TorusTestCase {
     {
    	  try
    	  {
-   		  Torus torus= new Torus(10, -19);
+   		  new Torus(10, -19);
    		  fail("Negative major radius");
    	  }
    	  catch (IllegalArgumentException expected)
@@ -80,7 +65,7 @@ public class TorusTestCase {
     {
    	  try
    	  {
-   		  Torus torus= new Torus(30, 20);
+   		  new Torus(30, 20);
    		  fail("Minor radius greater than major radius");
    	  }
    	  catch (IllegalArgumentException expected)

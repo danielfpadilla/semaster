@@ -4,23 +4,14 @@ public class SquareBasedPyramid {
 	private double s_baseLength;
 	private double s_height;
 	private final int numOfSides = 2;
-	public SquareBasedPyramid()
-	{}
-	public SquareBasedPyramid(double baseLength, double height)
+    public SquareBasedPyramid(double baseLength, double height)
 	{  
 		if(baseLength <= 0.0 || height <= 0.0)
 		 throw new IllegalArgumentException("Negative baseLenght or Height");
 		 s_baseLength= baseLength;
 		 s_height = height;
     }
-	public boolean equals(Object firstObject)
-	{
-		SquareBasedPyramid secondObject =( SquareBasedPyramid)firstObject;
-		if(( s_baseLength - secondObject.s_baseLength )==(s_height - secondObject.s_height))
-		return true;
-		else
-			return false;
-	}
+
 	public double getBaselength()
 	{
 	   return s_baseLength;  
