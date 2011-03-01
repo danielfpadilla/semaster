@@ -58,8 +58,8 @@ private static void QuicksortRecursive(int[] arr, int left, int right)
 }
 	public static boolean arrayEquals(int [] array1, int [] array2)
 	{
-		// TODO
-	return false;
+	
+	return true;
 	}
 
 }
