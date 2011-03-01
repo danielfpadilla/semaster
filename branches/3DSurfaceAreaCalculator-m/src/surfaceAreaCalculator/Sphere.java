@@ -1,19 +1,22 @@
 package surfaceAreaCalculator;
 
-public class Sphere {
-	public double s_radius; 
-	public Sphere(double radius) 
-	{
-		if(radius <= 0.0)
+import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
+
+public class Sphere implements I3DSurfaceAreaCalculator {
+	public double s_radius;
+
+	public Sphere(double radius) {
+		if (radius <= 0.0)
 			throw new IllegalArgumentException("Negative radius not Allowed.");
 		s_radius = radius;
 	}
+
 	public double getRadius() {
 		return s_radius;
 	}
-	public double calculateArea() 
-	{
+
+	public double calculateArea() {
 		double result = 4 * Math.PI * Math.pow(s_radius, 2);
 		return result;
 	}
-} 
+}
