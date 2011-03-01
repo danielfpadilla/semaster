@@ -14,7 +14,7 @@ public class VarianceTest {
 	}
 	
 	@Test public void CanCalculateVarianceForArray(){
-		double array[];
+		double[] array;
 		array = new double[3];
 		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
 		double variance = stat.Variance(array);
@@ -22,7 +22,7 @@ public class VarianceTest {
 	}
 	
 	@Test (expected = ArrayIndexOutOfBoundsException.class) public void ThrowExceptionIfSizeLess1(){
-		double array[];
+		double[] array;
 		array = new double[0];
 		double variance = stat.Variance(array);
 		assertEquals( 0.666666666, variance, delta);

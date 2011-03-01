@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class ThirdMomentTest {
+public class ThirdCentralMomentTest {
 	private final double delta = 1e-8;
 	Statistics stat = new Statistics();
 	
@@ -9,15 +9,15 @@ public class ThirdMomentTest {
 		double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double third = stat.ThirdMoment(array);
+		double third = stat.ThirdCentralMoment(array);
 		assertEquals(0.0, third, delta);
 	}
 	
 	@Test public  void CanCalculateThirdMomentForArray(){
-		double[]array;
+		double[] array;
 		array = new double[2];
 		array[0] = 1.0; array[1] = 2.0;
-		double third = stat.ThirdMoment(array);
+		double third = stat.ThirdCentralMoment(array);
 		assertEquals(0.0, third, delta);
 	}
 
