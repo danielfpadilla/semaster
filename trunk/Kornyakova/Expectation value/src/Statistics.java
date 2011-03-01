@@ -34,7 +34,7 @@ public class Statistics {
 		return variance;
 	}
 	
-	public double ThirdMoment(double[]array){
+	public double ThirdCentralMoment(double[]array){
 		double third =  0.0;
 		double temp = 0.0;
 		for(int i = 0; i < array.length; i++)
@@ -47,5 +47,33 @@ public class Statistics {
 		third -= 3 * temp * Expectation(array) - 2 * Expectation(array) * Expectation(array) * Expectation(array); 
 				
 		return third;
+	}
+	
+	public double ThirdInitialMoment(double []array){
+		if(array.length == 0){
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		
+		double third = 0.0;
+		for(int i = 0; i < array.length; i++)
+		{
+			third += array[i] * array[i] * array[i];
+ 		}
+		third /= array.length;
+		return third;
+	}
+	
+	public double FourthInitialMoment(double []array){
+		if(array.length == 0){
+			throw new ArrayIndexOutOfBoundsException();
+		}
+		
+		double fourth = 0.0;
+		for(int i = 0; i < array.length; i++)
+		{
+			fourth += array[i] * array[i] * array[i] * array[i];
+ 		}
+		fourth /= array.length;
+		return fourth;
 	}
 }
