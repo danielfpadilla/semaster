@@ -15,6 +15,7 @@ public class FractionCalculator {
 	        public FractionCalculator(int num, int denom) {
 	        	if(denom!=0)
 	        	{
+	        		
 	              numerator=num;
 	              denominator=denom;
 	        	}
@@ -60,12 +61,31 @@ public class FractionCalculator {
 	        }
 		
 
-	        public void reduce() {
+	        public String reduce() {
 		
-	                // TODO Auto-generated method stub
-	
+	                int gcd=1;
+	                int x;
+	                if(numerator>denominator)
+	                {
+	                	x=denominator;	                	
+	                }
+	                else
+	                {
+	                	x=numerator;
+	                }
+	                gcd =x;
+	                while(!((numerator%gcd)==0)&&((denominator%gcd)==0))
+	                {
+
+    	                x--;	
+	                	gcd =x;
+	                		
+	                }
 	                
-		
+	                numerator=numerator/gcd;
+	                denominator=denominator/gcd;
+	                return numerator+"/"+denominator;             
+	       
 	        }
 
 			
