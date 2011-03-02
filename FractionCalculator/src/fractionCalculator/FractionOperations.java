@@ -34,37 +34,45 @@ public class FractionOperations {
 		result.setDenom(0);
 	}
 
-	public void addFractions() {
-		result.setNum((n1.getNumerator()*n2.getDenominator()) + n2.getNumerator()*n1.getDenominator());
+	public String addFractions(FractionCalculator n1,FractionCalculator n2) {
+	    result.setNum((n1.getNumerator()*n2.getDenominator()) + n2.getNumerator()*n1.getDenominator());
 		result.setDenom(n1.getDenominator()*n2.getDenominator());
 		//((a*d)+(c*b))/(b*d)
+		return result.getNumerator()+"/"+result.getDenominator();
+		
+		 
 	}
 
-	public void subtractFractions() {
+	public String subtractFractions(FractionCalculator n1, FractionCalculator n2) {
 		result.setNum((n1.getNumerator()*n2.getDenominator()) - n2.getNumerator()*n1.getDenominator());
 		result.setDenom(n1.getDenominator()*n2.getDenominator());
 		//((a*d)-(c*b))/(b*d)
+		return result.getNumerator()+"/"+result.getDenominator();
 		
 	}
 
-	public void multiplyFractions() {
+	public String multiplyFractions(FractionCalculator n1, FractionCalculator n2) {
 		result.setNum(n1.getNumerator()*n2.getNumerator());
 		result.setDenom(n1.getDenominator()*n2.getDenominator());
 		//(a*c)/(b*d)
+		return result.getNumerator()+"/"+result.getDenominator();
 		
 	}
 
-	public void divideFractions() {
+	public String divideFractions(FractionCalculator n1, FractionCalculator n2) {
 		if(n2.getNumerator()!=0)
 		{
 			result.setNum(n1.getNumerator()*n2.getDenominator());
 			result.setDenom(n1.getDenominator()*n2.getNumerator());
+			return result.getNumerator()+"/"+result.getDenominator();
 		}
 		else
 		{
 			System.out.println("operation undefined!");
+			return "null";
 		}
 		//(a*d)/(b*c)
+		
 		
 	}
 	
