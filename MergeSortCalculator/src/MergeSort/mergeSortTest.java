@@ -3,7 +3,7 @@ package MergeSort;
 
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+//import static org.junit.Assert.fail;
 
 import java.util.Random;
 
@@ -26,10 +26,10 @@ public class mergeSortTest {
 
 	@Test
 	public void testMergeSort() {
-		long startTime = System.currentTimeMillis();
-		mergeSort sorter = new mergeSort();
-        long stopTime = System.currentTimeMillis();
-		long elapsedTime = stopTime - startTime;
+		//long startTime = System.currentTimeMillis();
+		//mergeSort sorter = new mergeSort();
+        //long stopTime = System.currentTimeMillis();
+		//long elapsedTime = stopTime - startTime;
 
 			
 		assertTrue(true);
