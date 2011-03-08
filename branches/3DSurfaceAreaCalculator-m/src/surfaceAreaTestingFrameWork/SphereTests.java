@@ -2,12 +2,24 @@ package surfaceAreaTestingFrameWork;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import surfaceAreaCalculator.Sphere;
 
 public class SphereTests {
-	Sphere sphere = new Sphere(10);
+	Sphere sphere;
 	private final double delta = 0.0001;
+
+	@Before
+	public void setUp() {
+		sphere = new Sphere(10);
+	}
+
+	@After
+	public void tearDown() {
+		sphere = null;
+	}
 
 	@Test
 	public void canCreateASphere() {

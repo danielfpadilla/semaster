@@ -2,12 +2,24 @@ package surfaceAreaTestingFrameWork;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import surfaceAreaCalculator.Torus;
 
 public class TorusTestCase {
-	Torus torus = new Torus(3.0, 10.0);
+	Torus torus;
 	private final double delta = 0.0001;
+
+	@Before
+	public void setUp() {
+		torus = new Torus(3.0, 10.0);
+	}
+
+	@After
+	public void tearDown() {
+		torus = null;
+	}
 
 	@Test
 	public void canCreateATorus() {
