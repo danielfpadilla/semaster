@@ -138,10 +138,10 @@ public class FractionalCalculatorTest {
  @Test public void canSubstract()
  {
 	 FractionOperations fractionOperations=new FractionOperations();
-	 FractionCalculator fraction1=new FractionCalculator(1,2);
+	 FractionCalculator fraction1=new FractionCalculator(0,2);
 	 FractionCalculator fraction2=new FractionCalculator(1,4);
 	 
-	 Assert.assertEquals("2/8", fractionOperations.subtractFractions(fraction1,fraction2));
+	 Assert.assertEquals("-2/8", fractionOperations.subtractFractions(fraction1,fraction2));
  }
  
  @Test public void canMultiplyFractions()

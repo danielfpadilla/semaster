@@ -53,12 +53,12 @@ public class FractionCalculator {
                 denominator=inDenom;
            }   
 		
-	                public String showFraction() {
+	       public String showFraction() {
 	             
 		
-	                return numerator+"/"+denominator;
+	        return numerator+"/"+denominator;
 		
-	        }
+	      }
 		
 
 	        public String reduce() {
