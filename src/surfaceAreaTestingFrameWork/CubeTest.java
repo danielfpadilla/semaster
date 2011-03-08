@@ -3,13 +3,25 @@ package surfaceAreaTestingFrameWork;
 import static org.junit.Assert.*;
 import junit.framework.Assert;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import surfaceAreaCalculator.Cube;
 
 public class CubeTest {
-	Cube cube = new Cube(10);
+	private Cube cube;
 	private final double delta = 0.0001;
+
+	@Before
+	public void setUp() {
+		cube = new Cube(10);
+	}
+
+	@After
+	public void tearDown() {
+		cube = null;
+	}
 
 	@Test
 	public void canCreateCube() {

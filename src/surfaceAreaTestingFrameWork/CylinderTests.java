@@ -3,11 +3,26 @@ package surfaceAreaTestingFrameWork;
 import surfaceAreaCalculator.Cylinder;
 
 import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class CylinderTests {
-	Cylinder cylinder = new Cylinder(7, 10);
+
 	private final double delta = 0.0001;
+	Cylinder cylinder;
+
+	@Before
+	public void setUp() {
+
+		cylinder = new Cylinder(7, 10);
+	}
+
+	@After
+	public void tearDown() {
+		cylinder = null;
+	}
 
 	@Test
 	public void CanCreateACylinder() {

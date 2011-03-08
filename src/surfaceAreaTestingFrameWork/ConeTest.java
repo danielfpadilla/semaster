@@ -1,15 +1,24 @@
 package surfaceAreaTestingFrameWork;
 
-import surfaceAreaCalculator.Cone;
 import static org.junit.Assert.*;
+import surfaceAreaCalculator.Cone;
 import org.junit.Test;
+import org.junit.After;
+import org.junit.Before;
 
 public class ConeTest {
 	private double delta = 0.00001;
 	private Cone cone;
 
-	protected void setUp() {
-		new Cone(3.0, 4.0);
+	@Before
+	public void setUp() {
+		cone = new Cone(3.0, 4.0);
+	}
+
+	@After
+	public void tearDown() {
+		cone = null;
+
 	}
 
 	@Test

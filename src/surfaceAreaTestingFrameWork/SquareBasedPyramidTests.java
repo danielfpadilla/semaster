@@ -1,13 +1,26 @@
 package surfaceAreaTestingFrameWork;
 
 import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import surfaceAreaCalculator.SquareBasedPyramid;
 
 public class SquareBasedPyramidTests {
-	SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+	SquareBasedPyramid sqPyramid;
 	private final double delta = 0.0001;
+
+	@Before
+	public void setUp() {
+		sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+	}
+
+	@After
+	public void tearDown() {
+		sqPyramid = null;
+	}
 
 	@Test
 	public void SquareBasedPyramidIsNotNull() {
