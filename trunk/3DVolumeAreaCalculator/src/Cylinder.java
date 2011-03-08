@@ -4,10 +4,10 @@ public class Cylinder
 	private int radius = 0;
 	private int height = 0;
 	
-	public Cylinder(int rad, int hei)
+	public Cylinder(int radius, int height)
 	{
-		this.radius = rad;
-		this.height = hei;
+		this.radius = radius;
+		this.height = height;
 	}
 	public Cylinder(){};
 	
@@ -19,13 +19,13 @@ public class Cylinder
 	{
 		return this.height;
 	}
-	public void SetRadius(int rad)
+	public void SetRadius(int radius)
 	{
-		this.radius = rad;
+		this.radius = radius;
 	}
-	public void SetHeight(int hei)
+	public void SetHeight(int height)
 	{
-		this.height = hei;
+		this.height = height;
 	}
 	public void ValidateRadius() throws ParameterValueException
 	{

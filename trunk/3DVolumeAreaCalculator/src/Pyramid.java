@@ -4,11 +4,11 @@ public class Pyramid
 	private int edge = 0;
 	private int NumberOfEdge = 0;
 	private int height = 0;
-	public Pyramid(int ed, int NOE, int hei)
+	public Pyramid(int edge, int NumberOfEdge, int height)
 	{
-		this.edge = ed;
-		this.NumberOfEdge = NOE;
-		this.height = hei;
+		this.edge = edge;
+		this.NumberOfEdge = NumberOfEdge;
+		this.height = height;
 	}
 	public Pyramid(){}
 	public int GetEdge()
@@ -31,9 +31,9 @@ public class Pyramid
 	{
 		this.height = height;
 	}
-	public void SetNumberOfEdge(int numberofedge)
+	public void SetNumberOfEdge(int NumberOfEdge)
 	{
-		this.NumberOfEdge = numberofedge;
+		this.NumberOfEdge = NumberOfEdge;
 	}
 	public void ValidateHeight() throws ParameterValueException
 	{

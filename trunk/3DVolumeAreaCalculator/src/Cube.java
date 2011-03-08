@@ -3,9 +3,9 @@ public class Cube
 {
 	private int edge = 0;
 	
-	public Cube(int ed)
+	public Cube(int edge)
 	{
-		this.edge = ed;
+		this.edge = edge;
 	}
 	public Cube(){}
 	
@@ -13,9 +13,9 @@ public class Cube
 	{
 		return this.edge;
 	}
-	public void SetEdge(int ed)
+	public void SetEdge(int edge)
 	{
-		this.edge = ed;
+		this.edge = edge;
 	}
 	public void ValidateEdge() throws ParameterValueException
 	{
