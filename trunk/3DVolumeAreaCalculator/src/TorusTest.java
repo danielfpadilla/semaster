@@ -5,10 +5,13 @@ public class TorusTest
 {
 	int CircleRadius = 4;
 	int TorusRadius = 6;
+	int ZeroTorusRadius = 0;
+	int ZeroCircleRadius = 0;
 	int TorusRadiusLessThanCircleRadius = 3;
 	int NegativeCircleRadius = -4;
 	int NegativeTorusRadius = -6;
 	double volume = 2 * Math.pow(Math.PI, 2) * TorusRadius * Math.pow(CircleRadius, 2);
+	double VolumeWithZeroCircleRadius = 2 * Math.pow(Math.PI, 2) * TorusRadius * Math.pow(TorusRadius, 2);
 	double VolumeWithTorusRadiusLessThanCicrleRadius = 2 * Math.pow(Math.PI, 2) * TorusRadiusLessThanCircleRadius * Math.pow(TorusRadiusLessThanCircleRadius, 2);
 	double delta = 0.000001;
 	@Test public void CanCreateTorus()
@@ -82,6 +85,16 @@ public class TorusTest
 	{
 		Torus torus = new Torus(CircleRadius, TorusRadiusLessThanCircleRadius);
 		Assert.assertEquals(VolumeWithTorusRadiusLessThanCicrleRadius, torus.CalculateVolume(), delta);
+	}
+	@Test public void CanCalculateTorusVolumeWithZeroTorusRadius()
+	{
+		Torus torus = new Torus(CircleRadius, ZeroTorusRadius);
+		Assert.assertEquals(volume, torus.CalculateVolume(), delta);
+	}
+	@Test public void CanCalculateTorusVolumeWithZeroCircleRadius()
+	{
+		Torus torus = new Torus(ZeroCircleRadius, TorusRadius);
+		Assert.assertEquals(VolumeWithZeroCircleRadius, torus.CalculateVolume(), delta);
 	}
 }
 

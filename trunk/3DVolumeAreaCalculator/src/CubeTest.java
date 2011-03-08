@@ -1,10 +1,13 @@
 import org.junit.Test;
 import junit.framework.Assert;
-import junit.framework.TestCase;
+//import junit.framework.TestCase;
 
 public class CubeTest 
 {
 	int edge = 4;
+	int NegativeEdge = -4;
+	int ZeroEdge = 0;
+	double volume = Math.pow(edge, 3);
 	@Test public void CanCreateCube()
 	{
 		Cube cube = new Cube();
@@ -32,7 +35,23 @@ public class CubeTest
 	@Test public void CanCalculateCubeVolume()
 	{
 		Cube cube = new Cube(edge);
-		Assert.assertEquals(64, cube.CalculateVolume());
+		Assert.assertEquals(volume, cube.CalculateVolume());
 		
+	}
+	@Test(expected = ParameterValueException.class)
+	public void CanCheckExceptionWithNegativeEdge() throws ParameterValueException
+	{
+		Cube cube = new Cube(NegativeEdge);
+		cube.ValidateEdge();
+	}
+	@Test public void CanCalculateVolumeWithNegativeEdge()
+	{
+		Cube cube = new Cube(NegativeEdge);
+		Assert.assertEquals(volume, cube.CalculateVolume());
+	}
+	@Test public void CanCalculateVolumeWithZeroEdge()
+	{
+		Cube cube = new Cube(ZeroEdge);
+		Assert.assertEquals(volume, cube.CalculateVolume());
 	}
 }

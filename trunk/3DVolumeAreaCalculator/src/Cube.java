@@ -17,8 +17,31 @@ public class Cube
 	{
 		this.edge = ed;
 	}
-	public int CalculateVolume()
+	public void ValidateEdge() throws ParameterValueException
 	{
-		return (int)Math.pow(this.edge,3);
+		if (this.edge < 1) throw new ParameterValueException(this.edge);
+	}
+	public double CalculateVolume()
+	{
+		try
+		{
+			this.ValidateEdge();
+		}
+		catch(ParameterValueException pve)
+		{
+			if (this.edge < 0)
+			{
+				System.out.println("You entered negative value for CubeEdge parameter:" + pve);
+				System.out.println("This value will be converted to positive with the same module");
+				this.edge = (-1) * this.edge;
+			}
+			if (this.edge == 0)
+			{
+				System.out.println("You entered zero value for CubeEdge parameter:" + pve);
+				System.out.println("This value will be changed to default value four");
+				this.edge = 4;
+			}
+		}
+		return Math.pow(this.edge,3);
 	}
 }
