@@ -49,9 +49,18 @@ public class Torus
 		}
 		catch (ParameterValueException pve)
 		{
-			System.out.println("You entered negative value for TorusRadius parameter:" + pve);
-			System.out.println("This value will be converted to positive with the same module");
-			this.TorusRadius = (-1) * this.TorusRadius;
+			if(this.TorusRadius < 0)
+			{
+				System.out.println("You entered negative value for TorusRadius parameter:" + pve);
+				System.out.println("This value will be converted to positive with the same module");
+				this.TorusRadius = (-1) * this.TorusRadius;
+			}
+			if(this.TorusRadius == 0)
+			{
+				System.out.println("You entered zero value for TorusRadius parameter.");
+				System.out.println("This value will be changed to default value six.");
+				this.TorusRadius = 6;
+			}
 		}
 		try
 		{
@@ -59,9 +68,18 @@ public class Torus
 		}
 		catch (ParameterValueException pve)
 		{
-			System.out.println("You entered negative value for CircleRadius parameter:" + pve);
-			System.out.println("This value will be converted to positive with the same module");
-			this.CircleRadius = (-1) * this.CircleRadius;
+			if(this.CircleRadius < 0)
+			{
+				System.out.println("You entered negative value for CircleRadius parameter.");
+				System.out.println("This value will be converted to positive with the same module");
+				this.CircleRadius = (-1) * this.CircleRadius;
+			}
+			if(this.CircleRadius == 0)
+			{
+				System.out.println("You entered zero value for CircleRadius parameter.");
+				System.out.println("This value will be changed to TorusRadius value");
+				this.CircleRadius = this.TorusRadius;
+			}
 		}
 		try
 		{
