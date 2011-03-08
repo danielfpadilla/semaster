@@ -3,10 +3,10 @@ public class Torus
 	private int CircleRadius = 0;
 	private int TorusRadius = 0;
 	public Torus(){}
-	public Torus(int circle_rad, int torus_rad)
+	public Torus(int CircleRadius, int TorusRadius)
 	{
-		this.CircleRadius = circle_rad;
-		this.TorusRadius = torus_rad;
+		this.CircleRadius = CircleRadius;
+		this.TorusRadius = TorusRadius;
 	}
 	public int GetCircleRadius()
 	{
@@ -16,13 +16,13 @@ public class Torus
 	{
 		return this.TorusRadius;
 	}
-	public void SetCircleRadius(int circle_rad)
+	public void SetCircleRadius(int CircleRadius)
 	{
-		this.CircleRadius = circle_rad;
+		this.CircleRadius = CircleRadius;
 	}
-	public void SetTorusRadius(int torus_rad)
+	public void SetTorusRadius(int TorusRadius)
 	{
-		this.TorusRadius = torus_rad;
+		this.TorusRadius = TorusRadius;
 	}
 	public void ValidateTorusRadius() throws ParameterValueException
 	{

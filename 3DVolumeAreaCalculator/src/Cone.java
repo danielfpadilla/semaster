@@ -3,10 +3,10 @@ public class Cone
 {
 	private int radius = 0;
 	private int height = 0;
-	public Cone(int rad, int hei)
+	public Cone(int radius, int height)
 	{
-		this.height = hei;
-		this.radius = rad;
+		this.height = height;
+		this.radius = radius;
 	}
 	public Cone(){}
 	public int GetRadius()
@@ -17,13 +17,13 @@ public class Cone
 	{
 		return this.height;
 	}
-	public void SetRadius(int rad)
+	public void SetRadius(int radius)
 	{
-		this.radius = rad;
+		this.radius = radius;
 	}
-	public void SetHeight(int hei)
+	public void SetHeight(int height)
 	{
-		this.height = hei;
+		this.height = height;
 	}
 	public void ValidateRadius() throws ParameterValueException
 	{
