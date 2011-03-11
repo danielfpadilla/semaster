@@ -1,25 +1,27 @@
 package QuickSort;
 
 public interface SortAlgorithm {
-	int arr = (Integer) null;
+	public int arr = (Integer) null;
 
 	public int[] doSort(int[] array);
 	
 //  public SortAlgorithm(){}
   public class QuickSort implements SortAlgorithm {
 	  public int[] doSort(int[] array) {
-  {
-	  
+		  {
 	for(int i = 0; i < arr.length(); i++)
 	  {
-		  array[i] = arr[i];
+		  array[i] = new arr[i]; 
 	  }
+	return array;
 	  }
   }
+
   
   public void initializeArray(int [] a)
   {
-	  for(int j = 0; j < a.length; j++)
+
+	  for(int j = 0; j <  a.length; j++)
 	  {
 		  int[] array = null;
 		a[j] = array[j];
@@ -42,12 +44,12 @@ public int[] quickSortAlgorithm(int[] unsortedArray)
 private static void QuicksortRecursive(int[] arr, int left, int right)
 {
     int i = left, j = right;
-    int pivot = arr[(left + right)/2];
+    int middle = arr[(left + right)/2];
     while (i <= j)
     {
-        while (arr[i] < pivot)
+        while (arr[i] < middle)
             i++;
-        while (arr[j] > pivot)
+        while (arr[j] > middle)
             j--;
         if (i <= j)
         {

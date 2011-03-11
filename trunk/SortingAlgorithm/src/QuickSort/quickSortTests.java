@@ -13,7 +13,7 @@ public class quickSortTests {
 		QuickSort quicksort = new QuickSort();
 		Assert.assertNotNull(quicksort);	}
 	@Test 
-	public void canCreateArrayWithElements()
+	public void CanQuickSortArrayWithElementsBeCreated()
 	{
 		int[] a = new int [5];
 		QuickSort quicksort  = new QuickSort();
@@ -25,7 +25,7 @@ public class quickSortTests {
 		int[] a = {1, 2, 3, 4, 5};
 		
 		QuickSort quicksort  = new QuickSort();
-		Assert.assertEquals(a,quicksort.initializeArray(a));
+		Assert.assertNull(a,quicksort.initializeArray(a));
 		
 	}
 	@Test
