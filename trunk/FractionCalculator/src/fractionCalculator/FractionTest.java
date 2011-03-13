@@ -8,9 +8,9 @@ import junit.framework.Assert;
 import fractionCalculator.Fraction;
 
 public class FractionTest {
-	int number = 0;
+	int numerator = 0;
 	int denominator = 1;
-	double delta = 0.00001;
+	double delta = 0.002;
 
 	@Test
 	public void createFractionCalculator()
@@ -27,7 +27,7 @@ public class FractionTest {
 	public void canInitializeFractionCalculator()
 
 	{
-		Fraction fractionCalculator = new Fraction(number, denominator);
+		Fraction fractionCalculator = new Fraction(numerator, denominator);
 		Assert.assertNotNull(fractionCalculator);
 
 	}
@@ -61,9 +61,9 @@ public class FractionTest {
 
 		Fraction fractionCalculator = new Fraction();
 
-		fractionCalculator.setNumerator(number);
+		fractionCalculator.setNumerator(numerator);
 
-		Assert.assertEquals(number, fractionCalculator.getNumerator());
+		Assert.assertEquals(numerator, fractionCalculator.getNumerator());
 
 	}
 
@@ -94,7 +94,7 @@ public class FractionTest {
 
 	{
 
-		Fraction fractionCalculator = new Fraction(number, denominator);
+		Fraction fractionCalculator = new Fraction(numerator, denominator);
 
 		Assert.assertEquals("0/1", fractionCalculator.toString());
 
@@ -104,10 +104,10 @@ public class FractionTest {
 	public void canReduceFractionToSimplestForm()
 
 	{
-
-		Fraction fractionCalculator = new Fraction(4, 8);
-
-		Assert.assertEquals("1/2", fractionCalculator.reduceFraction());
+		Fraction fraction2 = new Fraction(4, 8);
+		fraction2.reduceFraction(fraction2);
+		Assert.assertEquals(1, fraction2.getNumerator());
+		Assert.assertEquals(2, fraction2.getDenominator());
 
 	}
 
@@ -137,43 +137,42 @@ public class FractionTest {
 
 	@Test
 	public void canAddFractions() {
-		FractionOperations fractionOperations = new FractionOperations();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(2, 2);
-		// Fraction fractionSum = new Fraction(6, 4);
+		Fraction fractionSum = new Fraction(6, 4);
 
-		Assert.assertEquals("6/4",
-				fractionOperations.addFractions(fraction1, fraction2));
+		Assert.assertEquals(fractionSum,
+				FractionOperations.addFractions(fraction1, fraction2));
 
 	}
 
 	@Test
 	public void canSubstract() {
-		FractionOperations fractionOperations = new FractionOperations();
 		Fraction fraction1 = new Fraction(0, 2);
 		Fraction fraction2 = new Fraction(1, 4);
+		Fraction fractionSubtraction = new Fraction(-2, 8);
 
-		Assert.assertEquals("-2/8",
-				fractionOperations.subtractFractions(fraction1, fraction2));
+		Assert.assertEquals(fractionSubtraction,
+				FractionOperations.subtractFractions(fraction1, fraction2));
 	}
 
 	@Test
 	public void canMultiplyFractions() {
-		FractionOperations fractionOperations = new FractionOperations();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
+		Fraction fractionMultiplication = new Fraction(1, 8);
 
-		Assert.assertEquals("1/8",
-				fractionOperations.multiplyFractions(fraction1, fraction2));
+		Assert.assertEquals(fractionMultiplication,
+				FractionOperations.multiplyFractions(fraction1, fraction2));
 	}
 
 	@Test
 	public void canDivideFractions() {
-		// FractionOperations fractionOperations = new FractionOperations();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
+		Fraction fractionDivision = new Fraction(4, 2);
 
-		Assert.assertEquals("4/2",
+		Assert.assertEquals(fractionDivision,
 				FractionOperations.divideFractions(fraction1, fraction2));
 	}
 
@@ -186,6 +185,13 @@ public class FractionTest {
 			fail("can not divide by zero");
 		} catch (IllegalArgumentException expected) {
 		}
+	}
+
+	@Test
+	public void canConvertTheFractionToDoubleValue() {
+		Fraction fraction = new Fraction(1, 2);
+		double result = fraction.convertToDouble(fraction);
+		Assert.assertEquals(0.5, result, delta);
 	}
 
 }
