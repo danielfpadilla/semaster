@@ -25,7 +25,7 @@ public class quickSortTests {
 		int[] a = {1, 2, 3, 4, 5};
 		
 		QuickSort quicksort  = new QuickSort();
-		Assert.assertNull(a,quicksort.initializeArray(a));
+		Assert.assertNull(a);
 		
 	}
 	@Test
