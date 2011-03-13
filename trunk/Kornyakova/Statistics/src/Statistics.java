@@ -18,7 +18,7 @@ public class Statistics {
 		return expectation;
 	}	
 	
-	public double Variance(double[]array){
+	public double Variance(double[] array){
 		if(array.length == 0){
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -34,7 +34,7 @@ public class Statistics {
 		return variance;
 	}
 	
-	public double ThirdCentralMoment(double[]array){
+	public double ThirdCentralMoment(double[] array){
 		double third =  0.0;
 		double temp = 0.0;
 		for(int i = 0; i < array.length; i++)
@@ -49,7 +49,7 @@ public class Statistics {
 		return third;
 	}
 	
-	public double ThirdInitialMoment(double []array){
+	public double ThirdInitialMoment(double[] array){
 		if(array.length == 0){
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -63,7 +63,7 @@ public class Statistics {
 		return third;
 	}
 	
-	public double FourthInitialMoment(double []array){
+	public double FourthInitialMoment(double[] array){
 		if(array.length == 0){
 			throw new ArrayIndexOutOfBoundsException();
 		}
