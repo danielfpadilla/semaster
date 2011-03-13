@@ -1,5 +1,8 @@
 package QuickSort;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public interface SortAlgorithm {
 	public int arr = (Integer) null;
 
@@ -9,9 +12,11 @@ public interface SortAlgorithm {
   public class QuickSort implements SortAlgorithm {
 	  public int[] doSort(int[] array) {
 		  {
-	for(int i = 0; i < arr.length(); i++)
+			  
+	for(int i = 0; i < arr; i++)
 	  {
-		  array[i] = new arr[i]; 
+	
+		  //array[i] = new arr[i]; 
 	  }
 	return array;
 	  }
