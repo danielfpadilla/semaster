@@ -1,77 +1,76 @@
 package fractionCalculator;
 
 public class FractionOperations {
-	Fraction n1 = new Fraction();
-	Fraction n2 = new Fraction();
-	static Fraction result = new Fraction(1, 2);
+	Fraction fraction1 = new Fraction();
+	Fraction fraction2 = new Fraction();
+	static Fraction result = new Fraction();
 
 	public FractionOperations() {
-		n1.setNumerator(0);
-		n1.setDenominator(0);
-		n2.setNumerator(0);
-		n2.setDenominator(0);
+		fraction1.setNumerator(0);
+		fraction1.setDenominator(0);
+		fraction2.setNumerator(0);
+		fraction2.setDenominator(0);
 		result.setNumerator(0);
 		result.setDenominator(0);
 
 	}
 
-	public FractionOperations(Fraction fraction1) {
-		n1.setNumerator(fraction1.getNumerator());
-		n1.setDenominator(fraction1.getDenominator());
-		n2.setNumerator(0);
-		n2.setDenominator(0);
+	public FractionOperations(Fraction fraction) {
+		fraction1.setNumerator(fraction.getNumerator());
+		fraction1.setDenominator(fraction.getDenominator());
+		fraction2.setNumerator(0);
+		fraction2.setDenominator(0);
 		result.setNumerator(0);
 		result.setDenominator(0);
 	}
 
 	public FractionOperations(Fraction num1, Fraction num2) {
-		n1.setNumerator(num1.getNumerator());
-		n1.setDenominator(num1.getDenominator());
-		n2.setNumerator(num2.getNumerator());
-		n2.setDenominator(num2.getDenominator());
+		fraction1.setNumerator(num1.getNumerator());
+		fraction1.setDenominator(num1.getDenominator());
+		fraction2.setNumerator(num2.getNumerator());
+		fraction2.setDenominator(num2.getDenominator());
 		result.setNumerator(0);
 		result.setDenominator(0);
 	}
 
-	public String addFractions(Fraction n1, Fraction n2) {
+	public static Fraction addFractions(Fraction n1, Fraction n2) {
 		result.setNumerator((n1.getNumerator() * n2.getDenominator())
 				+ n2.getNumerator() * n1.getDenominator());
 		result.setDenominator(n1.getDenominator() * n2.getDenominator());
 		// ((a*d)+(c*b))/(b*d)
-		// result.getNumerator() + "/" + result.getDenominator()
-		return result.getNumerator() + "/" + result.getDenominator();
+		return result;
 
 	}
 
-	public String subtractFractions(Fraction n1, Fraction n2) {
+	public static Fraction subtractFractions(Fraction n1, Fraction n2) {
 		result.setNumerator((n1.getNumerator() * n2.getDenominator())
 				- n2.getNumerator() * n1.getDenominator());
 		result.setDenominator(n1.getDenominator() * n2.getDenominator());
 		// ((a*d)-(c*b))/(b*d)
-		return result.getNumerator() + "/" + result.getDenominator();
+		return result;
 
 	}
 
-	public String multiplyFractions(Fraction n1, Fraction n2) {
+	public static Fraction multiplyFractions(Fraction n1, Fraction n2) {
 		result.setNumerator(n1.getNumerator() * n2.getNumerator());
 		result.setDenominator(n1.getDenominator() * n2.getDenominator());
 		// (a*c)/(b*d)
-		return result.getNumerator() + "/" + result.getDenominator();
+		return result;
 
 	}
 
-	public static String divideFractions(Fraction n1, Fraction n2) {
+	public static Fraction divideFractions(Fraction n1, Fraction n2) {
 		if (n2.getNumerator() != 0) {
 			result.setNumerator(n1.getNumerator() * n2.getDenominator());
 			result.setDenominator(n1.getDenominator() * n2.getNumerator());
-			return result.getNumerator() + "/" + result.getDenominator();
+			// (a*d)/(b*c)
+			return result;
 		}
 
 		else {
 			throw new IllegalArgumentException("invalid denominator");
 
 		}
-		// (a*d)/(b*c)
 
 	}
 

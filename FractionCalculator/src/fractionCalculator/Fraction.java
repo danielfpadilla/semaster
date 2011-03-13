@@ -1,23 +1,24 @@
 package fractionCalculator;
 
 public class Fraction {
-	private int numerator;
-    private int denominator;
+	int numerator;
+	int denominator;
+	double delta = 0.001;
 
 	public Fraction() {
 		numerator = 0;
 		denominator = 1;
 	}
 
-	public Fraction(int num, int denom) 
-	
+	public Fraction(int num, int denom)
+
 	{
 		if (denom != 0) {
 
 			numerator = num;
 			denominator = denom;
 		} else
-			throw new IllegalArgumentException ("invalid denominator");
+			throw new IllegalArgumentException("invalid denominator");
 
 	}
 
@@ -49,27 +50,42 @@ public class Fraction {
 
 	}
 
-	public String reduceFraction() {
-
+	public void reduceFraction(Fraction myFraction) {
 		int greatestCommonDivisor = 1;
 		int x;
-		if (numerator > denominator) {
-			x = denominator;
+		if (myFraction.numerator > myFraction.denominator) {
+			x = myFraction.denominator;
 		} else {
-			x = numerator;
+			x = myFraction.numerator;
 		}
 		greatestCommonDivisor = x;
-		while (!((numerator % greatestCommonDivisor) == 0) && ((denominator % greatestCommonDivisor) == 0)) {
+		while (!((myFraction.numerator % greatestCommonDivisor) == 0)
+				&& ((myFraction.denominator % greatestCommonDivisor) == 0)) {
 
 			x--;
 			greatestCommonDivisor = x;
 
 		}
 
-		numerator = numerator / greatestCommonDivisor;
-		denominator = denominator / greatestCommonDivisor;
-		return numerator + "/" + denominator;
+		myFraction.numerator = myFraction.numerator / greatestCommonDivisor;
+		myFraction.denominator = myFraction.denominator / greatestCommonDivisor;
 
 	}
 
+	public double convertToDouble(Fraction fraction) {
+		double result = (double) fraction.numerator
+				/ (double) fraction.denominator;
+		return result;
 	}
+
+	public boolean equals(Object otherObject) {
+		Fraction otherNumber = (Fraction) otherObject;
+		if (Math.abs(numerator - otherNumber.numerator) < delta
+				&& Math.abs(denominator - otherNumber.denominator) < delta)
+			return true;
+		else
+			return false;
+
+	}
+
+}
