@@ -2,29 +2,34 @@ package surfaceAreaCalculator;
 
 import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
 
-public class Cone implements I3DSurfaceAreaCalculator {
-	private double c_radius;
-	private double c_height;
+public class Cone implements I3DSurfaceAreaCalculator
+{
+	private double m_radius;
+	private double m_height;
 
-	public Cone(double radius, double height) {
+	public Cone(double radius, double height)
+	{
 		if (radius <= 0.0 || height <= 0.0)
 			throw new IllegalArgumentException("Invalid radius and height");
-		c_radius = radius;
-		c_height = height;
+		m_radius = radius;
+		m_height = height;
 	}
 
-	public double getRadius() {
-		return c_radius;
+	public double getRadius()
+	{
+		return m_radius;
 	}
 
-	public double getHeight() {
-		return c_height;
+	public double getHeight()
+	{
+		return m_height;
 	}
 
-	public double calculateArea() {
-		double hypotenuse = Math.hypot(c_radius, c_height);
-		double lateralSurfaceArea = Math.PI * c_radius * hypotenuse;
-		double baseArea = Math.PI * Math.pow(c_radius, 2);
+	public double calculateArea()
+	{
+		double hypotenuse = Math.hypot(m_radius, m_height);
+		double lateralSurfaceArea = Math.PI * m_radius * hypotenuse;
+		double baseArea = Math.PI * Math.pow(m_radius, 2);
 		double resultArea = baseArea + lateralSurfaceArea;
 		return resultArea;
 	}

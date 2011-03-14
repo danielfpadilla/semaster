@@ -9,58 +9,67 @@ import org.junit.Test;
 
 import surfaceAreaCalculator.Cube;
 
-public class CubeTest {
+public class CubeTest
+{
 	private Cube cube;
-	private final double delta = 0.0001;
+	private final double DELTA = 0.0001;
 
 	@Before
-	public void setUp() {
+	public void setUp()
+	{
 		cube = new Cube(10);
 	}
 
 	@After
-	public void tearDown() {
+	public void tearDown()
+	{
 		cube = null;
 	}
 
 	@Test
-	public void canCreateCube() {
+	public void canCreateCube()
+	{
 		assertNotNull(cube);
 	}
 
 	@Test
-	public void CubeIsNotNull() {
+	public void cubeIsNotNull()
+	{
 		assertNotNull(cube);
 	}
 
 	@Test
-	public void CanSetFaceLengthOfCube() {
+	public void canSetFaceLengthOfCube()
+	{
 		Assert.assertNotNull(cube);
-		assertEquals(10, cube.getFaceLength(), delta);
+		assertEquals(10, cube.getFaceLength(), DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo10() {
+	public void canCalculateAreaOfCubeWithFaceLenghtequalsTo10()
+	{
 		double actual = cube.calculateArea();
 		double expected = 600;
 		assertTrue("Checking Whether face length is greater than zero",
 				cube.getFaceLength() >= 0);
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfCubeWithFaceLenghtequalsTo78point89() {
+	public void canCalculateAreaOfCubeWithFaceLenghtequalsTo78point89()
+	{
 		Cube cube = new Cube(78.89);
 		double actual = cube.calculateArea();
 		double expected = 37341.7926;
 		assertTrue("Checking Whether face length is greater than zero",
 				cube.getFaceLength() >= 0);
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void CheckWhetherAnExceptionIsThrownWhenFaceLengthIsLessThanOrEqualToZero()
-			throws Exception {
+	public void checkWhetherAnExceptionIsThrownWhenFaceLengthIsLessThanOrEqualToZero()
+			throws Exception
+	{
 		new Cube(-10);
 
 	}
