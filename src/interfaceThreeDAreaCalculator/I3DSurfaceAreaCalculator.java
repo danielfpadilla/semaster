@@ -1,5 +1,6 @@
 package interfaceThreeDAreaCalculator;
 
-public interface I3DSurfaceAreaCalculator {
-public double calculateArea();
+public interface I3DSurfaceAreaCalculator
+{
+	public double calculateArea();
 }

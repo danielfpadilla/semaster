@@ -6,65 +6,75 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
-public class ConeTest {
-	private double delta = 0.00001;
+public class ConeTest
+{
 	private Cone cone;
+	private final double DELTA = 0.00001;
 
 	@Before
-	public void setUp() {
+	public void setUp()
+	{
 		cone = new Cone(3.0, 4.0);
 	}
 
 	@After
-	public void tearDown() {
+	public void tearDown()
+	{
 		cone = null;
-
 	}
 
 	@Test
-	public void ConeIsNotNull() {
+	public void coneIsNotNull()
+	{
 		assertNotNull(cone);
 	}
 
 	@Test
-	public void CanSetRadiusAndHeightOfCone() {
+	public void canSetRadiusAndHeightOfCone()
+	{
 		assertNotNull(cone);
 	}
 
 	@Test
-	public void CanSetRadiusOfCone() {
-		assertEquals(3, cone.getRadius(), delta);
+	public void canSetRadiusOfCone()
+	{
+		assertEquals(3, cone.getRadius(), DELTA);
 	}
 
 	@Test
-	public void CanSetHeightOfCone() {
-		assertEquals(4, cone.getHeight(), delta);
+	public void canSetHeightOfCone()
+	{
+		assertEquals(4, cone.getHeight(), DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfConeGivenRadiusEquals3pointZeroAndHeightEquals4pointZero() {
+	public void canCalculateAreaOfConeGivenRadiusEquals3pointZeroAndHeightEquals4pointZero()
+	{
 		double actual = cone.calculateArea();
 		double expected = 75.398223;
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfConeGivenRadiusEquals10point85AndHeightEquals45point897() {
+	public void canCalculateAreaOfConeGivenRadiusEquals10point85AndHeightEquals45point897()
+	{
 		Cone cone = new Cone(10.85, 45.897);
 		double actual = cone.calculateArea();
 		double expected = 1977.41433;
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
-			throws Exception {
+			throws Exception
+	{
 		new Cone(-10, 19);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
-			throws Exception {
+	public void checkWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
+			throws Exception
+	{
 		new Cone(10, -19);
 	}
 }

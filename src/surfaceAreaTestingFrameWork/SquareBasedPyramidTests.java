@@ -8,71 +8,83 @@ import org.junit.Test;
 
 import surfaceAreaCalculator.SquareBasedPyramid;
 
-public class SquareBasedPyramidTests {
+public class SquareBasedPyramidTests
+{
 	SquareBasedPyramid sqPyramid;
-	private final double delta = 0.0001;
+	private final double DELTA = 0.0001;
 
 	@Before
-	public void setUp() {
+	public void setUp()
+	{
 		sqPyramid = new SquareBasedPyramid(6.0, 4.0);
 	}
 
 	@After
-	public void tearDown() {
+	public void tearDown()
+	{
 		sqPyramid = null;
 	}
 
 	@Test
-	public void SquareBasedPyramidIsNotNull() {
+	public void squareBasedPyramidIsNotNull()
+	{
 		assertNotNull(sqPyramid);
 	}
 
 	@Test
-	public void canCreateASquareBasedPyramid() {
+	public void canCreateASquareBasedPyramid()
+	{
 		assertNotNull(sqPyramid);
 	}
 
 	@Test
-	public void canSetBaseLengthAndHeightOfASquareBasedPyramid() {
+	public void canSetBaseLengthAndHeightOfASquareBasedPyramid()
+	{
 		assertNotNull(sqPyramid);
 	}
 
 	@Test
-	public void canSetBaseLengthOfSquareBasedPyramid() {
+	public void canSetBaseLengthOfSquareBasedPyramid()
+	{
 		double actual = sqPyramid.getBaselength();
-		assertEquals(6, actual, delta);
+		assertEquals(6, actual, DELTA);
 	}
 
 	@Test
-	public void canSetHeightOfSquareBasedPyramid() {
+	public void canSetHeightOfSquareBasedPyramid()
+	{
 		double actual = sqPyramid.getHeight();
-		assertEquals(4, actual, delta);
+		assertEquals(4, actual, DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfSquarePyramidGivenRadiusEquals10pointZeroAndHeightEquals4pointZero() {
+	public void canCalculateAreaOfSquarePyramidGivenRadiusEquals10pointZeroAndHeightEquals4pointZero()
+	{
 		double actual = sqPyramid.calculateArea();
 		double expected = 96.0;
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test
-	public void CanCalculateAreaOfSquarePyramidGivenRadiusEquals23point44AndHeightEquals54point88() {
+	public void canCalculateAreaOfSquarePyramidGivenRadiusEquals23point44AndHeightEquals54point88()
+	{
 		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(23.44, 54.88);
 		double actual = sqPyramid.calculateArea();
 		double expected = 3180.2215;
-		assertEquals(expected, actual, delta);
+		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
-			throws Exception {
+	public void checkWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
+			throws Exception
+	{
 		new SquareBasedPyramid(-23, 54);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void CheckWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
-			throws Exception {
+	public void checkWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
+			throws Exception
+	{
 		new SquareBasedPyramid(23, -54);
 	}
 
