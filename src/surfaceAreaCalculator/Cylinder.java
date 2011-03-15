@@ -1,8 +1,8 @@
 package surfaceAreaCalculator;
 
-import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
+import interfaceThreeDAreaCalculator.I3DFigure;
 
-public class Cylinder implements I3DSurfaceAreaCalculator
+public class Cylinder implements I3DFigure
 {
 	private double m_radius;
 	private double m_height;

@@ -9,7 +9,7 @@ import surfaceAreaCalculator.Sphere;
 
 public class SphereTests
 {
-	Sphere sphere;
+	private Sphere sphere;
 	private final double DELTA = 0.0001;
 
 	@Before

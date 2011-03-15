@@ -10,9 +10,8 @@ import org.junit.Test;
 
 public class CylinderTests
 {
-	Cylinder cylinder;
+	private Cylinder cylinder;
 	private final double DELTA = 0.0001;
-	
 
 	@Before
 	public void setUp()

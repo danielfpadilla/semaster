@@ -1,8 +1,8 @@
 package surfaceAreaCalculator;
 
-import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
+import interfaceThreeDAreaCalculator.I3DFigure;
 
-public class SquareBasedPyramid implements I3DSurfaceAreaCalculator
+public class SquareBasedPyramid implements I3DFigure
 {
 	private double m_baseLength;
 	private double m_height;

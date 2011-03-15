@@ -10,7 +10,7 @@ import surfaceAreaCalculator.SquareBasedPyramid;
 
 public class SquareBasedPyramidTests
 {
-	SquareBasedPyramid sqPyramid;
+	private SquareBasedPyramid sqPyramid;
 	private final double DELTA = 0.0001;
 
 	@Before

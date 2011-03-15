@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
 
-public class ConeTest
+public class ConeTests
 {
 	private Cone cone;
 	private final double DELTA = 0.00001;

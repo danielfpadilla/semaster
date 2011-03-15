@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import surfaceAreaCalculator.Torus;
 
-public class TorusTestCase
+public class TorusTests
 {
-	Torus torus;
+	private Torus torus;
 	private final double DELTA = 0.0001;
 
 	@Before
