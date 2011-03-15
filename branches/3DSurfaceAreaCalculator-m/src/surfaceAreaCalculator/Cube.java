@@ -1,8 +1,8 @@
 package surfaceAreaCalculator;
 
-import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
+import interfaceThreeDAreaCalculator.I3DFigure;
 
-public class Cube implements I3DSurfaceAreaCalculator
+public class Cube implements I3DFigure
 {
 	private double m_faceLength;
 	private final int NUM_OF_FACES = 6;

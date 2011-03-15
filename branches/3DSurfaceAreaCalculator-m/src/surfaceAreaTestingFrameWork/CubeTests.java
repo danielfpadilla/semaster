@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import surfaceAreaCalculator.Cube;
 
-public class CubeTest
+public class CubeTests
 {
 	private Cube cube;
 	private final double DELTA = 0.0001;

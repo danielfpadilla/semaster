@@ -1,8 +1,8 @@
 package surfaceAreaCalculator;
 
-import interfaceThreeDAreaCalculator.I3DSurfaceAreaCalculator;
+import interfaceThreeDAreaCalculator.I3DFigure;
 
-public class Sphere implements I3DSurfaceAreaCalculator
+public class Sphere implements I3DFigure
 {
 	public double m_radius;
 
