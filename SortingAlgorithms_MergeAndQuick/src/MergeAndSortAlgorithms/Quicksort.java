@@ -37,10 +37,10 @@ public int[] quickSortAlgorithm(int[] unsortedArray)
 
 
 
-private static void QuicksortRecursive(int[] arr, int left, int right)
+private static void QuicksortRecursive(int[] arr, int low, int high)
 {
-    int i = left, j = right;
-    int middle = arr[(left + right)/2];
+    int i = low, j = high;
+    int middle = arr[(low + high)/2];
     while (i <= j)
     {
         while (arr[i] < middle)
@@ -55,11 +55,11 @@ private static void QuicksortRecursive(int[] arr, int left, int right)
             i++;
             j--;
         }
-    }
-    if (left < j)
-        QuicksortRecursive(arr, left, j);
-    if (i < right)
-        QuicksortRecursive(arr, i, right);
+   }
+           if (low < j)
+                QuicksortRecursive(arr, low, j);
+                   if (i < high)
+                QuicksortRecursive(arr, i, high);
 }
 	public static boolean arrayEquals(int [] array1, int [] array2)
 	{
