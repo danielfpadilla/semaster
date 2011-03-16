@@ -5,7 +5,7 @@ public class FractionOperations {
 	Fraction fraction2 = new Fraction();
 	static Fraction result = new Fraction();
 
-	public FractionOperations() {
+	public FractionOperations( ) {
 		fraction1.setNumerator(0);
 		fraction1.setDenominator(0);
 		fraction2.setNumerator(0);
@@ -37,8 +37,10 @@ public class FractionOperations {
 		result.setNumerator((n1.getNumerator() * n2.getDenominator())
 				+ n2.getNumerator() * n1.getDenominator());
 		result.setDenominator(n1.getDenominator() * n2.getDenominator());
+		Fraction.reduceFraction(result);
 		// ((a*d)+(c*b))/(b*d)
-		return result;
+
+			return result;
 
 	}
 
