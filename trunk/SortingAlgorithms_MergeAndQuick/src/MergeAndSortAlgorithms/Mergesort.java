@@ -11,45 +11,46 @@ public class Mergesort {
 
 		Mergesort(0, number - 1);
 	}
-
-	private void Mergesort(int low, int high) {
-		if (low < high) {
-			int middle = (low + high) / 2;
-			Mergesort(low, middle);
-			Mergesort(middle + 1, high);
- 		merge(low, middle, high);
+//Split the Array two to create the left and right part of the array
+	private void Mergesort(int left, int right) {
+		if (left < right) {
+			int middle = (left + right) / 2;
+			Mergesort(left, middle);
+			Mergesort(middle + 1, right);
+ 		merge(left, middle, right);
 			
 		}
 	}
-	private void merge(int low, int middle, int high) {
+//Creation of atemporary array
+	private void merge(int left, int middle, int right) {
 
-		int[]tmpArray = new int[number];
-		for (int i = low; i <= high; i++) {
-			tmpArray[i] = numbers[i];
+		int[]tempArray = new int[number];
+		for (int i = left; i <= right; i++) {
+			tempArray[i] = numbers[i];
 		}
 
-		int i = low;
+		int i = left;
 		int j = middle + 1;
-		int k = low;
+		int k = left;
 		// Copy the smallest values from either the left or the right side back
 		// to the original array
-		while (i <= middle && j <= high) {
-			if (tmpArray[i] <= tmpArray[j]) {
-				numbers[k] = tmpArray[i];
+		while (i <= middle && j <= right) {
+			if (tempArray[i] <= tempArray[j]) {
+				numbers[k] = tempArray[i];
 				i++;
 			} else {
-				numbers[k] = tmpArray[j];
+				numbers[k] = tempArray[j];
 				j++;
 			}
 			k++;
 		}
 		// Copy the rest of the left side of the array into the target array
 		while (i <= middle) {
-			numbers[k] = tmpArray[i];
+			numbers[k] = tempArray[i];
 			k++;
 			i++;
 		}
-		tmpArray = null;
+		tempArray = null;
 
 	}
 		
