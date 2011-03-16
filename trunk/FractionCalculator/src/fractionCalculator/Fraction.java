@@ -1,8 +1,8 @@
 package fractionCalculator;
 
 public class Fraction {
-	int numerator;
-	int denominator;
+    private int numerator;
+	private int denominator;
 	double delta = 0.001;
 
 	public Fraction() {
@@ -34,12 +34,12 @@ public class Fraction {
 
 	}
 
-	public void setNumerator(int inNum) {
+	public  void setNumerator(int inNum) {
 
 		numerator = inNum;
 	}
 
-	public void setDenominator(int inDenom) {
+	public  void setDenominator(int inDenom) {
 
 		denominator = inDenom;
 	}
@@ -50,7 +50,7 @@ public class Fraction {
 
 	}
 
-	public void reduceFraction(Fraction myFraction) {
+	public static void reduceFraction(Fraction myFraction) {
 		int greatestCommonDivisor = 1;
 		int x;
 		if (myFraction.numerator > myFraction.denominator) {
@@ -86,6 +86,13 @@ public class Fraction {
 		else
 			return false;
 
+	}
+
+	public Fraction clone() {
+		Fraction fraction=new Fraction();
+		fraction.numerator=numerator;
+		fraction.denominator=denominator;
+		return fraction;
 	}
 
 }

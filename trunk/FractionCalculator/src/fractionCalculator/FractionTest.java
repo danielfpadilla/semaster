@@ -8,9 +8,9 @@ import junit.framework.Assert;
 import fractionCalculator.Fraction;
 
 public class FractionTest {
-	int numerator = 0;
-	int denominator = 1;
-	double delta = 0.002;
+	private int numerator = 0;
+	private int denominator = 1;
+	private double delta = 0.002;
 
 	@Test
 	public void createFractionCalculator()
@@ -105,7 +105,7 @@ public class FractionTest {
 
 	{
 		Fraction fraction2 = new Fraction(4, 8);
-		fraction2.reduceFraction(fraction2);
+		Fraction.reduceFraction(fraction2);
 		Assert.assertEquals(1, fraction2.getNumerator());
 		Assert.assertEquals(2, fraction2.getDenominator());
 
@@ -137,9 +137,9 @@ public class FractionTest {
 
 	@Test
 	public void canAddFractions() {
-		Fraction fraction1 = new Fraction(1, 2);
-		Fraction fraction2 = new Fraction(2, 2);
-		Fraction fractionSum = new Fraction(6, 4);
+		Fraction fraction1 = new Fraction(1, 4);
+		Fraction fraction2 = new Fraction(1, 4);
+		Fraction fractionSum = new Fraction(1, 2);
 
 		Assert.assertEquals(fractionSum,
 				FractionOperations.addFractions(fraction1, fraction2));
@@ -193,5 +193,14 @@ public class FractionTest {
 		double result = fraction.convertToDouble(fraction);
 		Assert.assertEquals(0.5, result, delta);
 	}
+	
+	@Test public void canCreateClone()
+	{
+		Fraction fractionCalculator=new Fraction();
+		
+		Assert.assertNotNull(fractionCalculator.clone());
+	}
+	
+	
 
 }
