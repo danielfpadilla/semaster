@@ -60,7 +60,7 @@ public class ThirdCentralMomentTest
 		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
 	
-	@Test/* (expected = IndexOutOfBoundsException.class)*/
+	@Test (expected = IndexOutOfBoundsException.class)
 	public void ThrowExceptionIfSumProbabilityNotEqual1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
@@ -80,5 +80,4 @@ public class ThirdCentralMomentTest
 				
 		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
-
 }
