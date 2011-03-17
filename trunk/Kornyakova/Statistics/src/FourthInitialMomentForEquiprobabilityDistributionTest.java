@@ -10,7 +10,7 @@ public class FourthInitialMomentForEquiprobabilityDistributionTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double fourth = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
+		double fourth = statistics.fourthInitialMomentForEquiprobabilityDistribution(array);
 		assertEquals(1.0, fourth, DELTA);
 	}
 	
