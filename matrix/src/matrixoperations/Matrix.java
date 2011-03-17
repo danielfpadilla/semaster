@@ -1,11 +1,12 @@
 package matrixoperations;
 
+
 public class Matrix {
-	final int N = 2;
+    private int m_size=2;
 	final double delta = 0.00001;
 
-	private double[][] matrix1 = new double[N][N];
-	private double[][] matrix2 = new double[N][N];
+	private  double[][] matrix1 = new double[m_size][m_size];
+	private double[][] matrix2 = new double[m_size][m_size];
 
 	//private double [][]result=new double[N][N];
 
@@ -13,15 +14,38 @@ public class Matrix {
 	}
 
 	public Matrix(double[][] matrix) {
-		for (int i = 0; i < matrix.length; i++) {
+		 for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix.length; j++) {
 				matrix1[i][j] = matrix[i][j];
 				matrix2[i][j] = matrix[i][j];
 			}
 		}
 	}
+	
+	public Matrix(int size)
+	{
+		if(size>0)
+		{
+		m_size=size;
+		}
+		else
+			throw new IllegalArgumentException("Invalid Size!!!");
+	}
 
-	public static Matrix sum(double[][] m1, double[][] m2) {
+	public void setSize(int size)
+	{
+		m_size=size;
+		
+	}
+	
+	public int  getSize()
+	{
+		return m_size;
+		
+	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+	
+
+	public static  Matrix sum(double[][] m1, double[][] m2) {
 		Matrix res = new Matrix();
 		double[][] result = new double[2][2];
 		for (int i = 0; i < m1.length; i++) {
@@ -70,7 +94,7 @@ public class Matrix {
 
 	}
 
-	public static Matrix subtract(double[][] b, double[][] c) {
+	public static  Matrix subtract(double[][] b, double[][] c) {
 		
 		Matrix difference = new Matrix();
 		double[][] result = new double[2][2];
@@ -82,5 +106,36 @@ public class Matrix {
 		}
 		return difference;
 	}
+
+	public double CalculateDeterminant(Matrix myMatrix)
+	{
+		if (m_size == 1) 
+			return matrix1 [0][0];
+        Matrix matrix = new Matrix();
+        matrix.m_size = m_size-1;
+        double [][] minorData = new double [m_size-1][m_size-1];
+        double result = 0;
+        for (int k = 0; k < m_size; k++)
+        {
+            int i1 = 0;
+
+            for (int i = 1; i < m_size; i++)
+            {
+                int j1 = 0;
+                for (int j = 0; j < m_size; j++)
+                {
+                    if (j == k) continue;
+                    minorData[i1][j1] = matrix1[i][j];
+                    j1++;
+                }
+                i1++;
+            }
+            matrix.matrix1 = minorData;
+            result += Math.pow(-1, k)* matrix1[0][k]* matrix.CalculateDeterminant(matrix);
+        }
+        return result;
+	}
+
+	
 }
 
