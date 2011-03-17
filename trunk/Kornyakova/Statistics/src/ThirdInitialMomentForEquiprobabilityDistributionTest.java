@@ -2,8 +2,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class ThirdInitialMomentForEquiprobabilityDistributionTest 
-{	Statistics statistics = new Statistics();
-	private final double DELTA = 1e-8;
+{	private final double DELTA = 1e-8;
+	Statistics statistics = new Statistics();
+	
 	
 	@Test public void CanCalculateInitialMoment()
 	{	double[] array;

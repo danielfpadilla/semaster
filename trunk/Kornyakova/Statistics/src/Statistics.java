@@ -85,21 +85,6 @@ public class Statistics
 		return variance;
 	}
 	
-	public double thirdCentralMoment(double[] array)
-	{	double third =  0.0;
-		double temp = 0.0;
-		for(int i = 0; i < array.length; i++)
-		{
-			third += Math.pow(array[i], 3);
-			temp += Math.pow(array[i], 2);
-		}
-		third /= array.length;
-		temp /=array.length;
-		third -= 3 * temp * expectationForEquiprobabilityDistribution(array) - 2 * Math.pow(expectationForEquiprobabilityDistribution(array), 3);
-			
-		return third;
-	}
-	
 	public double thirdInitialMomentForEquiprobabilityDistribution(double[] array)
 	{	if(array.length == 0)
 		{
@@ -112,6 +97,64 @@ public class Statistics
 			third += Math.pow(array[i], 3);
  		}
 		third /= array.length;
+		return third;
+	}
+	
+	public double thirdInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
+	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+
+		if(arrayOfValue.length != arrayOfProbability.length)
+		{//уточнить тип исключения!!
+			throw new IndexOutOfBoundsException("equal");			
+		}
+
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
+			{ //уточнить тип исключения!!
+				throw new IndexOutOfBoundsException();
+			}
+		}
+	
+		double sum = 0.0;
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			sum += arrayOfProbability[i];
+		}	
+		if(sum != 1)
+		{ //уточнить тип исключения!!
+			throw new IndexOutOfBoundsException();
+		}
+		
+		double third = 0.0;
+		for(int i = 0; i < arrayOfValue.length; i++)
+		{
+			third += Math.pow(arrayOfValue[i], 3) * arrayOfProbability[i];
+ 		}
+		return third;
+	}
+	
+	public double thirdCentralMoment(double[] arrayOfValue, double[] arrayOfProbability)
+	{	/*double third =  0.0;
+		double temp = 0.0;
+		for(int i = 0; i < arrayOfValue.length; i++)
+		{
+			third += Math.pow(arrayOfValue[i], 3);
+			temp += Math.pow(arrayOfValue[i], 2);
+		}
+		third /= arrayOfValue.length;
+		temp /=arrayOfValue.length;
+		third -= 3 * temp * expectationForEquiprobabilityDistribution(arrayOfValue)
+		 - 2 * Math.pow(expectationForEquiprobabilityDistribution(arrayOfValue), 3);*/
+		double third = 0.0;
+		third = thirdInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) - 
+				3 * expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
+				varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability) + 
+				2 * Math.pow(expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability), 3);
+			
 		return third;
 	}
 	
