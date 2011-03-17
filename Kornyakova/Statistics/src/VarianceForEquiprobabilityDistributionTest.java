@@ -1,7 +1,7 @@
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class VarianceTest 
+public class VarianceForEquiprobabilityDistributionTest 
 {	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
@@ -9,7 +9,7 @@ public class VarianceTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double variance = statistics.variance(array);
+		double variance = statistics.varianceForEquiprobabilityDistribution(array);
 		assertEquals(0.0, variance, DELTA);
 	}
 	
@@ -17,7 +17,7 @@ public class VarianceTest
 	{	double[] array;
 		array = new double[3];
 		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
-		double variance = statistics.variance(array);
+		double variance = statistics.varianceForEquiprobabilityDistribution(array);
 		assertEquals( 0.666666666, variance, DELTA);
 	}
 	
@@ -25,7 +25,7 @@ public class VarianceTest
 	public void ThrowExceptionIfSizeLess1()
 	{	double[] array;
 		array = new double[0];
-		double variance = statistics.variance(array);
+		double variance = statistics.varianceForEquiprobabilityDistribution(array);
 		assertEquals( 0.666666666, variance, DELTA);
 	}
 }

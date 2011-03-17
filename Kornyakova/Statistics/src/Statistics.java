@@ -57,7 +57,7 @@ public class Statistics
 		return expectation;
 	}
 	
-	public double variance(double[] array)
+	public double varianceForEquiprobabilityDistribution(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
@@ -69,7 +69,18 @@ public class Statistics
 			variance += Math.pow(array[i], 2);  
 		}
 		variance /= array.length;
-		variance -= expectationForEquiprobabilityDistribution(array) * expectationForEquiprobabilityDistribution(array);
+		variance -= Math.pow(expectationForEquiprobabilityDistribution(array), 2);
+
+		return variance;
+	}
+	
+	public double varianceForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
+	{	double variance = 0.0;
+		for (int i = 0; i < arrayOfValue.length; i++)
+		{
+			variance += Math.pow(arrayOfValue[i], 2) * arrayOfProbability[i];  
+		}
+		variance -= Math.pow(expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability), 2);
 
 		return variance;
 	}
@@ -89,7 +100,7 @@ public class Statistics
 		return third;
 	}
 	
-	public double thirdInitialMoment(double[] array)
+	public double thirdInitialMomentForEquiprobabilityDistribution(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();

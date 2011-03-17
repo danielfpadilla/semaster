@@ -10,7 +10,7 @@ public class FourthInitialMomentTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double fourth = statistics.thirdInitialMoment(array);
+		double fourth = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
 		assertEquals(1.0, fourth, DELTA);
 	}
 	
