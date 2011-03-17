@@ -138,18 +138,7 @@ public class Statistics
 	}
 	
 	public double thirdCentralMoment(double[] arrayOfValue, double[] arrayOfProbability)
-	{	/*double third =  0.0;
-		double temp = 0.0;
-		for(int i = 0; i < arrayOfValue.length; i++)
-		{
-			third += Math.pow(arrayOfValue[i], 3);
-			temp += Math.pow(arrayOfValue[i], 2);
-		}
-		third /= arrayOfValue.length;
-		temp /=arrayOfValue.length;
-		third -= 3 * temp * expectationForEquiprobabilityDistribution(arrayOfValue)
-		 - 2 * Math.pow(expectationForEquiprobabilityDistribution(arrayOfValue), 3);*/
-		double third = 0.0;
+	{	double third = 0.0;
 		third = thirdInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) - 
 				3 * expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
 				varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability) + 
@@ -158,7 +147,7 @@ public class Statistics
 		return third;
 	}
 	
-	public double fourthInitialMoment(double[] array)
+	public double fourthInitialMomentForEquiprobabilityDistribution(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
@@ -171,5 +160,43 @@ public class Statistics
  		}
 		fourth /= array.length;
 		return fourth;
+	}
+	
+	public double fourthInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
+	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+
+		if(arrayOfValue.length != arrayOfProbability.length)
+		{//уточнить тип исключения!!
+			throw new IndexOutOfBoundsException("equal");			
+		}
+
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
+			{ //уточнить тип исключения!!
+				throw new IndexOutOfBoundsException();
+			}
+		}
+	
+		double sum = 0.0;
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			sum += arrayOfProbability[i];
+		}	
+		if(sum != 1)
+		{ //уточнить тип исключения!!
+			throw new IndexOutOfBoundsException();
+		}
+	
+		double fourth = 0.0;
+		for(int i = 0; i < arrayOfValue.length; i++)
+		{
+			fourth += Math.pow(arrayOfValue[i], 4) * arrayOfProbability[i];
+ 		}
+		return fourth;
+	
 	}
 }
