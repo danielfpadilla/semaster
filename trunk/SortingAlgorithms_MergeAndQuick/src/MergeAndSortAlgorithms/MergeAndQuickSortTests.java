@@ -32,7 +32,7 @@ public class MergeAndQuickSortTests {
 		Assert.assertNotNull(quicksort);
 	}
 	@Test
-	public void canInitializeArrayWithElements1()
+	public void CheckWhetherArrayElementsCanBeInitializedInQuickSort()
 	{
 		int[] a = {1, 2, 3, 4, 5};
 		
