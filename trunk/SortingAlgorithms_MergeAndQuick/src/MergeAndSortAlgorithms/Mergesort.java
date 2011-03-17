@@ -17,7 +17,7 @@ public class Mergesort {
 			int middle = (left + right) / 2;
 			Mergesort(left, middle);
 			Mergesort(middle + 1, right);
- 		merge(left, middle, right);
+ 		    merge(left, middle, right);
 			
 		}
 	}
@@ -41,8 +41,8 @@ public class Mergesort {
 			} else {
 				numbers[k] = tempArray[j];
 				j++;
-			}
-			k++;
+			     }
+			    k++;
 		}
 		// Copy the rest of the left side of the array into the target array
 		while (i <= middle) {
