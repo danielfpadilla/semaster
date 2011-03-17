@@ -36,7 +36,7 @@ public class ThirdCentralMomentTest
 		arrayOfValue = new double[0];
 		arrayOfProbability = new double[1];
 		
-		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
+		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
@@ -46,7 +46,7 @@ public class ThirdCentralMomentTest
 		arrayOfValue = new double[1];
 		arrayOfProbability = new double[0];
 		
-		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
+		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class) 
@@ -57,7 +57,7 @@ public class ThirdCentralMomentTest
 		arrayOfProbability = new double[2];
 		arrayOfProbability[0] = 0.5; arrayOfProbability[0] = 3.0; 
 		
-		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
+		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
@@ -68,7 +68,7 @@ public class ThirdCentralMomentTest
 		arrayOfProbability = new double[2];
 		arrayOfProbability[0] = 0.5; arrayOfProbability[0] = 0.6; 
 		
-		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
+		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
@@ -78,6 +78,6 @@ public class ThirdCentralMomentTest
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[3];
 				
-		double expectation = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
+		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
 }

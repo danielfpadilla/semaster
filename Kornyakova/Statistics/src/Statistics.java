@@ -196,7 +196,18 @@ public class Statistics
 		{
 			fourth += Math.pow(arrayOfValue[i], 4) * arrayOfProbability[i];
  		}
-		return fourth;
+		return fourth;	
+	}
 	
+	public double fourthCentralMoment(double[] arrayOfValue, double[] arrayOfProbability)
+	{	double fourth = 0.0;
+		fourth = fourthInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) -
+			4 * expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
+			thirdInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) + 
+			6 * varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
+			Math.pow(expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability), 2) - 
+			3 * Math.pow(expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability), 4);
+			
+		return fourth;	
 	}
 }
