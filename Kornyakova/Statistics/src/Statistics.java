@@ -210,4 +210,21 @@ public class Statistics
 			
 		return fourth;	
 	}
+	
+	public double skewness(double[] arrayOfValue, double[] arrayOfProbability)
+	{ 	double sigma = 0.0;
+		double skewness = 0.0;
+				
+		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);
+		if(sigma == 0.0)
+		{//уточнить тип исключения!!
+			throw new IndexOutOfBoundsException();
+		}
+		skewness = thirdCentralMoment(arrayOfValue, arrayOfProbability)/Math.pow(sigma, 3);
+		
+		return skewness;
+		
+		
+	
+	}
 }
