@@ -9,7 +9,7 @@ public class ThirdInitialMomentTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double third = statistics.ThirdInitialMoment(array);
+		double third = statistics.thirdInitialMoment(array);
 		assertEquals(1.0, third, DELTA);		
 	}
 	
@@ -17,7 +17,7 @@ public class ThirdInitialMomentTest
 	{	double[] array;
 		array = new double[3];
 		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
-		double third = statistics.ThirdInitialMoment(array);
+		double third = statistics.thirdInitialMoment(array);
 		assertEquals(12.0, third, DELTA);
 	}
 	
@@ -26,7 +26,7 @@ public class ThirdInitialMomentTest
 	{	double[] array;
 		array = new double[0];
 		array[0] = 1.0;
-		double third = statistics.ThirdInitialMoment(array);
+		double third = statistics.thirdInitialMoment(array);
 		assertEquals(1.0, third, DELTA);
 	}
 

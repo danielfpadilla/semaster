@@ -9,7 +9,7 @@ public class ThirdCentralMomentTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double third = statistics.ThirdCentralMoment(array);
+		double third = statistics.thirdCentralMoment(array);
 		assertEquals(0.0, third, DELTA);
 	}
 	
@@ -17,7 +17,7 @@ public class ThirdCentralMomentTest
 	{	double[] array;
 		array = new double[2];
 		array[0] = 1.0; array[1] = 2.0;
-		double third = statistics.ThirdCentralMoment(array);
+		double third = statistics.thirdCentralMoment(array);
 		assertEquals(0.0, third, DELTA);
 	}
 

@@ -1,9 +1,9 @@
 
 public class Statistics 
 {
-	public Statistics(){}		
-		
-	public double Expectation(double[] array) 
+	public Statistics(){}	
+	
+	public double expectationForEquiprobabilityDistribution(double[] array) 
 	{	if(array.length == 0)
 		{
 			throw new IndexOutOfBoundsException();
@@ -15,11 +15,49 @@ public class Statistics
 			expectation += array[i];
 		}
 		expectation /= array.length;
+		 
 		
 		return expectation;
 	}	
 	
-	public double Variance(double[] array)
+	public double expectationForDiscreteDistribution(double[]arrayOfValue, double[] arrayOfProbability)
+	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+		{
+			throw new IndexOutOfBoundsException();
+		}
+	
+		if(arrayOfValue.length != arrayOfProbability.length)
+		{//уточнить тип исключения!!
+			throw new IndexOutOfBoundsException("equal");			
+		}
+	
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
+			{ //уточнить тип исключения!!
+				throw new IndexOutOfBoundsException();
+			}
+		}
+		
+		double sum = 0.0;
+		for(int i = 0; i < arrayOfProbability.length; i++)
+		{
+			sum += arrayOfProbability[i];
+		}
+		if(sum != 1)
+		{ //уточнить тип исключения!!
+			throw new IndexOutOfBoundsException();
+		}
+		
+		double expectation = 0.0;
+		for(int i = 0; i < arrayOfValue.length; i++)
+		{
+			expectation += arrayOfValue[i] * arrayOfProbability[i];
+		}
+		return expectation;
+	}
+	
+	public double variance(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
@@ -31,12 +69,12 @@ public class Statistics
 			variance += Math.pow(array[i], 2);  
 		}
 		variance /= array.length;
-		variance -= Expectation(array) * Expectation(array);
+		variance -= expectationForEquiprobabilityDistribution(array) * expectationForEquiprobabilityDistribution(array);
 
 		return variance;
 	}
 	
-	public double ThirdCentralMoment(double[] array)
+	public double thirdCentralMoment(double[] array)
 	{	double third =  0.0;
 		double temp = 0.0;
 		for(int i = 0; i < array.length; i++)
@@ -46,12 +84,12 @@ public class Statistics
 		}
 		third /= array.length;
 		temp /=array.length;
-		third -= 3 * temp * Expectation(array) - 2 * Math.pow(Expectation(array), 3);
+		third -= 3 * temp * expectationForEquiprobabilityDistribution(array) - 2 * Math.pow(expectationForEquiprobabilityDistribution(array), 3);
 			
 		return third;
 	}
 	
-	public double ThirdInitialMoment(double[] array)
+	public double thirdInitialMoment(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
@@ -66,7 +104,7 @@ public class Statistics
 		return third;
 	}
 	
-	public double FourthInitialMoment(double[] array)
+	public double fourthInitialMoment(double[] array)
 	{	if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();

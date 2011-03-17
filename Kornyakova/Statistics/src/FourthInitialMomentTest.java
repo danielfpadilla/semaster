@@ -10,7 +10,7 @@ public class FourthInitialMomentTest
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
-		double fourth = statistics.ThirdInitialMoment(array);
+		double fourth = statistics.thirdInitialMoment(array);
 		assertEquals(1.0, fourth, DELTA);
 	}
 	
@@ -18,7 +18,7 @@ public class FourthInitialMomentTest
 	{	double[] array;
 		array = new double[3];
 		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
-		double fourth = statistics.FourthInitialMoment(array);
+		double fourth = statistics.fourthInitialMoment(array);
 		assertEquals(32.66666666666666, fourth, DELTA);
 	}
 	
@@ -27,8 +27,7 @@ public class FourthInitialMomentTest
 	{	double[] array;
 		array = new double[0];
 		array[0] = 1.0;
-		double fourth = statistics.FourthInitialMoment(array);
+		double fourth = statistics.fourthInitialMoment(array);
 		assertEquals(1.0, fourth, DELTA);
 	}
-
 }
