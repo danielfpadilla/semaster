@@ -220,11 +220,23 @@ public class Statistics
 		{//уточнить тип исключения!!
 			throw new IndexOutOfBoundsException();
 		}
-		skewness = thirdCentralMoment(arrayOfValue, arrayOfProbability)/Math.pow(sigma, 3);
+		skewness = thirdCentralMoment(arrayOfValue, arrayOfProbability) / Math.pow(sigma, 3);
 		
-		return skewness;
+		return skewness;	
+	}
+	
+	public double excess(double[] arrayOfValue, double[] arrayOfProbability)
+	{	double sigma = 0.0;
+		double excess = 0.0;
 		
+		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);
+		if(sigma == 0.0)
+		{//уточнить тип исключения!!
+			throw new IndexOutOfBoundsException();
+		}
+		excess = fourthCentralMoment(arrayOfValue, arrayOfProbability) / Math.pow(sigma, 4) - 3.0;
 		
+		return excess;
 	
 	}
 }
