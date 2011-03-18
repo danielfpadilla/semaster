@@ -30,5 +30,4 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 		double third = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
 		assertEquals(1.0, third, DELTA);
 	}
-
 }
