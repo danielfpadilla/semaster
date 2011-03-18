@@ -14,8 +14,7 @@ public class Statistics
 		{
 			expectation += array[i];
 		}
-		expectation /= array.length;
-		 
+		expectation /= array.length;		 
 		
 		return expectation;
 	}	
@@ -23,19 +22,19 @@ public class Statistics
 	public double expectationForDiscreteDistribution(double[]arrayOfValue, double[] arrayOfProbability)
 	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
-			throw new IndexOutOfBoundsException();
+			throw new ArrayIndexOutOfBoundsException();
 		}
 	
 		if(arrayOfValue.length != arrayOfProbability.length)
-		{//уточнить тип исключения!!
-			throw new IndexOutOfBoundsException("equal");			
+		{
+			throw new ArrayIndexOutOfBoundsException();			
 		}
 	
 		for(int i = 0; i < arrayOfProbability.length; i++)
 		{
 			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
-			{ //уточнить тип исключения!!
-				throw new IndexOutOfBoundsException();
+			{ 
+				throw new IllegalArgumentException();
 			}
 		}
 		
@@ -45,8 +44,8 @@ public class Statistics
 			sum += arrayOfProbability[i];
 		}
 		if(sum != 1)
-		{ //уточнить тип исключения!!
-			throw new IndexOutOfBoundsException();
+		{ 
+			throw new IllegalArgumentException();
 		}
 		
 		double expectation = 0.0;
@@ -103,19 +102,19 @@ public class Statistics
 	public double thirdInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
 	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
-			throw new IndexOutOfBoundsException();
+			throw new ArrayIndexOutOfBoundsException();
 		}
 
 		if(arrayOfValue.length != arrayOfProbability.length)
-		{//уточнить тип исключения!!
-			throw new IndexOutOfBoundsException("equal");			
+		{
+			throw new ArrayIndexOutOfBoundsException("equal");			
 		}
 
 		for(int i = 0; i < arrayOfProbability.length; i++)
 		{
 			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
-			{ //уточнить тип исключения!!
-				throw new IndexOutOfBoundsException();
+			{ 
+				throw new IllegalArgumentException();
 			}
 		}
 	
@@ -125,8 +124,8 @@ public class Statistics
 			sum += arrayOfProbability[i];
 		}	
 		if(sum != 1)
-		{ //уточнить тип исключения!!
-			throw new IndexOutOfBoundsException();
+		{ 
+			throw new IllegalArgumentException();
 		}
 		
 		double third = 0.0;
@@ -165,19 +164,19 @@ public class Statistics
 	public double fourthInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
 	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
-			throw new IndexOutOfBoundsException();
+			throw new ArrayIndexOutOfBoundsException();
 		}
 
 		if(arrayOfValue.length != arrayOfProbability.length)
-		{//уточнить тип исключения!!
-			throw new IndexOutOfBoundsException("equal");			
+		{
+			throw new ArrayIndexOutOfBoundsException("equal");			
 		}
 
 		for(int i = 0; i < arrayOfProbability.length; i++)
 		{
 			if(arrayOfProbability[i] > 1.0 || arrayOfProbability[i] < 0.0)
-			{ //уточнить тип исключения!!
-				throw new IndexOutOfBoundsException();
+			{ 
+				throw new IllegalArgumentException();
 			}
 		}
 	
@@ -187,8 +186,8 @@ public class Statistics
 			sum += arrayOfProbability[i];
 		}	
 		if(sum != 1)
-		{ //уточнить тип исключения!!
-			throw new IndexOutOfBoundsException();
+		{ 
+			throw new IllegalArgumentException();
 		}
 	
 		double fourth = 0.0;
@@ -217,8 +216,8 @@ public class Statistics
 				
 		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);
 		if(sigma == 0.0)
-		{//уточнить тип исключения!!
-			throw new IndexOutOfBoundsException();
+		{
+			throw new ArithmeticException();
 		}
 		skewness = thirdCentralMoment(arrayOfValue, arrayOfProbability) / Math.pow(sigma, 3);
 		
@@ -231,12 +230,11 @@ public class Statistics
 		
 		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);
 		if(sigma == 0.0)
-		{//уточнить тип исключения!!
-			throw new IndexOutOfBoundsException();
+		{
+			throw new ArithmeticException();
 		}
 		excess = fourthCentralMoment(arrayOfValue, arrayOfProbability) / Math.pow(sigma, 4) - 3.0;
 		
-		return excess;
-	
+		return excess;	
 	}
 }
