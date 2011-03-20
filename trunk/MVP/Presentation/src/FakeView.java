@@ -1,86 +1,46 @@
-
 public class FakeView implements IView
 {
-	private String m_realPart1;
-	private String m_imaginaryPart1;
-	private String m_realPart2;
-	private String m_imaginaryPart2;
-	private String m_result;
-	
-	//private IActionHandler m_parseNumbersActionHandler;
-	private IActionHandler m_addActionHandler;
-	//private IActionHandler m_multiplyActionHandler;
-	
-	public String getRealPartOfNumber1()
+	public String m_real1;
+	public String m_imaginary1;
+	public String m_real2;
+	public String m_imaginary2;
+	public String m_result;
+
+	public IActionHandler m_addActionHandler;
+	public IActionHandler m_multiplyActionHandler;
+
+	public String getReal1()
 	{
-		return m_realPart1;
+		return m_real1;
 	}
 
-	public void setRealPartOfNumber1(String string)
+	public String getImaginary1()
 	{
-		m_realPart1 = string;
+		return m_imaginary1;
 	}
 
-	public String getImaginaryPartOfNumber1()
+	public String getReal2()
 	{
-		return m_imaginaryPart1;
+		return m_real2;
 	}
 
-	public void setImaginaryPartOfNumber1(String string)
+	public String getImaginary2()
 	{
-		m_imaginaryPart1 = string;
+		return m_imaginary2;
 	}
 
-	public String getRealPartOfNumber2()
-	{
-		return m_realPart2;
-	}
-
-	public void setRealPartOfNumber2(String string)
-	{
-		m_realPart2 = string;
-	}
-
-	public String getImaginaryPartOfNumber2()
-	{
-		return m_imaginaryPart2;
-	}
-
-	public void setImaginaryPartOfNumber2(String string)
-	{
-		m_imaginaryPart2 = string;
-	}
-
-	public String getResultComplexNumber()
-	{
-		return m_result;
-	}
-
-	public void setResultComplexNumber(String string)
+	public void setResult(String string)
 	{
 		m_result = string;
 	}
-
-	/*public void setParseNumbersActionHandler(IActionHandler handler)
-	{
-		m_parseNumbersActionHandler = handler;
-	}*/
 
 	public void setAddActionHandler(IActionHandler handler)
 	{
 		m_addActionHandler = handler;
 	}
 
-	/*public void setMultiplyActionHandler(IActionHandler handler)
+	public void setMultiplyActionHandler(IActionHandler handler)
 	{
 		m_multiplyActionHandler = handler;
-	}*/
-
-	
-	public void doAddAction()
-	{
-		m_addActionHandler.processAction();
 	}
-	
-
 }
