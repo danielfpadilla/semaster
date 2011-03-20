@@ -17,7 +17,9 @@ public class FourthInitialMomentForEquiprobabilityDistributionTest
 	@Test public void CanCalculateInitialMomentForArray()
 	{	double[] array;
 		array = new double[3];
-		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
+		array[0] = 1.0; 
+		array[1] = 2.0; 
+		array[2] = 3.0;
 		double fourth = statistics.fourthInitialMomentForEquiprobabilityDistribution(array);
 		assertEquals(32.66666666666666, fourth, DELTA);
 	}
