@@ -17,7 +17,9 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 	@Test public void CanCalculateThirdInitialMomentForArray()
 	{	double[] array;
 		array = new double[3];
-		array[0] = 1.0; array[1] = 2.0; array[2] = 3.0;
+		array[0] = 1.0; 
+		array[1] = 2.0; 
+		array[2] = 3.0;
 		double third = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
 		assertEquals(12.0, third, DELTA);
 	}
