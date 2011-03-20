@@ -1,44 +1,58 @@
-
-public class ComplexNumber {
+public class ComplexNumber
+{
 
 	private double real;
-	private double imaginary;	
-	
-	public ComplexNumber(double real, double imaginary) {
+	private double imaginary;
+
+	public ComplexNumber(double real, double imaginary)
+	{
 		this.setReal(real);
 		this.imaginary = imaginary;
 	}
-	
-	public boolean equals(Object object) {
-		ComplexNumber number = (ComplexNumber)object;
-		if (number.getReal() == this.getReal() &&
-			number.imaginary == this.imaginary)
+
+	public boolean equals(Object object)
+	{
+		ComplexNumber number = (ComplexNumber) object;
+		if (number.getReal() == getReal()
+				&& number.getImaginary() == getImaginary())
 			return true;
 		else
 			return false;
 	}
-	
+
 	public ComplexNumber add(ComplexNumber other)
 	{
-		return new ComplexNumber(other.getReal() + this.getReal(), other.imaginary + this.imaginary);
+		return new ComplexNumber(other.getReal() + getReal(),
+				other.getImaginary() + getImaginary());
 	}
 
-	public void setReal(double real) {
+	public ComplexNumber multiply(ComplexNumber other)
+	{
+		return new ComplexNumber(
+				other.getReal() * getReal() - other.getImaginary() * getImaginary(), 
+				other.getReal() * getImaginary() + other.getImaginary() * getReal());
+	}
+
+	public void setReal(double real)
+	{
 		this.real = real;
 	}
 
-	public double getReal() {
+	public double getReal()
+	{
 		return real;
 	}
-	
-	public void setImaginary(double imaginary) {
+
+	public void setImaginary(double imaginary)
+	{
 		this.imaginary = imaginary;
 	}
 
-	public double getImaginary() {
+	public double getImaginary()
+	{
 		return imaginary;
 	}
-	
+
 	public String toString()
 	{
 		StringBuffer buffer = new StringBuffer();
