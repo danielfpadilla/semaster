@@ -1,22 +1,16 @@
-
 public interface IView
 {
-	public String getRealPartOfNumber1();
-	public void setRealPartOfNumber1(String string);
+	public String getReal1();
 
-	public String getImaginaryPartOfNumber1();
-	public void setImaginaryPartOfNumber1(String string);
+	public String getImaginary1();
 
-	public String getRealPartOfNumber2();
-	public void setRealPartOfNumber2(String string);
+	public String getReal2();
 
-	public String getImaginaryPartOfNumber2();
-	public void setImaginaryPartOfNumber2(String string);
+	public String getImaginary2();
 
-	public String getResultComplexNumber();
-	public void setResultComplexNumber(String string);
+	public void setResult(String string);
 
-	//public void setParseNumbersActionHandler(IActionHandler handler);
 	public void setAddActionHandler(IActionHandler handler);
-	//public void setMultiplyActionHandler(IActionHandler handler);
+
+	public void setMultiplyActionHandler(IActionHandler handler);
 }
