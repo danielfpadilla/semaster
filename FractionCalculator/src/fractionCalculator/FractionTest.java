@@ -7,7 +7,8 @@ import junit.framework.Assert;
 
 import fractionCalculator.Fraction;
 
-public class FractionTest {
+public class FractionTest
+{
 	private int m_numerator = 0;
 	private int m_denominator = 1;
 	private final double DELTA = 0.002;
@@ -81,11 +82,15 @@ public class FractionTest {
 	}
 
 	@Test
-	public void canThrowExceptionIfDenomenatorIsZero() throws Exception {
-		try {
+	public void canThrowExceptionIfDenomenatorIsZero() throws Exception
+	{
+		try
+		{
 			new Fraction(1, 0);
 			fail("denominator is zero");
-		} catch (IllegalArgumentException expected) {
+		}
+		catch (IllegalArgumentException expected)
+		{
 		}
 	}
 
@@ -103,95 +108,85 @@ public class FractionTest {
 	@Test
 	public void canReduceFractionToSimplestForm()
 
-	{
+	{  
+		Fraction fraction = new Fraction();
 		Fraction fraction2 = new Fraction(4, 8);
-		Fraction.reduceFraction(fraction2);
+		fraction.reduceFraction(fraction2);
 		Assert.assertEquals(1, fraction2.getNumerator());
 		Assert.assertEquals(2, fraction2.getDenominator());
 
 	}
 
 	@Test
-	public void createFractionOperations() {
-		FractionOperations fractionOperations = new FractionOperations();
-		Assert.assertNotNull(fractionOperations);
-	}
-
-	@Test
-	public void canInitializeFractionOperations() {
-		Fraction fractionCalculator = new Fraction();
-		FractionOperations fractionOperations = new FractionOperations(
-				fractionCalculator);
-		Assert.assertNotNull(fractionOperations);
-
-	}
-
-	@Test
-	public void canInitializewithTwoOjects() {
-		Fraction fraction1 = new Fraction();
-		Fraction fraction2 = new Fraction();
-		FractionOperations fractionOperations = new FractionOperations(
-				fraction1, fraction2);
-		Assert.assertNotNull(fractionOperations);
-	}
-
-	@Test
-	public void canAddFractions() {
+	public void canAddFractions()
+	{   Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 4);
 		Fraction fraction2 = new Fraction(1, 4);
 		Fraction fractionSum = new Fraction(1, 2);
 
 		Assert.assertEquals(fractionSum,
-				FractionOperations.addFractions(fraction1, fraction2));
+				fraction.addFractions(fraction1, fraction2));
 
 	}
 
 	@Test
-	public void canSubstract() {
+	public void canSubstract()
+	{
+		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
 		Fraction fractionSubtraction = new Fraction(1, 4);
 
 		Assert.assertEquals(fractionSubtraction,
-				FractionOperations.subtractFractions(fraction1, fraction2));
+				fraction.subtractFractions(fraction1, fraction2));
 	}
 
 	@Test
-	public void canMultiplyFractions() {
+	public void canMultiplyFractions()
+	{
+		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
 		Fraction fractionMultiplication = new Fraction(1, 8);
 
 		Assert.assertEquals(fractionMultiplication,
-				FractionOperations.multiplyFractions(fraction1, fraction2));
+				fraction.multiplyFractions(fraction1, fraction2));
 	}
 
 	@Test
-	public void canDivideFractions() {
+	public void canDivideFractions()
+	{   
+		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
 		Fraction fractionDivision = new Fraction(2, 1);
 
 		Assert.assertEquals(fractionDivision,
-				FractionOperations.divideFractions(fraction1, fraction2));
+				fraction.divideFractions(fraction1, fraction2));
 	}
 
 	@Test
-	public void canThrowExceptionWhenDividingByZero() throws Exception {
-		try {
+	public void canThrowExceptionWhenDividingByZero() throws Exception
+	{
+		try
+		{
+			Fraction fraction = new Fraction();
 			Fraction fraction1 = new Fraction(1, 2);
 			Fraction fraction2 = new Fraction(0, 3);
-			FractionOperations.divideFractions(fraction1, fraction2);
+			fraction.divideFractions(fraction1, fraction2);
 			fail("can not divide by zero");
-		} catch (IllegalArgumentException expected) {
+		}
+		catch (IllegalArgumentException expected)
+		{
 		}
 	}
 
 	@Test
-	public void canConvertTheFractionToDoubleValue() {
+	public void canConvertTheFractionToDoubleValue()
+	{
 		Fraction fraction = new Fraction(1, 2);
 		double result = fraction.convertToDouble(fraction);
 		Assert.assertEquals(0.5, result, DELTA);
 	}
-	
+
 }
