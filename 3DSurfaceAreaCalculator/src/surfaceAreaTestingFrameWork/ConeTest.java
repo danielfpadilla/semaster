@@ -7,6 +7,10 @@ import org.junit.Test;
 public class ConeTest  {
 	Cone cone = new Cone(3.0,4.0);
 	private double delta = 0.00001;
+	@Test public void canCreateCone()
+	{
+		assertNotNull(cone);
+	}
    @Test public void ConeIsNotNull()
    {
 	   assertNotNull(cone);

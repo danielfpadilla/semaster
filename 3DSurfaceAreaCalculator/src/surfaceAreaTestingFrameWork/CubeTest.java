@@ -11,6 +11,10 @@ import surfaceAreaCalculator.Cube;
 public class CubeTest {
 	Cube cube = new Cube(10);
 	private final double delta = 0.0001;
+	@Test public void canCreateCube()
+	{
+		assertNotNull(cube);
+	}
 	@Test public void CubeIsNotNull()
 	{
 		assertNotNull(cube);
