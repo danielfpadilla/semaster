@@ -13,8 +13,8 @@ public class QuickSortTests
 	public void canCreateArrayWithElements()
 	{
 		int[] a = new int[5];
-		QuickSort quicksort = new QuickSort(a);
-		assertNotNull(quicksort);
+		QuickSort quickSort = new QuickSort(a);
+		assertNotNull(quickSort);
 	}
 
 	@Test
@@ -22,8 +22,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 9 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 9 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -34,8 +34,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 9, 2 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 2, 9 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -46,8 +46,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 32, 30, 10, 8, 12, 10, 88, 2 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 2, 8, 10, 10, 12, 30, 32, 88 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -58,8 +58,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 33, 131, 11, 1, 71, 141, 3, 1 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 1, 1, 3, 11, 33, 71, 131, 141 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -70,8 +70,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 5, 4, 3, 2, 1 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 1, 2, 3, 4, 5 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -82,8 +82,8 @@ public class QuickSortTests
 	{
 		int[] unsorted =
 		{ 5, 4, 3, 2, 1 };
-		QuickSort quicksort = new QuickSort(unsorted);
-		int[] actualsorted = quicksort.sortArray(unsorted);
+		QuickSort quickSort = new QuickSort(unsorted);
+		int[] actualsorted = quickSort.sortArray(unsorted);
 		assertEquals(unsorted.length, actualsorted.length);
 
 	}
@@ -93,8 +93,8 @@ public class QuickSortTests
 	{
 		int unsorted[] =
 		{};
-		QuickSort quicksort = new QuickSort(unsorted);
-		quicksort.sortArray(null);
+		QuickSort quickSort = new QuickSort(unsorted);
+		quickSort.sortArray(null);
 	}
 
 }

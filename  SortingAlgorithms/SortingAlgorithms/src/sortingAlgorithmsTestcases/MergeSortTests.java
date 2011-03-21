@@ -14,8 +14,8 @@ public class MergeSortTests
 	{
 		int num = 3;
 		int[] a = new int[num];
-		MergeSort mergesort = new MergeSort(a);
-		assertNotNull(mergesort);
+		MergeSort mergeSort = new MergeSort(a);
+		assertNotNull(mergeSort);
 	}
 
 	@Test
@@ -23,8 +23,8 @@ public class MergeSortTests
 	{
 		int[] unsorted =
 		{ 10 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 10 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -35,8 +35,8 @@ public class MergeSortTests
 	{
 		int[] unsorted =
 		{ 78, 30 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 30, 78 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -47,8 +47,8 @@ public class MergeSortTests
 	{
 		int[] unsorted =
 		{ 3, 5, 1, 9, 11, 25, 43, 7 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 1, 3, 5, 7, 9, 11, 25, 43 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -59,11 +59,11 @@ public class MergeSortTests
 	public void canSortEvenNumberedArray()
 	{
 		int[] unsorted =
-		{ 3, 5, 1, 9, 11, 25, 43, 7 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		{ 2, 4, 6, 10, 22, 44, 8,12 };
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		int[] expectedsorted =
-		{ 1, 3, 5, 7, 9, 11, 25, 43 };
+		{ 2, 4, 6, 8, 10, 12, 22, 44 };
 		assertArrayEquals(expectedsorted, actualsorted);
 
 	}
@@ -72,11 +72,11 @@ public class MergeSortTests
 	public void canSortAMixedUnsortedArray()
 	{
 		int[] unsorted =
-		{ 0, 4, 56, 16, 10, 2, 12, 22 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		{ 0, 4, 56, 17, 10, 2, 13, 22 };
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		int[] expectedsorted =
-		{ 0, 2, 4, 10, 12, 16, 22, 56 };
+		{ 0, 2, 4, 10, 13, 17, 22, 56 };
 		assertArrayEquals(expectedsorted, actualsorted);
 	}
 
@@ -85,8 +85,8 @@ public class MergeSortTests
 	{
 		int[] unsorted =
 		{ 0, 4, 56, 16, 10, 2, 12, 22 };
-		MergeSort mergesort = new MergeSort(unsorted);
-		int[] actualsorted = mergesort.sortArray(unsorted);
+		MergeSort mergeSort = new MergeSort(unsorted);
+		int[] actualsorted = mergeSort.sortArray(unsorted);
 		assertEquals(unsorted.length, actualsorted.length);
 	}
 
@@ -95,8 +95,8 @@ public class MergeSortTests
 	{
 		int[] unsorted =
 		{};
-		MergeSort mergesort = new MergeSort(unsorted);
-		mergesort.sortArray(null);
+		MergeSort mergeSort = new MergeSort(unsorted);
+		mergeSort.sortArray(null);
 	}
 
 }
