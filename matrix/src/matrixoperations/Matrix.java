@@ -2,21 +2,21 @@ package matrixoperations;
 
 
 public class Matrix {
-    private int m_size=2;
+    private  int m_size=2;
+    private int iDF=0;
 	final double delta = 0.00001;
 
-	private  double[][] matrix1 = new double[m_size][m_size];
+	private  double[][] myMatrix = new double[m_size][m_size];
 	private double[][] matrix2 = new double[m_size][m_size];
 
-	//private double [][]result=new double[N][N];
-
+	
 	public Matrix() {
 	}
 
 	public Matrix(double[][] matrix) {
 		 for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix.length; j++) {
-				matrix1[i][j] = matrix[i][j];
+				myMatrix[i][j] = matrix[i][j];
 				matrix2[i][j] = matrix[i][j];
 			}
 		}
@@ -43,7 +43,7 @@ public class Matrix {
 		return m_size;
 		
 	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-	
+//--------------------------------------------------------------------------	
 
 	public static  Matrix sum(double[][] m1, double[][] m2) {
 		Matrix res = new Matrix();
@@ -58,26 +58,26 @@ public class Matrix {
 
 		return res;
 	}
-
+//-------------------------------------------------------------------------
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("{");
-		for (int i = 0; i < matrix1.length; i++) {
+		for (int i = 0; i < myMatrix.length; i++) {
 			buffer.append("{");
-			for (int j = 0; j < matrix1.length; j++) {
-				buffer.append(Double.toString(matrix1[i][j]) + ",");
+			for (int j = 0; j < myMatrix.length; j++) {
+				buffer.append(Double.toString(myMatrix[i][j]) + ",");
 			}
 			buffer.append("},");
 		}
 		buffer.append("}");
 		return buffer.toString();
 	}
-
+//-----------------------------------------------------------------------
 	public boolean equals(Object otherObject) {
 		Matrix otherNumber = (Matrix) otherObject;
-		for (int i = 0; i < matrix1.length; i++) {
-			for (int j = 0; j < matrix1.length; j++) {
-				if (Math.abs(matrix1[i][j] - otherNumber.matrix1[i][j]) < delta
+		for (int i = 0; i < myMatrix.length; i++) {
+			for (int j = 0; j < myMatrix.length; j++) {
+				if (Math.abs(myMatrix[i][j] - otherNumber.myMatrix[i][j]) < delta
 						&& Math.abs(matrix2[i][j] - otherNumber.matrix2[i][j]) < delta)
 					return true;
 
@@ -93,8 +93,8 @@ public class Matrix {
 			return false;
 
 	}
-
-	public static  Matrix subtract(double[][] b, double[][] c) {
+//---------------------------------------------------------------------
+	public static   Matrix subtract(double[][] b, double[][] c) {
 		
 		Matrix difference = new Matrix();
 		double[][] result = new double[2][2];
@@ -106,36 +106,174 @@ public class Matrix {
 		}
 		return difference;
 	}
+//------------------------------------------------------------------------
+public double Determinant(double[][] matrix) {
+		
+		int tms = matrix.length;
 
-	public double CalculateDeterminant(Matrix myMatrix)
-	{
-		if (m_size == 1) 
-			return matrix1 [0][0];
-        Matrix matrix = new Matrix();
-        matrix.m_size = m_size-1;
-        double [][] minorData = new double [m_size-1][m_size-1];
-        double result = 0;
-        for (int k = 0; k < m_size; k++)
-        {
-            int i1 = 0;
+		double det = 1;
 
-            for (int i = 1; i < m_size; i++)
-            {
-                int j1 = 0;
-                for (int j = 0; j < m_size; j++)
-                {
-                    if (j == k) continue;
-                    minorData[i1][j1] = matrix1[i][j];
-                    j1++;
-                }
-                i1++;
-            }
-            matrix.matrix1 = minorData;
-            result += Math.pow(-1, k)* matrix1[0][k]* matrix.CalculateDeterminant(matrix);
-        }
-        return result;
+		matrix = UpperTriangle(matrix);
+
+		for (int i = 0; i < tms; i++) {
+			det = det * matrix[i][i];
+		} // multiply down diagonal
+
+		det = det * iDF; 
+		
+				return det;
 	}
 
+	// --------------------------------------------------------------
+
+	public double[][] Inverse(double[][] a) throws Exception {
+		
+		int tms = a.length;
+
+		double m[][] = new double[tms][tms];
+		double mm[][] = Adjoint(a);
+
+		double det = Determinant(a);
+		double dd = 0;
+         
+		if (det == 0) {
+			  throw new IllegalArgumentException("Determinant is zero! ");
+			}
+		 else {
+				dd =  det;
+			}
+      
+	for (int i = 0; i < tms; i++)
+		{
+			for (int j = 0; j < tms; j++) {
+				m[i][j] =  mm[i][j]/dd;
+				
+			}
+		}
+		
+		return m;
+	}
+
+	// --------------------------------------------------------------
+
+	public double[][] Adjoint(double[][] a) {
+		
+		int tms = a.length;
+
+		double m[][] = new double[tms][tms];
+
+		int ii, jj, ia, ja;
+		double det;
+        System.out.println("adjoint=");
+			for (int i = 0; i < tms; i++)
+			for (int j = 0; j < tms; j++) {
+				ia = ja = 0;
+
+				double ap[][] = new double[tms - 1][tms - 1];
+
+				for (ii = 0; ii < tms; ii++) {
+					for (jj = 0; jj < tms; jj++) {
+
+						if ((ii != i) && (jj != j)) {
+							ap[ia][ja] = a[ii][jj];
+							ja++;
+						}
+
+					}
+					if ((ii != i) && (jj != j)) {
+						ia++;
+					}
+					ja = 0;
+				}
+ 
+				det = Determinant(ap);
+				
+				m[i][j] = (float) Math.pow(-1, i + j)*det ;
+				System.out.print(m[i][j]+" ");
+			}
+		
+      		return m;
+	}
 	
+	public double[][] UpperTriangle(double[][] m) {
+		
+		double f1 = 0;
+		double temp = 0;
+		int tms = m.length; // get This Matrix Size (could be smaller than
+							// global)
+		int v = 1;
+
+		iDF = 1;
+
+		for (int col = 0; col < tms - 1; col++) {
+			for (int row = col + 1; row < tms; row++) {
+				v = 1;
+
+				while (m[col][col] == 0) // check if 0 in diagonal
+				{ // if so switch until not
+					if (col + v >= tms) // check if switched all rows
+					{
+						iDF = 0;
+						break ;
+					} else {
+						for (int c = 0; c < tms; c++) {
+							temp = m[col][c];
+							m[col][c] = m[col + v][c]; // switch rows
+							m[col + v][c] = temp;
+						}
+						v++; // count row switch's
+						iDF = iDF * -1; // each switch changes determinant
+										// factor
+					}
+				}
+
+				if (m[col][col] != 0) {
+					
+
+					try {
+						f1 = (-1) * m[row][col] / m[col][col];
+						for (int i = col; i < tms; i++) {
+							m[row][i] = f1 * m[col][i] + m[row][i];
+						}
+					} catch (Exception e) {
+						System.out.println("Still Here!!!");
+					}
+
+				}
+
+			}
+		}
+
+		return m;
+	}
+
+public double[][] multiplyMatrix(double[][] a, double[][] b) throws Exception {
+		
+		if(a[0].length != b.length)
+			throw new Exception("Matrices incompatible for multiplication");
+		double matrix[][] = new double[a.length][b[0].length];
+
+		for (int i = 0; i < a.length; i++)
+			for (int j = 0; j < b[i].length; j++)
+				matrix[i][j] = 0;
+
+		//cycle through answer matrix
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[i].length; j++){
+				matrix[i][j] = calculateRowColumnProduct(a,i,b,j);
+				System.out.print(matrix[i][j]+ " ");
+			}
+		}
+		return matrix;
+	}
+
+	public double calculateRowColumnProduct(double[][] A, int row, double[][] B, int col){
+		double product = 0;
+		for(int i = 0; i < A[row].length; i++)
+			product +=A[row][i]*B[i][col];
+		return product;
+	}
 }
 
+	
+	
