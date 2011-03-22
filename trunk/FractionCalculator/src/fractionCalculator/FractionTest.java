@@ -9,7 +9,7 @@ import fractionCalculator.Fraction;
 
 public class FractionTest
 {
-	private int m_numerator = 0;
+	private int m_numerator = 1;
 	private int m_denominator = 1;
 	private final double DELTA = 0.002;
 
@@ -101,28 +101,40 @@ public class FractionTest
 
 		Fraction fractionCalculator = new Fraction(m_numerator, m_denominator);
 
-		Assert.assertEquals("0/1", fractionCalculator.toString());
+		Assert.assertEquals("1/1", fractionCalculator.toString());
+
+	}
+
+	@Test
+	public void canCalculateGcdOfTwoNumbers()
+	{
+		Fraction fraction = new Fraction(6, 18);
+
+		int result = Fraction.greatestCommonDivisor(fraction.getNumerator(),
+				fraction.getDenominator());
+		Assert.assertEquals(6, result);
 
 	}
 
 	@Test
 	public void canReduceFractionToSimplestForm()
 
-	{  
+	{
 		Fraction fraction = new Fraction();
-		Fraction fraction2 = new Fraction(4, 8);
+		Fraction fraction2 = new Fraction(6, 8);
 		fraction.reduceFraction(fraction2);
-		Assert.assertEquals(1, fraction2.getNumerator());
-		Assert.assertEquals(2, fraction2.getDenominator());
+		Assert.assertEquals(3, fraction2.getNumerator());
+		Assert.assertEquals(4, fraction2.getDenominator());
 
 	}
 
 	@Test
 	public void canAddFractions()
-	{   Fraction fraction = new Fraction();
-		Fraction fraction1 = new Fraction(1, 4);
+	{
+		Fraction fraction = new Fraction();
+		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
-		Fraction fractionSum = new Fraction(1, 2);
+		Fraction fractionSum = new Fraction(3, 4);
 
 		Assert.assertEquals(fractionSum,
 				fraction.addFractions(fraction1, fraction2));
@@ -155,7 +167,7 @@ public class FractionTest
 
 	@Test
 	public void canDivideFractions()
-	{   
+	{
 		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fraction2 = new Fraction(1, 4);
