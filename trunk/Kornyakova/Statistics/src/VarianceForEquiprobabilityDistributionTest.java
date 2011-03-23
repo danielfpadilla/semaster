@@ -5,7 +5,7 @@ public class VarianceForEquiprobabilityDistributionTest
 {	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
-	@Test public void CanCalculateVariance()
+	@Test public void canCalculateVariance()
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
@@ -13,7 +13,7 @@ public class VarianceForEquiprobabilityDistributionTest
 		assertEquals(0.0, variance, DELTA);
 	}
 	
-	@Test public void CanCalculateVarianceForArray()
+	@Test public void canCalculateVarianceForArray()
 	{	double[] array;
 		array = new double[3];
 		array[0] = 1.0; 
@@ -24,7 +24,7 @@ public class VarianceForEquiprobabilityDistributionTest
 	}
 	
 	@Test (expected = ArrayIndexOutOfBoundsException.class)
-	public void ThrowExceptionIfSizeLess1()
+	public void throwExceptionIfSizeLess1()
 	{	double[] array;
 		array = new double[0];
 		double variance = statistics.varianceForEquiprobabilityDistribution(array);

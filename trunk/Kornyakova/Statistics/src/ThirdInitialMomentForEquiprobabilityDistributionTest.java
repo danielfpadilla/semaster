@@ -6,7 +6,7 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 	Statistics statistics = new Statistics();
 	
 	
-	@Test public void CanCalculateThirdInitialMoment()
+	@Test public void canCalculateThirdInitialMoment()
 	{	double[] array;
 		array = new double[1];
 		array[0] = 1.0;
@@ -14,7 +14,7 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 		assertEquals(1.0, third, DELTA);		
 	}
 	
-	@Test public void CanCalculateThirdInitialMomentForArray()
+	@Test public void canCalculateThirdInitialMomentForArray()
 	{	double[] array;
 		array = new double[3];
 		array[0] = 1.0; 
@@ -25,7 +25,7 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 	}
 	
 	@Test(expected = ArrayIndexOutOfBoundsException.class) 
-	public void ThrowExceptionIfSizeLessThen1()
+	public void throwExceptionIfSizeLessThen1()
 	{	double[] array;
 		array = new double[0];
 		array[0] = 1.0;
