@@ -15,18 +15,13 @@ public class FractionTest
 
 	@Test
 	public void createFractionCalculator()
-
 	{
-
 		Fraction fractionCalculator = new Fraction();
-
 		Assert.assertNotNull(fractionCalculator);
-
 	}
 
 	@Test
 	public void canInitializeFractionCalculator()
-
 	{
 		Fraction fractionCalculator = new Fraction(m_numerator, m_denominator);
 		Assert.assertNotNull(fractionCalculator);
@@ -35,29 +30,25 @@ public class FractionTest
 
 	@Test
 	public void canGetNumerator()
-
 	{
 
 		Fraction fractionCalculator = new Fraction();
 
-		Assert.assertEquals(0, fractionCalculator.getNumerator());
+		Assert.assertEquals(1, fractionCalculator.getNumerator());
 
 	}
 
 	@Test
 	public void canGetDenominator()
-
 	{
 
 		Fraction fractionCalculator = new Fraction();
 
 		Assert.assertEquals(m_denominator, fractionCalculator.getDenominator());
-
 	}
 
 	@Test
 	public void canSetNumerator()
-
 	{
 
 		Fraction fractionCalculator = new Fraction();
@@ -65,12 +56,10 @@ public class FractionTest
 		fractionCalculator.setNumerator(m_numerator);
 
 		Assert.assertEquals(m_numerator, fractionCalculator.getNumerator());
-
 	}
 
 	@Test
 	public void canSetDenomenator()
-
 	{
 
 		Fraction fractionCalculator = new Fraction();
@@ -78,7 +67,6 @@ public class FractionTest
 		fractionCalculator.setDenominator(m_denominator);
 
 		Assert.assertEquals(m_denominator, fractionCalculator.getDenominator());
-
 	}
 
 	@Test
@@ -96,13 +84,11 @@ public class FractionTest
 
 	@Test
 	public void canShowTheFraction()
-
 	{
 
 		Fraction fractionCalculator = new Fraction(m_numerator, m_denominator);
 
 		Assert.assertEquals("1/1", fractionCalculator.toString());
-
 	}
 
 	@Test
@@ -113,19 +99,15 @@ public class FractionTest
 		int result = Fraction.greatestCommonDivisor(fraction.getNumerator(),
 				fraction.getDenominator());
 		Assert.assertEquals(6, result);
-
 	}
 
 	@Test
 	public void canReduceFractionToSimplestForm()
-
 	{
-		Fraction fraction = new Fraction();
 		Fraction fraction2 = new Fraction(6, 8);
-		fraction.reduceFraction(fraction2);
+		fraction2.reduceFraction();
 		Assert.assertEquals(3, fraction2.getNumerator());
 		Assert.assertEquals(4, fraction2.getDenominator());
-
 	}
 
 	@Test
@@ -133,24 +115,20 @@ public class FractionTest
 	{
 		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
-		Fraction fraction2 = new Fraction(1, 4);
-		Fraction fractionSum = new Fraction(3, 4);
+		Fraction fractionSum = new Fraction(3, 2);
 
-		Assert.assertEquals(fractionSum,
-				fraction.addFractions(fraction1, fraction2));
-
+		Assert.assertEquals(fractionSum, fraction.addFractions(fraction1));
 	}
 
 	@Test
 	public void canSubstract()
 	{
 		Fraction fraction = new Fraction();
-		Fraction fraction1 = new Fraction(1, 2);
-		Fraction fraction2 = new Fraction(1, 4);
-		Fraction fractionSubtraction = new Fraction(1, 4);
+		Fraction fraction1 = new Fraction(1, 4);
+		Fraction fractionSubtraction = new Fraction(-3, 4);
 
 		Assert.assertEquals(fractionSubtraction,
-				fraction.subtractFractions(fraction1, fraction2));
+		fraction.subtractFractions(fraction1));
 	}
 
 	@Test
@@ -158,11 +136,10 @@ public class FractionTest
 	{
 		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
-		Fraction fraction2 = new Fraction(1, 4);
-		Fraction fractionMultiplication = new Fraction(1, 8);
+		Fraction fractionMultiplication = new Fraction(1, 2);
 
 		Assert.assertEquals(fractionMultiplication,
-				fraction.multiplyFractions(fraction1, fraction2));
+		fraction.multiplyFractions(fraction1));
 	}
 
 	@Test
@@ -170,11 +147,10 @@ public class FractionTest
 	{
 		Fraction fraction = new Fraction();
 		Fraction fraction1 = new Fraction(1, 2);
-		Fraction fraction2 = new Fraction(1, 4);
-		Fraction fractionDivision = new Fraction(2, 1);
+		Fraction fractionDivision = new Fraction(1, 2);
 
 		Assert.assertEquals(fractionDivision,
-				fraction.divideFractions(fraction1, fraction2));
+				fraction.divideFractions(fraction1));
 	}
 
 	@Test
@@ -183,9 +159,8 @@ public class FractionTest
 		try
 		{
 			Fraction fraction = new Fraction();
-			Fraction fraction1 = new Fraction(1, 2);
-			Fraction fraction2 = new Fraction(0, 3);
-			fraction.divideFractions(fraction1, fraction2);
+			Fraction fraction1 = new Fraction(1, 0);
+			fraction.divideFractions(fraction1);
 			fail("can not divide by zero");
 		}
 		catch (IllegalArgumentException expected)
@@ -197,7 +172,7 @@ public class FractionTest
 	public void canConvertTheFractionToDoubleValue()
 	{
 		Fraction fraction = new Fraction(1, 2);
-		double result = fraction.convertToDouble(fraction);
+		double result = fraction.toDouble();
 		Assert.assertEquals(0.5, result, DELTA);
 	}
 

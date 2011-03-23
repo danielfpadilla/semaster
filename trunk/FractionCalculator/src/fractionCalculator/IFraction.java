@@ -2,11 +2,11 @@ package fractionCalculator;
 
 public interface IFraction
 {
-	public void reduceFraction(Fraction myFraction);
-	public double convertToDouble(Fraction fraction);
-	public Fraction addFractions(Fraction n1, Fraction n2);
-	public Fraction subtractFractions(Fraction n1, Fraction n2);
-	public Fraction multiplyFractions(Fraction n1, Fraction n2);
-	public Fraction divideFractions(Fraction n1, Fraction n2);
+	public void reduceFraction();
+	public double toDouble();
+	public Fraction addFractions(Fraction fraction1);
+	public Fraction subtractFractions(Fraction fraction1);
+	public Fraction multiplyFractions(Fraction fraction1);
+	public Fraction divideFractions(Fraction fraction1);
 
 }
