@@ -5,7 +5,7 @@ public class ExcessTest
 {	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
-	@Test public void CanCalculateExcessForArray()
+	@Test public void canCalculateExcessForArray()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[3];
@@ -22,7 +22,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = RuntimeException.class)
-	public void ThrowExceptionIfSigmaIsEqualZero()
+	public void throwExceptionIfSigmaIsEqualZero()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
@@ -34,7 +34,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
-	public void ThrowExceptionIfSizeArrayOfValueLessThen1()
+	public void throwExceptionIfSizeArrayOfValueLessThen1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[0];
@@ -44,7 +44,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
-	public void ThrowExceptionIfSizeArrayOfProbabilityLessThen1()
+	public void throwExceptionIfSizeArrayOfProbabilityLessThen1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
@@ -54,7 +54,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = RuntimeException.class) 
-	public void ThrowExceptionIfNegativeProbability()
+	public void throwExceptionIfNegativeProbability()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
@@ -66,7 +66,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = RuntimeException.class)
-	public void ThrowExceptionIfSumProbabilityIsNotEqual1()
+	public void throwExceptionIfSumProbabilityIsNotEqual1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
@@ -78,7 +78,7 @@ public class ExcessTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
-	public void ThrowExceptionIfLengthsOfArraysAreNotEqual()
+	public void throwExceptionIfLengthsOfArraysAreNotEqual()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];

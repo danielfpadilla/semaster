@@ -5,7 +5,7 @@ public class VarianceForDiscreteDistributionTest
 {	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
-	@Test public void CanCalculateVarianceForDiscreteDistribution()
+	@Test public void canCalculateVarianceForDiscreteDistribution()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfProbability = new double[1];
@@ -17,7 +17,7 @@ public class VarianceForDiscreteDistributionTest
 		assertEquals(0.0, variance, DELTA);		
 	}
 	
-	@Test public void CanCalculateVarianceForArrayOfDiscrete()
+	@Test public void canCalculateVarianceForArrayOfDiscrete()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[3];
@@ -34,7 +34,7 @@ public class VarianceForDiscreteDistributionTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class) 
-	public void ThrowExceptionIfSizeArrayOfValueLessThen1()
+	public void throwExceptionIfSizeArrayOfValueLessThen1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[0];
@@ -44,7 +44,7 @@ public class VarianceForDiscreteDistributionTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
-	public void ThrowExceptionIfSizeArrayOfProbabilityLessThen1()
+	public void throwExceptionIfSizeArrayOfProbabilityLessThen1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
@@ -54,7 +54,7 @@ public class VarianceForDiscreteDistributionTest
 	}
 	
 	@Test (expected = RuntimeException.class) 
-	public void ThrowExceptionIfNegativeProbability()
+	public void throwExceptionIfNegativeProbability()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
@@ -66,7 +66,7 @@ public class VarianceForDiscreteDistributionTest
 	}
 	
 	@Test (expected = RuntimeException.class)
-	public void ThrowExceptionIfSumProbabilityIsNotEqual1()
+	public void throwExceptionIfSumProbabilityIsNotEqual1()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
@@ -78,7 +78,7 @@ public class VarianceForDiscreteDistributionTest
 	}
 	
 	@Test (expected = IndexOutOfBoundsException.class)
-	public void ThrowExceptionIfLengthsOfArraysAreNotEqual()
+	public void throwExceptionIfLengthsOfArraysAreNotEqual()
 	{	double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
