@@ -1,5 +1,5 @@
 package sortingAlgorithms;
-
+//Intializaton of the array to be sorted
 public class MergeSort extends Sorting
 {
 	private int numberOfElements;
@@ -24,7 +24,7 @@ public class MergeSort extends Sorting
 		mergeSort(0, numberOfElements - 1);
 		return values;
 	}
-
+//Divide the array into three parts 
 	private void mergeSort(int low, int high)
 	{
 		if (low < high)
@@ -35,7 +35,7 @@ public class MergeSort extends Sorting
 			merge(low, middle, high);
 		}
 	}
-
+//Merging of array elements into atemporary array(helper array)
 	private void merge(int low, int middle, int high)
 	{
 
@@ -54,12 +54,13 @@ public class MergeSort extends Sorting
 			{
 				numbers[k] = helperArray[i];
 				i++;
-			} else
+			} 
+			else
 			{
 				numbers[k] = helperArray[j];
 				j++;
 			}
-			k++;
+			    k++;
 		}
 		while (i <= middle)
 		{
@@ -67,7 +68,7 @@ public class MergeSort extends Sorting
 			k++;
 			i++;
 		}
-		helperArray = null;
+		      helperArray = null;
 
 	}
 
