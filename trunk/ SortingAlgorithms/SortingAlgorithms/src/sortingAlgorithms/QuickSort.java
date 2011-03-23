@@ -1,5 +1,5 @@
 package sortingAlgorithms;
-
+//Initialization of the array
 public class QuickSort extends Sorting
 {
 	public QuickSort(int[] a)
@@ -11,7 +11,7 @@ public class QuickSort extends Sorting
 	{
 		return "QuickSort";
 	}
-
+//Compairing array elements
 	@Override
 	protected int[] Sort(int[] unsortedArray)
 	{
@@ -20,11 +20,11 @@ public class QuickSort extends Sorting
 		{
 			sortedArray[k] = unsortedArray[k];
 		}
-		QuicksortRecursive(sortedArray, 0, sortedArray.length - 1);
+		Q_Recursive(sortedArray, 0, sortedArray.length - 1);
 		return sortedArray;
 	}
-
-	private static void QuicksortRecursive(int[] arr, int left, int right)
+//Partition the array into three parts
+	private static void Q_Recursive(int[] arr, int left, int right)
 	{
 		int i = left, j = right;
 		int pivot = arr[(left + right) / 2];
@@ -43,10 +43,11 @@ public class QuickSort extends Sorting
 				j--;
 			}
 		}
+		//use quicksort to recursively sort left and right members of the array
 		if (left < j)
-			QuicksortRecursive(arr, left, j);
+			Q_Recursive(arr, left, j);
 		if (i < right)
-			QuicksortRecursive(arr, i, right);
+			Q_Recursive(arr, i, right);
 	}
 
 }
