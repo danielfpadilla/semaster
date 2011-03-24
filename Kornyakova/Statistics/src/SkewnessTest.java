@@ -6,7 +6,8 @@ public class SkewnessTest
 	Statistics statistics = new Statistics();
 	
 	@Test public void canCalculateSkewnessForArray()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[3];
 		arrayOfProbability = new double[3];
@@ -23,7 +24,8 @@ public class SkewnessTest
 	
 	@Test (expected = RuntimeException.class)
 	public void throwExceptionIfSigmaIsEqualZero()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
 		arrayOfProbability = new double[1];
@@ -35,7 +37,8 @@ public class SkewnessTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeArrayOfValueLessThen1()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[0];
 		arrayOfProbability = new double[1];
@@ -45,7 +48,8 @@ public class SkewnessTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeArrayOfProbabilityLessThen1()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
 		arrayOfProbability = new double[0];
@@ -55,7 +59,8 @@ public class SkewnessTest
 	
 	@Test (expected = RuntimeException.class) 
 	public void throwExceptionIfNegativeProbability()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[2];
@@ -67,7 +72,8 @@ public class SkewnessTest
 	
 	@Test (expected = RuntimeException.class)
 	public void throwExceptionIfSumProbabilityIsNotEqual1()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[2];
@@ -79,7 +85,8 @@ public class SkewnessTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfLengthsOfArraysAreNotEqual()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[3];

@@ -3,11 +3,13 @@ import org.junit.Test;
 
 
 public class FourthCentralMomentTest
-{	private final double DELTA = 1e-5;
+{	
+	private final double DELTA = 1e-5;
 	Statistics statistics = new Statistics();
 	
 	@Test public void canCalculateFourthMoment()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfProbability = new double[1];
 		arrayOfValue = new double[1];
@@ -19,7 +21,8 @@ public class FourthCentralMomentTest
 	}
 	
 	@Test public  void canCalculateFourthMomentForArray()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[3];
 		arrayOfProbability = new double[3];
@@ -36,7 +39,8 @@ public class FourthCentralMomentTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeArrayOfValueLessThen1()
-	{	double[] arrayOfValue;
+	{
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[0];
 		arrayOfProbability = new double[1];
@@ -46,7 +50,8 @@ public class FourthCentralMomentTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeArrayOfProbabilityLessThen1()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[1];
 		arrayOfProbability = new double[0];
@@ -56,7 +61,8 @@ public class FourthCentralMomentTest
 	
 	@Test (expected = RuntimeException.class) 
 	public void throwExceptionIfNegativeProbability()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[2];
@@ -68,7 +74,8 @@ public class FourthCentralMomentTest
 	
 	@Test (expected = RuntimeException.class)
 	public void throwExceptionIfSumProbabilityIsNotEqual1()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[2];
@@ -80,7 +87,8 @@ public class FourthCentralMomentTest
 	
 	@Test (expected = IndexOutOfBoundsException.class)
 	public void throwExceptionIfLengthsOfArraysAreNotEqual()
-	{	double[] arrayOfValue;
+	{	
+		double[] arrayOfValue;
 		double[] arrayOfProbability;
 		arrayOfValue = new double[2];
 		arrayOfProbability = new double[3];

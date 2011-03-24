@@ -8,7 +8,8 @@ public class ExpectationForEquiprobabilityDistributionTest
 	Statistics statistics = new Statistics();
 
 	@Test public void canCalcualteExpectation()
-	{	double[] array;
+	{	
+		double[] array;
         array = new double[3];
         array[0] = 0.0;
         array[1] = -1.0;
@@ -19,7 +20,8 @@ public class ExpectationForEquiprobabilityDistributionTest
 	}
 	
 	@Test public void canCalcualteExpectationForArrayOfDoubles()
-	{	double[] array;
+	{	
+		double[] array;
         array = new double[6];
         array[0] = 1.0; 
         array[1] = 1.0; 
@@ -34,7 +36,8 @@ public class ExpectationForEquiprobabilityDistributionTest
 	
 	@Test (expected = IndexOutOfBoundsException.class) 
 	public void throwExceptionIfSizeLessThen1()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[0];
 		double expectation = statistics.expectationForEquiprobabilityDistribution(array);
 	}
