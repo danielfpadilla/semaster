@@ -1,14 +1,14 @@
-
 package sortingAlgorithms;
 
 public class QuickSort extends Sorting
-{ 
-@Override
-    public String getSortingName()
-    {
-    	return "QuickSort";
-    }
-  @Override
+{
+	@Override
+	public String getSortingName()
+	{
+		return "QuickSort";
+	}
+
+	@Override
 	protected int[] sortInternal(int[] unsortedArray)
 	{
 		int[] sortedArray = new int[unsortedArray.length];
@@ -44,6 +44,5 @@ public class QuickSort extends Sorting
 		if (i < right)
 			quickSortRecursive(arr, i, right);
 	}
-
 
 }

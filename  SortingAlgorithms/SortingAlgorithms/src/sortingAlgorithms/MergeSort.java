@@ -1,15 +1,16 @@
 package sortingAlgorithms;
 
-
 public class MergeSort extends Sorting
 {
 	private int numberOfElements;
 	public int[] numbers = new int[numberOfElements];
+
 	@Override
-    public String getSortingName()
-    {
-    	return "MergeSort";
-    }
+	public String getSortingName()
+	{
+		return "MergeSort";
+	}
+
 	@Override
 	public int[] sortInternal(int[] values)
 	{
