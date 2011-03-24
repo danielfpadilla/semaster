@@ -1,41 +1,36 @@
 package sortingAlgorithms;
-//Intializaton of the array to be sorted
+
+
 public class MergeSort extends Sorting
 {
 	private int numberOfElements;
 	public int[] numbers = new int[numberOfElements];
-
-	public MergeSort(int[] a)
-	{
-	}
-
 	@Override
-	public String sortingName()
-	{
-		return "MergeSort";
-	}
-
+    public String getSortingName()
+    {
+    	return "MergeSort";
+    }
 	@Override
-	public int[] Sort(int[] values)
+	public int[] sortInternal(int[] values)
 	{
 		this.numbers = values;
 		numberOfElements = values.length;
 
-		mergeSort(0, numberOfElements - 1);
+		mergesort(0, numberOfElements - 1);
 		return values;
 	}
-//Divide the array into three parts 
-	private void mergeSort(int low, int high)
+
+	private void mergesort(int low, int high)
 	{
 		if (low < high)
 		{
 			int middle = (low + high) / 2;
-			mergeSort(low, middle);
-			mergeSort(middle + 1, high);
+			mergesort(low, middle);
+			mergesort(middle + 1, high);
 			merge(low, middle, high);
 		}
 	}
-//Merging of array elements into atemporary array(helper array)
+
 	private void merge(int low, int middle, int high)
 	{
 
@@ -54,13 +49,12 @@ public class MergeSort extends Sorting
 			{
 				numbers[k] = helperArray[i];
 				i++;
-			} 
-			else
+			} else
 			{
 				numbers[k] = helperArray[j];
 				j++;
 			}
-			    k++;
+			k++;
 		}
 		while (i <= middle)
 		{
@@ -68,7 +62,7 @@ public class MergeSort extends Sorting
 			k++;
 			i++;
 		}
-		      helperArray = null;
+		helperArray = null;
 
 	}
 
