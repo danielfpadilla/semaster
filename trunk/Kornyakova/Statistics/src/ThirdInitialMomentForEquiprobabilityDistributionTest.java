@@ -2,12 +2,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class ThirdInitialMomentForEquiprobabilityDistributionTest 
-{	private final double DELTA = 1e-8;
+{	
+	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
 	
 	@Test public void canCalculateThirdInitialMoment()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[1];
 		array[0] = 1.0;
 		double third = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
@@ -15,7 +17,8 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 	}
 	
 	@Test public void canCalculateThirdInitialMomentForArray()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[3];
 		array[0] = 1.0; 
 		array[1] = 2.0; 
@@ -26,7 +29,8 @@ public class ThirdInitialMomentForEquiprobabilityDistributionTest
 	
 	@Test(expected = ArrayIndexOutOfBoundsException.class) 
 	public void throwExceptionIfSizeLessThen1()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[0];
 		array[0] = 1.0;
 		double third = statistics.thirdInitialMomentForEquiprobabilityDistribution(array);

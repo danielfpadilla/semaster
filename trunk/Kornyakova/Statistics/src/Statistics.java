@@ -4,7 +4,8 @@ public class Statistics
 	public Statistics(){}	
 	
 	public double expectationForEquiprobabilityDistribution(double[] array) 
-	{	if(array.length == 0)
+	{	
+		if(array.length == 0)
 		{
 			throw new IndexOutOfBoundsException();
 		}
@@ -20,7 +21,8 @@ public class Statistics
 	}	
 	
 	public double expectationForDiscreteDistribution(double[]arrayOfValue, double[] arrayOfProbability)
-	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+	{	
+		if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -57,7 +59,8 @@ public class Statistics
 	}
 	
 	public double varianceForEquiprobabilityDistribution(double[] array)
-	{	if(array.length == 0)
+	{	
+		if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -74,7 +77,8 @@ public class Statistics
 	}
 	
 	public double varianceForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
-	{	double variance = 0.0;
+	{	
+		double variance = 0.0;
 		for (int i = 0; i < arrayOfValue.length; i++)
 		{
 			variance += Math.pow(arrayOfValue[i], 2) * arrayOfProbability[i];  
@@ -85,7 +89,8 @@ public class Statistics
 	}
 	
 	public double thirdInitialMomentForEquiprobabilityDistribution(double[] array)
-	{	if(array.length == 0)
+	{	
+		if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -100,7 +105,8 @@ public class Statistics
 	}
 	
 	public double thirdInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
-	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+	{
+		if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -137,7 +143,8 @@ public class Statistics
 	}
 	
 	public double thirdCentralMoment(double[] arrayOfValue, double[] arrayOfProbability)
-	{	double third = 0.0;
+	{	
+		double third = 0.0;
 		third = thirdInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) - 
 				3 * expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
 				varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability) + 
@@ -147,7 +154,8 @@ public class Statistics
 	}
 	
 	public double fourthInitialMomentForEquiprobabilityDistribution(double[] array)
-	{	if(array.length == 0)
+	{	
+		if(array.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -162,7 +170,8 @@ public class Statistics
 	}
 	
 	public double fourthInitialMomentForDiscreteDistribution(double[] arrayOfValue, double[] arrayOfProbability)
-	{	if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
+	{	
+		if(arrayOfValue.length == 0 || arrayOfProbability.length == 0)
 		{
 			throw new ArrayIndexOutOfBoundsException();
 		}
@@ -199,7 +208,8 @@ public class Statistics
 	}
 	
 	public double fourthCentralMoment(double[] arrayOfValue, double[] arrayOfProbability)
-	{	double fourth = 0.0;
+	{
+		double fourth = 0.0;
 		fourth = fourthInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) -
 			4 * expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability) * 
 			thirdInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability) + 
@@ -211,7 +221,8 @@ public class Statistics
 	}
 	
 	public double skewness(double[] arrayOfValue, double[] arrayOfProbability)
-	{ 	double sigma = 0.0;
+	{ 	
+		double sigma = 0.0;
 		double skewness = 0.0;
 				
 		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);
@@ -225,7 +236,8 @@ public class Statistics
 	}
 	
 	public double excess(double[] arrayOfValue, double[] arrayOfProbability)
-	{	double sigma = 0.0;
+	{	
+		double sigma = 0.0;
 		double excess = 0.0;
 		
 		sigma = Math.pow(varianceForDiscreteDistribution(arrayOfValue, arrayOfProbability), 0.5);

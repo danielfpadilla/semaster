@@ -7,7 +7,8 @@ public class FourthInitialMomentForEquiprobabilityDistributionTest
 	private final double DELTA = 1e-8;
 	
 	@Test public void canCalculateFourthInitialMoment()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[1];
 		array[0] = 1.0;
 		double fourth = statistics.fourthInitialMomentForEquiprobabilityDistribution(array);
@@ -15,7 +16,8 @@ public class FourthInitialMomentForEquiprobabilityDistributionTest
 	}
 	
 	@Test public void canCalculateInitialMomentForArray()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[3];
 		array[0] = 1.0; 
 		array[1] = 2.0; 
@@ -26,7 +28,8 @@ public class FourthInitialMomentForEquiprobabilityDistributionTest
 	
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeLessThen1()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[0];
 		array[0] = 1.0;
 		double fourth = statistics.fourthInitialMomentForEquiprobabilityDistribution(array);

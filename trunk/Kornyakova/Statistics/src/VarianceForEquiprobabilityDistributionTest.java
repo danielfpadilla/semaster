@@ -2,11 +2,13 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class VarianceForEquiprobabilityDistributionTest 
-{	private final double DELTA = 1e-8;
+{	
+	private final double DELTA = 1e-8;
 	Statistics statistics = new Statistics();
 	
 	@Test public void canCalculateVariance()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[1];
 		array[0] = 1.0;
 		double variance = statistics.varianceForEquiprobabilityDistribution(array);
@@ -14,7 +16,8 @@ public class VarianceForEquiprobabilityDistributionTest
 	}
 	
 	@Test public void canCalculateVarianceForArray()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[3];
 		array[0] = 1.0; 
 		array[1] = 2.0; 
@@ -25,7 +28,8 @@ public class VarianceForEquiprobabilityDistributionTest
 	
 	@Test (expected = ArrayIndexOutOfBoundsException.class)
 	public void throwExceptionIfSizeLess1()
-	{	double[] array;
+	{	
+		double[] array;
 		array = new double[0];
 		double variance = statistics.varianceForEquiprobabilityDistribution(array);
 		assertEquals( 0.666666666, variance, DELTA);
