@@ -29,11 +29,13 @@ public class MergeSortTests
 	{
 		assertNotNull(mergeSort);
 	}
-    @Test
-    public void canReturnSortingName()
-    {
-    	assertEquals("MergeSort", mergeSort.getSortingName());
-    }
+
+	@Test
+	public void canReturnSortingName()
+	{
+		assertEquals("MergeSort", mergeSort.getSortingName());
+	}
+
 	@Test
 	public void canSortOneElementArray()
 	{
