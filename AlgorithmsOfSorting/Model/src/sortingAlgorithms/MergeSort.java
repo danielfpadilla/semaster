@@ -17,17 +17,17 @@ public class MergeSort extends Sorting
 		this.numbers = values;
 		numberOfElements = values.length;
 
-		mergesort(0, numberOfElements - 1);
+		mergeSort(0, numberOfElements - 1);
 		return values;
 	}
 
-	private void mergesort(int low, int high)
+	private void mergeSort(int low, int high)
 	{
 		if (low < high)
 		{
 			int middle = (low + high) / 2;
-			mergesort(low, middle);
-			mergesort(middle + 1, high);
+			mergeSort(low, middle);
+			mergeSort(middle + 1, high);
 			merge(low, middle, high);
 		}
 	}

@@ -57,6 +57,14 @@ public class MergeSortTests
 		{ 30, 78 };
 		assertArrayEquals(expectedsorted, actualsorted);
 	}
+	@Test
+	public void canSortThreeElemrntArray()
+	{
+		int[] unsorted = {2, 1, 4};
+		int[] actualsorted = mergeSort.sortArray(unsorted);
+		int[] expected = {1, 2, 4};
+		assertArrayEquals(expected, actualsorted);
+	}
 
 	@Test
 	public void canSortOddNumberedArray()
