@@ -1,11 +1,12 @@
 package src.surfaceareatests;
-import static org.junit.Assert.*;
-
-import src.surfaceareacalculator.SquareBasedPyramid;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import src.surfaceareacalculator.SquareBasedPyramid;
 
 public class SquareBasedPyramidTests
 {

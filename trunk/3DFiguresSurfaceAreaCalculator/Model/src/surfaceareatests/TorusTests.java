@@ -1,12 +1,13 @@
 package src.surfaceareatests;
 
-import static org.junit.Assert.*;
-
-import src.surfaceareacalculator.Torus;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import src.surfaceareacalculator.Torus;
 
 public class TorusTests
 {
