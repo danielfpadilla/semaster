@@ -1,4 +1,4 @@
-import fractionCalculator.Fraction;
+
 
 public class FractionPresenter
 {
@@ -44,17 +44,38 @@ public class FractionPresenter
 			@Override
 			public void processAction()
 			{
-				FractionPresenter.this.processDivideAction();
-
+				
+					FractionPresenter.this.processDivideAction();
+			
+			}
+		});
+		m_view.setClearActionHandler(new IActionHandler()
+		{
+			
+			@Override
+			public void processAction()
+			{
+				FractionPresenter.this.processClearAction();
+				
 			}
 		});
 	}
 
 	public static Fraction convertToFraction(String numeratorString,
-			String denominatorString)
+			String denominatorString) throws IllegalArgumentException
 	{
+		try
+		{
 		return new Fraction(Integer.parseInt(numeratorString),
 				Integer.parseInt(denominatorString));
+		}
+		
+		catch(IllegalArgumentException e)
+		{
+			System.err.printf("\nException %s\n", e);
+			return null;
+		}
+		
 	}
 
 	void processAddAction()
@@ -92,15 +113,26 @@ public class FractionPresenter
 
 	}
 
-	protected void processDivideAction()
+	protected void processDivideAction() 
 	{
+		
 		Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
 				m_view.getDenominator1());
 		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
-
-		Fraction result = fraction1.divideFractions(fraction2);
-		m_view.setResult(result.toString());
-
+      
+		      Fraction result = fraction2.divideFractions(fraction1);
+		      m_view.setResult(result.toString());
+                 
+        	}
+	
+	protected void processClearAction()
+	{
+		m_view.setNumerator1("");
+		m_view.setDenominator1("");
+		m_view.setDenominator2("");
+		m_view.setNumerator2("");
+		m_view.setResult("");
+		
 	}
 }
