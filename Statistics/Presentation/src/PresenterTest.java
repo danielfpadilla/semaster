@@ -17,6 +17,39 @@ public class PresenterTest
 		view.m_number1  = "1";
 		view.m_number2 = "2";
 		view.m_handler.processAddAction();
-		Assert.assertEquals("3", view.m_result);
+		Assert.assertEquals("3.0", view.m_result);
+	}
+	
+	@Test public void canMultiply()
+	{
+		View view = new View();
+		Presenter presenter = new Presenter(view);
+		
+		view.m_number1 = "2";
+		view.m_number2 = "4";
+		view.m_handler.processMultiplyAction();
+		Assert.assertEquals("8.0", view.m_result);
+	}
+	
+	@Test public void canCalculateExpectation()
+	{
+		View view = new View();
+		Presenter presenter = new Presenter(view);
+		view.m_number1 = "1.0";
+		view.m_number2 = "3.0";
+		view.m_handler.processExpectationAction();
+		Assert.assertEquals("2.0", view.m_result);
+	}
+	
+	@Test public void canCalculateExpectationForDiscreteDistribution()
+	{
+		View view = new View();
+		Presenter presenter = new Presenter(view);
+		view.m_number1 = "1.0";
+		view.m_number2 = "2.0";
+		view.m_probability1 = "0.6";
+		view.m_probability2 = "0.4";
+		view.m_handler.processExpectationAction();
+		Assert.assertEquals("1.4", view.m_result);
 	}
 }
