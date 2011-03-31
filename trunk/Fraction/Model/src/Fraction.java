@@ -1,4 +1,4 @@
-package fractionCalculator;
+
 
 public class Fraction implements IFraction
 {

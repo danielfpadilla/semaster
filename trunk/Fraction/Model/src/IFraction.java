@@ -1,4 +1,4 @@
-package fractionCalculator;
+
 
 public interface IFraction
 {

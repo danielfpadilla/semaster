@@ -2,7 +2,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import fractionCalculator.Fraction;
 
 import junit.framework.Assert;
 
@@ -98,8 +97,21 @@ public class FractionPresenterTest
 		m_view.m_denominator2 = "2";
 
 		m_view.m_divideActionHandler.processAction();
-		Assert.assertEquals("2/1", m_view.m_result);
+		Assert.assertEquals("1/2", m_view.m_result);
+	}
+	
+	@Test 
+	public void canCreateClearAction()
+	{
+		m_view.m_numerator1="";
+		m_view.m_denominator1="";
+		m_view.m_numerator2="";
+		m_view.m_denominator2="";
+		
+		m_view.m_clearActionHandler.processAction();
+		Assert.assertNotNull(m_view.m_result);
 	}
 }
+
 
 
