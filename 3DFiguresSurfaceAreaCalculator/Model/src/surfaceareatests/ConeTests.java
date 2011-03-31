@@ -67,14 +67,14 @@ public class ConeTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void CheckWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{
 		new Cone(-10, 19);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
 			throws Exception
 	{

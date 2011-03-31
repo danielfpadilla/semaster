@@ -1,4 +1,5 @@
 package src.surfaceareatests;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -74,14 +75,14 @@ public class SquareBasedPyramidTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{
 		new SquareBasedPyramid(-23, 54);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
 			throws Exception
 	{

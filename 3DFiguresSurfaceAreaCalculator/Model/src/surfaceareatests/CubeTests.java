@@ -68,7 +68,7 @@ public class CubeTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenFaceLengthIsLessThanOrEqualToZero()
 			throws Exception
 	{

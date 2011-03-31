@@ -67,21 +67,21 @@ public class TorusTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenMinorRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{
 		new Torus(-10, 19);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenMajorRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{
 		new Torus(10, -19);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = NumberFormatException.class)
 	public void checkWhetherAnExceptionIsThrownWhenMinorRadiusIsGreaterThanMajorRadius()
 			throws Exception
 	{

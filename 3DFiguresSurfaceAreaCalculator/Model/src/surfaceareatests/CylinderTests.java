@@ -68,7 +68,7 @@ public class CylinderTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{
@@ -76,7 +76,7 @@ public class CylinderTests
 
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenHeightIsLessThanOrEqualToZero()
 			throws Exception
 	{

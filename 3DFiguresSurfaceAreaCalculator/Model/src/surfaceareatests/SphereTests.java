@@ -1,4 +1,5 @@
 package src.surfaceareatests;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -55,7 +56,7 @@ public class SphereTests
 		assertEquals(expected, actual, DELTA);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenRadiusIsLessThanOrEqualToZero()
 			throws Exception
 	{

@@ -1,7 +1,5 @@
 package src;
 
-import java.util.IllegalFormatException;
-
 import src.surfaceareacalculator.Cone;
 import src.surfaceareacalculator.Cube;
 import src.surfaceareacalculator.Cylinder;
@@ -9,6 +7,7 @@ import src.surfaceareacalculator.I3DFigure;
 import src.surfaceareacalculator.Sphere;
 import src.surfaceareacalculator.SquareBasedPyramid;
 import src.surfaceareacalculator.Torus;
+
 public class Presenter
 {
 	private IView m_view;
@@ -68,19 +67,16 @@ public class Presenter
 	{
 		try
 		{
-		  calculateFigureArea();
-		}
-		catch(NumberFormatException e)
+			calculateFigureArea();
+		} 
+		catch (ArithmeticException e)
 		{
-		  m_view.setErrorMessage("Incorrect or Empty Input");
-		  //m_view.m_calculateAreaButtonEnabled = false;
-		}
-		catch(IllegalFormatException e)
+			m_view.setErrorMessage("Empty or Incorrect Input. Please try again.");
+			// m_view.m_calculateAreaButtonEnabled = false;
+		} catch (NumberFormatException e)
 		{
-			//m_view.setErrorMessage(e.getMessage());
-			System.out.print(e.getMessage());
+			m_view.setErrorMessage("Incorrect Mathematical arguments, Please try again.");
 		}
-
 	}
 
 }
