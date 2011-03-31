@@ -10,7 +10,7 @@ public class Cylinder implements I3DFigure
 	public Cylinder(double radius, double height)
 	{
 		if (radius <= 0.0 || height <= 0.0)
-			throw new ArithmeticException("Invalid radius or height");
+			throw new ArithmeticException("Invalid cylinder radius or height");
 		m_radius = radius;
 		m_height = height;
 	}

@@ -1,6 +1,6 @@
 package src;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -85,25 +85,82 @@ public class PresenterTests
 	}
 
 	@Test
-	public void showsAWarningErrorMessageIncaseOfEmptyOrIncorrectInput()
+	public void canProcessInputToCheckForErrorsInCone()
 	{
-		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "1";
+		m_view.m_coneSelected = true;
+		m_view.m_coneRadius = "3.0";
+		m_view.m_coneHeight = "-14.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("Empty or Incorrect Input. Please try again.",
+		assertEquals("Invalid cube radius or height",
 				m_view.m_warningErrorMessage);
-		// assertEquals(false,m_view.m_calculateAreaButtonEnabled);
 
 	}
 
 	@Test
-	public void showsAWarningErrorMessageIncaseMinorRadiusIsGreaterThanMajorRadius()
+	public void canProcessInputToCheckForErrorsInCube()
+	{
+		m_view.m_cubeSelected = true;
+		m_view.m_cubeFaceLength = "-3d";
+		m_view.m_areaHandler.processAction();
+		assertEquals("Invalid cube facelength", m_view.m_warningErrorMessage);
+
+	}
+
+	@Test
+	public void canProcessInputToCheckForErrorsInCylinder()
+	{
+		m_view.m_cylinderSelected = true;
+		m_view.m_cylinderRadius = "-7";
+		m_view.m_cylinderHeight = "-10";
+		m_view.m_areaHandler.processAction();
+		assertEquals("Invalid cylinder radius or height",
+				m_view.m_warningErrorMessage);
+
+	}
+
+	@Test
+	public void canProcessInputToCheckForErrorsInSphere()
+	{
+		m_view.m_sphereSelected = true;
+		m_view.m_sphereRadius = "-10f";
+		m_view.m_areaHandler.processAction();
+		assertEquals("Invalid sphere radius.", m_view.m_warningErrorMessage);
+
+	}
+
+	@Test
+	public void canProcessInputToCheckForErrorsInSquareBasedPyramid()
+	{
+		m_view.m_squarePyramidSelected = true;
+
+		m_view.m_pyramidBaselength = "-46.0";
+		m_view.m_pyramidBaseHeight = "-4.0";
+		m_view.m_areaHandler.processAction();
+		assertEquals("Invalid square pyramid baseLength or Height",
+				m_view.m_warningErrorMessage);
+
+	}
+
+	@Test
+	public void canProcessInputToCheckForErrorsforInTorus()
 	{
 		m_view.m_torusSelected = true;
-		m_view.m_torusMinorRadius = "20.0";
-		m_view.m_torusMajorRadius = "10s.0";
+		m_view.m_torusMinorRadius = "30.0";
+		m_view.m_torusMajorRadius = "20.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("Incorrect Mathematical arguments, Please try again.",
+		assertEquals(
+				"Invalid arguments or minor radius greater than major radius",
 				m_view.m_warningErrorMessage);
+
+	}
+
+	@Test
+	public void testWhetherCalculateButtonIsDisabledIncaseOfInvalidInput()
+	{
+		m_view.m_cubeSelected = true;
+		m_view.m_cubeFaceLength = "-3d";
+		m_view.m_areaHandler.processAction();
+		assertEquals(false, m_view.m_state);
+
 	}
 }

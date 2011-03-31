@@ -1,6 +1,5 @@
 package src.surfaceareacalculator;
 
-
 public class Torus implements I3DFigure
 {
 	private double m_minorRadius;// ring radius
@@ -9,12 +8,10 @@ public class Torus implements I3DFigure
 
 	public Torus(double minorRadius, double majorRadius)
 	{
-		if (minorRadius <= 0.0 || majorRadius <= 0.0)
+		if (minorRadius <= 0.0 || majorRadius <= 0.0
+				|| minorRadius > majorRadius)
 			throw new ArithmeticException(
-					"Invalid minor and major radius");
-		if(minorRadius >= majorRadius)
-			throw new NumberFormatException(
-			"Invalid arguments or minor radius greater than major radius");
+					"Invalid arguments or minor radius greater than major radius");
 		m_minorRadius = minorRadius;
 		m_majorRadius = majorRadius;
 	}
