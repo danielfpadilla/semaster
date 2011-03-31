@@ -24,6 +24,104 @@ public class Presenter
 				Presenter.this.processFigureAreaCalculation();
 			}
 		});
+		m_view.processInputActionHandler(new IActionHandler()
+		{
+
+			@Override
+			public void processAction()
+			{
+				Presenter.this.processUserInput();
+
+			}
+		});
+	}
+
+	protected void processUserInput()
+	{
+		if (m_view.coneIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getConeRadius());
+				Double.parseDouble(m_view.getConeHeight());
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+			}
+		}
+		if (m_view.cubeIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getCubeEdgeLength());
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+			}
+		}
+		if (m_view.cylinderIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getCylinderRadius());
+				Double.parseDouble(m_view.getCylinderHeight());
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+			}
+		}
+		if (m_view.sphereIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getSphereRadius());
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+			}
+
+		}
+		if (m_view.squarePyramidIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getSquareBasedPyramidBaseLength());
+				Double.parseDouble(m_view.getSquareBasedPyramidBaseHeight());
+
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+
+			}
+
+		}
+		if (m_view.torusIsSelected())
+		{
+			try
+			{
+				Double.parseDouble(m_view.getTorusMinorRadius());
+				Double.parseDouble(m_view.getTorusMajorRadius());
+
+			}
+			catch (NumberFormatException f)
+			{
+				m_view.setErrorMessage(f.getMessage());
+				m_view.setStateOfCalculateAreaButton(false);
+
+			}
+
+		}
+
 	}
 
 	protected void calculateFigureArea()
@@ -63,20 +161,18 @@ public class Presenter
 
 	}
 
-	protected void processFigureAreaCalculation()
-	{
-		try
+
+		protected void processFigureAreaCalculation()
 		{
-			calculateFigureArea();
-		} 
-		catch (ArithmeticException e)
-		{
-			m_view.setErrorMessage("Empty or Incorrect Input. Please try again.");
-			// m_view.m_calculateAreaButtonEnabled = false;
-		} catch (NumberFormatException e)
-		{
-			m_view.setErrorMessage("Incorrect Mathematical arguments, Please try again.");
+			try
+			{
+				calculateFigureArea();
+			}
+			catch (ArithmeticException e)
+			{
+				m_view.setErrorMessage(e.getMessage());
+			}
+
 		}
-	}
 
 }

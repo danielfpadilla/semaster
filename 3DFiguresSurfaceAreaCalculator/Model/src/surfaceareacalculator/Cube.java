@@ -8,7 +8,7 @@ public class Cube implements I3DFigure
 	public Cube(double facelength)
 	{
 		if (facelength <= 0.0)
-			throw new ArithmeticException("Invalid facelength");
+			throw new ArithmeticException("Invalid cube facelength");
 		m_faceLength = facelength;
 	}
 

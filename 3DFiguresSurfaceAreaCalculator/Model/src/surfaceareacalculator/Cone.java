@@ -8,7 +8,7 @@ public class Cone implements I3DFigure
 	public Cone(double radius, double height)
 	{
 		if (radius <= 0.0 || height <= 0.0)
-			throw new ArithmeticException("Invalid radius and height");
+			throw new ArithmeticException("Invalid cube radius or height");
 		m_radius = radius;
 		m_height = height;
 	}

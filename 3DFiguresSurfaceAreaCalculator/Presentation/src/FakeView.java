@@ -1,4 +1,5 @@
 package src;
+
 public class FakeView implements IView
 {
 	public boolean m_coneSelected = false;
@@ -7,7 +8,7 @@ public class FakeView implements IView
 	public boolean m_sphereSelected = false;
 	public boolean m_squarePyramidSelected = false;
 	public boolean m_torusSelected = false;
-	public boolean m_calculateAreaButtonEnabled = true;
+	public boolean m_state;
 	public String m_coneRadius;
 	public String m_coneHeight;
 	public String m_cubeFaceLength;
@@ -21,6 +22,7 @@ public class FakeView implements IView
 	public String m_area;
 	public String m_warningErrorMessage;
 	public IActionHandler m_areaHandler;
+	public IActionHandler m_inputHandler;
 
 	@Override
 	public boolean coneIsSelected()
@@ -144,10 +146,20 @@ public class FakeView implements IView
       m_warningErrorMessage = message;
 	}
 
+
+
 	@Override
-	public boolean isCalculateButtonEnabled()
+	public void processInputActionHandler(IActionHandler handler)
 	{
-	  return m_calculateAreaButtonEnabled;
+		m_inputHandler = handler;
+		
+	}
+
+	@Override
+	public void setStateOfCalculateAreaButton(Boolean flag)
+	{
+	  m_state = flag;	
+		
 	}
 
 }

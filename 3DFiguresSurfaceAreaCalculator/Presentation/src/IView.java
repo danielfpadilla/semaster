@@ -1,4 +1,5 @@
 package src;
+
 public interface IView
 {
 	public boolean coneIsSelected();
@@ -37,7 +38,9 @@ public interface IView
 
 	public void setErrorMessage(String message);
 
-	public boolean isCalculateButtonEnabled();
+	public void setStateOfCalculateAreaButton(Boolean flag);
+
+	public void processInputActionHandler(IActionHandler handler);
 
 	public void setCalculateAreaActionHandler(IActionHandler handler);
 
