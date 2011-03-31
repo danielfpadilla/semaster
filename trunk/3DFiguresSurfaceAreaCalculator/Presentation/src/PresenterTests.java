@@ -88,9 +88,10 @@ public class PresenterTests
 	public void showsAWarningErrorMessageIncaseOfEmptyOrIncorrectInput()
 	{
 		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "1d";
+		m_view.m_sphereRadius = "1";
 		m_view.m_areaHandler.processAction();
-		assertEquals("Incorrect or Empty Input", m_view.m_warningErrorMessage);
+		assertEquals("Empty or Incorrect Input. Please try again.",
+				m_view.m_warningErrorMessage);
 		// assertEquals(false,m_view.m_calculateAreaButtonEnabled);
 
 	}
@@ -100,9 +101,9 @@ public class PresenterTests
 	{
 		m_view.m_torusSelected = true;
 		m_view.m_torusMinorRadius = "20.0";
-		m_view.m_torusMajorRadius = "10.0";
+		m_view.m_torusMajorRadius = "10s.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("Invalid arguments or minor radius greater than major radius",
+		assertEquals("Incorrect Mathematical arguments, Please try again.",
 				m_view.m_warningErrorMessage);
 	}
 }

@@ -10,7 +10,7 @@ public class SquareBasedPyramid implements I3DFigure
 	public SquareBasedPyramid(double baseLength, double height)
 	{
 		if (baseLength <= 0.0 || height <= 0.0)
-			throw new IllegalArgumentException("Negative baseLength or Height");
+			throw new IllegalArgumentException("Invalid baseLength or Height");
 		m_baseLength = baseLength;
 		m_height = height;
 	}

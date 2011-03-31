@@ -7,7 +7,7 @@ public class Sphere implements I3DFigure
 	public Sphere(double radius)
 	{
 		if (radius <= 0.0)
-			throw new IllegalArgumentException("Negative radius not Allowed.");
+			throw new ArithmeticException("Illegal radius.");
 		m_radius = radius;
 	}
 
