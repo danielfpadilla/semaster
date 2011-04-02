@@ -297,46 +297,39 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public boolean coneIsSelected()
 	{
-		if(tabFolder.getSelectionIndex() == 0)
-			return true;
-			 else
-			return false;
+		 return (tabFolder.getSelection()[0].toString().equals("Cone"));
 
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		if(tabFolder.getSelectionIndex() == 1)
-			return true;
-			 else
-			return false;
+		 return (tabFolder.getSelection()[1].toString().equals("Cube"));
 
 	}
 
 	@Override
 	public boolean cylinderIsSelected()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		 return (tabFolder.getSelection()[2].toString().equals("Cylinder"));
 	}
 
 	@Override
 	public boolean sphereIsSelected()
 	{
-		return false;
+		return (tabFolder.getSelection()[3].toString().equals("Sphere"));
 	}
 
 	@Override
 	public boolean squarePyramidIsSelected()
 	{
-		return false;
+		return (tabFolder.getSelection()[4].toString().equals("SquareBasedPyramid"));
 	}
 
 	@Override
 	public boolean torusIsSelected()
 	{
-		return true;
+		return (tabFolder.getSelection()[5].toString().equals("Torus"));
 	}
 
 	@Override
