@@ -95,26 +95,13 @@ public class AreaCalculationWindow implements IView
 
 		tabFolder.addSelectionListener(new SelectionAdapter()
 		{
-			/*
-			 * public void widgetSelected(SelectionEvent event) {
-			 * tabFolder.getSelectionIndex(); }
-			 * 
-			 * public void widgetDefaultSelected(SelectionEvent e) {
-			 * widgetSelected(e); }
-			 */
-			public void widgetSelected(SelectionEvent e)
-			{
-				System.out.println("Selected item index = "
-						+ tabFolder.getSelectionIndex());
-				System.out.println("Selected item = "
-						+ (tabFolder.getSelection() == null ? "null"
-								: tabFolder.getSelection()[0].toString()));
-			}
-
-			public void widgetDefaultSelected(SelectionEvent e)
-			{
-				widgetSelected(e);
-			}
+			
+			 public void widgetSelected(SelectionEvent event) {
+			 tabFolder.getSelectionIndex(); }
+			  
+			 public void widgetDefaultSelected(SelectionEvent e) {
+			 widgetSelected(e); }
+			 
 		});
 
 		TabItem cone = new TabItem(tabFolder, SWT.NONE);
