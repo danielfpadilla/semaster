@@ -16,8 +16,8 @@ import src.IView;
 import src.Presenter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.VerifyListener;
-import org.eclipse.swt.events.VerifyEvent;
+//import org.eclipse.swt.events.VerifyListener;
+//import org.eclipse.swt.events.VerifyEvent;
 
 public class AreaCalculationWindow implements IView
 {
@@ -34,8 +34,8 @@ public class AreaCalculationWindow implements IView
 	private Text m_coneRadiusText;
 	private Text m_coneHeightText;
 	private Text m_areaResultText;
-	private IActionHandler m_processInputHandler;
-	// private TabFolder tb;
+	// private IActionHandler m_processInputHandler;
+	private TabFolder tabFolder;
 	// private boolean coneSelected = false;
 	private IActionHandler m_figureAreaHandler;
 
@@ -92,14 +92,31 @@ public class AreaCalculationWindow implements IView
 
 		final TabFolder tabFolder = new TabFolder(shldSolidArea, SWT.NONE);
 		tabFolder.setBounds(10, 10, 353, 180);
-		/*
-		 * tabFolder.addSelectionListener(new SelectionAdapter() { public void
-		 * widgetSelected(SelectionEvent event) { tabFolder.getSelectionIndex();
-		 * }
-		 * 
-		 * public void widgetDefaultSelected(SelectionEvent e) {
-		 * widgetSelected(e); } });
-		 */
+
+		tabFolder.addSelectionListener(new SelectionAdapter()
+		{
+			/*
+			 * public void widgetSelected(SelectionEvent event) {
+			 * tabFolder.getSelectionIndex(); }
+			 * 
+			 * public void widgetDefaultSelected(SelectionEvent e) {
+			 * widgetSelected(e); }
+			 */
+			public void widgetSelected(SelectionEvent e)
+			{
+				System.out.println("Selected item index = "
+						+ tabFolder.getSelectionIndex());
+				System.out.println("Selected item = "
+						+ (tabFolder.getSelection() == null ? "null"
+								: tabFolder.getSelection()[0].toString()));
+			}
+
+			public void widgetDefaultSelected(SelectionEvent e)
+			{
+				widgetSelected(e);
+			}
+		});
+
 		TabItem cone = new TabItem(tabFolder, SWT.NONE);
 		cone.setText("Cone");
 
@@ -107,13 +124,11 @@ public class AreaCalculationWindow implements IView
 		cone.setControl(composite);
 
 		m_coneRadiusText = new Text(composite, SWT.BORDER);
-		m_coneRadiusText.addVerifyListener(new VerifyListener()
-		{
-			public void verifyText(VerifyEvent e)
-			{
-				m_processInputHandler.processAction();
-			}
-		});
+		/*
+		 * m_coneRadiusText.addVerifyListener(new VerifyListener() { public void
+		 * verifyText(VerifyEvent e) { m_processInputHandler.processAction(); }
+		 * });
+		 */
 		m_coneRadiusText.setBounds(108, 26, 122, 19);
 
 		m_coneHeightText = new Text(composite, SWT.BORDER);
@@ -295,15 +310,21 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public boolean coneIsSelected()
 	{
-		return true;
+		if(tabFolder.getSelectionIndex() == 0)
+			return true;
+			 else
+			return false;
 
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		// tb.getSelectionIndex();
-		return false;
+		if(tabFolder.getSelectionIndex() == 1)
+			return true;
+			 else
+			return false;
+
 	}
 
 	@Override
@@ -328,7 +349,7 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public boolean torusIsSelected()
 	{
-		return false;
+		return true;
 	}
 
 	@Override
@@ -362,7 +383,7 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public void processInputActionHandler(IActionHandler handler)
 	{
-         m_processInputHandler = handler;
+		// m_processInputHandler = handler;
 	}
 
 }
