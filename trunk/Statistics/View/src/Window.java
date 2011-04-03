@@ -12,6 +12,8 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.custom.TableTree;
+import org.eclipse.swt.custom.TableCursor;
+import org.eclipse.swt.widgets.TrayItem;
 
 
 
@@ -25,6 +27,7 @@ public class Window extends View {
 	private Table table;
 	private Text m_probability1Text;
 	private Text m_probability2Text;
+	private Table table_1;
 
 	/**
 	 * Launch the application.
@@ -61,6 +64,7 @@ public class Window extends View {
 	 */
 	protected void createContents() {
 		shell = new Shell();
+		shell.setModified(true);
 		shell.setSize(703, 534);
 		shell.setText("SWT Application");
 		
@@ -78,7 +82,7 @@ public class Window extends View {
 		m_number2Text = new Text(shell, SWT.BORDER);
 		m_number2Text.setBounds(436, 44, 76, 19);
 		
-		Button btnAdd = new Button(shell, SWT.NONE);
+		Button btnAdd = new Button(shell, SWT.BORDER | SWT.FLAT);
 		btnAdd.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -142,27 +146,33 @@ public class Window extends View {
 		
 		Label lblAdd = new Label(shell, SWT.NONE);
 		lblAdd.setBounds(32, 111, 127, 15);
-		lblAdd.setText("Add numbers of value :");
+		lblAdd.setText("Enter numbers of value :");
 		
 		m_sizeText = new Text(shell, SWT.BORDER);
-		m_sizeText.setBounds(163, 111, 76, 21);
+		m_sizeText.setBounds(163, 111, 49, 21);
 		
+				
 		Button ButtonOk = new Button(shell, SWT.NONE);
 		ButtonOk.addSelectionListener(new SelectionAdapter() {
+			
+
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{				
 				m_size = m_sizeText.getText();
+				size = Integer.parseInt(m_size);
+				m_array = new double[size];
+				
 				
 			}
 		});
 		
-		ButtonOk.setBounds(250, 111, 75, 25);
+		ButtonOk.setBounds(221, 111, 55, 23);
 		ButtonOk.setText("Ok");		
 		
 		
-		Button btnNewButton_1 = new Button(shell, SWT.NONE);
-		btnNewButton_1.addSelectionListener(new SelectionAdapter() {
+		Button btnExpectation = new Button(shell, SWT.NONE);
+		btnExpectation.addSelectionListener(new SelectionAdapter() {
 			
 
 			@Override
@@ -175,14 +185,33 @@ public class Window extends View {
 				m_resultText.setText(m_result);
 			}
 		});
-		btnNewButton_1.setBounds(384, 170, 75, 25);
-		btnNewButton_1.setText("Expectation");
+		btnExpectation.setBounds(384, 170, 75, 25);
+		btnExpectation.setText("Expectation");
 		
 		m_probability1Text = new Text(shell, SWT.BORDER);
 		m_probability1Text.setBounds(556, 17, 76, 21);
 		
 		m_probability2Text = new Text(shell, SWT.BORDER);
 		m_probability2Text.setBounds(556, 47, 76, 21);
+		
+		table_1 = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		table_1.setBounds(42, 169, 105, 249);
+		table_1.setHeaderVisible(true);
+		table_1.setLinesVisible(true);
+		
+		TableColumn tblclmnNewColumn = new TableColumn(table_1, SWT.NONE);
+		tblclmnNewColumn.setWidth(100);
+		tblclmnNewColumn.setText("Value");
+		
+		TableItem tableItem = new TableItem(table_1, SWT.NONE);
+		
+		TableItem tableItem_1 = new TableItem(table_1, SWT.NONE);
+		
+		TableItem tableItem_2 = new TableItem(table_1, SWT.NONE);
+		
+		TableItem tableItem_3 = new TableItem(table_1, SWT.NONE);
+		
+		TableCursor tableCursor = new TableCursor(table_1, SWT.NONE);
 		
 
 
