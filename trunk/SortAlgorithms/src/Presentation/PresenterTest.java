@@ -14,7 +14,7 @@ public class PresenterTest
 	
 	private FakeView m_view;
 	private Presenter m_presenter;
-	private Object m_view;
+
 
 	@Before
 	public void setUp()
@@ -99,7 +99,7 @@ public class PresenterTest
 			m_view.m_unsortedArray = "{0,4,56,16,10,2,12,22}";
 			m_view.m_expectedsorted =  "{4}";
 			m_view.m_mergeSort.processAction();
-			Assert.assertEquals(m_view.m_unsortedArray.length(), m_view.m_actualsorted.length());
+			Assert.assertEquals(m_view.m_unsortedArray.length(), m_view.m_actualsorted.length);
 		}
 
 		@Test(expected = NullPointerException.class)
@@ -184,7 +184,7 @@ public class PresenterTest
 			m_view.m_unsortedArray = "{0,4,56,16,10,2,12,22}";
 			m_view.m_expectedsorted =  "{4}";
 			m_view.m_mergeSort.processAction();
-			Assert.assertEquals(m_view.m_unsortedArray.length(), m_view.m_actualsorted.length());
+			Assert.assertEquals(m_view.m_unsortedArray.length(), m_view.m_actualsorted.length);
 		}
 /*
 		@Test(expected = NullPointerException.class)

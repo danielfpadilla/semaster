@@ -15,23 +15,17 @@ public class Presenter
    	{
    		m_view = view;
    		m_view.setQuickSortHandler(new IActionHandler());
-   		m_view.setMergeActionHandler(new IActionHandler()
+   		m_view.setMergeSortHandler(new IActionHandler()
    		{
    			public void processAction()
    			{
    				Presenter.this.processMergeSortAction();
    			}
    		
-   		m_view.setMergeSortActionHandler(new IActionHandler()
-   		{
-   			public void processAction()
-   			{
-   				Presenter.this.processMergeSortAction();
-   			}
-
-   		
-   		
-
+   		}
+   	}
+  
+   
 public Presenter(FakeView m_view)
 {
 	return;
