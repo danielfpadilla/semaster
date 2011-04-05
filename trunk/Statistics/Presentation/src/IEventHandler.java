@@ -7,5 +7,5 @@ public interface IEventHandler
 	public void processVarianceAction();
 	public void processThirdInitialMomentAction();
 	public void processFourthInitialMomentAction();
-	public void processSkewnessAction();
+//	public void processSkewnessAction();
 }

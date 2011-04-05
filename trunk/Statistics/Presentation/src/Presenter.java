@@ -36,7 +36,7 @@ public class Presenter implements IEventHandler
 			array = new double[size];
 			for(int i = 0; i < size; i++)
 			{
-				array[i] =m_view.m_array[i];
+				array[i] =m_view.m_arrayOfValue[i];
 			}
 			
 			double result = m_statistics.expectationForEquiprobabilityDistribution(array);
@@ -68,7 +68,7 @@ public class Presenter implements IEventHandler
 		array = new double[size];
 		for(int i = 0; i < size; i++)
 		{
-			array[i] =m_view.m_array[i];
+			array[i] =m_view.m_arrayOfValue[i];
 		}
 		
 		double result = m_statistics.varianceForEquiprobabilityDistribution(array);
@@ -82,7 +82,7 @@ public class Presenter implements IEventHandler
 		array = new double[size];
 		for(int i = 0; i < size; i++)
 		{
-			array[i] =m_view.m_array[i];
+			array[i] =m_view.m_arrayOfValue[i];
 		}
 		
 		double result = m_statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
@@ -96,25 +96,25 @@ public class Presenter implements IEventHandler
 		array = new double[size];
 		for(int i = 0; i < size; i++)
 		{
-			array[i] =m_view.m_array[i];
+			array[i] =m_view.m_arrayOfValue[i];
 		}
 		
 		double result = m_statistics.fourthInitialMomentForEquiprobabilityDistribution(array);
 		m_view.m_result = String.valueOf(result);
 	}
 	
-	public void processSkewnessAction()
+	/*public void processSkewnessAction()
 	{
 		double[] array;
 		int size = Integer.parseInt(m_view.m_size);
 		array = new double[size];
 		for(int i = 0; i < size; i++)
 		{
-			array[i] =m_view.m_array[i];
+			array[i] =m_view.m_arrayOfValue[i];
 		}
 		
 		double result = m_statistics.skewness(arrayOfValue, arrayOfProbability)
 		m_view.m_result = String.valueOf(result);
-	}
+	}*/
 	
 }
