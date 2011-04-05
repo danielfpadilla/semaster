@@ -1,3 +1,4 @@
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
@@ -24,10 +25,9 @@ public class Window extends View {
 	private Text m_number2Text;
 	private Text m_resultText;
 	private Text m_sizeText;
-	private Table table;
 	private Text m_probability1Text;
 	private Text m_probability2Text;
-	private Table table_1;
+	private Table table;
 
 	/**
 	 * Launch the application.
@@ -162,8 +162,15 @@ public class Window extends View {
 				m_size = m_sizeText.getText();
 				size = Integer.parseInt(m_size);
 				m_array = new double[size];
-				
-				
+
+				TableItem[] tableItem;
+				tableItem = new TableItem[size];
+			
+				for(int i = 0; i < size; i++)
+				{
+					tableItem[i] = new TableItem(table, SWT.NONE);
+				}	
+				tableItem[0].setText("Hello");
 			}
 		});
 		
@@ -194,26 +201,15 @@ public class Window extends View {
 		m_probability2Text = new Text(shell, SWT.BORDER);
 		m_probability2Text.setBounds(556, 47, 76, 21);
 		
-		table_1 = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-		table_1.setBounds(42, 169, 105, 249);
-		table_1.setHeaderVisible(true);
-		table_1.setLinesVisible(true);
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		table.setHeaderVisible(true);
+		table.setBounds(42, 169, 105, 249);
+		table.setLinesVisible(true);
+		table.getItems();
 		
-		TableColumn tblclmnNewColumn = new TableColumn(table_1, SWT.NONE);
+		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
 		tblclmnNewColumn.setWidth(100);
 		tblclmnNewColumn.setText("Value");
-		
-		TableItem tableItem = new TableItem(table_1, SWT.NONE);
-		
-		TableItem tableItem_1 = new TableItem(table_1, SWT.NONE);
-		
-		TableItem tableItem_2 = new TableItem(table_1, SWT.NONE);
-		
-		TableItem tableItem_3 = new TableItem(table_1, SWT.NONE);
-		
-		TableCursor tableCursor = new TableCursor(table_1, SWT.NONE);
-		
-
 
 	}
 }
