@@ -28,17 +28,20 @@ public class Presenter implements IEventHandler
 	@Override
 	public void processExpectationAction() 
 	{	
-		if(m_view.m_type == 1)
-		{
-			double number1 = Double.parseDouble(m_view.m_number1);
-			double number2 = Double.parseDouble(m_view.m_number2);
+		/*if(m_view.m_type == 1)
+		{*/
+			
 			double[] array;
-			array = new double[2];
-			array[0] = number1;
-			array[1] = number2;
+			int size = Integer.parseInt(m_view.m_size);
+			array = new double[size];
+			for(int i = 0; i < size; i++)
+			{
+				array[i] =m_view.m_array[i];
+			}
+			
 			double result = m_statistics.expectationForEquiprobabilityDistribution(array);
 			m_view.m_result = String.valueOf(result);	
-		} else
+		/*} else
 		{
 			double number1 = Double.parseDouble(m_view.m_number1);
 			double number2 = Double.parseDouble(m_view.m_number2);
@@ -55,6 +58,63 @@ public class Presenter implements IEventHandler
 			double result = m_statistics.expectationForDiscreteDistribution(arrayOfValue, arrayOfProbability);
 			m_view.m_result = String.valueOf(result);
 			
-		}
+		}*/
 	}	
+	
+	public void processVarianceAction()
+	{
+		double[] array;
+		int size = Integer.parseInt(m_view.m_size);
+		array = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			array[i] =m_view.m_array[i];
+		}
+		
+		double result = m_statistics.varianceForEquiprobabilityDistribution(array);
+		m_view.m_result = String.valueOf(result);		
+	}
+	
+	public void processThirdInitialMomentAction()
+	{
+		double[] array;
+		int size = Integer.parseInt(m_view.m_size);
+		array = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			array[i] =m_view.m_array[i];
+		}
+		
+		double result = m_statistics.thirdInitialMomentForEquiprobabilityDistribution(array);
+		m_view.m_result = String.valueOf(result);
+	}
+	
+	public void processFourthInitialMomentAction()
+	{
+		double[] array;
+		int size = Integer.parseInt(m_view.m_size);
+		array = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			array[i] =m_view.m_array[i];
+		}
+		
+		double result = m_statistics.fourthInitialMomentForEquiprobabilityDistribution(array);
+		m_view.m_result = String.valueOf(result);
+	}
+	
+	public void processSkewnessAction()
+	{
+		double[] array;
+		int size = Integer.parseInt(m_view.m_size);
+		array = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			array[i] =m_view.m_array[i];
+		}
+		
+		double result = m_statistics.skewness(arrayOfValue, arrayOfProbability)
+		m_view.m_result = String.valueOf(result);
+	}
+	
 }
