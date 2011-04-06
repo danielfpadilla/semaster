@@ -13,7 +13,7 @@ public class PresenterTest
 	
 	
 	
-		
+/*		
 	@Test public void canCalculateExpectation()
 	{
 		View view = new View();
@@ -26,7 +26,7 @@ public class PresenterTest
 		view.m_handler.processExpectationAction();
 		Assert.assertEquals(1.5, view.m_result);
 	}
-/*	
+	
 	@Test public void canCalculateExpectationForDiscreteDistribution()
 	{
 		View view = new View();

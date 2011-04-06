@@ -153,19 +153,81 @@ public class Presenter implements IEventHandler
 			m_view.m_result = String.valueOf(result);
 		}
 	}
-	
-	/*public void processSkewnessAction()
+
+	@Override
+	public void processThirdCentralMomentAction()
 	{
-		double[] array;
+		double[] arrayOfValue;
+		double[] arrayOfProbability;
 		int size = Integer.parseInt(m_view.m_size);
-		array = new double[size];
+		arrayOfValue = new double[size];
+		arrayOfProbability = new double[size];
 		for(int i = 0; i < size; i++)
 		{
-			array[i] =m_view.m_arrayOfValue[i];
+			arrayOfValue[i] = m_view.m_arrayOfValue[i];
+			arrayOfProbability[i] = m_view.m_arrayOfProbability[i];				
 		}
 		
-		double result = m_statistics.skewness(arrayOfValue, arrayOfProbability)
+		double result = m_statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
+		m_view.m_result = String.valueOf(result);	
+	}
+
+	@Override
+	public void processFourthCentralMomentAction()
+	{
+		double[] arrayOfValue;
+		double[] arrayOfProbability;
+		int size = Integer.parseInt(m_view.m_size);
+		arrayOfValue = new double[size];
+		arrayOfProbability = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			arrayOfValue[i] = m_view.m_arrayOfValue[i];
+			arrayOfProbability[i] = m_view.m_arrayOfProbability[i];				
+		}
+		
+		double result = m_statistics.fourthCentralMoment(arrayOfValue, arrayOfProbability);
 		m_view.m_result = String.valueOf(result);
-	}*/
+		
+	}
+
+	@Override
+	public void processSkewnessAction() 
+	{
+		double[] arrayOfValue;
+		double[] arrayOfProbability;
+		int size = Integer.parseInt(m_view.m_size);
+		arrayOfValue = new double[size];
+		arrayOfProbability = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			arrayOfValue[i] = m_view.m_arrayOfValue[i];
+			arrayOfProbability[i] = m_view.m_arrayOfProbability[i];				
+		}
+		
+		double result = m_statistics.skewness(arrayOfValue, arrayOfProbability);
+		m_view.m_result = String.valueOf(result);		
+	}
+
+	@Override
+	public void processExcessAction() 
+	{
+		double[] arrayOfValue;
+		double[] arrayOfProbability;
+		int size = Integer.parseInt(m_view.m_size);
+		arrayOfValue = new double[size];
+		arrayOfProbability = new double[size];
+		for(int i = 0; i < size; i++)
+		{
+			arrayOfValue[i] = m_view.m_arrayOfValue[i];
+			arrayOfProbability[i] = m_view.m_arrayOfProbability[i];				
+		}
+		
+		double result = m_statistics.excess(arrayOfValue, arrayOfProbability);
+		m_view.m_result = String.valueOf(result);
+		
+	}
+	
+	
 	
 }
