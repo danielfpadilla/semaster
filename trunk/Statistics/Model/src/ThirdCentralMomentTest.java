@@ -58,7 +58,7 @@ public class ThirdCentralMomentTest
 		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);
 	}
 	
-	@Test (expected = IndexOutOfBoundsException.class) 
+	@Test (expected = IllegalArgumentException.class) 
 	public void throwExceptionIfNegativeProbability()
 	{	
 		double[] arrayOfValue;
@@ -71,7 +71,7 @@ public class ThirdCentralMomentTest
 		double third = statistics.thirdCentralMoment(arrayOfValue, arrayOfProbability);		
 	}
 	
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test (expected = IllegalArgumentException.class)
 	public void throwExceptionIfSumProbabilityIsNotEqual1()
 	{	
 		double[] arrayOfValue;

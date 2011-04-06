@@ -15,6 +15,7 @@ public class View
 	public double[] m_arrayOfProbability;
 	
 	
+	
 	public IEventHandler m_handler;
 	
 	
