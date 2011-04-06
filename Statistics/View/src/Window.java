@@ -12,8 +12,6 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.custom.TableEditor;
 
-
-
 public class Window extends View {
 
 	protected  Shell shell;
@@ -68,11 +66,22 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");
-				m_arrayOfValue = new double[size];
+				String[] value = m_value.split("\\,");				
+				m_arrayOfValue = new double[size];				
+				
 				for(int i = 0; i < size; i++)
 				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
+				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
 				}
 				m_handler.processFourthInitialMomentAction();
 				m_resultText.setText(m_result);
@@ -180,12 +189,9 @@ public class Window extends View {
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i].setText(value[i]);
-						tableItem_1[i].setText(probability[i]);
-						
-					}				
-					
-				}
-			
+						tableItem_1[i].setText(probability[i]);						
+					}						
+				}			
 			}
 		});
 		
@@ -197,11 +203,22 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");
-				m_arrayOfValue = new double[size];
+				String[] value = m_value.split("\\,");				
+				m_arrayOfValue = new double[size];				
+				
 				for(int i = 0; i < size; i++)
 				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
+				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
 				}
 				m_handler.processThirdInitialMomentAction();
 				m_resultText.setText(m_result);
@@ -215,11 +232,22 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");
-				m_arrayOfValue = new double[size];
+				String[] value = m_value.split("\\,");				
+				m_arrayOfValue = new double[size];				
+				
 				for(int i = 0; i < size; i++)
 				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
+				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
 				}
 				m_handler.processVarianceAction();
 				m_resultText.setText(m_result);
@@ -244,13 +272,26 @@ public class Window extends View {
 
 			@Override
 			public void widgetSelected(SelectionEvent e)
-			{			
-				String[] value = m_value.split("\\,");
-				m_arrayOfValue = new double[size];
+			{	
+				
+				String[] value = m_value.split("\\,");					
+				m_arrayOfValue = new double[size];				
+				
 				for(int i = 0; i < size; i++)
 				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
 				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+				}
+				
 				m_handler.processExpectationAction();
 				m_resultText.setText(m_result);				
 			}
