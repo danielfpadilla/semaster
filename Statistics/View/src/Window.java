@@ -61,34 +61,31 @@ public class Window extends View {
 		shell.setSize(703, 534);
 		shell.setText("SWT Application");
 		
-		Button btnFourthInitialMoment = new Button(shell, SWT.NONE);
-		btnFourthInitialMoment.addSelectionListener(new SelectionAdapter() {
+		Button btnFourthCentralMoment = new Button(shell, SWT.NONE);
+		btnFourthCentralMoment.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e)
+			public void widgetSelected(SelectionEvent e) 
 			{
-				String[] value = m_value.split("\\,");				
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
+				if(m_type == - 1)
+				{				
+					String[] value = m_value.split("\\,");	
 					String[] probability = m_probability.split("\\,");
+					m_arrayOfValue = new double[size];
 					m_arrayOfProbability = new double[size];
-					
+				
 					for(int i = 0; i < size; i++)
 					{
+						m_arrayOfValue[i] = Double.parseDouble(value[i]);
 						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
 					}
-				}
-				m_handler.processFourthInitialMomentAction();
-				m_resultText.setText(m_result);
+					m_handler.processFourthCentralMomentAction();
+					m_resultText.setText(m_result);
+				} else
+					m_resultText.setText("0.0");
 			}
 		});
-		btnFourthInitialMoment.setBounds(300, 261, 127, 25);
-		btnFourthInitialMoment.setText("Fourth Initial Moment");
+		btnFourthCentralMoment.setBounds(300, 319, 127, 25);
+		btnFourthCentralMoment.setText("Fourth Central Moment");
 		
 		Label lblResult = new Label(shell, SWT.NONE);
 		lblResult.setBounds(391, 432, 49, 13);
@@ -198,35 +195,6 @@ public class Window extends View {
 		ButtonOk.setBounds(365, 69, 55, 23);
 		ButtonOk.setText("Ok");		
 		
-		Button btnThirdInitialMoment = new Button(shell, SWT.NONE);
-		btnThirdInitialMoment.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e)
-			{
-				String[] value = m_value.split("\\,");				
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfProbability = new double[size];
-					
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
-				}
-				m_handler.processThirdInitialMomentAction();
-				m_resultText.setText(m_result);
-			}
-		});
-		btnThirdInitialMoment.setBounds(300, 230, 127, 25);
-		btnThirdInitialMoment.setText("Third Initial Moment");
-		
 		Button btnVariance = new Button(shell, SWT.NONE);
 		btnVariance.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -253,17 +221,8 @@ public class Window extends View {
 				m_resultText.setText(m_result);
 			}
 		});
-		btnVariance.setBounds(317, 195, 75, 25);
+		btnVariance.setBounds(300, 195, 127, 25);
 		btnVariance.setText("Variance");
-		
-		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
-		table.setHeaderVisible(true);
-		table.setBounds(42, 180, 103, 249);
-		table.setLinesVisible(true);
-		
-		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
-		tblclmnNewColumn.setWidth(100);
-		tblclmnNewColumn.setText("Value");	
 		
 		
 		Button btnExpectation = new Button(shell, SWT.NONE);
@@ -296,8 +255,153 @@ public class Window extends View {
 				m_resultText.setText(m_result);				
 			}
 		});
-		btnExpectation.setBounds(317, 164, 75, 25);
+		btnExpectation.setBounds(300, 164, 127, 25);
 		btnExpectation.setText("Expectation");
+		
+		Button btnThirdInitialMoment = new Button(shell, SWT.NONE);
+		btnThirdInitialMoment.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e)
+			{
+				String[] value = m_value.split("\\,");				
+				m_arrayOfValue = new double[size];				
+				
+				for(int i = 0; i < size; i++)
+				{
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
+				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+				}
+				m_handler.processThirdInitialMomentAction();
+				m_resultText.setText(m_result);
+			}
+		});
+		btnThirdInitialMoment.setBounds(300, 226, 127, 25);
+		btnThirdInitialMoment.setText("Third Initial Moment");
+		
+		Button btnThirdCentralMoment = new Button(shell, SWT.NONE);
+		btnThirdCentralMoment.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				if(m_type == - 1)
+				{				
+					String[] value = m_value.split("\\,");	
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfValue = new double[size];
+					m_arrayOfProbability = new double[size];
+				
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfValue[i] = Double.parseDouble(value[i]);
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+					m_handler.processThirdCentralMomentAction();
+					m_resultText.setText(m_result);
+				} else
+					m_resultText.setText("0.0");
+			}
+		});
+		btnThirdCentralMoment.setBounds(300, 257, 127, 25);
+		btnThirdCentralMoment.setText("Third Central Moment");
+		
+		Button btnFourthInitialMoment = new Button(shell, SWT.NONE);
+		btnFourthInitialMoment.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e)
+			{
+				String[] value = m_value.split("\\,");				
+				m_arrayOfValue = new double[size];				
+				
+				for(int i = 0; i < size; i++)
+				{
+					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
+				}
+				if(m_type== -1)
+				{
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfProbability = new double[size];
+					
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+				}
+				m_handler.processFourthInitialMomentAction();
+				m_resultText.setText(m_result);
+			}
+		});
+		btnFourthInitialMoment.setBounds(300, 288, 127, 25);
+		btnFourthInitialMoment.setText("Fourth Initial Moment");
+		
+		Button btnSkewness = new Button(shell, SWT.NONE);
+		btnSkewness.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e)
+			{
+				if(m_type == - 1)
+				{				
+					String[] value = m_value.split("\\,");	
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfValue = new double[size];
+					m_arrayOfProbability = new double[size];
+				
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfValue[i] = Double.parseDouble(value[i]);
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+					m_handler.processSkewnessAction();
+					m_resultText.setText(m_result);
+				} else
+					m_resultText.setText("0.0");
+			}
+		});
+		btnSkewness.setBounds(464, 166, 68, 23);
+		btnSkewness.setText("Skewness");
+		
+		Button btnExcess = new Button(shell, SWT.NONE);
+		btnExcess.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				if(m_type == - 1)
+				{				
+					String[] value = m_value.split("\\,");	
+					String[] probability = m_probability.split("\\,");
+					m_arrayOfValue = new double[size];
+					m_arrayOfProbability = new double[size];
+				
+					for(int i = 0; i < size; i++)
+					{
+						m_arrayOfValue[i] = Double.parseDouble(value[i]);
+						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
+					}
+					m_handler.processExcessAction();
+					m_resultText.setText(m_result);
+				} else
+					m_resultText.setText("0.0");
+			}
+		});
+		btnExcess.setBounds(464, 197, 68, 23);
+		btnExcess.setText("Excess");
+		
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+		table.setHeaderVisible(true);
+		table.setBounds(42, 180, 103, 249);
+		table.setLinesVisible(true);
+		
+		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
+		tblclmnNewColumn.setWidth(100);
+		tblclmnNewColumn.setText("Value");	
 		
 		probabilityText = new Text(shell, SWT.BORDER);
 		probabilityText.setBounds(260, 97, 76, 19);

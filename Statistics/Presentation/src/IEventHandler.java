@@ -8,4 +8,8 @@ public interface IEventHandler
 	public void processThirdInitialMomentAction();
 	public void processFourthInitialMomentAction();
 //	public void processSkewnessAction();
+	public void processThirdCentralMomentAction();
+	public void processFourthCentralMomentAction();
+	public void processSkewnessAction();
+	public void processExcessAction();
 }
