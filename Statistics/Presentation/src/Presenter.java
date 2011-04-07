@@ -11,21 +11,6 @@ public class Presenter implements IEventHandler
 	}
 	
 	@Override
-	public void processAddAction() 
-	{
-		double result = Double.parseDouble(m_view.m_number1) + Double.parseDouble(m_view.m_number2);
-		m_view.m_result = String.valueOf(result);
-				
-	}
-
-	@Override
-	public void processMultiplyAction()
-	{
-		double result = Double.parseDouble(m_view.m_number1) * Double.parseDouble(m_view.m_number2);
-		m_view.m_result =String.valueOf(result);		
-	}
-
-	@Override
 	public void processExpectationAction() 
 	{	
 		if(m_view.m_type == 1)
@@ -225,6 +210,70 @@ public class Presenter implements IEventHandler
 		
 		double result = m_statistics.excess(arrayOfValue, arrayOfProbability);
 		m_view.m_result = String.valueOf(result);
+		
+	}
+
+	@Override
+	public void processClearAction() 
+	{
+		/*if(m_view.m_type == 1)
+		{			
+			double[] array;
+			array = new double[size];
+			int size = Integer.parseInt(m_view.m_size);
+			for(int i = 0; i < size; i++)
+			{
+				//array[i] = 0.0;
+				m_view.m_arrayOfValue[i] = 0.0;
+			}
+			int size = Integer.parseInt(m_view.m_size);
+			size = 0;*/
+			m_view.m_size = " ";			
+			m_view.m_value = " ";
+			m_view.m_probability = " ";
+		//	m_view.m_type = 0;
+			
+					
+			
+		/*		
+		} else
+		{
+			double[] arrayOfValue;
+			double[] arrayOfProbability;
+			int size = Integer.parseInt(m_view.m_size);
+			arrayOfValue = new double[size];
+			arrayOfProbability = new double[size];
+			for(int i = 0; i < size; i++)
+			{
+				arrayOfValue[i] = m_view.m_arrayOfValue[i];
+				arrayOfProbability[i] = m_view.m_arrayOfProbability[i];				
+			}
+		
+			double result = m_statistics.fourthInitialMomentForDiscreteDistribution(arrayOfValue, arrayOfProbability);
+			m_view.m_result = String.valueOf(result);
+		}		*/
+	}
+
+	@Override
+	public void processParseArgumentAction()
+	{
+		m_view.value = m_view.m_value.split("\\,");
+		m_view.m_arrayOfValue = new double[m_view.size];
+		for(int i = 0; i < m_view.size; i++)
+		{
+			m_view.m_arrayOfValue[i] = Double.parseDouble(m_view.value[i]);
+		}
+		if(m_view.m_type == -1)
+		{
+			m_view.probability = m_view.m_probability.split("\\,");
+			m_view.m_arrayOfProbability = new double[m_view.size];
+			
+			for(int i = 0; i < m_view.size; i++)
+			{
+				m_view.m_arrayOfProbability[i] = Double.parseDouble(m_view.probability[i]);
+			}
+		}
+		
 		
 	}
 	
