@@ -228,7 +228,7 @@ public class Presenter implements IEventHandler
 			}
 			int size = Integer.parseInt(m_view.m_size);
 			size = 0;*/
-			m_view.m_size = " ";			
+			m_view.m_size = "0";			
 			m_view.m_value = " ";
 			m_view.m_probability = " ";
 		//	m_view.m_type = 0;

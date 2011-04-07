@@ -21,6 +21,9 @@ public class Window extends View {
 	private Text m_valueText;
 	private Text m_probabilityText;
 	private Table table_1;
+	public TableItem[] tableItem;
+	public TableItem[] tableItem_1;
+
 
 	/**
 	 * Launch the application.
@@ -60,7 +63,7 @@ public class Window extends View {
 		shell.setModified(true);
 		shell.setSize(703, 534);
 		shell.setText("SWT Application");
-		
+	
 		Button btnFourthCentralMoment = new Button(shell, SWT.NONE);
 		btnFourthCentralMoment.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -84,7 +87,7 @@ public class Window extends View {
 					m_resultText.setText("0.0");
 			}
 		});
-		btnFourthCentralMoment.setBounds(345, 294, 127, 25);
+		btnFourthCentralMoment.setBounds(342, 294, 140, 25);
 		btnFourthCentralMoment.setText("Fourth Central Moment");
 		
 		Button btnSkewness = new Button(shell, SWT.NONE);
@@ -160,7 +163,7 @@ public class Window extends View {
 
 			@Override
 			public void widgetSelected(SelectionEvent e)
-			{	
+			{
 				m_size = m_sizeText.getText();
 				size = Integer.parseInt(m_size);
 				m_arrayOfValue = new double[size];
@@ -168,7 +171,6 @@ public class Window extends View {
 				
 				if(m_type == 1)
 				{
-					TableItem[] tableItem ;
 					tableItem = new TableItem[size];
 					for(int i = 0; i < size; i++)
 					{
@@ -183,21 +185,10 @@ public class Window extends View {
 					}
 				}else
 				{
-					m_arrayOfProbability = new double[size];
+					m_arrayOfProbability = new double[size];				
 					
-					table_1 = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
-					table_1.setBounds(150, 120, 104, 249);
-					table_1.setHeaderVisible(true);
-					table_1.setLinesVisible(true);
-					
-					TableColumn tblclmnProbability = new TableColumn(table_1, SWT.NONE);
-					tblclmnProbability.setWidth(100);
-					tblclmnProbability.setText("Probability");	
-					
-					TableItem[] tableItem ;
-					TableItem[] tableItem_1 ;
 					tableItem = new TableItem[size];
-					tableItem_1 = new TableItem[size];/**/
+					tableItem_1 = new TableItem[size];
 					
 					for(int i = 0; i < size; i++)
 					{
@@ -331,6 +322,15 @@ public class Window extends View {
 		tblclmnNewColumn.setWidth(100);
 		tblclmnNewColumn.setText("Value");	
 		
+		table_1 = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table_1.setBounds(150, 120, 104, 249);
+		table_1.setHeaderVisible(true);
+		table_1.setLinesVisible(true);
+		
+		TableColumn tblclmnProbability = new TableColumn(table_1, SWT.NONE);
+		tblclmnProbability.setWidth(100);
+		tblclmnProbability.setText("Probability");
+		
 		Label lblNewLabel = new Label(shell, SWT.NONE);
 		lblNewLabel.setBounds(240, 73, 125, 13);
 		lblNewLabel.setText("Enter the probabilities:");
@@ -354,20 +354,16 @@ public class Window extends View {
 				
 				m_sizeText.setText(m_size);
 				m_valueText.setText(m_value);
-				m_probabilityText.setText(m_probability);
-				
-				TableItem[] tableItem ;
-				tableItem = new TableItem[size];
+				m_probabilityText.setText(m_probability);				
+			
 				for(int i = 0; i < size; i++)
 				{
-					tableItem[i] = new TableItem(table, SWT.NONE);
-				}	
-				
-				for(int i = 0; i < size; i++)
-				{
-					tableItem[i].setText("222");
-				}
-				
+					table.remove(0);
+					if(m_type == -1)
+					{
+						table_1.remove(0);						
+					}					
+				}				
 			}
 		});
 		btnClear.setBounds(42, 398, 75, 25);
