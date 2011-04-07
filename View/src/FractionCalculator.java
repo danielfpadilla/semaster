@@ -23,6 +23,8 @@ public class FractionCalculator implements IFractionView
 	private IActionHandler m_divideActionHandler;
 	private IActionHandler m_clearActionHandler;
 	
+	
+	
 	{
 		
 	}
@@ -71,9 +73,6 @@ public class FractionCalculator implements IFractionView
 		shlFractionCalculator = new Shell();
 		shlFractionCalculator.setSize(450, 300);
 		shlFractionCalculator.setText("Fraction Calculator");
-		
-		m_result = new Text(shlFractionCalculator, SWT.BORDER);
-		m_result.setBounds(114, 10, 243, 20);
 		
 		Label m_numerator1 = new Label(shlFractionCalculator, SWT.NONE);
 		m_numerator1.setBounds(25, 61, 64, 20);
@@ -157,7 +156,11 @@ public class FractionCalculator implements IFractionView
 		});
 		clearButton.setBounds(157, 178, 69, 24);
 		clearButton.setText("Clear");
-
+		
+		m_result = new Text(shlFractionCalculator, SWT.BORDER);
+		m_result.setBounds(146, 10, 183, 20);
+		
+		
 	}
 
 	@Override
@@ -223,28 +226,28 @@ public class FractionCalculator implements IFractionView
 	@Override
 	public void setNumerator1(String string)
 	{
-	  m_numerator1Text=null;
+	  m_numerator1Text.setText(string);
 		
 	}
 
 	@Override
 	public void setDenominator1(String string)
 	{
-		m_denominator1Text=null;
+		m_denominator1Text.setText(string);
 		
 	}
 
 	@Override
 	public void setNumerator2(String string)
 	{
-		m_numerator2Text=null;
+		m_numerator2Text.setText(string);
 		
 	}
 
 	@Override
 	public void setDenominator2(String string)
 	{
-		m_denominator2Text=null;
+		m_denominator2Text.setText(string);
 		
 	}
 
