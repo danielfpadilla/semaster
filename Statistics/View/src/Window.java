@@ -354,7 +354,8 @@ public class Window extends View {
 				
 				m_sizeText.setText(m_size);
 				m_valueText.setText(m_value);
-				m_probabilityText.setText(m_probability);				
+				m_probabilityText.setText(m_probability);	
+				m_resultText.setText(m_result);
 			
 				for(int i = 0; i < size; i++)
 				{
