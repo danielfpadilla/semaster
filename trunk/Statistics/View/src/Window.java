@@ -1,10 +1,13 @@
 
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Table;
@@ -122,17 +125,8 @@ public class Window extends View {
 			public void widgetSelected(SelectionEvent e) 
 			{
 				if(m_type == - 1)
-				{				
-					String[] value = m_value.split("\\,");	
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfValue = new double[size];
-					m_arrayOfProbability = new double[size];
-				
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfValue[i] = Double.parseDouble(value[i]);
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
+				{	
+					m_handler.processParseArgumentAction();
 					m_handler.processExcessAction();
 					m_resultText.setText(m_result);
 				} else
@@ -175,6 +169,7 @@ public class Window extends View {
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i] = new TableItem(table, SWT.NONE);
+						tableItem[i].setText(" ");
 					}		
 					
 					m_handler.processParseArgumentAction();
@@ -182,7 +177,7 @@ public class Window extends View {
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i].setText(value[i]);
-					}
+					}/**/
 				}else
 				{
 					m_arrayOfProbability = new double[size];				
@@ -317,7 +312,43 @@ public class Window extends View {
 		table.setHeaderVisible(true);
 		table.setBounds(42, 120, 104, 249);
 		table.setLinesVisible(true);
+		// add TableEditor
+		final TableEditor editor = new TableEditor(table);
+		editor.horizontalAlignment = SWT.CENTER;
+		editor.grabHorizontal = true;
+		editor.minimumWidth = 250;
+		final int EDITABLECOLUMN = 1;
 		
+		table.addSelectionListener(new SelectionAdapter() {
+		      public void widgetSelected(SelectionEvent e) {
+		        // Clean up any previous editor control
+		        Control oldEditor = editor.getEditor();
+		        if (oldEditor != null)
+		          oldEditor.dispose();
+
+		        // Identify the selected row
+		        TableItem item = (TableItem) e.item;
+		        if (item == null)
+		          return;
+
+		        // The control that will be the editor must be a child of the Table
+		        Text newEditor = new Text(table, SWT.NONE);
+		        newEditor.setText(item.getText(EDITABLECOLUMN));
+		        newEditor.addModifyListener(new ModifyListener() {
+		          public void modifyText(ModifyEvent me) {
+		            Text text = (Text) editor.getEditor();
+		            editor.getItem().setText(EDITABLECOLUMN, text.getText());
+		          }
+		        });
+		        newEditor.selectAll();
+		        newEditor.setFocus();
+		        editor.setEditor(newEditor, item, EDITABLECOLUMN);
+		      }
+		    });
+		
+		shell.setSize(700, 700);
+	    shell.open();
+		//the end
 		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
 		tblclmnNewColumn.setWidth(100);
 		tblclmnNewColumn.setText("Value");	
@@ -369,7 +400,6 @@ public class Window extends View {
 		});
 		btnClear.setBounds(42, 398, 75, 25);
 		btnClear.setText("Clear");
-
 
 	}
 }
