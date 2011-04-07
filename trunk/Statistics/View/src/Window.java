@@ -18,8 +18,8 @@ public class Window extends View {
 	private Text m_resultText;
 	private Text m_sizeText;
 	private Table table;
-	private Text valueText;
-	private Text probabilityText;
+	private Text m_valueText;
+	private Text m_probabilityText;
 	private Table table_1;
 
 	/**
@@ -164,6 +164,7 @@ public class Window extends View {
 				m_size = m_sizeText.getText();
 				size = Integer.parseInt(m_size);
 				m_arrayOfValue = new double[size];
+				m_value = m_valueText.getText();
 				
 				if(m_type == 1)
 				{
@@ -173,8 +174,8 @@ public class Window extends View {
 					{
 						tableItem[i] = new TableItem(table, SWT.NONE);
 					}		
-					m_value = valueText.getText();
-					String[] value = m_value.split("\\,");
+					
+					m_handler.processParseArgumentAction();
 					
 					for(int i = 0; i < size; i++)
 					{
@@ -196,18 +197,16 @@ public class Window extends View {
 					TableItem[] tableItem ;
 					TableItem[] tableItem_1 ;
 					tableItem = new TableItem[size];
-					tableItem_1 = new TableItem[size];
+					tableItem_1 = new TableItem[size];/**/
 					
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i] = new TableItem(table, SWT.NONE);
 						tableItem_1[i] = new TableItem(table_1, SWT.NONE);
 					}		
-					m_value = valueText.getText();
-					m_probability = probabilityText.getText();
-					
-					String[] value = m_value.split("\\,");
-					String[] probability = m_probability.split("\\,");
+				
+					m_probability = m_probabilityText.getText();					
+					m_handler.processParseArgumentAction();
 					
 					for(int i = 0; i < size; i++)
 					{
@@ -237,7 +236,7 @@ public class Window extends View {
 		lblChoose.setText("Choose type of Distribution :");
 		
 		Label lblAdd = new Label(shell, SWT.NONE);
-		lblAdd.setBounds(260, 20, 127, 15);
+		lblAdd.setBounds(240, 18, 127, 15);
 		lblAdd.setText("Enter numbers of value :");
 		
 		Label lblChoose_1 = new Label(shell, SWT.NONE);
@@ -252,25 +251,7 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{	
-				
-				String[] value = m_value.split("\\,");					
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfProbability = new double[size];
-					
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
-				}
-				
+				m_handler.processParseArgumentAction();				
 				m_handler.processExpectationAction();
 				m_resultText.setText(m_result);				
 			}
@@ -283,23 +264,7 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");				
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfProbability = new double[size];
-					
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
-				}
+				m_handler.processParseArgumentAction();	
 				m_handler.processVarianceAction();
 				m_resultText.setText(m_result);
 			}
@@ -312,23 +277,7 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");				
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfProbability = new double[size];
-					
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
-				}
+				m_handler.processParseArgumentAction();
 				m_handler.processThirdInitialMomentAction();
 				m_resultText.setText(m_result);
 			}
@@ -343,16 +292,7 @@ public class Window extends View {
 			{
 				if(m_type == - 1)
 				{				
-					String[] value = m_value.split("\\,");	
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfValue = new double[size];
-					m_arrayOfProbability = new double[size];
-				
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfValue[i] = Double.parseDouble(value[i]);
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
+					m_handler.processParseArgumentAction();
 					m_handler.processThirdCentralMomentAction();
 					m_resultText.setText(m_result);
 				} else
@@ -367,23 +307,7 @@ public class Window extends View {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				String[] value = m_value.split("\\,");				
-				m_arrayOfValue = new double[size];				
-				
-				for(int i = 0; i < size; i++)
-				{
-					m_arrayOfValue[i] = Double.parseDouble(value[i]);				
-				}
-				if(m_type== -1)
-				{
-					String[] probability = m_probability.split("\\,");
-					m_arrayOfProbability = new double[size];
-					
-					for(int i = 0; i < size; i++)
-					{
-						m_arrayOfProbability[i] = Double.parseDouble(probability[i]);
-					}
-				}
+				m_handler.processParseArgumentAction();
 				m_handler.processFourthInitialMomentAction();
 				m_resultText.setText(m_result);
 			}
@@ -408,18 +332,46 @@ public class Window extends View {
 		tblclmnNewColumn.setText("Value");	
 		
 		Label lblNewLabel = new Label(shell, SWT.NONE);
-		lblNewLabel.setBounds(260, 72, 125, 13);
+		lblNewLabel.setBounds(240, 73, 125, 13);
 		lblNewLabel.setText("Enter the probabilities:");
 		
-		probabilityText = new Text(shell, SWT.BORDER);
-		probabilityText.setBounds(466, 71, 109, 19);
+		m_probabilityText = new Text(shell, SWT.BORDER);
+		m_probabilityText.setBounds(466, 71, 109, 19);
 		
 		Label lblEnterValues = new Label(shell, SWT.NONE);
-		lblEnterValues.setBounds(260, 48, 200, 13);
+		lblEnterValues.setBounds(240, 47, 210, 13);
 		lblEnterValues.setText("Enter the values(separated by commas):");
 		
-		valueText = new Text(shell, SWT.BORDER);
-		valueText.setBounds(466, 45, 109, 21);
+		m_valueText = new Text(shell, SWT.BORDER);
+		m_valueText.setBounds(466, 45, 109, 21);
+		
+		Button btnClear = new Button(shell, SWT.NONE);
+		btnClear.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) 
+			{
+				m_handler.processClearAction();
+				
+				m_sizeText.setText(m_size);
+				m_valueText.setText(m_value);
+				m_probabilityText.setText(m_probability);
+				
+				TableItem[] tableItem ;
+				tableItem = new TableItem[size];
+				for(int i = 0; i < size; i++)
+				{
+					tableItem[i] = new TableItem(table, SWT.NONE);
+				}	
+				
+				for(int i = 0; i < size; i++)
+				{
+					tableItem[i].setText("222");
+				}
+				
+			}
+		});
+		btnClear.setBounds(42, 398, 75, 25);
+		btnClear.setText("Clear");
 
 
 	}
