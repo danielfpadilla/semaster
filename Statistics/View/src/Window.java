@@ -64,7 +64,7 @@ public class Window extends View {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setModified(true);
-		shell.setSize(703, 534);
+		shell.setSize(950, 700);
 		shell.setText("SWT Application");
 	
 		Button btnFourthCentralMoment = new Button(shell, SWT.NONE);
@@ -169,7 +169,10 @@ public class Window extends View {
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i] = new TableItem(table, SWT.NONE);
-						tableItem[i].setText(" ");
+						tableItem[i].setText(new String[] { "number " + i, "" });
+						TableItem item = new TableItem(table, SWT.NONE);
+		    			 item.setText(new String[] { "item " + i, "edit this value" });
+						
 					}		
 					
 					m_handler.processParseArgumentAction();
@@ -177,7 +180,7 @@ public class Window extends View {
 					for(int i = 0; i < size; i++)
 					{
 						tableItem[i].setText(value[i]);
-					}/**/
+					}
 				}else
 				{
 					m_arrayOfProbability = new double[size];				
@@ -308,10 +311,34 @@ public class Window extends View {
 		m_resultText = new Text(shell, SWT.BORDER);
 		m_resultText.setBounds(548, 175, 76, 19);
 		
-		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
+	/*	table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
 		table.setHeaderVisible(true);
-		table.setBounds(42, 120, 104, 249);
+		table.setBounds(25, 120, 104, 249);
 		table.setLinesVisible(true);
+		
+		TableColumn column1 = new TableColumn(table, SWT.NONE);
+		column1.setWidth(37);
+		column1.setText("number");
+		
+		TableColumn column2 = new TableColumn(table, SWT.NONE);
+		column2.setWidth(75);
+		column2.setText("Value");	*/
+		table = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setBounds(10, 108, 170, 334);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+		
+		TableColumn column1 = new TableColumn(table, SWT.NONE);
+		column1.setWidth(65);
+		column1.setText("New Column");
+		
+		TableColumn column2 = new TableColumn(table, SWT.NONE);
+		column2.setWidth(100);
+		column2.setText("New Column");
+		
+		column1.pack();
+	    column2.pack();
+		
 		// add TableEditor
 		final TableEditor editor = new TableEditor(table);
 		editor.horizontalAlignment = SWT.CENTER;
@@ -348,13 +375,10 @@ public class Window extends View {
 		
 		shell.setSize(700, 700);
 	    shell.open();
-		//the end
-		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
-		tblclmnNewColumn.setWidth(100);
-		tblclmnNewColumn.setText("Value");	
+		
 		
 		table_1 = new Table(shell, SWT.BORDER | SWT.FULL_SELECTION);
-		table_1.setBounds(150, 120, 104, 249);
+		table_1.setBounds(186, 108, 104, 334);
 		table_1.setHeaderVisible(true);
 		table_1.setLinesVisible(true);
 		
@@ -398,7 +422,7 @@ public class Window extends View {
 				}				
 			}
 		});
-		btnClear.setBounds(42, 398, 75, 25);
+		btnClear.setBounds(42, 476, 75, 25);
 		btnClear.setText("Clear");
 
 	}

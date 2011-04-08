@@ -240,11 +240,6 @@ public class Presenter implements IEventHandler
 			{
 				m_view.m_arrayOfProbability[i] = Double.parseDouble(m_view.probability[i]);
 			}
-		}
-		
-		
-	}
-	
-	
-	
+		}		
+	}	
 }
