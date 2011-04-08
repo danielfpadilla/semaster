@@ -12,9 +12,7 @@ public class View
 	public double[] m_arrayOfValue;
 	public double[] m_arrayOfProbability;
 	public String[] value;
-	public String[] probability;
-	
-	
+	public String[] probability;	
 	
 	public IEventHandler m_handler;
 	
