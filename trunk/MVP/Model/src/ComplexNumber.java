@@ -1,13 +1,13 @@
 public class ComplexNumber
 {
 
-	private double real;
-	private double imaginary;
+	private double m_real;
+	private double m_imaginary;
 
 	public ComplexNumber(double real, double imaginary)
 	{
 		this.setReal(real);
-		this.imaginary = imaginary;
+		this.m_imaginary = imaginary;
 	}
 
 	public boolean equals(Object object)
@@ -35,30 +35,30 @@ public class ComplexNumber
 
 	public void setReal(double real)
 	{
-		this.real = real;
+		this.m_real = real;
 	}
 
 	public double getReal()
 	{
-		return real;
+		return m_real;
 	}
 
 	public void setImaginary(double imaginary)
 	{
-		this.imaginary = imaginary;
+		this.m_imaginary = imaginary;
 	}
 
 	public double getImaginary()
 	{
-		return imaginary;
+		return m_imaginary;
 	}
 
 	public String toString()
 	{
 		StringBuffer buffer = new StringBuffer();
-		buffer.append(Double.toString(real));
-		buffer.append(imaginary < 0 ? " - " : " + ");
-		buffer.append(Double.toString(Math.abs(imaginary)) + "i");
+		buffer.append(Double.toString(m_real));
+		buffer.append(m_imaginary < 0 ? " - " : " + ");
+		buffer.append(Double.toString(Math.abs(m_imaginary)) + "i");
 		return buffer.toString();
 	}
 }
