@@ -6,8 +6,8 @@ public class ComplexNumber
 
 	public ComplexNumber(double real, double imaginary)
 	{
-		this.setReal(real);
-		this.m_imaginary = imaginary;
+		m_real = real;
+		m_imaginary = imaginary;
 	}
 
 	public boolean equals(Object object)
