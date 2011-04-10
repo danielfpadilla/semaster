@@ -88,9 +88,9 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInCone()
 	{
 		m_view.m_coneSelected = true;
-		m_view.m_coneRadius = "3.0";
+		m_view.m_coneRadius = "3/?.0";
 		m_view.m_coneHeight = "-14.0";
-		m_view.m_areaHandler.processAction();
+		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid cube radius or height",
 				m_view.m_warningErrorMessage);
 
@@ -100,8 +100,8 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInCube()
 	{
 		m_view.m_cubeSelected = true;
-		m_view.m_cubeFaceLength = "-3d";
-		m_view.m_areaHandler.processAction();
+		m_view.m_cubeFaceLength = "p3d";
+		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid cube facelength", m_view.m_warningErrorMessage);
 
 	}
@@ -110,9 +110,9 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInCylinder()
 	{
 		m_view.m_cylinderSelected = true;
-		m_view.m_cylinderRadius = "-7";
-		m_view.m_cylinderHeight = "-10";
-		m_view.m_areaHandler.processAction();
+		m_view.m_cylinderRadius = "-7f";
+		m_view.m_cylinderHeight = "#10";
+		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid cylinder radius or height",
 				m_view.m_warningErrorMessage);
 
@@ -122,8 +122,8 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInSphere()
 	{
 		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "-10f";
-		m_view.m_areaHandler.processAction();
+		m_view.m_sphereRadius = "0";
+		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid sphere radius.", m_view.m_warningErrorMessage);
 
 	}
@@ -135,7 +135,7 @@ public class PresenterTests
 
 		m_view.m_pyramidBaselength = "-46.0";
 		m_view.m_pyramidBaseHeight = "-4.0";
-		m_view.m_areaHandler.processAction();
+		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid square pyramid baseLength or Height",
 				m_view.m_warningErrorMessage);
 
@@ -145,9 +145,9 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsforInTorus()
 	{
 		m_view.m_torusSelected = true;
-		m_view.m_torusMinorRadius = "30.0";
+		m_view.m_torusMinorRadius = "10.0";
 		m_view.m_torusMajorRadius = "20.0";
-		m_view.m_areaHandler.processAction();
+		m_view.m_inputHandler.processAction();
 		assertEquals(
 				"Invalid arguments or minor radius greater than major radius",
 				m_view.m_warningErrorMessage);
@@ -158,8 +158,8 @@ public class PresenterTests
 	public void testWhetherCalculateButtonIsDisabledIncaseOfInvalidInput()
 	{
 		m_view.m_cubeSelected = true;
-		m_view.m_cubeFaceLength = "-3d";
-		m_view.m_areaHandler.processAction();
+		m_view.m_cubeFaceLength = "-3ld";
+		m_view.m_inputHandler.processAction();
 		assertEquals(false, m_view.m_state);
 
 	}

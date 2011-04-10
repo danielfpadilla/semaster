@@ -16,8 +16,8 @@ import src.IView;
 import src.Presenter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-//import org.eclipse.swt.events.VerifyListener;
-//import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.ModifyEvent;
 
 public class AreaCalculationWindow implements IView
 {
@@ -34,10 +34,11 @@ public class AreaCalculationWindow implements IView
 	private Text m_coneRadiusText;
 	private Text m_coneHeightText;
 	private Text m_areaResultText;
-	// private IActionHandler m_processInputHandler;
 	private TabFolder tabFolder;
-	// private boolean coneSelected = false;
 	private IActionHandler m_figureAreaHandler;
+	private IActionHandler m_processInputHandler;
+	private Label lblErrorMessage;
+	Button btnCalculateArea;
 
 	/**
 	 * Launch the application.
@@ -90,37 +91,22 @@ public class AreaCalculationWindow implements IView
 		shldSolidArea.setText("3D Shapes Area Calculator 1.0");
 		shldSolidArea.setLayout(null);
 
-		final TabFolder tabFolder = new TabFolder(shldSolidArea, SWT.NONE);
+		tabFolder = new TabFolder(shldSolidArea, SWT.NONE);
 		tabFolder.setBounds(10, 10, 353, 180);
 		tabFolder.setSelection(0);
-
-		tabFolder.addSelectionListener(new SelectionAdapter()
-		{
-
-			public void widgetSelected(SelectionEvent event)
-			{
-				tabFolder.getSelectionIndex();
-			}
-
-			public void widgetDefaultSelected(SelectionEvent e)
-			{
-				widgetSelected(e);
-			}
-
-		});
-
 		TabItem cone = new TabItem(tabFolder, SWT.NONE);
 		cone.setText("Cone");
 
 		Composite composite = new Composite(tabFolder, SWT.NONE);
 		cone.setControl(composite);
+	
 
 		m_coneRadiusText = new Text(composite, SWT.BORDER);
-		/*
-		 * m_coneRadiusText.addVerifyListener(new VerifyListener() { public void
-		 * verifyText(VerifyEvent e) { m_processInputHandler.processAction(); }
-		 * });
-		 */
+		m_coneRadiusText.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent arg0) {
+				m_processInputHandler.processAction();
+			}
+		});
 		m_coneRadiusText.setBounds(108, 26, 122, 19);
 
 		m_coneHeightText = new Text(composite, SWT.BORDER);
@@ -220,7 +206,7 @@ public class AreaCalculationWindow implements IView
 		m_torusMajorRadiusText = new Text(composite_5, SWT.BORDER);
 		m_torusMajorRadiusText.setBounds(137, 69, 121, 19);
 
-		Button btnCalculateArea = new Button(shldSolidArea, SWT.NONE);
+		btnCalculateArea = new Button(shldSolidArea, SWT.NONE);
 		btnCalculateArea.setEnabled(true);
 		btnCalculateArea.addSelectionListener(new SelectionAdapter()
 		{
@@ -235,6 +221,11 @@ public class AreaCalculationWindow implements IView
 
 		m_areaResultText = new Text(shldSolidArea, SWT.BORDER);
 		m_areaResultText.setBounds(164, 235, 156, 19);
+
+		Label lblErrorMessage = new Label(shldSolidArea, SWT.NONE);
+		lblErrorMessage.setText("error will appear here");
+		lblErrorMessage.setToolTipText("");
+		lblErrorMessage.setBounds(105, 196, 105, 13);
 
 	}
 
@@ -303,60 +294,44 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public boolean coneIsSelected()
 	{
-		// tabFolder.setSelection(0);
-		return (tabFolder.getSelection()[0].toString() == ("Cone"));
-
-		/*
-		 * TabItem[] items= tabFolder.getSelection(); TabItem item = items[0];
-		 * String str = item.toString(); System.out.println(str); boolean flag =
-		 * str.equals("Cone"); System.out.println(flag); return
-		 * str.equals("Cone");
-		 */
-		// return true;
+		return (tabFolder.getSelection()[0].getText() == ("Cone"));
 
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		// return (tabFolder.getSelection()[0].toString().equals("Cube"));
-		return false;
+		return (tabFolder.getSelection()[0].getText() == ("Cube"));
 	}
 
 	@Override
 	public boolean cylinderIsSelected()
 	{
-		// return (tabFolder.getSelection()[0].toString().equals("Cylinder"));
-		return false;
+		return (tabFolder.getSelection()[0].getText() == ("Cylinder"));
 	}
 
 	@Override
 	public boolean sphereIsSelected()
 	{
-		// return (tabFolder.getSelection()[0].toString().equals("Sphere"));
-		return false;
+		return (tabFolder.getSelection()[0].getText() == ("Sphere"));
 	}
 
 	@Override
 	public boolean squarePyramidIsSelected()
 	{
-
-		// return (tabFolder.getSelection()[0].toString()
-		// .equals("SquareBasedPyramid"));
-		return false;
+		return (tabFolder.getSelection()[0].getText() == ("SquareBasedPyramid"));
 	}
 
 	@Override
 	public boolean torusIsSelected()
 	{
-		// return (tabFolder.getSelection()[0].toString().equals("Torus"));
-		return false;
+		return (tabFolder.getSelection()[0].getText() == ("Torus"));
 	}
 
 	@Override
 	public void setErrorMessage(String message)
 	{
-		// TODO Auto-generated method stub
+		lblErrorMessage.setText(message);
 
 	}
 
@@ -375,17 +350,14 @@ public class AreaCalculationWindow implements IView
 	}
 
 	@Override
-	public void setStateOfCalculateAreaButton(Boolean flag)
+	public void setStateOfCalculateAreaButton(boolean flag)
 	{
-		// TODO Auto-generated method stub
-
+		btnCalculateArea.setGrayed(flag);
 	}
 
 	@Override
 	public void processInputActionHandler(IActionHandler handler)
 	{
-		// m_processInputHandler = handler;
+		m_processInputHandler = handler;
 	}
-
-	
 }

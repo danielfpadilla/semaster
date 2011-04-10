@@ -156,7 +156,7 @@ public class FakeView implements IView
 	}
 
 	@Override
-	public void setStateOfCalculateAreaButton(Boolean flag)
+	public void setStateOfCalculateAreaButton(boolean flag)
 	{
 	  m_state = flag;	
 		
