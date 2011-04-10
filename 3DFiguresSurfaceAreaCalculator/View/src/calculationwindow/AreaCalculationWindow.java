@@ -99,18 +99,24 @@ public class AreaCalculationWindow implements IView
 
 		Composite composite = new Composite(tabFolder, SWT.NONE);
 		cone.setControl(composite);
-	
-
-		m_coneRadiusText = new Text(composite, SWT.BORDER);
-		m_coneRadiusText.addModifyListener(new ModifyListener() {
-			public void modifyText(ModifyEvent arg0) {
+		ModifyListener listener = new ModifyListener()
+		{
+			public void modifyText(ModifyEvent e)
+			{
+				valueChanged((Text) e.widget);
+			}
+			public void valueChanged(Text text)
+			{
 				m_processInputHandler.processAction();
 			}
-		});
+		};
+		m_coneRadiusText = new Text(composite, SWT.BORDER);
 		m_coneRadiusText.setBounds(108, 26, 122, 19);
+		m_coneRadiusText.addModifyListener(listener);
 
 		m_coneHeightText = new Text(composite, SWT.BORDER);
 		m_coneHeightText.setBounds(108, 65, 122, 19);
+		m_coneHeightText.addModifyListener(listener);
 
 		Label lblNewLabel = new Label(composite, SWT.NONE);
 		lblNewLabel.setBounds(28, 29, 49, 13);
@@ -128,6 +134,7 @@ public class AreaCalculationWindow implements IView
 
 		m_cubeEdgelengthText = new Text(composite_1, SWT.BORDER);
 		m_cubeEdgelengthText.setBounds(115, 55, 109, 19);
+		m_cubeEdgelengthText.addModifyListener(listener);
 
 		Label lblNewLabel_2 = new Label(composite_1, SWT.NONE);
 		lblNewLabel_2.setBounds(29, 58, 68, 13);
@@ -141,9 +148,11 @@ public class AreaCalculationWindow implements IView
 
 		m_cylinderRadiusText = new Text(composite_2, SWT.BORDER);
 		m_cylinderRadiusText.setBounds(91, 44, 123, 19);
+		m_cylinderRadiusText.addModifyListener(listener);
 
 		m_cylinderHeightText = new Text(composite_2, SWT.BORDER);
 		m_cylinderHeightText.setBounds(91, 84, 123, 19);
+		m_cylinderHeightText.addModifyListener(listener);
 
 		Label lblNewLabel_3 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_3.setBounds(29, 47, 56, 13);
@@ -161,6 +170,7 @@ public class AreaCalculationWindow implements IView
 
 		m_sphereRadiusText = new Text(composite_3, SWT.BORDER);
 		m_sphereRadiusText.setBounds(75, 42, 135, 19);
+		m_sphereRadiusText.addModifyListener(listener);
 
 		Label lblRadius = new Label(composite_3, SWT.NONE);
 		lblRadius.setBounds(20, 45, 49, 13);
@@ -182,9 +192,11 @@ public class AreaCalculationWindow implements IView
 
 		m_pyramidBaselengthText = new Text(composite_4, SWT.BORDER);
 		m_pyramidBaselengthText.setBounds(113, 30, 132, 19);
+		m_pyramidBaselengthText.addModifyListener(listener);
 
 		m_pyramidHeightText = new Text(composite_4, SWT.BORDER);
 		m_pyramidHeightText.setBounds(116, 75, 129, 19);
+		m_pyramidHeightText.addModifyListener(listener);
 
 		TabItem torus = new TabItem(tabFolder, SWT.NONE);
 		torus.setText("Torus");
@@ -202,9 +214,12 @@ public class AreaCalculationWindow implements IView
 
 		m_torusMinorRadiusText = new Text(composite_5, SWT.BORDER);
 		m_torusMinorRadiusText.setBounds(137, 30, 121, 19);
+		m_torusMinorRadiusText.addModifyListener(listener);
+
 
 		m_torusMajorRadiusText = new Text(composite_5, SWT.BORDER);
 		m_torusMajorRadiusText.setBounds(137, 69, 121, 19);
+		m_torusMajorRadiusText.addModifyListener(listener);
 
 		btnCalculateArea = new Button(shldSolidArea, SWT.NONE);
 		btnCalculateArea.setEnabled(true);
@@ -223,7 +238,7 @@ public class AreaCalculationWindow implements IView
 		m_areaResultText.setBounds(164, 235, 156, 19);
 
 		Label lblErrorMessage = new Label(shldSolidArea, SWT.NONE);
-		lblErrorMessage.setText("error will appear here");
+		lblErrorMessage.setText("");
 		lblErrorMessage.setToolTipText("");
 		lblErrorMessage.setBounds(105, 196, 105, 13);
 

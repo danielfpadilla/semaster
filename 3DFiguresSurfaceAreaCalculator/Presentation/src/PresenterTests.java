@@ -122,7 +122,7 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInSphere()
 	{
 		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "0";
+		m_view.m_sphereRadius = "10.50";
 		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid sphere radius.", m_view.m_warningErrorMessage);
 
