@@ -36,18 +36,32 @@ public class Presenter
 		});
 	}
 
+	protected void verifyInput(String string)
+	{
+		char[] chars = new char[string.length()];
+		string.getChars(0, chars.length, chars, 0);
+		for (int i = 0; i < chars.length; i++)
+		{
+			if (!('0' < chars[i] && chars[i] <= '9'))
+			{
+				throw new NumberFormatException();
+			}
+		}
+
+	}
+
 	protected void processUserInput()
 	{
 		if (m_view.coneIsSelected())
 		{
 			try
 			{
-				Double.parseDouble(m_view.getConeRadius());
-				Double.parseDouble(m_view.getConeHeight());
+				verifyInput(m_view.getConeRadius());
+				verifyInput(m_view.getConeHeight());
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid cube radius or height");
 				m_view.setStateOfCalculateAreaButton(false);
 			}
 		}
@@ -55,11 +69,11 @@ public class Presenter
 		{
 			try
 			{
-				Double.parseDouble(m_view.getCubeEdgeLength());
+				verifyInput(m_view.getCubeEdgeLength());
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid cube facelength");
 				m_view.setStateOfCalculateAreaButton(false);
 			}
 		}
@@ -67,12 +81,12 @@ public class Presenter
 		{
 			try
 			{
-				Double.parseDouble(m_view.getCylinderRadius());
-				Double.parseDouble(m_view.getCylinderHeight());
+				verifyInput(m_view.getCylinderRadius());
+				verifyInput(m_view.getCylinderHeight());
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid cylinder radius or height");
 				m_view.setStateOfCalculateAreaButton(false);
 			}
 		}
@@ -80,11 +94,11 @@ public class Presenter
 		{
 			try
 			{
-				Double.parseDouble(m_view.getSphereRadius());
+				verifyInput(m_view.getSphereRadius());
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid sphere radius.");
 				m_view.setStateOfCalculateAreaButton(false);
 			}
 
@@ -93,13 +107,13 @@ public class Presenter
 		{
 			try
 			{
-				Double.parseDouble(m_view.getSquareBasedPyramidBaseLength());
-				Double.parseDouble(m_view.getSquareBasedPyramidBaseHeight());
+				verifyInput(m_view.getSquareBasedPyramidBaseLength());
+				verifyInput(m_view.getSquareBasedPyramidBaseHeight());
 
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid square pyramid baseLength or Height");
 				m_view.setStateOfCalculateAreaButton(false);
 
 			}
@@ -109,13 +123,12 @@ public class Presenter
 		{
 			try
 			{
-				Double.parseDouble(m_view.getTorusMinorRadius());
-				Double.parseDouble(m_view.getTorusMajorRadius());
-
+				verifyInput(m_view.getTorusMinorRadius());
+				verifyInput(m_view.getTorusMajorRadius());
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage(f.getMessage());
+				m_view.setErrorMessage("Invalid arguments or minor radius greater than major radius");
 				m_view.setStateOfCalculateAreaButton(false);
 
 			}
@@ -161,18 +174,17 @@ public class Presenter
 
 	}
 
-
-		protected void processFigureAreaCalculation()
+	protected void processFigureAreaCalculation()
+	{
+		try
 		{
-			try
-			{
-				calculateFigureArea();
-			}
-			catch (ArithmeticException e)
-			{
-				m_view.setErrorMessage(e.getMessage());
-			}
-
+			calculateFigureArea();
 		}
+		catch (ArithmeticException e)
+		{
+			m_view.setErrorMessage(e.getMessage());
+		}
+
+	}
 
 }
