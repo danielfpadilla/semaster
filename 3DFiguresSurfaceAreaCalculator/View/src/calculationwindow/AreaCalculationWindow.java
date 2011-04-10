@@ -238,9 +238,9 @@ public class AreaCalculationWindow implements IView
 		m_areaResultText.setBounds(164, 235, 156, 19);
 
 		Label lblErrorMessage = new Label(shldSolidArea, SWT.NONE);
-		lblErrorMessage.setText("");
+		lblErrorMessage.setText("error message to appear here");
 		lblErrorMessage.setToolTipText("");
-		lblErrorMessage.setBounds(105, 196, 105, 13);
+		lblErrorMessage.setBounds(105, 196, 181, 13);
 
 	}
 
