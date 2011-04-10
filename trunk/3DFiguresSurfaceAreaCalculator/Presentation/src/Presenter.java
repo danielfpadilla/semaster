@@ -43,7 +43,7 @@ public class Presenter
 		
 		for (int i = 0; i < chars.length; i++)
 		{
-			if (!(chars[0]!= '0') && '0' <= chars[i] && chars[i] <= '9' || chars[i] == '.')
+			if (!(chars[0]!= '0' && '0' <= chars[i] && chars[i] <= '9' || chars[i] == '.'))
 			{
 				throw new NumberFormatException();
 			}
