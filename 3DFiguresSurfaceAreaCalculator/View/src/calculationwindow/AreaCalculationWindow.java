@@ -222,6 +222,7 @@ public class AreaCalculationWindow implements IView
 		m_torusMajorRadiusText.addModifyListener(listener);
 
 		btnCalculateArea = new Button(shldSolidArea, SWT.NONE);
+		btnCalculateArea.setGrayed(true);
 		btnCalculateArea.setEnabled(true);
 		btnCalculateArea.addSelectionListener(new SelectionAdapter()
 		{
