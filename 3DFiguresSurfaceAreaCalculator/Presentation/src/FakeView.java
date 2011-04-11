@@ -8,7 +8,8 @@ public class FakeView implements IView
 	public boolean m_sphereSelected = false;
 	public boolean m_squarePyramidSelected = false;
 	public boolean m_torusSelected = false;
-	public boolean m_state;
+	public boolean m_calculateButtonstate;
+	public boolean m_errorIconState;
 	public String m_coneRadius;
 	public String m_coneHeight;
 	public String m_cubeFaceLength;
@@ -158,7 +159,14 @@ public class FakeView implements IView
 	@Override
 	public void setStateOfCalculateAreaButton(boolean flag)
 	{
-	  m_state = flag;	
+	  m_calculateButtonstate = flag;	
+		
+	}
+
+	@Override
+	public void setStateOfErrorIcon(boolean flag)
+	{
+		m_errorIconState = flag;
 		
 	}
 
