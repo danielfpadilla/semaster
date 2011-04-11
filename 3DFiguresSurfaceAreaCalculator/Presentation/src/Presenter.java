@@ -38,17 +38,31 @@ public class Presenter
 
 	protected void verifyInput(String string)
 	{
+		
+		if (string.length() == 0)
+		{
+			throw new NumberFormatException();
+			
+		}
+    
 		char[] chars = new char[string.length()];
 		string.getChars(0, chars.length, chars, 0);
-		
+
 		for (int i = 0; i < chars.length; i++)
 		{
-			if (!(chars[0]!= '0' && '0' <= chars[i] && chars[i] <= '9' || chars[i] == '.'))
+			if (!(chars[0] != '0' && '0' <= chars[i] && chars[i] <= '9' || chars[i] == '.'))
 			{
 				throw new NumberFormatException();
 			}
 		}
+	}
 
+	protected void checkTorusValidity(String a, String b)
+	{
+		if (Double.parseDouble(a) <= Double.parseDouble(b))
+		{
+			throw new ArithmeticException();
+		}
 	}
 
 	protected void processUserInput()
@@ -62,9 +76,12 @@ public class Presenter
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage("Invalid cube radius or height");
+				m_view.setErrorMessage("Invalid cone radius or height");
 				m_view.setStateOfCalculateAreaButton(false);
+				return;
 			}
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 		}
 		if (m_view.cubeIsSelected())
 		{
@@ -76,7 +93,10 @@ public class Presenter
 			{
 				m_view.setErrorMessage("Invalid cube facelength");
 				m_view.setStateOfCalculateAreaButton(false);
+				return;
 			}
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 		}
 		if (m_view.cylinderIsSelected())
 		{
@@ -89,7 +109,10 @@ public class Presenter
 			{
 				m_view.setErrorMessage("Invalid cylinder radius or height");
 				m_view.setStateOfCalculateAreaButton(false);
+				return;
 			}
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 		}
 		if (m_view.sphereIsSelected())
 		{
@@ -101,7 +124,10 @@ public class Presenter
 			{
 				m_view.setErrorMessage("Invalid sphere radius.");
 				m_view.setStateOfCalculateAreaButton(false);
+				return;
 			}
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 
 		}
 		if (m_view.squarePyramidIsSelected())
@@ -116,23 +142,38 @@ public class Presenter
 			{
 				m_view.setErrorMessage("Invalid square pyramid baseLength or Height");
 				m_view.setStateOfCalculateAreaButton(false);
-
+				return;
 			}
+
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 
 		}
 		if (m_view.torusIsSelected())
 		{
+
 			try
 			{
+				checkTorusValidity(m_view.getTorusMajorRadius(),m_view.getTorusMinorRadius());
 				verifyInput(m_view.getTorusMinorRadius());
 				verifyInput(m_view.getTorusMajorRadius());
+				
 			}
 			catch (NumberFormatException f)
 			{
-				m_view.setErrorMessage("Invalid arguments or minor radius greater than major radius");
+				m_view.setErrorMessage("Invalid arguments of minor radius greater or major radius");
 				m_view.setStateOfCalculateAreaButton(false);
-
+				return;
 			}
+			catch (ArithmeticException a)
+			{
+				m_view.setErrorMessage("Incorrect input : minor radius greater than major radius");
+				m_view.setStateOfCalculateAreaButton(false);
+				return;
+				
+			}
+			m_view.setErrorMessage("");
+			m_view.setStateOfCalculateAreaButton(true);
 
 		}
 

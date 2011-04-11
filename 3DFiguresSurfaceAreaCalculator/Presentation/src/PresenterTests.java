@@ -91,7 +91,7 @@ public class PresenterTests
 		m_view.m_coneRadius = "3/?.0";
 		m_view.m_coneHeight = "-14.0";
 		m_view.m_inputHandler.processAction();
-		assertEquals("Invalid cube radius or height",
+		assertEquals("Invalid cone radius or height",
 				m_view.m_warningErrorMessage);
 
 	}
@@ -122,7 +122,7 @@ public class PresenterTests
 	public void canProcessInputToCheckForErrorsInSphere()
 	{
 		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "10.50";
+		m_view.m_sphereRadius = "0.0";
 		m_view.m_inputHandler.processAction();
 		assertEquals("Invalid sphere radius.", m_view.m_warningErrorMessage);
 
@@ -142,14 +142,26 @@ public class PresenterTests
 	}
 
 	@Test
-	public void canProcessInputToCheckForErrorsforInTorus()
+	public void canProcessInputToCheckForNumberFormatErrorsforInTorus()
+	{
+		m_view.m_torusSelected = true;
+		m_view.m_torusMinorRadius = "#0.0";
+		m_view.m_torusMajorRadius = "!0";
+		m_view.m_inputHandler.processAction();
+		assertEquals(
+				"Invalid arguments of minor radius greater or major radius",
+				m_view.m_warningErrorMessage);
+
+	}
+	@Test
+	public void canProcessInputToCheckThatMinorRadiusIsNotGreaterThanMajorRadiusforTorus()
 	{
 		m_view.m_torusSelected = true;
 		m_view.m_torusMinorRadius = "10.0";
-		m_view.m_torusMajorRadius = "20.0";
+		m_view.m_torusMajorRadius = "5.0";
 		m_view.m_inputHandler.processAction();
 		assertEquals(
-				"Invalid arguments or minor radius greater than major radius",
+				"Incorrect input : minor radius greater than major radius",
 				m_view.m_warningErrorMessage);
 
 	}
