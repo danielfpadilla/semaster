@@ -8,5 +8,5 @@ public interface Iview
    public void setSortedArray(String sortedArray);
    public String getArraySize();
    public void generateRandomArray(IActionHandler handler);
-   public void sortArray(IActionHandler handler);
+   public void sortingArray(IActionHandler handler);
 }
