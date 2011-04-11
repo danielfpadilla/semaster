@@ -44,9 +44,15 @@ public class Presenter
 		m_view.getSortingMethod();
 		for(int i = 0; i < Integer.parseInt(m_view.getArraySize()); i++)
 		{
-		  // To do - how to parse a string to an array if integers!
+			// parse a string to an array if integers!
+			String myString = "a||b||c";
+			myString = myString.replace("||", ",");
+			String[] split = myString.split(",");
+			                       
+		  
 		}
-		m_view.setSortedArray(m_quickSort.sortArray(Integer.parseInt(m_view.getUnsortedArray())));
+		m_view.setSortedArray(m_quickSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
+		m_view.setSortedArray(m_mergeSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
 	}
 	public void generateArrayRandomNumbers()
 	{
