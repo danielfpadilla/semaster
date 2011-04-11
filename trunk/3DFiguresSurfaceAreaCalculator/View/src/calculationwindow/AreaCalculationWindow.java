@@ -1,5 +1,7 @@
 package src.calculationwindow;
 
+
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
@@ -19,9 +21,11 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
 
+
 public class AreaCalculationWindow implements IView
 {
-
+	Display display = new Display();
+	Label lblErrorIcon ;
 	protected Shell shldSolidArea;
 	private Text m_torusMinorRadiusText;
 	private Text m_torusMajorRadiusText;
@@ -52,6 +56,7 @@ public class AreaCalculationWindow implements IView
 			AreaCalculationWindow window = new AreaCalculationWindow();
 			new Presenter(window);
 			window.open();
+			
 		}
 		catch (Exception e)
 		{
@@ -82,10 +87,11 @@ public class AreaCalculationWindow implements IView
 	 */
 	protected void createContents()
 	{
+		
 		shldSolidArea = new Shell();
-		shldSolidArea
-				.setImage(SWTResourceManager
-						.getImage("C:\\Documents and Settings\\mbuyu\\Desktop\\Cube_Icon_by_ekamanganese.jpg"));
+		//shldSolidArea
+		   // .setImage(SWTResourceManager
+	          //.getImage("C:\\Documents and Settings\\mbuyu\\Desktop\\Cube_Icon_by_ekamanganese.jpg"));
 		shldSolidArea.setToolTipText("");
 		shldSolidArea.setSize(370, 326);
 		shldSolidArea.setText("3D Shapes Area Calculator 1.0");
@@ -222,7 +228,6 @@ public class AreaCalculationWindow implements IView
 		m_torusMajorRadiusText.addModifyListener(listener);
 
 		btnCalculateArea = new Button(shldSolidArea, SWT.NONE);
-		btnCalculateArea.setGrayed(true);
 		btnCalculateArea.setEnabled(true);
 		btnCalculateArea.addSelectionListener(new SelectionAdapter()
 		{
@@ -235,14 +240,23 @@ public class AreaCalculationWindow implements IView
 		btnCalculateArea.setBounds(35, 233, 92, 23);
 		btnCalculateArea.setText("Calculate Area");
 
-		m_areaResultText = new Text(shldSolidArea, SWT.BORDER);
+		m_areaResultText = new Text(shldSolidArea, SWT.BORDER | SWT.READ_ONLY);
 		m_areaResultText.setBounds(164, 235, 156, 19);
-
-		Label lblErrorMessage = new Label(shldSolidArea, SWT.NONE);
-		lblErrorMessage.setText("error message to appear here");
+		
+		lblErrorMessage = new Label(shldSolidArea, SWT.NONE);
+		lblErrorMessage.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		
+		lblErrorMessage.setText("Enter the parameters");
 		lblErrorMessage.setToolTipText("");
-		lblErrorMessage.setBounds(105, 196, 181, 13);
+		lblErrorMessage.setBounds(44, 196, 276, 13);
+		
+		lblErrorIcon = new Label(shldSolidArea, SWT.NONE);
+		lblErrorIcon.setImage(SWTResourceManager.getImage("C:\\Documents and Settings\\mbuyu\\Desktop\\error icon.png"));
+		lblErrorIcon.setBounds(20, 196, 23, 19);
+		
 
+		// In order to set message initially
+		//m_processInputHandler.processAction();
 	}
 
 	@Override
@@ -368,7 +382,7 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public void setStateOfCalculateAreaButton(boolean flag)
 	{
-		btnCalculateArea.setGrayed(flag);
+		btnCalculateArea.setEnabled(flag);
 	}
 
 	@Override
