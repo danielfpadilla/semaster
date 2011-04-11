@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -126,7 +125,7 @@ public class FractionTest
 		Fraction fractionSubtraction = new Fraction(-3, 4);
 
 		Assert.assertEquals(fractionSubtraction,
-		fraction.subtractFractions(fraction1));
+				fraction.subtractFractions(fraction1));
 	}
 
 	@Test
@@ -137,7 +136,7 @@ public class FractionTest
 		Fraction fractionMultiplication = new Fraction(1, 2);
 
 		Assert.assertEquals(fractionMultiplication,
-		fraction.multiplyFractions(fraction1));
+				fraction.multiplyFractions(fraction1));
 	}
 
 	@Test
