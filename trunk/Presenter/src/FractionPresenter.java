@@ -1,8 +1,5 @@
-
-																											
 public class FractionPresenter
 {
-	private Fraction m_fraction;
 	private static IFractionView m_view;
 
 	public FractionPresenter(IFractionView view)
@@ -18,6 +15,18 @@ public class FractionPresenter
 
 			}
 		});
+
+		m_view.setInputActionHandler(new IActionHandler()
+		{
+
+			@Override
+			public void processAction()
+			{
+				FractionPresenter.this.processUserInput();
+
+			}
+		});
+
 		m_view.setSubstractActionHandler(new IActionHandler()
 		{
 
@@ -44,21 +53,90 @@ public class FractionPresenter
 			@Override
 			public void processAction()
 			{
-				
-					FractionPresenter.this.processDivideAction();
-			
+
+				FractionPresenter.this.processDivideAction();
+
 			}
 		});
 		m_view.setClearActionHandler(new IActionHandler()
 		{
-			
+
 			@Override
 			public void processAction()
 			{
 				FractionPresenter.this.processClearAction();
-				
+
 			}
 		});
+	}
+
+	protected void validate(String input)
+	{
+
+		if (input.length() == 0)
+		{
+			throw new NumberFormatException();
+		}
+
+		if ((m_view.getDenominator1() == "0" || m_view.getDenominator2() == "0"))
+		{
+			throw new NumberFormatException();
+		}
+
+		char[] string = new char[input.length()];
+		input.getChars(0, string.length, string, 0);
+
+		for (int i = 0; i < string.length; i++)
+		{
+			// if(string[i]<'0' && string[i]>'9')
+			if (!(string[0] != '0' && '0' <= string[i] && string[i] <= '9' || string[i] == '.'))
+			{
+				throw new IllegalArgumentException();
+			}
+		}
+
+	}
+
+	protected void processUserInput()
+	{
+
+		try
+		{
+			validate(m_view.getNumerator1());
+			validate(m_view.getNumerator2());
+			validate(m_view.getDenominator1());
+			validate(m_view.getDenominator2());
+
+		}
+
+		catch (NumberFormatException e)
+		{
+			m_view.setOutputError("there is a zero in the denominator");
+			m_view.setimageLabel(true);
+			m_view.buttonAdd(false);
+			m_view.buttonDivide(false);
+			m_view.buttonMultiply(false);
+			m_view.buttonSubstract(false);
+			return;
+		}
+
+		catch (IllegalArgumentException e)
+		{
+			m_view.setOutputError("Invalid input Character");
+			m_view.setimageLabel(true);
+			m_view.buttonAdd(false);
+			m_view.buttonDivide(false);
+			m_view.buttonMultiply(false);
+			m_view.buttonSubstract(false);
+			return;
+		}
+		m_view.setOutputError("");
+		m_view.setimageLabel(false);
+		m_view.buttonAdd(true);
+		m_view.buttonDivide(true);
+		m_view.buttonMultiply(true);
+		m_view.buttonSubstract(true);
+
 	}
 
 	public static Fraction convertToFraction(String numeratorString,
@@ -66,16 +144,16 @@ public class FractionPresenter
 	{
 		try
 		{
-		return new Fraction(Integer.parseInt(numeratorString),
-				Integer.parseInt(denominatorString));
+			return new Fraction(Integer.parseInt(numeratorString),
+					Integer.parseInt(denominatorString));
 		}
-		
-		catch(IllegalArgumentException e)
+
+		catch (IllegalArgumentException e)
 		{
-		   m_view.setOutputError("Invalid Input Data!");
+			m_view.setOutputError("Invalid Input Data!");
 			return null;
 		}
-		
+
 	}
 
 	void processAddAction()
@@ -113,19 +191,27 @@ public class FractionPresenter
 
 	}
 
-	protected void processDivideAction() 
+	protected void processDivideAction()
 	{
-		
-		Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
-				m_view.getDenominator1());
-		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
-				m_view.getDenominator2());
-      
-		      Fraction result = fraction2.divideFractions(fraction1);
-		      m_view.setResult(result.toString());
-                 
-        	}
-	
+		try
+		{
+			Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
+					m_view.getDenominator1());
+			Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
+					m_view.getDenominator2());
+
+			Fraction result = fraction2.divideFractions(fraction1);
+			m_view.setResult(result.toString());
+		}
+		catch (ArithmeticException e)
+		{
+			m_view.setOutputError("there is a zero in the denominator!");
+			// e.getMessage();
+
+		}
+
+	}
+
 	protected void processClearAction()
 	{
 		m_view.setNumerator1("");
@@ -133,6 +219,6 @@ public class FractionPresenter
 		m_view.setDenominator2("");
 		m_view.setNumerator2("");
 		m_view.setResult("");
-		
+
 	}
 }

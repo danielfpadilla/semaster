@@ -1,5 +1,4 @@
 
-
 public interface IFractionView
 {
 	public String getNumerator1();
@@ -9,7 +8,7 @@ public interface IFractionView
 	public String getNumerator2();
 
 	public String getDenominator2();
-	
+
 	public void setNumerator1(String string);
 
 	public void setDenominator1(String string);
@@ -27,10 +26,21 @@ public interface IFractionView
 	public void setMultiplyActionHandler(IActionHandler handler);
 
 	public void setDevideActionHandler(IActionHandler handler);
-	
+
+	public void setInputActionHandler(IActionHandler handler);
+
 	public void setClearActionHandler(IActionHandler handler);
-	
-	public  void setOutputError(String message);
-	
+
+	public void setOutputError(String message);
+
+	public void buttonAdd(boolean flag);
+
+	public void buttonSubstract(boolean flag);
+
+	public void buttonDivide(boolean flag);
+
+	public void buttonMultiply(boolean flag);
+
+	public void setimageLabel(boolean flag);
 
 }
