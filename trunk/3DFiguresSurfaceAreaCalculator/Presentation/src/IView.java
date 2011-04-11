@@ -39,6 +39,7 @@ public interface IView
 	public void setErrorMessage(String message);
 
 	public void setStateOfCalculateAreaButton(boolean flag);
+	public void setStateOfErrorIcon(boolean flag);
 
 	public void processInputActionHandler(IActionHandler handler);
 

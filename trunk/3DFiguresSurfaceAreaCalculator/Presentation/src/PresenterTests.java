@@ -172,7 +172,7 @@ public class PresenterTests
 		m_view.m_cubeSelected = true;
 		m_view.m_cubeFaceLength = "-3ld";
 		m_view.m_inputHandler.processAction();
-		assertEquals(false, m_view.m_state);
+		assertEquals(false, m_view.m_calculateButtonstate);
 
 	}
 }

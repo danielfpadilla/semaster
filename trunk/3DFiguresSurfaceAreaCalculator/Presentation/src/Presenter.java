@@ -77,11 +77,14 @@ public class Presenter
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid cone radius or height");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
+			
 		}
 		if (m_view.cubeIsSelected())
 		{
@@ -92,10 +95,12 @@ public class Presenter
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid cube facelength");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
 		}
 		if (m_view.cylinderIsSelected())
@@ -103,15 +108,18 @@ public class Presenter
 			try
 			{
 				verifyInput(m_view.getCylinderRadius());
+				
 				verifyInput(m_view.getCylinderHeight());
 			}
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid cylinder radius or height");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
 		}
 		if (m_view.sphereIsSelected())
@@ -123,10 +131,12 @@ public class Presenter
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid sphere radius.");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
 
 		}
@@ -141,11 +151,13 @@ public class Presenter
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid square pyramid baseLength or Height");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
 
 		}
@@ -162,17 +174,20 @@ public class Presenter
 			catch (NumberFormatException f)
 			{
 				m_view.setErrorMessage("Invalid arguments of minor radius greater or major radius");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 			}
 			catch (ArithmeticException a)
 			{
 				m_view.setErrorMessage("Incorrect input : minor radius greater than major radius");
+				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
 				
 			}
 			m_view.setErrorMessage("");
+			m_view.setStateOfErrorIcon(false);
 			m_view.setStateOfCalculateAreaButton(true);
 
 		}
