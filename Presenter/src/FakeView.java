@@ -1,4 +1,3 @@
-
 public class FakeView implements IFractionView
 {
 
@@ -7,12 +6,13 @@ public class FakeView implements IFractionView
 	public String m_numerator2;
 	public String m_denominator2;
 	public String m_result;
-
+	public boolean mode;
 	public IActionHandler m_addActionHandler;
 	public IActionHandler m_substractActionHandler;
 	public IActionHandler m_multiplyActionHandler;
 	public IActionHandler m_divideActionHandler;
 	public IActionHandler m_clearActionHandler;
+	public IActionHandler m_inputActionHandler;
 	public String m_alertErrorMessage;
 
 	@Override
@@ -78,39 +78,81 @@ public class FakeView implements IFractionView
 	@Override
 	public void setClearActionHandler(IActionHandler handler)
 	{
-		m_clearActionHandler=handler;
-		
+		m_clearActionHandler = handler;
+
 	}
 
 	@Override
 	public void setNumerator1(String string)
 	{
-		m_numerator1=string;
+		m_numerator1 = string;
 	}
 
 	@Override
 	public void setDenominator1(String string)
 	{
-		m_denominator1=string;
+		m_denominator1 = string;
 	}
 
 	@Override
 	public void setNumerator2(String string)
 	{
-		m_numerator2=string;
+		m_numerator2 = string;
 	}
 
 	@Override
 	public void setDenominator2(String string)
 	{
-		m_denominator2=string;
+		m_denominator2 = string;
 	}
 
 	@Override
 	public void setOutputError(String message)
 	{
 		m_alertErrorMessage = message;
-		
+
+	}
+
+	@Override
+	public void setInputActionHandler(IActionHandler handler)
+	{
+		m_inputActionHandler = handler;
+
+	}
+
+	@Override
+	public void buttonAdd(boolean flag)
+	{
+		mode = flag;
+
+	}
+
+	@Override
+	public void buttonSubstract(boolean flag)
+	{
+		mode = flag;
+
+	}
+
+	@Override
+	public void buttonDivide(boolean flag)
+	{
+		mode = flag;
+
+	}
+
+	@Override
+	public void buttonMultiply(boolean flag)
+	{
+		mode = flag;
+
+	}
+
+	@Override
+	public void setimageLabel(boolean flag)
+	{
+		mode = flag;
+
 	}
 
 }

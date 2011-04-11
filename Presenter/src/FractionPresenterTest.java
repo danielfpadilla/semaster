@@ -2,7 +2,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import junit.framework.Assert;
 
 public class FractionPresenterTest
@@ -32,8 +31,8 @@ public class FractionPresenterTest
 	{
 		String numeratorString = "1";
 		String denominatorString = "2";
-        
-		Fraction convertedFraction =FractionPresenter.convertToFraction(
+
+		Fraction convertedFraction = FractionPresenter.convertToFraction(
 				numeratorString, denominatorString);
 
 		Assert.assertEquals(new Fraction(1, 2), convertedFraction);
@@ -89,6 +88,20 @@ public class FractionPresenterTest
 	}
 
 	@Test
+	public void canThrowAnArithmeticExceptionWhenDividingByZero()
+	{
+		m_view.m_numerator1 = "1";
+		m_view.m_denominator1 = "0";
+		m_view.m_numerator2 = "0";
+		m_view.m_denominator2 = "1";
+
+		m_view.m_inputActionHandler.processAction();
+		Assert.assertEquals("there is a zero in the denominator",
+				m_view.m_alertErrorMessage);
+
+	}
+
+	@Test
 	public void canCreateDivideAction()
 	{
 		m_view.m_numerator1 = "1";
@@ -99,30 +112,47 @@ public class FractionPresenterTest
 		m_view.m_divideActionHandler.processAction();
 		Assert.assertEquals("1/2", m_view.m_result);
 	}
-	
-	@Test 
+
+	@Test
 	public void canCreateClearAction()
 	{
-		m_view.m_numerator1="";
-		m_view.m_denominator1="";
-		m_view.m_numerator2="";
-		m_view.m_denominator2="";
-		
+		m_view.m_numerator1 = "";
+		m_view.m_denominator1 = "";
+		m_view.m_numerator2 = "";
+		m_view.m_denominator2 = "";
+
 		m_view.m_clearActionHandler.processAction();
 		Assert.assertNotNull(m_view.m_result);
 	}
-	
-	@Test 
+
+	@Test
 	public void canThrowExceptionForInputMismatch()
 	{
-		m_view.m_numerator1="q";
-		m_view.m_denominator1="a";
-		m_presenter.convertToFraction(m_view.m_numerator1, m_view.m_denominator1);
-		
+		m_view.m_numerator1 = "q";
+		m_view.m_denominator1 = "a";
+		m_presenter.convertToFraction(m_view.m_numerator1,
+				m_view.m_denominator1);
+
 		Assert.assertEquals("Invalid Input Data!", m_view.m_alertErrorMessage);
 	}
+
+	@Test
+	public void canCheckForErrorsInInputwhenDenominatorsHaveZero()
+	{
+		m_view.m_numerator1 = "1";
+		m_view.m_denominator1 = "0";
+		m_view.m_inputActionHandler.processAction();
+		Assert.assertEquals("there is a zero in the denominator",
+				m_view.m_alertErrorMessage);
+	}
+
+	@Test
+	public void canCheckForErrorsInInputwhenInputHaveInvalidCharacters()
+	{
+		m_view.m_numerator1 = "a";
+		m_view.m_denominator1 = "1";
+		m_view.m_inputActionHandler.processAction();
+		Assert.assertEquals("Invalid input Character",
+				m_view.m_alertErrorMessage);
+	}
 }
-
-																																																																																																																																																																																																																				
-
-
