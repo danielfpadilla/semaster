@@ -1,6 +1,4 @@
 
-
-
 public class Fraction implements IFraction
 {
 	private int m_numerator;
@@ -70,8 +68,7 @@ public class Fraction implements IFraction
 
 	public void reduceFraction()
 	{
-		int num = greatestCommonDivisor(m_numerator,
-				m_denominator);
+		int num = greatestCommonDivisor(m_numerator, m_denominator);
 
 		m_numerator = m_numerator / num;
 		m_denominator = m_denominator / num;
@@ -80,8 +77,7 @@ public class Fraction implements IFraction
 
 	public double toDouble()
 	{
-		double result = (double) m_numerator
-				/ (double) m_denominator;
+		double result = (double) m_numerator / (double) m_denominator;
 		return result;
 	}
 
@@ -101,7 +97,8 @@ public class Fraction implements IFraction
 		Fraction result = new Fraction();
 		result.setNumerator((myFraction.getNumerator() * this.getDenominator())
 				+ this.getNumerator() * myFraction.getDenominator());
-		result.setDenominator(myFraction.getDenominator() * this.getDenominator());
+		result.setDenominator(myFraction.getDenominator()
+				* this.getDenominator());
 		// ((a*d)+(c*b))/(b*d)
 		result.reduceFraction();
 		return result;
@@ -113,7 +110,8 @@ public class Fraction implements IFraction
 		Fraction result = new Fraction();
 		result.setNumerator((fraction1.getNumerator() * this.getDenominator())
 				- this.getNumerator() * fraction1.getDenominator());
-		result.setDenominator(fraction1.getDenominator() * this.getDenominator());
+		result.setDenominator(fraction1.getDenominator()
+				* this.getDenominator());
 		// ((a*d)-(c*b))/(b*d)
 		result.reduceFraction();
 		return result;
@@ -124,7 +122,8 @@ public class Fraction implements IFraction
 	{
 		Fraction result = new Fraction();
 		result.setNumerator(fraction1.getNumerator() * this.getNumerator());
-		result.setDenominator(fraction1.getDenominator() * this.getDenominator());
+		result.setDenominator(fraction1.getDenominator()
+				* this.getDenominator());
 		// (a*c)/(b*d)
 		result.reduceFraction();
 		return result;
@@ -136,8 +135,10 @@ public class Fraction implements IFraction
 		Fraction result = new Fraction();
 		if (this.getNumerator() != 0)
 		{
-			result.setNumerator(fraction1.getNumerator() * this.getDenominator());
-			result.setDenominator(fraction1.getDenominator() * this.getNumerator());
+			result.setNumerator(fraction1.getNumerator()
+					* this.getDenominator());
+			result.setDenominator(fraction1.getDenominator()
+					* this.getNumerator());
 			// (a*d)/(b*c)
 			result.reduceFraction();
 			return result;
