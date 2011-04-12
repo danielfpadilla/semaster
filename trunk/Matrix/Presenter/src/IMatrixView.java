@@ -13,7 +13,10 @@ public interface IMatrixView
 	public void setResultC01(String c01);
 	public void setResultC10(String c10);
 	public void setResultC11(String c11);
+	public void setDeterminatResult(String determinantResult);
 	public void setAddActionHandler(IActionHandler handler);
+	public void setDeterminantActionHandler(IActionHandler handler);
+	
 
 	
 

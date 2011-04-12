@@ -13,7 +13,9 @@ public class MatrixFakeView implements IMatrixView
   public String m_c01;
   public String m_c10;
   public String m_c11;
+  public String m_determinantResult;
   IActionHandler m_addMatrixActionHandler ;
+  IActionHandler m_determinantActionHandler;
 	@Override
 	public String getmatrixA00()
 	{
@@ -91,7 +93,21 @@ public class MatrixFakeView implements IMatrixView
 	@Override
 	public void setAddActionHandler(IActionHandler handler)
 	{
-	m_addMatrixActionHandler = handler;
+	    m_addMatrixActionHandler = handler;
+	}
+
+	@Override
+	public void setDeterminatResult(String determinantResult)
+	{
+		m_determinantResult = determinantResult;
+		
+	}
+
+	@Override
+	public void setDeterminantActionHandler(IActionHandler handler)
+	{
+		m_determinantActionHandler =  handler;
+		
 	}
 	
 }

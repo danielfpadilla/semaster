@@ -18,6 +18,26 @@ public class MatrixPresenter
 
 			}
 		});
+		m_view.setDeterminantActionHandler(new IActionHandler()
+		{
+			
+			@Override
+			public void processAction()
+			{
+				MatrixPresenter.this.calculateDeterminant();
+				
+			}
+		});
+	}
+	protected void calculateDeterminant()
+	{
+		double[][] a = new double[2][2];
+		Matrix objectA = new Matrix(a, 2);
+		objectA = (convertToMatrix(m_view.getmatrixA00(),
+				m_view.getmatrixA01(), m_view.getmatrixA10(),
+				m_view.getmatrixA11()));
+		double res = objectA.Determinant(objectA.m_data);
+		m_view.setDeterminatResult(Double.toString(res));
 	}
 
 	public Matrix convertToMatrix(String a00, String a01, String a10, String a11)
@@ -49,18 +69,23 @@ public class MatrixPresenter
 
 	}
 
-	protected Matrix addMatrices()
+	protected void addMatrices()
 	{
 		double[][] a = new double[2][2];
-		Matrix objectA= new Matrix(a, 2);
+		Matrix objectA = new Matrix(a, 2);
 		objectA = (convertToMatrix(m_view.getmatrixA00(),
 				m_view.getmatrixA01(), m_view.getmatrixA10(),
 				m_view.getmatrixA11()));
 
-		objectA.add(convertToMatrix(m_view.getmatrixB00(),
+		double[][] res = new double[2][2];
+		Matrix objectres = new Matrix(res, 2);
+		objectres = objectA.add(convertToMatrix(m_view.getmatrixB00(),
 				m_view.getmatrixB01(), m_view.getmatrixB10(),
 				m_view.getmatrixB11()));
-		return objectA;
+		m_view.setResultC00(Double.toString(objectres.getValue(0, 0)));
+		m_view.setResultC01(Double.toString(objectres.getValue(0, 1)));
+		m_view.setResultC10(Double.toString(objectres.getValue(1, 0)));
+		m_view.setResultC11(Double.toString(objectres.getValue(1, 1)));
 
 	}
 }

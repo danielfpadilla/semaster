@@ -47,13 +47,7 @@ public class MatrixPresenterTest
 
 	@Test
 public void canAddTwoMatrices()
-{/*
-	double [][] a = {{1.0, 1.0},{1.0,1.0}};
-	double[][] b = {{1.0, 1.0},{1.0,1.0}};
-	//Matrix object1=new Matrix(a,2);
-	//Matrix object2=new Matrix(b,2);	
-	double res [][]=  new double [2][2];
-	//Matrix result=new Matrix(res,2);	*/
+{
 
 	m_view.m_A00 = "1.0";
 	m_view.m_A01 = "1.0";
@@ -61,7 +55,7 @@ public void canAddTwoMatrices()
 	m_view.m_A11 = "1.0";
 	m_view.m_B00 = "1.0";
 	m_view.m_B01 = "1.0";
-        m_view.m_B10 = "1.0";
+    m_view.m_B10 = "1.0";
 	m_view.m_B11 = "1.0";
 	m_view.m_addMatrixActionHandler.processAction();
 	Assert.assertEquals("2.0",m_view.m_c00);
@@ -69,5 +63,14 @@ public void canAddTwoMatrices()
 	Assert.assertEquals("2.0",m_view.m_c10);
 	Assert.assertEquals("2.0",m_view.m_c11);
 }
-
+@ Test
+public void canCalculateDeterminantOfAMatrix()
+{
+	m_view.m_A00 = "2.0";
+	m_view.m_A01 = "1.0";
+	m_view.m_A10 = "5.0";
+	m_view.m_A11 = "1.0";
+	m_view.m_determinantActionHandler.processAction();
+	Assert.assertEquals("-3.0",m_view.m_determinantResult);
+}
 }
