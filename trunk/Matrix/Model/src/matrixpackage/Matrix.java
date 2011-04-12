@@ -4,7 +4,7 @@ package matrixpackage;
 public class Matrix
 {
 
-	private  double[][] m_data;
+	public  double[][] m_data;
 	private int m_size;
 	private int iDF=0;
 	final double DELTA = 0.00001;
