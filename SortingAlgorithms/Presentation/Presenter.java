@@ -1,7 +1,7 @@
 package Presentation;
 
 import java.util.Random;
-
+import java.util.Collections; 
 import Model.MergeSort;
 import Model.QuickSort;
 import Model.Sorting;
@@ -44,13 +44,13 @@ public class Presenter
 		m_view.getSortingMethod();
 		for(int i = 0; i < Integer.parseInt(m_view.getArraySize()); i++)
 		{
-			// parse a string to an array if integers!
-			String myString = "a||b||c";
-			myString = myString.replace("||", ",");
-			String[] split = myString.split(",");
-			                       
-		  
-		}
+			// parse a string to an array of integers!
+			
+			String m_myArray = new m_ArrayList(); 
+			String[] m_myStringArray = new String[] {" "," ", " ", " "}; 
+            Collections.addAll(m_myArray, m_myStringArray); 
+			
+			}
 		m_view.setSortedArray(m_quickSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
 		m_view.setSortedArray(m_mergeSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
 	}
