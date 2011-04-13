@@ -23,7 +23,7 @@ public class PresenterTest
 	{
 		View view = new View();
 		view.m_type = 1;
-		view.m_value = "1,2";
+	//	view.m_value = "1,2";
 		view.size = 3;
 		view.m_handler.processParseArgumentAction();
 		double one = view.m_arrayOfValue[0];
