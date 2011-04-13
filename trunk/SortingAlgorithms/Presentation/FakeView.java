@@ -47,7 +47,7 @@ public class FakeView implements Iview
 	@Override
 	public void setUnsortedArray(String sortedArray)
 	{
-        return;
+        m_unsortedArray = handler;
 	}
 
 	

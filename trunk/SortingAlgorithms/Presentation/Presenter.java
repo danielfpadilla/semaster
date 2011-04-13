@@ -25,8 +25,8 @@ public class Presenter
 			{
 				Presenter.this.generateArrayRandomNumbers();
 				
-			}
-		});
+			}//
+		}
 		m_view.sortArray(new IActionHandler()
 		{
 			
@@ -36,7 +36,8 @@ public class Presenter
 				Presenter.this.sortingProcess();
 				
 			}
-		});
+		}
+		//
 	}
 	public void sortingProcess()
 	{
