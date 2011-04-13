@@ -217,23 +217,21 @@ public class Presenter implements IEventHandler
 	public void processClearAction() 
 	{
 			m_view.m_size = "0";			
-			m_view.m_value = " ";
-			m_view.m_probability = " ";
-			m_view.m_result =" ";		
+			m_view.m_result = " ";		
 	}
 
 	@Override
 	public void processParseArgumentAction()
-	{
-		m_view.value = m_view.m_value.split("\\,");
+	{		
 		m_view.m_arrayOfValue = new double[m_view.size];
+		
 		for(int i = 0; i < m_view.size; i++)
 		{
 			m_view.m_arrayOfValue[i] = Double.parseDouble(m_view.value[i]);
 		}
+		
 		if(m_view.m_type == -1)
 		{
-			m_view.probability = m_view.m_probability.split("\\,");
 			m_view.m_arrayOfProbability = new double[m_view.size];
 			
 			for(int i = 0; i < m_view.size; i++)
