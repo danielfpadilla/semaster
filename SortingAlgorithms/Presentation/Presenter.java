@@ -2,16 +2,16 @@ package Presentation;
 
 import java.util.Random;
 import java.util.Collections; 
-import Model.MergeSort;
-import Model.QuickSort;
-import Model.Sorting;
+import SortingAlgorithms.MergeSort;
+import SortingAlgorithms.QuickSort;
+import SortingAlgorithms.Sorting;
 
 
 
 public class Presenter
 {
 	private Iview m_view;
-	private Sorting m_sorting;
+	private Sorting m_sortingArray;
 	private MergeSort m_mergeSort;
 	private QuickSort m_quickSort;
 	public Presenter(Iview view)
@@ -25,9 +25,9 @@ public class Presenter
 			{
 				Presenter.this.generateArrayRandomNumbers();
 				
-			}//
+			}
 		}
-		m_view.sortArray(new IActionHandler()
+		m_view.sortArray(new IActionHandler());
 		{
 			
 			@Override
@@ -37,7 +37,7 @@ public class Presenter
 				
 			}
 		}
-		//
+		
 	}
 	public void sortingProcess()
 	{
@@ -52,8 +52,22 @@ public class Presenter
             Collections.addAll(m_myArray, m_myStringArray); 
 			
 			}
-		m_view.setSortedArray(m_quickSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
 		m_view.setSortedArray(m_mergeSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
+	}
+	public void sortingProcess()
+	{
+		
+		m_view.getSortingMethod();
+		for(int i = 0; i < Integer.parseInt(m_view.getArraySize()); i++)
+		{
+			// parse a string to an array of integers!
+			String m_myArray = new m_ArrayList(); 
+			String[] m_myStringArray = new String[] {" "," ", " ", " "}; 
+            Collections.addAll(m_myArray, m_myStringArray); 
+			
+			}
+		m_view.setSortedArray(m_quickSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
+		
 	}
 	public void generateArrayRandomNumbers()
 	{
