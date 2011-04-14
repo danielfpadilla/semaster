@@ -8,6 +8,7 @@ public class FakeView implements Iview
 	public String m_size;
 	public IActionHandler m_sortingArray;
 	public IActionHandler m_generateArrayHandler;
+	
 	@Override
 	public String getUnsortedArray()
 	{
@@ -15,9 +16,9 @@ public class FakeView implements Iview
 	}
 
 	@Override
-	public void setSortedArray(String sortedArray)
+	public void setSortedArray(String sortArray)
 	{
-	  m_sortedArray = sortedArray;
+	  m_sortArray = sortArray;
 
 	}
 
@@ -39,7 +40,7 @@ public class FakeView implements Iview
 	}
 
 	@Override
-	public void sortArray(IActionHandler handler)
+	public void sortingArray(IActionHandler handler)
 	{
 		m_sortingArray = handler;
 	}

@@ -1,7 +1,8 @@
 package Presentation;
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,8 +10,8 @@ public class PresenterTests
 {
 	FakeView m_view;
 	Presenter m_presenter;
-	private int[] expecteds;
-	private int[] actuals;
+	private int[] expectedsorted;
+	private int[] actualsorted;
 	@Before
 	public void setUp()
 	{
@@ -26,22 +27,45 @@ public class PresenterTests
 	}
 	
 	@Test
-	public void canCreateAnArrayForSorting()
+	public void canCreateAnArrayForSortingInQuicksort()
 	{
 		m_view.m_sortingMethod =  "QuickSort";
-		m_view.m_sortingMethod = "MergeSort";
 		m_view.m_sortingArray.processAction(); 
-		Assert.assertNotNull(m_view.m_sortingMethod);
+		assertNotNull(m_view.m_sortingArray);
 	}
 	
 	@Test
-	public void canSortARandomlyGeneratedArray()
+	public void canCreateAnArrayForSortingInMergesort()
 	{
-		m_view.m_sorting = "QuickSort";
-		m_view.m_sorting = "MergeSort";
+		m_view.m_sortingMethod = "MergeSort";
+		m_view.m_sortingArray.processAction(); 
+		assertNotNull(m_view.m_sortingArray);
+	}
+	
+	
+	@Test
+	public void canSortARandomlyGeneratedArrayInQuickSort()
+	{
+		m_view.m_sortingMethod = "QuickSort";
 		m_view.m_size = "10";
+		int[] m_view.unsorted = "2","1","8","5","4";
+		int[] actualsorted = m_view.quickSort.sortingArray(m_view.unsorted);
+		int[] expectedsorted =	"1","2","4","5","8" ;
 		m_view.m_sortingArray.processAction();
-		Assert.assertArrayEquals(expecteds, actuals);
+		assertArrayEquals(expectedsorted, actualsorted);
+		
+	}
+	
+	@Test
+	public void canSortARandomlyGeneratedArrayInQuickSort()
+	{
+		m_view.m_sortingMethod = "MergeSort";
+		m_view.m_size = "10";
+		int[] m_view.unsorted = "2","1","8","5","4";
+		int[] actualsorted = m_view.MergeSort.sortingArray(m_view.unsorted);
+		int[] expectedsorted =	"1","2","4","5","8" ;
+		m_view.m_sortingArray.processAction();
+		assertArrayEquals(expectedsorted, actualsorted);
 		
 	}
 }
