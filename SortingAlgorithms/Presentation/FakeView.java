@@ -2,13 +2,20 @@ package Presentation;
 
 public class FakeView implements Iview
 {
-	public String m_unsortedArray;
-	public String m_sortedArray;
-	public String m_sorting;
-	public String m_size;
-	public IActionHandler m_sortingArray;
-	public IActionHandler m_generateArrayHandler;
-	
+   public boolean m_mergeSortSelected = true;
+   public boolean m_quickSortSelected = true;
+   public String m_unsortedArray;
+   public String m_sortedArray;
+   public String m_size;
+   public String m_setUnsortedArray;
+   public IActionHandler m_sortingArrayHandler;
+   public IActionHandler m_generateArrayHandler;
+   public IActionHandler m_numberOfElementsHandler;
+   public String m_sortingMethod;
+   public String m_mergeSort;
+   public String m_quickSort;
+   
+   
 	@Override
 	public String getUnsortedArray()
 	{
