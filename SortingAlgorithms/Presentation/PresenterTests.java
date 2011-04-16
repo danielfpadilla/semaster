@@ -29,42 +29,47 @@ public class PresenterTests
 	public void canCreateAnArrayForSortingInQuicksort()
 	{
 		m_view.m_sortingMethod =  "QuickSort";
-		m_view.m_sortingArray.processAction(); 
-		assertNotNull(m_quickSort);
+		m_view.m_sortingArrayHandler.processAction(); 
+		assertNotNull(m_view.m_sortingArrayHandler);
 	}
 	
 	@Test
 	public void canCreateAnArrayForSortingInMergesort()
 	{
 		m_view.m_sortingMethod = "MergeSort";
-		m_view.m_sortingArray.processAction(); 
-		assertNotNull(m_mergeSort);
+		m_view.m_sortingArrayHandler.processAction(); 
+		assertNotNull(m_view.m_sortingArrayHandler);
 	}
 	
 	
 	@Test
-	public void canSortARandomlyGeneratedArrayInQuickSort()
+	public void canSortARandomlyGeneratedArrayQuickSort()
 	{
+		
 		m_view.m_sortingMethod = "QuickSort";
-		m_view.m_size = "10";
-		int[] m_view.unsorted = {"9","3","10","6","7","2","1","8","5","4"};
-		int[] m_actualsorted = m_view.quickSort.sortingprocess(m_view.unsorted);
-		int[] m_expectedsorted =	{1,2,3,4,5,6,7,8,9,10} ;
-		m_view.m_sortingprocess.processAction();
+		m_view.m_size = "5";
+		String[] m_unsortedArray= {"2","1","8","5","4"};
+		int[] m_actualsorted = m_view.m_quickSort.m_sortingArray(m_unsortedArray);
+		int[] m_expectedsorted = {1,2,4,5,8} ;
+		m_view.m_sortingArrayHandler.processAction();
 		assertEquals(m_expectedsorted, m_actualsorted);
 		
 	}
 	
+	
+	
+
 	@Test
-	public void canSortARandomlyGeneratedArrayInQuickSort()
+	public void canSortARandomlyGeneratedArrayMergeSort1()
 	{
 		m_view.m_sortingMethod = "MergeSort";
-		m_view.m_size = "10";
-		int[] m_view.m_unsorted = {"9","3","10","6","7","2","1","8","5","4"};
-		int[] m_actualsorted = m_view.MergeSort.sortingprocess(m_view.m_unsorted);
-		int[] m_expectedsorted =	{1,2,3,4,5,6,7,8,9,10} ;
-		m_view.m_sortingprocess.processAction();
+		m_view.m_size = "5";
+		String[] m_unsortedArray= {"2","1","8","5","4"};
+		int[] m_actualsorted = m_view.m_mergeSort.m_sortingArray(m_unsortedArray);
+		int[] m_expectedsorted = {1,2,4,5,8} ;
+		m_view.m_sortingArrayHandler.processAction();
 		assertEquals(m_expectedsorted, m_actualsorted);
 		
 	}
+	
 }
