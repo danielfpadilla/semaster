@@ -10,8 +10,7 @@ public class PresenterTests
 {
 	FakeView m_view;
 	Presenter m_presenter;
-	private int[] expectedsorted;
-	private int[] actualsorted;
+	
 	@Before
 	public void setUp()
 	{
@@ -31,7 +30,7 @@ public class PresenterTests
 	{
 		m_view.m_sortingMethod =  "QuickSort";
 		m_view.m_sortingArray.processAction(); 
-		assertNotNull(m_view.m_sortingArray);
+		assertNotNull(m_quickSort);
 	}
 	
 	@Test
@@ -39,7 +38,7 @@ public class PresenterTests
 	{
 		m_view.m_sortingMethod = "MergeSort";
 		m_view.m_sortingArray.processAction(); 
-		assertNotNull(m_view.m_sortingArray);
+		assertNotNull(m_mergeSort);
 	}
 	
 	
@@ -48,11 +47,11 @@ public class PresenterTests
 	{
 		m_view.m_sortingMethod = "QuickSort";
 		m_view.m_size = "10";
-		int[] m_view.unsorted = "2","1","8","5","4";
-		int[] actualsorted = m_view.quickSort.sortingArray(m_view.unsorted);
-		int[] expectedsorted =	"1","2","4","5","8" ;
-		m_view.m_sortingArray.processAction();
-		assertArrayEquals(expectedsorted, actualsorted);
+		int[] m_view.unsorted = {"9","3","10","6","7","2","1","8","5","4"};
+		int[] m_actualsorted = m_view.quickSort.sortingprocess(m_view.unsorted);
+		int[] m_expectedsorted =	{1,2,3,4,5,6,7,8,9,10} ;
+		m_view.m_sortingprocess.processAction();
+		assertArrayEquals(m_expectedsorted, m_actualsorted);
 		
 	}
 	
@@ -61,11 +60,11 @@ public class PresenterTests
 	{
 		m_view.m_sortingMethod = "MergeSort";
 		m_view.m_size = "10";
-		int[] m_view.unsorted = "2","1","8","5","4";
-		int[] actualsorted = m_view.MergeSort.sortingArray(m_view.unsorted);
-		int[] expectedsorted =	"1","2","4","5","8" ;
-		m_view.m_sortingArray.processAction();
-		assertArrayEquals(expectedsorted, actualsorted);
+		int[] m_view.m_unsorted = {"9","3","10","6","7","2","1","8","5","4"};
+		int[] m_actualsorted = m_view.MergeSort.sortingprocess(m_view.m_unsorted);
+		int[] m_expectedsorted =	{1,2,3,4,5,6,7,8,9,10} ;
+		m_view.m_sortingprocess.processAction();
+		assertEquals(m_expectedsorted, m_actualsorted);
 		
 	}
 }
