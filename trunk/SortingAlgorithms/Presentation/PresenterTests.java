@@ -51,7 +51,7 @@ public class PresenterTests
 		int[] m_actualsorted = m_view.quickSort.sortingprocess(m_view.unsorted);
 		int[] m_expectedsorted =	{1,2,3,4,5,6,7,8,9,10} ;
 		m_view.m_sortingprocess.processAction();
-		assertArrayEquals(m_expectedsorted, m_actualsorted);
+		assertEquals(m_expectedsorted, m_actualsorted);
 		
 	}
 	
