@@ -1,84 +1,112 @@
 package Presentation;
 
 import java.util.Random;
-import java.util.Collections; 
-import SortingAlgorithms.MergeSort;
-import SortingAlgorithms.QuickSort;
-import SortingAlgorithms.Sorting;
 
-
+import sortingAlgorithms.MergeSort;
+import sortingAlgorithms.QuickSort;
 
 public class Presenter
 {
-	private Iview m_view;
-	private Sorting m_sortingArray;
+	private IView m_view;
 	private MergeSort m_mergeSort;
 	private QuickSort m_quickSort;
-	public Presenter(Iview view)
+
+	public Presenter(IView view)
 	{
 		m_view = view;
 		m_view.generateRandomArray(new IActionHandler()
 		{
-			
 			@Override
 			public void processAction()
 			{
 				Presenter.this.generateArrayRandomNumbers();
-				
+
 			}
-		}
-		m_view.sortArray(new IActionHandler());
+		});
+		m_view.sortArray(new IActionHandler()
 		{
-			
+
 			@Override
 			public void processAction()
 			{
 				Presenter.this.sortingProcess();
-				
+
 			}
+		});
+		m_view.selectedArraySize(new IActionHandler()
+		{
+
+			@Override
+			public void processAction()
+			{
+				Presenter.this.arraySizeParsing();
+
+			}
+		});
+	}
+
+	public void arraySizeParsing()
+	{
+		int arraySize;
+		arraySize = Integer.parseInt(m_view.getArraySize());
+		if (arraySize <= 0)
+		{
+			throw new IllegalArgumentException();
 		}
-		
 	}
+
 	public void sortingProcess()
 	{
-		
-		m_view.getSortingMethod();
-		for(int i = 0; i < Integer.parseInt(m_view.getArraySize()); i++)
+		if (m_view.mergeSortIsSelected())
 		{
-			// parse a string to an array of integers!
-			
-			String m_myArray = new m_ArrayList(); 
-			String[] m_myStringArray = new String[] {" "," ", " ", " "}; 
-            Collections.addAll(m_myArray, m_myStringArray); 
-			
-			}
-		m_view.setSortedArray(m_mergeSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
+
+			m_view.setSortedArray(convertIntArrayToString(m_mergeSort
+					.sortInternal(convertStringToIntArray(m_view
+							.getUnsortedArray()))));
+
+		}
+		if (m_view.quickSortIsSelected())
+		{
+
+			m_view.setSortedArray(convertIntArrayToString(m_quickSort
+					.sortInternal(convertStringToIntArray(m_view
+							.getUnsortedArray()))));
+
+		}
 	}
-	public void sortingProcess()
+
+	private static String convertIntArrayToString(int[] arrayInts)
 	{
-		
-		m_view.getSortingMethod();
-		for(int i = 0; i < Integer.parseInt(m_view.getArraySize()); i++)
+		String arrayString = "";
+		for (int i : arrayInts)
 		{
-			// parse a string to an array of integers!
-			String m_myArray = new m_ArrayList(); 
-			String[] m_myStringArray = new String[] {" "," ", " ", " "}; 
-            Collections.addAll(m_myArray, m_myStringArray); 
-			
-			}
-		m_view.setSortedArray(m_quickSort.sortingArray(Integer.parseInt(m_view.getUnsortedArray())));
-		
+			arrayString += i + " ";
+		}
+		return arrayString;
 	}
+
+	private static int[] convertStringToIntArray(String arrayString)
+	{
+		String[] arrayStringList = arrayString.split("");
+		int[] arrayInts = new int[arrayStringList.length];
+		int i = 0;
+		for (String s : arrayStringList)
+		{
+			arrayInts[i++] = Integer.parseInt(s);
+		}
+		return arrayInts;
+	}
+
 	public void generateArrayRandomNumbers()
 	{
 		int m_arraySize;
 		m_arraySize = Integer.parseInt(m_view.getArraySize());
 		Random rand = new Random();
 		m_view.setUnsortedArray("");
-		for(int i = 0; i < m_arraySize; i++)
+		for (int i = 0; i < m_arraySize; i++)
 		{
-			m_view.setUnsortedArray("" + rand.nextInt(1000));
+			m_view.setUnsortedArray(" , " + rand.nextInt(100));
 		}
-		
+
 	}
 }
