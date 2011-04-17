@@ -32,10 +32,6 @@ public class FractionCalculator implements IFractionView
 	private Label myImage;
 	private Label errorLabel;
 
-	{
-
-	}
-
 	/**
 	 * Launch the application.
 	 * 
@@ -86,11 +82,6 @@ public class FractionCalculator implements IFractionView
 		ModifyListener listener = new ModifyListener()
 		{
 			public void modifyText(ModifyEvent e)
-			{
-				valueChanged((Text) e.widget);
-			}
-
-			public void valueChanged(Text text)
 			{
 				m_inputActionHandler.processAction();
 			}
