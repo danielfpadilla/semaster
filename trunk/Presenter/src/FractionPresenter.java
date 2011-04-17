@@ -163,7 +163,7 @@ public class FractionPresenter
 		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.addFractions(fraction2);
+		Fraction result = fraction1.add(fraction2);
 		m_view.setResult(result.toString());
 	}
 
@@ -174,7 +174,7 @@ public class FractionPresenter
 		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.subtractFractions(fraction2);
+		Fraction result = fraction1.subtract(fraction2);
 		m_view.setResult(result.toString());
 
 	}
@@ -186,7 +186,7 @@ public class FractionPresenter
 		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.multiplyFractions(fraction2);
+		Fraction result = fraction1.multiply(fraction2);
 		m_view.setResult(result.toString());
 
 	}
@@ -200,7 +200,7 @@ public class FractionPresenter
 			Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
 					m_view.getDenominator2());
 
-			Fraction result = fraction2.divideFractions(fraction1);
+			Fraction result = fraction2.divide(fraction1);
 			m_view.setResult(result.toString());
 		}
 		catch (ArithmeticException e)
