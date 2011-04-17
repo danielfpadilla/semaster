@@ -36,7 +36,7 @@ public class PresenterTests
 	@Test
 	public void canCreateAnArrayForSortingInMergesort()
 	{
-		//m_view.m_sortingMethod = "MergeSort";
+		m_view.m_sortingMethod = "MergeSort";
 		m_view.m_sortingArrayHandler.processAction(); 
 		assertNotNull(m_view.m_sortingArrayHandler);
 	}
