@@ -1,5 +1,3 @@
-package view;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -9,41 +7,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import Presentation.IActionHandler;
-import Presentation.Iview;
-import Presentation.Presenter;
 
-
-
-public class SortingWindow implements Iview
+public class ApplicactionWindow implements IView
 {
 
-	
 	protected Shell shell;
 	private Text m_unsortedArray;
 	private Text m_sortedArray;
 	private Text m_arrayElements;
-	public IActionHandler m_arrayGeneratorHandler;
-	public IActionHandler m_arraySizeHandler;
-	private Text text;
-	private Text txtArraySize;
+	private IActionHandler m_arrayGeneratorHandler;
+	//private IActionHandler m_arraySizeHandler;
 	private IActionHandler m_sortArrayHandler;
-	private String m_SortingMethod;
-
-
-	public static void main1(String[] args)
-	{
-		try
-		{
-			SortingWindow window = new SortingWindow();
-			new Presenter(window);
-			window.open();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * Launch the application.
@@ -53,9 +27,11 @@ public class SortingWindow implements Iview
 	{
 		try
 		{
-			SortingWindow window = new SortingWindow();
+			ApplicactionWindow window = new ApplicactionWindow();
+			new Presenter(window);
 			window.open();
-		} catch (Exception e)
+		}
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
@@ -85,38 +61,35 @@ public class SortingWindow implements Iview
 	protected void createContents()
 	{
 		shell = new Shell();
-		shell.setSize(396, 300);
+		shell.setSize(450, 300);
 		shell.setText("SWT Application");
 		
-		text = new Text(shell, SWT.BORDER);
-		text.setBounds(21, 69, 227, 19);
+		Button m_rBtnMergeSort = new Button(shell, SWT.RADIO);
+		m_rBtnMergeSort.setBounds(149, 79, 83, 16);
+		m_rBtnMergeSort.setText("Merge Sort");
 		
-		Button btnMergeSort = new Button(shell, SWT.RADIO);
-		btnMergeSort.addSelectionListener(new SelectionAdapter() {
+		Button m_rBtnQuickSort = new Button(shell, SWT.RADIO);
+		m_rBtnQuickSort.setText("Quick Sort");
+		m_rBtnQuickSort.setBounds(149, 57, 83, 16);
+		
+		m_unsortedArray = new Text(shell, SWT.BORDER);
+		m_unsortedArray.setBounds(187, 131, 245, 19);
+		
+		m_sortedArray = new Text(shell, SWT.BORDER);
+		m_sortedArray.setBounds(187, 187, 245, 19);
+		
+		m_arrayElements = new Text(shell, SWT.BORDER);
+		m_arrayElements.setBounds(131, 17, 76, 19);
+		
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent e) {
+			public void widgetSelected(SelectionEvent arg0) {
+				m_arrayGeneratorHandler.processAction();
 			}
 		});
-		btnMergeSort.setBounds(21, 116, 83, 16);
-		btnMergeSort.setText("Merge Sort");
-		
-		Button btnQuickSort = new Button(shell, SWT.RADIO);
-		btnQuickSort.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-			}
-		});
-		btnQuickSort.setBounds(136, 116, 83, 16);
-		btnQuickSort.setText("Quick Sort");
-		
-		Button btnNewButton_1 = new Button(shell, SWT.NONE);
-		btnNewButton_1.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-			}
-		});
-		btnNewButton_1.setBounds(42, 144, 123, 23);
-		btnNewButton_1.setText("Generate Randon Array");
+		btnNewButton.setBounds(20, 129, 145, 23);
+		btnNewButton.setText("Generate");
 		
 		Button btnStartSorting = new Button(shell, SWT.NONE);
 		btnStartSorting.addSelectionListener(new SelectionAdapter() {
@@ -125,24 +98,16 @@ public class SortingWindow implements Iview
 				m_sortArrayHandler.processAction();
 			}
 		});
-		btnStartSorting.setBounds(44, 195, 145, 23);
+		btnStartSorting.setBounds(20, 185, 145, 23);
 		btnStartSorting.setText("Start Sorting");
 		
 		Label lblEnterSizeOf = new Label(shell, SWT.NONE);
-		lblEnterSizeOf.setBounds(21, 23, 109, 13);
-		lblEnterSizeOf.setText("Enter Array Size :");
+		lblEnterSizeOf.setBounds(20, 20, 109, 13);
+		lblEnterSizeOf.setText("Enter Size of Array :");
 		
 		Label lblChooseSortingMethod = new Label(shell, SWT.NONE);
-		lblChooseSortingMethod.setBounds(21, 94, 123, 13);
+		lblChooseSortingMethod.setBounds(20, 57, 123, 13);
 		lblChooseSortingMethod.setText("Choose Sorting Method:");
-		
-		txtArraySize = new Text(shell, SWT.BORDER);
-		txtArraySize.setText("Array size");
-		txtArraySize.setBounds(136, 20, 86, 19);
-		
-		Label lblNewLabel = new Label(shell, SWT.NONE);
-		lblNewLabel.setBounds(20, 52, 84, 13);
-		lblNewLabel.setText("Sort Result");
 
 	}
 
@@ -194,7 +159,7 @@ public class SortingWindow implements Iview
 	@Override
 	public void selectedArraySize(IActionHandler handler)
 	{
-		m_arraySizeHandler = handler;
+		//m_arraySizeHandler = handler;
 	}
 
 	@Override
@@ -203,15 +168,4 @@ public class SortingWindow implements Iview
 	  m_sortArrayHandler = handler;
 		
 	}
-
-	@Override
-	public String getSortingMethod()
-	{
-		
-		return m_SortingMethod; 
-	}
 }
-
-
-	
-
