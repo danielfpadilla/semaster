@@ -1,15 +1,15 @@
 public interface IFraction
 {
-	public void reduceFraction();
+	public void reduce();
 
 	public double toDouble();
 
-	public Fraction addFractions(Fraction fraction1);
+	public Fraction add(Fraction fraction1);
 
-	public Fraction subtractFractions(Fraction fraction1);
+	public Fraction subtract(Fraction fraction1);
 
-	public Fraction multiplyFractions(Fraction fraction1);
+	public Fraction multiply(Fraction fraction1);
 
-	public Fraction divideFractions(Fraction fraction1);
+	public Fraction divide(Fraction fraction1);
 
 }

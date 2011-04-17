@@ -66,7 +66,7 @@ public class Fraction implements IFraction
 			return greatestCommonDivisor(b, a % b);
 	}
 
-	public void reduceFraction()
+	public void reduce()
 	{
 		int num = greatestCommonDivisor(m_numerator, m_denominator);
 
@@ -92,7 +92,7 @@ public class Fraction implements IFraction
 
 	}
 
-	public Fraction addFractions(Fraction myFraction)
+	public Fraction add(Fraction myFraction)
 	{
 		Fraction result = new Fraction();
 		result.setNumerator((myFraction.getNumerator() * this.getDenominator())
@@ -100,12 +100,12 @@ public class Fraction implements IFraction
 		result.setDenominator(myFraction.getDenominator()
 				* this.getDenominator());
 		// ((a*d)+(c*b))/(b*d)
-		result.reduceFraction();
+		result.reduce();
 		return result;
 
 	}
 
-	public Fraction subtractFractions(Fraction fraction1)
+	public Fraction subtract(Fraction fraction1)
 	{
 		Fraction result = new Fraction();
 		result.setNumerator((fraction1.getNumerator() * this.getDenominator())
@@ -113,24 +113,24 @@ public class Fraction implements IFraction
 		result.setDenominator(fraction1.getDenominator()
 				* this.getDenominator());
 		// ((a*d)-(c*b))/(b*d)
-		result.reduceFraction();
+		result.reduce();
 		return result;
 
 	}
 
-	public Fraction multiplyFractions(Fraction fraction1)
+	public Fraction multiply(Fraction fraction1)
 	{
 		Fraction result = new Fraction();
 		result.setNumerator(fraction1.getNumerator() * this.getNumerator());
 		result.setDenominator(fraction1.getDenominator()
 				* this.getDenominator());
 		// (a*c)/(b*d)
-		result.reduceFraction();
+		result.reduce();
 		return result;
 
 	}
 
-	public Fraction divideFractions(Fraction fraction1)
+	public Fraction divide(Fraction fraction1)
 	{
 		Fraction result = new Fraction();
 		if (this.getNumerator() != 0)
@@ -140,7 +140,7 @@ public class Fraction implements IFraction
 			result.setDenominator(fraction1.getDenominator()
 					* this.getNumerator());
 			// (a*d)/(b*c)
-			result.reduceFraction();
+			result.reduce();
 			return result;
 		}
 
