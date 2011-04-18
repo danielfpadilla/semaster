@@ -16,6 +16,9 @@ public interface IMatrixView
 	public void setDeterminatResult(String determinantResult);
 	public void setAddActionHandler(IActionHandler handler);
 	public void setDeterminantActionHandler(IActionHandler handler);
+	public void setSubtractActionHandler(IActionHandler handler);
+	public void setMultiplyActionHandler(IActionHandler handler);
+	public void setInverseActionHandler(IActionHandler handler);
 	
 
 	
