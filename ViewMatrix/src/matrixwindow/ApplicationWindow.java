@@ -84,11 +84,11 @@ public class ApplicationWindow implements IMatrixView
 		
 		Label lblEnterB = new Label(shlMatrixbycalculator, SWT.NONE);
 		lblEnterB.setText("Enter B");
-		lblEnterB.setBounds(102, 10, 61, 19);
+		lblEnterB.setBounds(92, 10, 61, 19);
 		
 		Label lblResult = new Label(shlMatrixbycalculator, SWT.NONE);
 		lblResult.setText("Result");
-		lblResult.setBounds(211, 10, 61, 19);
+		lblResult.setBounds(10, 93, 61, 19);
 		
 		m_a00Text = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_a00Text.setBounds(10, 35, 27, 25);
@@ -103,36 +103,36 @@ public class ApplicationWindow implements IMatrixView
 		m_a11Text.setBounds(44, 66, 27, 25);
 		
 		m_b00Text = new Text(shlMatrixbycalculator, SWT.BORDER);
-		m_b00Text.setBounds(97, 35, 27, 25);
+		m_b00Text.setBounds(76, 35, 27, 25);
 		
 		m_b01Text = new Text(shlMatrixbycalculator, SWT.BORDER);
-		m_b01Text.setBounds(130, 35, 27, 25);
+		m_b01Text.setBounds(109, 35, 27, 25);
 		
 		m_b10Text = new Text(shlMatrixbycalculator, SWT.BORDER);
-		m_b10Text.setBounds(97, 66, 27, 25);
+		m_b10Text.setBounds(77, 66, 27, 25);
 		
 		m_b11Text = new Text(shlMatrixbycalculator, SWT.BORDER);
-		m_b11Text.setBounds(130, 66, 27, 25);
+		m_b11Text.setBounds(109, 66, 27, 25);
 		
 		m_c00Text = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_c00Text.setEditable(false);
-		m_c00Text.setBounds(177, 35, 85, 25);
+		m_c00Text.setBounds(4, 118, 132, 25);
 		
 		m_c01Text = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_c01Text.setEditable(false);
-		m_c01Text.setBounds(273, 35, 96, 25);
+		m_c01Text.setBounds(151, 118, 145, 25);
 		
 		m_c10Text = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_c10Text.setEditable(false);
-		m_c10Text.setBounds(177, 66, 85, 25);
+		m_c10Text.setBounds(4, 149, 132, 25);
 		
 		m_c11Text = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_c11Text.setEditable(false);
-		m_c11Text.setBounds(273, 66, 96, 25);
+		m_c11Text.setBounds(151, 149, 145, 25);
 		
 		m_determinantResult = new Text(shlMatrixbycalculator, SWT.BORDER);
 		m_determinantResult.setEditable(false);
-		m_determinantResult.setBounds(130, 191, 81, 25);
+		m_determinantResult.setBounds(122, 205, 81, 25);
 		
 		Button determinantButton = new Button(shlMatrixbycalculator, SWT.NONE);
 		determinantButton.addSelectionListener(new SelectionAdapter() {
@@ -144,7 +144,7 @@ public class ApplicationWindow implements IMatrixView
 				m_determinantHandler.processAction();
 			}
 		});
-		determinantButton.setBounds(10, 189, 94, 29);
+		determinantButton.setBounds(10, 203, 94, 29);
 		determinantButton.setText("determinant");
 		
 		Button btnAdd = new Button(shlMatrixbycalculator, SWT.NONE);
@@ -154,7 +154,7 @@ public class ApplicationWindow implements IMatrixView
 				m_AddMatrixHandler.processAction();
 			}
 		});
-		btnAdd.setBounds(217, 143, 43, 29);
+		btnAdd.setBounds(189, 33, 43, 29);
 		btnAdd.setText("+");
 		
 		Button buttonSubtract = new Button(shlMatrixbycalculator, SWT.NONE);
@@ -165,7 +165,7 @@ public class ApplicationWindow implements IMatrixView
 			}
 		});
 		buttonSubtract.setText("-");
-		buttonSubtract.setBounds(110, 143, 43, 29);
+		buttonSubtract.setBounds(189, 64, 43, 29);
 		
 		Button btnInverse = new Button(shlMatrixbycalculator, SWT.NONE);
 		btnInverse.addSelectionListener(new SelectionAdapter() {
@@ -174,7 +174,7 @@ public class ApplicationWindow implements IMatrixView
 				m_InverseHandler.processAction();
 			}
 		});
-		btnInverse.setBounds(10, 143, 94, 29);
+		btnInverse.setBounds(238, 64, 94, 29);
 		btnInverse.setText("Inverse");
 		
 		button = new Button(shlMatrixbycalculator, SWT.NONE);
@@ -184,7 +184,7 @@ public class ApplicationWindow implements IMatrixView
 				m_MultiplicationHandler.processAction();
 			}
 		});
-		button.setBounds(159, 143, 52, 29);
+		button.setBounds(238, 33, 94, 29);
 		button.setText(" *");
 
 	}
