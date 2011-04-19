@@ -72,7 +72,7 @@ public class FakeView implements IView
 	@Override
 	public void sortingArray(IActionHandler handler) 
 	{
-		// TODO Auto-generated method stub	
+		
 	}
 
 }

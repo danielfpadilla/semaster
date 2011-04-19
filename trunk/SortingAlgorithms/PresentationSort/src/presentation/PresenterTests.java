@@ -1,5 +1,7 @@
 package presentation;
 
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +26,29 @@ public class PresenterTests
 	@Test
 	public void canSortingTakePlace()
 	{
-		
+	 assertNotNull(m_view.m_sortingArrayHandler);	
 	}
+	@Test
+	public void canGenerateRandomArray()
+	{
+	   assertNotNull(m_view.m_generateArrayHandler);
+	}
+	
+	public void canParseArrayToString()
+	{
+		assertNotNull(m_view.toString());
+	}
+	
+	public void canArraySizeBeReturned()
+	{
+		assertNotNull(m_view.m_numberOfElementsHandler);
+	}
+	
+	public void canSortArandomlyGeneratedArray()
+	{
+		assertNotNull(m_view.m_sortingArrayHandler);
+	}
+
+	
 
 }
