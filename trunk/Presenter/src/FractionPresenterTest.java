@@ -122,7 +122,7 @@ public class FractionPresenterTest
 		m_view.m_denominator2 = "";
 
 		m_view.m_clearActionHandler.processAction();
-		Assert.assertNotNull(m_view.m_result);
+		Assert.assertEquals("",m_view.m_result);
 	}
 
 	@Test

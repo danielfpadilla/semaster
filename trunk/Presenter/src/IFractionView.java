@@ -33,14 +33,8 @@ public interface IFractionView
 
 	public void setOutputError(String message);
 
-	public void buttonAdd(boolean flag);
-
-	public void buttonSubstract(boolean flag);
-
-	public void buttonDivide(boolean flag);
-
-	public void buttonMultiply(boolean flag);
-
-	public void setimageLabel(boolean flag);
+	public void imageLabel(boolean flag);
+	
+	public void setActionEnabled(boolean flag);
 
 }
