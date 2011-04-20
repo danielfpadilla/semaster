@@ -10,7 +10,7 @@ public class FractionTest
 	private int m_denominator = 1;
 	private final double DELTA = 0.002;
 
-	@Test
+    @Test
 	public void createFraction()
 	{
 		Fraction fraction = new Fraction();
