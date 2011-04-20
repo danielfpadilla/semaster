@@ -72,6 +72,7 @@ public class FakeView implements IView
 	@Override
 	public void sortingArray(IActionHandler handler) 
 	{
+		m_sortingArrayHandler = handler;
 		
 	}
 
