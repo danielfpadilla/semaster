@@ -10,6 +10,8 @@ public class PresenterTests
 {
 	FakeView m_view;
 	Presenter m_presenter;
+	//private String m_expectedsorted;
+	//private String m_actualsorted;
 	@Before
 	public void setUp()
 	{
@@ -23,32 +25,53 @@ public class PresenterTests
 		m_view = null;
 		m_presenter = null;
 	}
+	
 	@Test
 	public void canSortingTakePlace()
 	{
 	 assertNotNull(m_view.m_sortingArrayHandler);	
 	}
+	
 	@Test
 	public void canGenerateRandomArray()
 	{
 	   assertNotNull(m_view.m_generateArrayHandler);
 	}
 	
+	@Test
 	public void canParseArrayToString()
 	{
 		assertNotNull(m_view.toString());
 	}
 	
-	public void canArraySizeBeReturned()
+	@Test
+	public void canReturnArraySize()
 	{
 		assertNotNull(m_view.m_numberOfElementsHandler);
 	}
 	
-	public void canSortArandomlyGeneratedArray()
+	@Test
+	public void canMergeSortMethodBeSelectedForSorting()
 	{
-		assertNotNull(m_view.m_sortingArrayHandler);
+		assertNotNull(m_view.m_mergeSortSelected);
 	}
-
+	
+	@Test
+	public void canQuickSortMethodBeSelectedForArraySorting()
+	{
+		assertNotNull(m_view.m_quickSortSelected);
+	}
+	
+	/*@Test
+	public void canRandomlyGeneratedArrayBeSortedUsingMergeSort()
+	{
+		int[] m_unsortedArray = { 10 };
+		int[] actualsorted = m_view.m_mergeSortSelected.m_sortingArrayhandler(m_unsortedArray);
+		int[] expectedsorted = { 10 };
+		assertEquals(m_expectedsorted, m_actualsorted);
+	}*/
+	
+	
 	
 
 }
