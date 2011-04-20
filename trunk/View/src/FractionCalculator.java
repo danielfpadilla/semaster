@@ -311,36 +311,19 @@ public class FractionCalculator implements IFractionView
 	}
 
 	@Override
-	public void buttonAdd(boolean flag)
-	{
-		addButton.setEnabled(flag);
-
-	}
-
-	@Override
-	public void buttonSubstract(boolean flag)
-	{
-		substractButton.setEnabled(flag);
-
-	}
-
-	@Override
-	public void buttonDivide(boolean flag)
-	{
-		DivideButton.setEnabled(flag);
-
-	}
-
-	@Override
-	public void buttonMultiply(boolean flag)
-	{
-		MultiplyButton.setEnabled(flag);
-
-	}
-
-	@Override
-	public void setimageLabel(boolean flag)
+	public void imageLabel(boolean flag)
 	{
 		myImage.setVisible(flag);
+	}
+
+	@Override
+	public void setActionEnabled(boolean flag)
+	{
+		addButton.setEnabled(flag);
+		substractButton.setEnabled(flag);
+		DivideButton.setEnabled(flag);
+		MultiplyButton.setEnabled(flag);
+		
+		
 	}
 }
