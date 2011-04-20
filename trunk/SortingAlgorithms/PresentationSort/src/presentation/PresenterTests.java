@@ -10,8 +10,7 @@ public class PresenterTests
 {
 	FakeView m_view;
 	Presenter m_presenter;
-	//private String m_expectedsorted;
-	//private String m_actualsorted;
+	
 	@Before
 	public void setUp()
 	{
@@ -45,6 +44,12 @@ public class PresenterTests
 	}
 	
 	@Test
+	public void canParseArraySize()
+	{
+		assertNotNull(m_view.m_numberOfElementsHandler);
+	}
+	
+	@Test
 	public void canReturnArraySize()
 	{
 		assertNotNull(m_view.m_numberOfElementsHandler);
@@ -62,14 +67,7 @@ public class PresenterTests
 		assertNotNull(m_view.m_quickSortSelected);
 	}
 	
-	/*@Test
-	public void canRandomlyGeneratedArrayBeSortedUsingMergeSort()
-	{
-		int[] m_unsortedArray = { 10 };
-		int[] actualsorted = m_view.m_mergeSortSelected.m_sortingArrayhandler(m_unsortedArray);
-		int[] expectedsorted = { 10 };
-		assertEquals(m_expectedsorted, m_actualsorted);
-	}*/
+	
 	
 	
 	
