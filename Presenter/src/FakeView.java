@@ -6,7 +6,7 @@ public class FakeView implements IFractionView
 	public String m_numerator2;
 	public String m_denominator2;
 	public String m_result;
-	public boolean mode;
+	public boolean enableButton;
 	public IActionHandler m_addActionHandler;
 	public IActionHandler m_substractActionHandler;
 	public IActionHandler m_multiplyActionHandler;
@@ -121,38 +121,17 @@ public class FakeView implements IFractionView
 	}
 
 	@Override
-	public void buttonAdd(boolean flag)
+	public void imageLabel(boolean flag)
 	{
-		mode = flag;
+		enableButton = flag;
 
 	}
 
 	@Override
-	public void buttonSubstract(boolean flag)
+	public void setActionEnabled(boolean flag)
 	{
-		mode = flag;
-
-	}
-
-	@Override
-	public void buttonDivide(boolean flag)
-	{
-		mode = flag;
-
-	}
-
-	@Override
-	public void buttonMultiply(boolean flag)
-	{
-		mode = flag;
-
-	}
-
-	@Override
-	public void setimageLabel(boolean flag)
-	{
-		mode = flag;
-
+		enableButton=flag;
+		
 	}
 
 }

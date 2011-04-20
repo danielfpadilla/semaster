@@ -112,30 +112,21 @@ public class FractionPresenter
 		catch (NumberFormatException e)
 		{
 			m_view.setOutputError("there is a zero in the denominator");
-			m_view.setimageLabel(true);
-			m_view.buttonAdd(false);
-			m_view.buttonDivide(false);
-			m_view.buttonMultiply(false);
-			m_view.buttonSubstract(false);
+			m_view.imageLabel(true);
+			m_view.setActionEnabled(false);
 			return;
 		}
 
 		catch (IllegalArgumentException e)
 		{
 			m_view.setOutputError("Invalid input Character");
-			m_view.setimageLabel(true);
-			m_view.buttonAdd(false);
-			m_view.buttonDivide(false);
-			m_view.buttonMultiply(false);
-			m_view.buttonSubstract(false);
+			m_view.imageLabel(true);
+			m_view.setActionEnabled(false);
 			return;
 		}
 		m_view.setOutputError("");
-		m_view.setimageLabel(false);
-		m_view.buttonAdd(true);
-		m_view.buttonDivide(true);
-		m_view.buttonMultiply(true);
-		m_view.buttonSubstract(true);
+		m_view.imageLabel(false);
+		m_view.setActionEnabled(true);
 
 	}
 
