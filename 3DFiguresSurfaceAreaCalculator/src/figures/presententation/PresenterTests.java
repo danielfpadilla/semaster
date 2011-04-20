@@ -1,6 +1,7 @@
 package figures.presententation;
 
 import static org.junit.Assert.assertEquals;
+import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
@@ -24,7 +25,7 @@ public class PresenterTests
 		m_view = null;
 		m_presenter = null;
 	}
-
+  
 	@Test
 	public void canCalculateAreaOfCone()
 	{
@@ -32,7 +33,8 @@ public class PresenterTests
 		m_view.m_coneRadius = "3.0";
 		m_view.m_coneHeight = "4.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("75.398223", m_view.m_area.substring(0, 9));
+		//assertEquals("75.398223", m_view.m_area.substring(0, 9));
+	    Assert.assertTrue(m_presenter.compareDoubleNumbers("75.398223",m_view.m_area));
 
 	}
 

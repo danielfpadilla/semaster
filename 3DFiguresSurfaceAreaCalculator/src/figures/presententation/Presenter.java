@@ -29,7 +29,20 @@ public class Presenter
 			}
 		});
 	}
-
+	public boolean compareDoubleNumbers(String s1, String s2)
+	{
+		//double d1  = Double.parseDouble(s1);
+	    //double  d2  = Double.parseDouble(s2);
+		Double d1 = new Double(s1);
+	    Double d2 = new Double(s2);
+		int i = d1.compareTo(d2);
+		if(i == 0)
+		
+	    return true;
+		else
+			return false;
+	    
+	}
 	protected void verifyInput(String string)
 	{
 
@@ -108,7 +121,7 @@ public class Presenter
 				verifyInput(m_view.getCylinderHeight());
 			}
 			catch (NumberFormatException f)
-			{				m_view.setErrorMessage(f.getMessage());
+			{				m_view.setErrorMessage("Invalid cylinder radius or height");
 				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
