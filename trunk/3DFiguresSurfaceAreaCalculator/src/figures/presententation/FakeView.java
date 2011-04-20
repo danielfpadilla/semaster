@@ -2,26 +2,34 @@ package figures.presententation;
 
 public class FakeView implements IView
 {
-	public boolean m_coneSelected = false;
-	public boolean m_cubeSelected = false;
-	public boolean m_cylinderSelected = false;
-	public boolean m_sphereSelected = false;
-	public boolean m_squarePyramidSelected = false;
-	public boolean m_torusSelected = false;
-	public boolean m_calculateButtonState;
-	public boolean m_errorIconState;
 	public String m_coneRadius;
 	public String m_coneHeight;
+	public boolean m_coneSelected = false;
+	
 	public String m_cubeFaceLength;
-	public String m_cylinderRadius;
+	public boolean m_cubeSelected = false;
+	
 	public String m_cylinderHeight;
+	public String m_cylinderRadius;
+	public boolean m_cylinderSelected = false;
+	
 	public String m_sphereRadius;
+	public boolean m_sphereSelected = false;
+	
 	public String m_pyramidBaseLength;
 	public String m_pyramidBaseHeight;
+	public boolean m_squarePyramidSelected = false;
+	
 	public String m_torusMajorRadius;
 	public String m_torusMinorRadius;
+	public boolean m_torusSelected = false;
+	
+	public boolean m_calculateButtonState;
+	public boolean m_errorIconState;
+	
 	public String m_area;
 	public String m_warningErrorMessage;
+	
 	public IActionHandler m_areaHandler;
 	public IActionHandler m_inputHandler;
 

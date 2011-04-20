@@ -100,12 +100,6 @@ public class AreaCalculationWindow implements IView
 		{
 			public void modifyText(ModifyEvent e)
 			{
-				valueChanged((Text) e.widget);
-
-			}
-
-			public void valueChanged(Text text)
-			{
 				m_processInputHandler.processAction();
 
 			}
@@ -241,15 +235,17 @@ public class AreaCalculationWindow implements IView
 		m_areaResultText.setBounds(164, 235, 156, 19);
 
 		m_lblErrorMessage = new Label(m_shldSolidArea, SWT.NONE);
-		m_lblErrorMessage.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
-
+		m_lblErrorMessage.setForeground(SWTResourceManager
+				.getColor(SWT.COLOR_RED));
 
 		m_lblErrorMessage.setText("Enter the parameters");
 		m_lblErrorMessage.setToolTipText("");
 		m_lblErrorMessage.setBounds(49, 200, 276, 19);
 
 		m_lblErrorIcon = new Label(m_shldSolidArea, SWT.NONE);
-		m_lblErrorIcon.setImage(SWTResourceManager.getImage(AreaCalculationWindow.class, "/com/sun/java/swing/plaf/windows/icons/Error.gif"));
+		m_lblErrorIcon.setImage(SWTResourceManager.getImage(
+				AreaCalculationWindow.class,
+				"/com/sun/java/swing/plaf/windows/icons/Error.gif"));
 		m_lblErrorIcon.setBounds(10, 196, 33, 31);
 		m_lblErrorIcon.setVisible(false);
 
@@ -320,38 +316,39 @@ public class AreaCalculationWindow implements IView
 	@Override
 	public boolean coneIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("Cone"));
+		return m_tabFolder.getSelection()[0].getText() == "Cone";
 
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("Cube"));
+		return m_tabFolder.getSelection()[0].getText() == "Cube";
 	}
 
 	@Override
 	public boolean cylinderIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("Cylinder"));
+		return m_tabFolder.getSelection()[0].getText() == "Cylinder";
 	}
 
 	@Override
 	public boolean sphereIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("Sphere"));
+		return m_tabFolder.getSelection()[0].getText() == "Sphere";
 	}
 
 	@Override
 	public boolean squarePyramidIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("SquareBasedPyramid"));
+		return m_tabFolder.getSelection()[0].getText() == "SquareBasedPyramid";
 	}
+	
 
 	@Override
 	public boolean torusIsSelected()
 	{
-		return (m_tabFolder.getSelection()[0].getText() == ("Torus"));
+		return m_tabFolder.getSelection()[0].getText() == "Torus";
 	}
 
 	@Override
