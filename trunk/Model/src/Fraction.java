@@ -4,6 +4,7 @@ public class Fraction implements IFraction
 	private int m_numerator;
 	private int m_denominator;
 	final double DELTA = 0.001;
+	
 
 	public Fraction()
 	{
