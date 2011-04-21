@@ -30,21 +30,6 @@ public class Presenter
 		});
 	}
 
-	public boolean compareDoubleNumbers(String s1, String s2)
-	{
-		// double d1 = Double.parseDouble(s1);
-		// double d2 = Double.parseDouble(s2);
-		Double d1 = new Double(s1);
-		Double d2 = new Double(s2);
-		int i = d1.compareTo(d2);
-		if (i == 0)
-
-			return true;
-		else
-			return false;
-
-	}
-
 	protected void verifyInput(String string) throws InvalidParameterException
 	{
 
@@ -82,8 +67,8 @@ public class Presenter
 		}
 
 	}
-
-	protected void checkTorusValidity(String a, String b)
+	
+   protected void checkTorusValidity(String a, String b)
 	{
 		if (Double.parseDouble(a) <= Double.parseDouble(b))
 		{

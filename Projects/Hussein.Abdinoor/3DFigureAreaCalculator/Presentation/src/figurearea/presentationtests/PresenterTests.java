@@ -2,6 +2,8 @@ package figurearea.presentationtests;
 
 import static org.junit.Assert.*;
 
+import java.text.DecimalFormat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +12,7 @@ import figurearea.presentation.*;
 
 public class PresenterTests
 {
+	DecimalFormat m_decimalFormat = new DecimalFormat("#.#####");
 	FakeView m_view;
 	Presenter m_presenter;
 
@@ -34,8 +37,7 @@ public class PresenterTests
 		m_view.m_coneRadius = "3.0";
 		m_view.m_coneHeight = "4.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("75.398223", m_view.m_area.substring(0, 9));
-	   // Assert.assertTrue(m_presenter.compareDoubleNumbers("75.398223",m_view.m_area));
+	    assertEquals("75.39822",m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 
 	}
 
@@ -45,7 +47,7 @@ public class PresenterTests
 		m_view.m_cubeSelected = true;
 		m_view.m_cubeFaceLength = "10";
 		m_view.m_areaHandler.processAction();
-		assertEquals("600.0", m_view.m_area.substring(0, 5));
+		assertEquals("600", m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 	}
 
 	@Test
@@ -55,7 +57,7 @@ public class PresenterTests
 		m_view.m_cylinderRadius = "7";
 		m_view.m_cylinderHeight = "10";
 		m_view.m_areaHandler.processAction();
-		assertEquals("747.6990", m_view.m_area.substring(0, 8));
+		assertEquals("747.69905",m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 	}
 
 	@Test
@@ -64,7 +66,7 @@ public class PresenterTests
 		m_view.m_sphereSelected = true;
 		m_view.m_sphereRadius = "10";
 		m_view.m_areaHandler.processAction();
-		assertEquals("1256.6370", m_view.m_area.substring(0, 9));
+		assertEquals("1256.63706", m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 	}
 
 	@Test
@@ -74,7 +76,7 @@ public class PresenterTests
 		m_view.m_pyramidBaseLength = "6.0";
 		m_view.m_pyramidBaseHeight = "4.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("96.0", m_view.m_area.substring(0, 4));
+		assertEquals("96", m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 	}
 
 	@Test
@@ -84,7 +86,7 @@ public class PresenterTests
 		m_view.m_torusMinorRadius = "3.0";
 		m_view.m_torusMajorRadius = "10.0";
 		m_view.m_areaHandler.processAction();
-		assertEquals("1184.3525", m_view.m_area.substring(0, 9));
+		assertEquals("1184.35253", m_decimalFormat.format(Double.parseDouble(m_view.m_area)));
 	}
 
 	@Test
