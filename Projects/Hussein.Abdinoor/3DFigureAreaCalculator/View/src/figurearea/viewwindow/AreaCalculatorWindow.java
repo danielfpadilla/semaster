@@ -84,6 +84,7 @@ public class AreaCalculatorWindow implements IView
 	{
 
 		m_shldSolidArea = new Shell();
+		m_shldSolidArea.setImage(SWTResourceManager.getImage(AreaCalculatorWindow.class, "/javax/swing/plaf/basic/icons/JavaCup16.png"));
 		m_shldSolidArea.setToolTipText("");
 		m_shldSolidArea.setSize(370, 326);
 		m_shldSolidArea.setText("3D Shapes Area Calculator 1.0");
@@ -235,8 +236,7 @@ public class AreaCalculatorWindow implements IView
 		m_areaResultText.setBounds(164, 235, 156, 19);
 
 		m_lblErrorMessage = new Label(m_shldSolidArea, SWT.NONE);
-		m_lblErrorMessage.setForeground(SWTResourceManager
-				.getColor(SWT.COLOR_RED));
+		m_lblErrorMessage.setForeground(SWTResourceManager.getColor(255, 0, 0));
 
 		m_lblErrorMessage.setText("Enter the parameters");
 		m_lblErrorMessage.setToolTipText("");
@@ -244,7 +244,8 @@ public class AreaCalculatorWindow implements IView
 
 		m_lblErrorIcon = new Label(m_shldSolidArea, SWT.NONE);
 		m_lblErrorIcon.setImage(SWTResourceManager.getImage(AreaCalculatorWindow.class, "/com/sun/java/swing/plaf/windows/icons/Error.gif"));
-		m_lblErrorIcon.setBounds(10, 196, 33, 31);
+		//m_lblErrorIcon.setImage(SWTResourceManager.getImage("C:\\MyProjects\\View\\src\\figurearea\\windowimages\\error.png"));
+		m_lblErrorIcon.setBounds(10, 196, 33, 33);
 		m_lblErrorIcon.setVisible(false);
 
 	}
