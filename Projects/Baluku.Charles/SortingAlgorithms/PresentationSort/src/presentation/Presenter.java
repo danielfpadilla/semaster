@@ -99,13 +99,14 @@ public class Presenter
 
 	public void generateArrayRandomNumbers()
 	{
+		
 		int m_arraySize;
 		m_arraySize = Integer.parseInt(m_view.getArraySize());
 		Random rand = new Random();
-		m_view.setUnsortedArray("");
+		m_view.setUnsortedArray(",");
 		for (int i = 0; i < m_arraySize; i++)
 		{
-			m_view.setUnsortedArray(" , " + rand.nextInt(100));
+			m_view.setUnsortedArray(" " + rand.nextInt(100));
 		}
 
 	}
