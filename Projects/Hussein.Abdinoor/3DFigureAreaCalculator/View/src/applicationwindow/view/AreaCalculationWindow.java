@@ -38,12 +38,7 @@ public class AreaCalculationWindow implements IView
 	private IActionHandler m_processInputHandler;
 	private Label m_lblErrorMessage;
 	Button m_btnCalculateArea;
-
-	/**
-	 * Launch the application.
-	 * 
-	 * @param args
-	 */
+	
 	public static void main(String[] args)
 	{
 		try
@@ -57,10 +52,6 @@ public class AreaCalculationWindow implements IView
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * Open the window.
-	 */
 	public void open()
 	{
 		Display display = Display.getDefault();
@@ -75,10 +66,6 @@ public class AreaCalculationWindow implements IView
 			}
 		}
 	}
-
-	/**
-	 * Create contents of the window.
-	 */
 	protected void createContents()
 	{
 
