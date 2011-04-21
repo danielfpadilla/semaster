@@ -29,21 +29,23 @@ public class Presenter
 			}
 		});
 	}
+
 	public boolean compareDoubleNumbers(String s1, String s2)
 	{
-		//double d1  = Double.parseDouble(s1);
-	    //double  d2  = Double.parseDouble(s2);
+		// double d1 = Double.parseDouble(s1);
+		// double d2 = Double.parseDouble(s2);
 		Double d1 = new Double(s1);
-	    Double d2 = new Double(s2);
+		Double d2 = new Double(s2);
 		int i = d1.compareTo(d2);
-		if(i == 0)
-		
-	    return true;
+		if (i == 0)
+
+			return true;
 		else
 			return false;
-	    
+
 	}
-	protected void verifyInput(String string)
+
+	protected void verifyInput(String string) throws InvalidParameterException
 	{
 
 		if (string.length() == 0)
@@ -51,7 +53,6 @@ public class Presenter
 			throw new NumberFormatException("empty or null input");
 
 		}
-
 		char[] chars = new char[string.length()];
 		string.getChars(0, chars.length, chars, 0);
 
@@ -59,7 +60,7 @@ public class Presenter
 		{
 			if (!(chars[0] != '0' && '0' <= chars[i] && chars[i] <= '9' || chars[i] == '.'))
 			{
-				throw new NumberFormatException();
+				throw new InvalidParameterException("");
 			}
 		}
 
@@ -78,14 +79,17 @@ public class Presenter
 	{
 		if (m_view.coneIsSelected())
 		{
+			
 			try
 			{
 				verifyInput(m_view.getConeRadius());
 				verifyInput(m_view.getConeHeight());
-			}
-			catch (NumberFormatException f)
+			   //throw new InvalidParameterException("Invalid cone radius or height");
+			} catch (InvalidParameterException e)
 			{
-				m_view.setErrorMessage("Invalid cone radius or height");
+				//m_view.setErrorMessage("Invalid cone radius or height");
+			   //throw new InvalidParameterException("Invalid cone radius or height");
+				m_view.setErrorMessage(e.getErrorMessage());
 				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
@@ -100,8 +104,7 @@ public class Presenter
 			try
 			{
 				verifyInput(m_view.getCubeEdgeLength());
-			}
-			catch (NumberFormatException f)
+			}catch (InvalidParameterException e)
 			{
 				m_view.setErrorMessage("Invalid cube facelength");
 				m_view.setStateOfErrorIcon(true);
@@ -119,9 +122,9 @@ public class Presenter
 				verifyInput(m_view.getCylinderRadius());
 
 				verifyInput(m_view.getCylinderHeight());
-			}
-			catch (NumberFormatException f)
-			{				m_view.setErrorMessage("Invalid cylinder radius or height");
+			}  catch (InvalidParameterException e)
+			{
+				m_view.setErrorMessage("Invalid cylinder radius or height");
 				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
@@ -135,8 +138,7 @@ public class Presenter
 			try
 			{
 				verifyInput(m_view.getSphereRadius());
-			}
-			catch (NumberFormatException f)
+			} catch (InvalidParameterException e)
 			{
 				m_view.setErrorMessage("Invalid sphere radius.");
 				m_view.setStateOfErrorIcon(true);
@@ -155,8 +157,7 @@ public class Presenter
 				verifyInput(m_view.getSquareBasedPyramidBaseLength());
 				verifyInput(m_view.getSquareBasedPyramidBaseHeight());
 
-			}
-			catch (NumberFormatException f)
+			} catch (InvalidParameterException e)
 			{
 				m_view.setErrorMessage("Invalid square pyramid baseLength or Height");
 				m_view.setStateOfErrorIcon(true);
@@ -180,15 +181,13 @@ public class Presenter
 				checkTorusValidity(m_view.getTorusMajorRadius(),
 						m_view.getTorusMinorRadius());
 
-			}
-			catch (NumberFormatException f)
+			}  catch (InvalidParameterException e)
 			{
 				m_view.setErrorMessage("Invalid arguments of minor radius greater or major radius");
 				m_view.setStateOfErrorIcon(true);
 				m_view.setStateOfCalculateAreaButton(false);
 				return;
-			}
-			catch (ArithmeticException a)
+			} catch (ArithmeticException a)
 			{
 				m_view.setErrorMessage("Incorrect input : minor radius greater than major radius");
 				m_view.setStateOfErrorIcon(true);
@@ -246,8 +245,7 @@ public class Presenter
 		try
 		{
 			calculateFigureArea();
-		}
-		catch (ArithmeticException e)
+		} catch (ArithmeticException e)
 		{
 			m_view.setErrorMessage(e.getMessage());
 		}
