@@ -106,7 +106,7 @@ public class Presenter
 		m_view.setUnsortedArray(",");
 		for (int i = 0; i < m_arraySize; i++)
 		{
-			m_view.setUnsortedArray(" " + rand.nextInt(100));
+			m_view.setUnsortedArray("," + rand.nextInt(100));
 		}
 
 	}
