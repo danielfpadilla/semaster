@@ -67,6 +67,16 @@ public class PresenterTests
 		assertNotNull(m_view.m_quickSortSelected);
 	}
 	
+	@Test
+	public void canRandomlyGeneratedArrayBeSorted()
+	{
+		m_view.m_sortingMethod = "QuickSort";
+		m_view.m_size = "10";
+		m_view.m_unsortedArray = "4 432 565 2";
+		assertEquals("4 432 565 2 ", m_view.m_sortedArray);
+		
+	}
+	
 	
 	
 	

@@ -11,6 +11,7 @@ public class FakeView implements IView
 	public IActionHandler m_sortingArrayHandler;
 	public IActionHandler m_generateArrayHandler;
 	public IActionHandler m_numberOfElementsHandler;
+	public String m_sortingMethod;
 
 	@Override
 	public boolean mergeSortIsSelected()
