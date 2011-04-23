@@ -69,12 +69,12 @@ public class ApplicationWindow implements IView
 		shell.setText("SWT Application");
 		
 		Button m_rBtnMergeSort = new Button(shell, SWT.RADIO);
-		m_rBtnMergeSort.setBounds(149, 79, 83, 16);
+		m_rBtnMergeSort.setBounds(149, 93, 83, 16);
 		m_rBtnMergeSort.setText("Merge Sort");
 		
 		Button m_rBtnQuickSort = new Button(shell, SWT.RADIO);
 		m_rBtnQuickSort.setText("Quick Sort");
-		m_rBtnQuickSort.setBounds(149, 57, 83, 16);
+		m_rBtnQuickSort.setBounds(149, 71, 83, 16);
 		
 		m_unsortedArray = new Text(shell, SWT.BORDER);
 		m_unsortedArray.setBounds(187, 131, 245, 19);
@@ -110,7 +110,7 @@ public class ApplicationWindow implements IView
 		lblEnterSizeOf.setText("Enter Size of Array :");
 		
 		Label lblChooseSortingMethod = new Label(shell, SWT.NONE);
-		lblChooseSortingMethod.setBounds(20, 57, 123, 13);
+		lblChooseSortingMethod.setBounds(20, 73, 123, 13);
 		lblChooseSortingMethod.setText("Choose Sorting Method:");
 
 	}
@@ -118,7 +118,7 @@ public class ApplicationWindow implements IView
 	@Override
 	public String getUnsortedArray()
 	{
-		return null;
+		return m_unsortedArray.getText();
 	}
 
 	@Override
@@ -174,8 +174,8 @@ public class ApplicationWindow implements IView
 	}
 
 	@Override
-	public void sortingArray(IActionHandler handler) {
-		
+	public void sortingArray(IActionHandler handler) 
+	{
 		
 	}
 }
