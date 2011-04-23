@@ -8,8 +8,9 @@ import sortingAlgorithms.QuickSort;
 public class Presenter
 {
 	private IView m_view;
-	private MergeSort m_mergeSort;
-	private QuickSort m_quickSort;
+	private MergeSort m_mergeSort = new MergeSort();
+	private QuickSort m_quickSort = new QuickSort();
+
 
 	public Presenter(IView view)
 	{
@@ -87,7 +88,7 @@ public class Presenter
 
 	private static int[] convertStringToIntArray(String arrayString)
 	{
-		String[] arrayStringList = arrayString.split("");
+		String[] arrayStringList = arrayString.split(",");
 		int[] arrayInts = new int[arrayStringList.length];
 		int i = 0;
 		for (String s : arrayStringList)
@@ -104,10 +105,13 @@ public class Presenter
 		m_arraySize = Integer.parseInt(m_view.getArraySize());
 		Random rand = new Random();
 		m_view.setUnsortedArray(",");
+		StringBuffer buffer = new StringBuffer();
 		for (int i = 0; i < m_arraySize; i++)
 		{
 			m_view.setUnsortedArray("," + rand.nextInt(100));
+			 buffer.append(rand.nextInt(100) + ",");
 		}
+		 m_view.setUnsortedArray(buffer.toString());
 
 	}
 }
