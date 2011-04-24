@@ -1,6 +1,6 @@
 package matrixPackage;
 import static org.junit.Assert.fail;
-import matrixpackage.Matrix;
+import matrixPackage.Matrix;
 
 import org.junit.Assert;
 import org.junit.Test;
