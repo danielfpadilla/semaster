@@ -3,7 +3,7 @@ package sortingAlgorithms;
 public class MergeSort extends sorting
 {
 	private int m_numberOfElements;
-	public int[] m_numbers = new int[m_numberOfElements];
+	private int[] m_numbers = new int[m_numberOfElements];
 
 	@Override
 	
@@ -18,22 +18,22 @@ public class MergeSort extends sorting
 		this.m_numbers = ArrayElements;
 		m_numberOfElements = ArrayElements.length;
 
-		mergeSort(0, m_numberOfElements - 1);
+		m_mergeSort(0, m_numberOfElements - 1);
 		return ArrayElements;
 	}
 
-	private void mergeSort(int low, int high)
+	private void m_mergeSort(int low, int high)
 	{
 		if (low < high)
 		{
 			int middle = (low + high) / 2;
-			mergeSort(low, middle);
-			mergeSort(middle + 1, high);
-			merge(low, middle, high);
+			m_mergeSort(low, middle);
+			m_mergeSort(middle + 1, high);
+			m_merge(low, middle, high);
 		}
 	}
 
-	private void merge(int low, int middle, int high)
+	private void m_merge(int low, int middle, int high)
 	{
 
 		int[] helperArray = new int[m_numberOfElements];
