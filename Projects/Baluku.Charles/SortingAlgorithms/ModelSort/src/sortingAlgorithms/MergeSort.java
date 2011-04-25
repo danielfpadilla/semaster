@@ -13,13 +13,13 @@ public class MergeSort extends sorting
 	}
 
 	@Override
-	public int[] sortInternal(int[] ArrayElements)
+	public int[] sortInternal(int[] arrayElements)
 	{
-		this.m_numbers = ArrayElements;
-		m_numberOfElements = ArrayElements.length;
+		this.m_numbers = arrayElements;
+		m_numberOfElements = arrayElements.length;
 
 		m_mergeSort(0, m_numberOfElements - 1);
-		return ArrayElements;
+		return arrayElements;
 	}
 
 	private void m_mergeSort(int low, int high)
