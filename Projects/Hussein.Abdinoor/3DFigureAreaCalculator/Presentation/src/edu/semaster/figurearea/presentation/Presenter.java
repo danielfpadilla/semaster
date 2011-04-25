@@ -36,7 +36,7 @@ public class Presenter
 
 		if (string.length() == 0)
 		{
-			throw new NumberFormatException("empty or null input");
+			throw new InvalidParameterException("empty or null input");
 
 		}
 		char[] chars = new char[string.length()];
