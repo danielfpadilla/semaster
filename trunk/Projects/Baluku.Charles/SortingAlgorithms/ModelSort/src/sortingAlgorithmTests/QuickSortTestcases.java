@@ -10,30 +10,30 @@ import sortingAlgorithms.QuickSort;
 
 public class QuickSortTestcases
 {
-	QuickSort quickSort;
+	QuickSort m_quickSort;
 
 	@Before
 	public void setUp()
 	{
-		quickSort = new QuickSort();
+		m_quickSort = new QuickSort();
 	}
 
 	@After
 	public void tearDown()
 	{
-		quickSort = null;
+		m_quickSort = null;
 	}
 
 	@Test
 	public void canCreateArrayWithElements()
 	{
-		assertNotNull(quickSort);
+		assertNotNull(m_quickSort);
 	}
 
 	@Test
 	public void canReturnSortingName()
 	{
-		assertEquals("QuickSort", quickSort.getSortingName());
+		assertEquals("QuickSort", m_quickSort.getSortingName());
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 9 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 9 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -52,7 +52,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 9, 2 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 2, 9 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -63,7 +63,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 32, 30, 10, 8, 12, 10, 88, 2 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 2, 8, 10, 10, 12, 30, 32, 88 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -74,7 +74,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 33, 131, 11, 1, 71, 141, 3, 1 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 1, 1, 3, 11, 33, 71, 131, 141 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -85,7 +85,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 5, 4, 3, 2, 1 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		int[] expectedsorted =
 		{ 1, 2, 3, 4, 5 };
 		assertArrayEquals(expectedsorted, actualsorted);
@@ -96,7 +96,7 @@ public class QuickSortTestcases
 	{
 		int[] unsorted =
 		{ 5, 4, 3, 2, 1 };
-		int[] actualsorted = quickSort.sortArray(unsorted);
+		int[] actualsorted = m_quickSort.sortArray(unsorted);
 		assertEquals(unsorted.length, actualsorted.length);
 
 	}
@@ -104,7 +104,7 @@ public class QuickSortTestcases
 	@Test(expected = NullPointerException.class)
 	public void exceptionIsThrowIfAnArrayIsEmpty()
 	{
-		quickSort.sortArray(null);
+		m_quickSort.sortArray(null);
 	}
 
 }
