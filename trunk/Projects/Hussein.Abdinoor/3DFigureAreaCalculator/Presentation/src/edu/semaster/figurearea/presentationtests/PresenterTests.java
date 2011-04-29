@@ -90,19 +90,30 @@ public class PresenterTests
 	}
 
 	@Test
-	public void canProcessInputToCheckForErrorsInCone()
+	public void canProcessInputToCheckForIncorrectConeRadius()
 	{
 		m_view.m_coneSelected = true;
 		m_view.m_coneRadius = "3/?.0";
-		m_view.m_coneHeight = "-14.0";
+		m_view.m_coneHeight = "14.0";
 		m_view.m_inputHandler.processAction();
-		assertEquals("Invalid cone radius or height",
+		assertEquals("Invalid cone radius",
+				m_view.m_warningErrorMessage);
+
+	}
+	@Test
+	public void canProcessInputToCheckForIncorrectConeHeight()
+	{
+		m_view.m_coneSelected = true;
+		m_view.m_coneRadius = "32.0";
+		m_view.m_coneHeight = "j-4.0";
+		m_view.m_inputHandler.processAction();
+		assertEquals("Invalid cone height",
 				m_view.m_warningErrorMessage);
 
 	}
 
 	@Test
-	public void canProcessInputToCheckForErrorsInCube()
+	public void canProcessInputToCheckForErrorsInCubeFacelength()
 	{
 		m_view.m_cubeSelected = true;
 		m_view.m_cubeFaceLength = "p3d";
@@ -112,52 +123,88 @@ public class PresenterTests
 	}
 
 	@Test
-	public void canProcessInputToCheckForErrorsInCylinder()
+	public void canProcessInputToCheckForErrorsInCylinderRadius()
 	{
 		m_view.m_cylinderSelected = true;
-		m_view.m_cylinderRadius = "-7f";
-		m_view.m_cylinderHeight = "#10";
+		m_view.m_cylinderRadius = "j-7f";
+		m_view.m_cylinderHeight = "10";
 		m_view.m_inputHandler.processAction();
-		assertEquals("Invalid cylinder radius or height",
+		assertEquals("Invalid Cylinder radius",
 				m_view.m_warningErrorMessage);
 
 	}
-
 	@Test
-	public void canProcessInputToCheckForErrorsInSphere()
+	public void canProcessInputToCheckForErrorsInCylinderHeight()
+	{
+		m_view.m_cylinderSelected = true;
+		m_view.m_cylinderRadius = "7";
+		m_view.m_cylinderHeight = "#10";
+		m_view.m_inputHandler.processAction();
+		assertEquals("Invalid Cylinder height",
+				m_view.m_warningErrorMessage);
+
+	}
+	@Test
+	public void canProcessInputToCheckForErrorsInSphereRadius()
 	{
 		m_view.m_sphereSelected = true;
-		m_view.m_sphereRadius = "0.0";
+		m_view.m_sphereRadius = "p0.0";
 		m_view.m_inputHandler.processAction();
-		assertEquals("Invalid sphere radius.", m_view.m_warningErrorMessage);
+		assertEquals("Invalid Sphere radius", m_view.m_warningErrorMessage);
 
 	}
 
 	@Test
-	public void canProcessInputToCheckForErrorsInSquareBasedPyramid()
+	public void canProcessInputToCheckForErrorsInPyramidLength()
 	{
 		m_view.m_squarePyramidSelected = true;
 
-		m_view.m_pyramidBaseLength = "-46.0";
-		m_view.m_pyramidBaseHeight = "-4.0";
+		m_view.m_pyramidBaseLength = "j/6.0";
+		m_view.m_pyramidBaseHeight = "4.0";
 		m_view.m_inputHandler.processAction();
-		assertEquals("Invalid square pyramid baseLength or Height",
+		assertEquals("Invalid Pyramid base length",
+				m_view.m_warningErrorMessage);
+
+	}
+	@Test
+	public void canProcessInputToCheckForErrorsInPyramidHeight()
+	{
+		m_view.m_squarePyramidSelected = true;
+
+		m_view.m_pyramidBaseLength = "46.0";
+		m_view.m_pyramidBaseHeight = "-j4.0";
+		m_view.m_inputHandler.processAction();
+		assertEquals("Invalid Pyramid base height",
 				m_view.m_warningErrorMessage);
 
 	}
 
 	@Test
-	public void canProcessInputToCheckForNumberFormatErrorsforInTorus()
+	public void canProcessInputCheckForErrorsInTorusMinorRadius()
 	{
 		m_view.m_torusSelected = true;
 		m_view.m_torusMinorRadius = "#0.0";
-		m_view.m_torusMajorRadius = "!0";
+		m_view.m_torusMajorRadius = "10";
 		m_view.m_inputHandler.processAction();
 		assertEquals(
-				"Invalid arguments of minor radius greater or major radius",
+				"Invalid torus minor radius",
 				m_view.m_warningErrorMessage);
 
 	}
+	
+	@Test
+	public void canProcessInputToCheckForErrorsInTorusMajorRadius()
+	{
+		m_view.m_torusSelected = true;
+		m_view.m_torusMinorRadius = "30.0";
+		m_view.m_torusMajorRadius = "!0";
+		m_view.m_inputHandler.processAction();
+		assertEquals(
+				"Invalid torus major radius",
+				m_view.m_warningErrorMessage);
+
+	}
+	
 
 	@Test
 	public void canProcessInputToCheckThatMinorRadiusIsNotGreaterThanMajorRadiusforTorus()
