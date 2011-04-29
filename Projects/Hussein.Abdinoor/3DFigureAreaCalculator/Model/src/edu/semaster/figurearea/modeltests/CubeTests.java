@@ -2,55 +2,36 @@ package edu.semaster.figurearea.modeltests;
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import edu.semaster.figurearea.model.Cube;
 
 public class CubeTests
 {
-	private Cube cube;
 	private final double DELTA = 0.0001;
-
-	@Before
-	public void setUp()
-	{
-		cube = new Cube(10);
-	}
-
-	@After
-	public void tearDown()
-	{
-		cube = null;
-	}
-
-	@Test
-	public void canCreateCube()
-	{
-		assertNotNull(cube);
-	}
-
 	@Test
 	public void cubeIsNotNull()
 	{
-		assertNotNull(cube);
+		 Cube m_cube = new Cube(10);
+			assertNotNull(m_cube);
 	}
 
 	@Test
 	public void canSetFaceLengthOfCube()
 	{
-		Assert.assertNotNull(cube);
-		assertEquals(10, cube.getFaceLength(), DELTA);
+		Cube m_cube = new Cube(10);
+		Assert.assertNotNull(m_cube);
+		assertEquals(10, m_cube.getFaceLength(), DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfCubeWithFaceLenghtequalsTo10()
 	{
-		double actual = cube.calculateArea();
+		Cube m_cube = new Cube(10);
+		double actual = m_cube.calculateArea();
 		double expected = 600;
 		assertTrue("Checking Whether face length is greater than zero",
-				cube.getFaceLength() >= 0);
+				m_cube.getFaceLength() >= 0);
 		assertEquals(expected, actual, DELTA);
 	}
 
