@@ -1,4 +1,5 @@
 package edu.semaster.figurearea.model;
+
 public class Cone implements I3DFigure
 {
 	private double m_radius;
