@@ -6,12 +6,12 @@ public interface IFraction
 
 	public double toDouble();
 
-	public Fraction add(Fraction fraction1);
+	public IFraction add(IFraction fraction2);
 
-	public Fraction subtract(Fraction fraction1);
+	public IFraction subtract(IFraction fraction2);
 
-	public Fraction multiply(Fraction fraction1);
+	public IFraction multiply(IFraction fraction2);
 
-	public Fraction divide(Fraction fraction1);
+	public IFraction divide(IFraction fraction1);
 
 }

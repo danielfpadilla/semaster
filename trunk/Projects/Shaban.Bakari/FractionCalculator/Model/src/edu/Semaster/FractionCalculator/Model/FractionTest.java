@@ -5,15 +5,13 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-
-
 public class FractionTest
 {
 	private int m_numerator = 1;
 	private int m_denominator = 1;
 	private final double DELTA = 0.002;
 
-    @Test
+	@Test
 	public void createFraction()
 	{
 		Fraction fraction = new Fraction();
@@ -127,8 +125,7 @@ public class FractionTest
 		Fraction fraction1 = new Fraction(1, 4);
 		Fraction fractionSubtraction = new Fraction(-3, 4);
 
-		Assert.assertEquals(fractionSubtraction,
-				fraction.subtract(fraction1));
+		Assert.assertEquals(fractionSubtraction, fraction.subtract(fraction1));
 	}
 
 	@Test
@@ -149,8 +146,7 @@ public class FractionTest
 		Fraction fraction1 = new Fraction(1, 2);
 		Fraction fractionDivision = new Fraction(1, 2);
 
-		Assert.assertEquals(fractionDivision,
-				fraction.divide(fraction1));
+		Assert.assertEquals(fractionDivision, fraction.divide(fraction1));
 	}
 
 	@Test

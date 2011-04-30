@@ -1,12 +1,10 @@
 package edu.Semaster.FractionCalculator.Model;
 
-
 public class Fraction implements IFraction
 {
 	private int m_numerator;
 	private int m_denominator;
 	final double DELTA = 0.001;
-	
 
 	public Fraction()
 	{
@@ -50,7 +48,12 @@ public class Fraction implements IFraction
 	public void setDenominator(int denominator)
 	{
 
-		m_denominator = denominator;
+		if (denominator != 0)
+		{
+			m_denominator = denominator;
+		}
+		else
+			throw new IllegalArgumentException("invalid denominator");
 	}
 
 	public String toString()
@@ -95,12 +98,14 @@ public class Fraction implements IFraction
 
 	}
 
-	public Fraction add(Fraction myFraction)
+	public IFraction add(IFraction myFraction)
 	{
 		Fraction result = new Fraction();
-		result.setNumerator((myFraction.getNumerator() * this.getDenominator())
-				+ this.getNumerator() * myFraction.getDenominator());
-		result.setDenominator(myFraction.getDenominator()
+		result.setNumerator((((Fraction) myFraction).getNumerator() * this
+				.getDenominator())
+				+ this.getNumerator()
+				* ((Fraction) myFraction).getDenominator());
+		result.setDenominator(((Fraction) myFraction).getDenominator()
 				* this.getDenominator());
 		// ((a*d)+(c*b))/(b*d)
 		result.reduce();
@@ -108,40 +113,44 @@ public class Fraction implements IFraction
 
 	}
 
-	public Fraction subtract(Fraction fraction1)
+	public IFraction subtract(IFraction fraction1)
 	{
-		Fraction result = new Fraction();
-		result.setNumerator((fraction1.getNumerator() * this.getDenominator())
-				- this.getNumerator() * fraction1.getDenominator());
-		result.setDenominator(fraction1.getDenominator()
-				* this.getDenominator());
+		IFraction result = new Fraction();
+		((Fraction) result)
+				.setNumerator((((Fraction) fraction1).getNumerator() * this
+						.getDenominator())
+						- this.getNumerator()
+						* ((Fraction) fraction1).getDenominator());
+		((Fraction) result).setDenominator(((Fraction) fraction1)
+				.getDenominator() * this.getDenominator());
 		// ((a*d)-(c*b))/(b*d)
 		result.reduce();
 		return result;
 
 	}
 
-	public Fraction multiply(Fraction fraction1)
+	public IFraction multiply(IFraction fraction1)
 	{
-		Fraction result = new Fraction();
-		result.setNumerator(fraction1.getNumerator() * this.getNumerator());
-		result.setDenominator(fraction1.getDenominator()
-				* this.getDenominator());
+		IFraction result = new Fraction();
+		((Fraction) result).setNumerator(((Fraction) fraction1).getNumerator()
+				* this.getNumerator());
+		((Fraction) result).setDenominator(((Fraction) fraction1)
+				.getDenominator() * this.getDenominator());
 		// (a*c)/(b*d)
 		result.reduce();
 		return result;
 
 	}
 
-	public Fraction divide(Fraction fraction1)
+	public IFraction divide(IFraction fraction1)
 	{
-		Fraction result = new Fraction();
+		IFraction result = new Fraction();
 		if (this.getNumerator() != 0)
 		{
-			result.setNumerator(fraction1.getNumerator()
-					* this.getDenominator());
-			result.setDenominator(fraction1.getDenominator()
-					* this.getNumerator());
+			((Fraction) result).setNumerator(((Fraction) fraction1)
+					.getNumerator() * this.getDenominator());
+			((Fraction) result).setDenominator(((Fraction) fraction1)
+					.getDenominator() * this.getNumerator());
 			// (a*d)/(b*c)
 			result.reduce();
 			return result;
