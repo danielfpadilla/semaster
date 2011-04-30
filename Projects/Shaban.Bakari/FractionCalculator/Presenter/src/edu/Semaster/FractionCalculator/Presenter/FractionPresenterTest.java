@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.Semaster.FractionCalculator.Model.Fraction;
+import edu.Semaster.FractionCalculator.Model.IFraction;
 
 import junit.framework.Assert;
 
@@ -36,7 +37,7 @@ public class FractionPresenterTest
 		String numeratorString = "1";
 		String denominatorString = "2";
 
-		Fraction convertedFraction = FractionPresenter.convertToFraction(
+		IFraction convertedFraction = FractionPresenter.convertToFraction(
 				numeratorString, denominatorString);
 
 		Assert.assertEquals(new Fraction(1, 2), convertedFraction);
@@ -47,7 +48,7 @@ public class FractionPresenterTest
 	{
 		String numerator = "1";
 		String denominator = "2";
-		Fraction convertedFraction = FractionPresenter.convertToFraction(
+		IFraction convertedFraction = FractionPresenter.convertToFraction(
 				numerator, denominator);
 
 		Assert.assertEquals(new Fraction(1, 2), convertedFraction);
@@ -126,7 +127,7 @@ public class FractionPresenterTest
 		m_view.m_denominator2 = "";
 
 		m_view.m_clearActionHandler.processAction();
-		Assert.assertEquals("",m_view.m_result);
+		Assert.assertEquals("", m_view.m_result);
 	}
 
 	@Test
@@ -154,10 +155,9 @@ public class FractionPresenterTest
 	public void canCheckForErrorsInInputwhenInputHaveInvalidCharacters()
 	{
 		m_view.m_numerator1 = "a";
-		m_view.m_denominator1 = "1";
+		m_view.m_denominator1 = "2";
 		m_view.m_inputActionHandler.processAction();
 		Assert.assertEquals("Invalid input Character",
 				m_view.m_alertErrorMessage);
 	}
 }
-
