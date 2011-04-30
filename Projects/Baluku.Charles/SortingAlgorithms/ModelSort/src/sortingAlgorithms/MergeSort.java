@@ -1,6 +1,6 @@
 package sortingAlgorithms;
 
-public class MergeSort extends sorting
+public class MergeSort extends Sorting
 {
 	private int m_numberOfElements;
 	private int[] m_numbers = new int[m_numberOfElements];
