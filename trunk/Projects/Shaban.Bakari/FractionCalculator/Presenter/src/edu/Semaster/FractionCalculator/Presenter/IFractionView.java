@@ -1,6 +1,5 @@
 package edu.Semaster.FractionCalculator.Presenter;
 
-
 public interface IFractionView
 {
 	public String getNumerator1();
@@ -33,11 +32,6 @@ public interface IFractionView
 
 	public void setClearActionHandler(IActionHandler handler);
 
-	public void setOutputError(String message);
-
-	public void imageLabel(boolean flag);
-	
-	public void setActionEnabled(boolean flag);
+	public void errorCondition(boolean error, String message);
 
 }
-

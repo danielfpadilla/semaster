@@ -1,6 +1,7 @@
 package edu.Semaster.FractionCalculator.Presenter;
 
 import edu.Semaster.FractionCalculator.Model.Fraction;
+import edu.Semaster.FractionCalculator.Model.IFraction;
 
 public class FractionPresenter
 {
@@ -87,54 +88,43 @@ public class FractionPresenter
 			throw new NumberFormatException();
 		}
 
-		char[] string = new char[input.length()];
-		input.getChars(0, string.length, string, 0);
-
-		for (int i = 0; i < string.length; i++)
+		try
 		{
-			// if(string[i]<'0' && string[i]>'9')
-			if (!(string[0] != '0' && '0' <= string[i] && string[i] <= '9' || string[i] == '.'))
-			{
-				throw new IllegalArgumentException();
-			}
+			Double.parseDouble(input);
 		}
-
+		catch (NumberFormatException e)
+		{
+			throw new IllegalArgumentException("Invalid input Character");
+		}
 	}
 
 	protected void processUserInput()
 	{
-
 		try
 		{
 			validate(m_view.getNumerator1());
 			validate(m_view.getNumerator2());
 			validate(m_view.getDenominator1());
 			validate(m_view.getDenominator2());
-
 		}
-
 		catch (NumberFormatException e)
 		{
-			m_view.setOutputError("there is a zero in the denominator");
-			m_view.imageLabel(true);
-			m_view.setActionEnabled(false);
+			m_view.errorCondition(true, "there is a zero in the denominator");
+
 			return;
 		}
 
 		catch (IllegalArgumentException e)
 		{
-			m_view.setOutputError("Invalid input Character");
-			m_view.imageLabel(true);
-			m_view.setActionEnabled(false);
+			m_view.errorCondition(true, "Invalid input Character");
+
 			return;
 		}
-		m_view.setOutputError("");
-		m_view.imageLabel(false);
-		m_view.setActionEnabled(true);
+		m_view.errorCondition(true, "");
 
 	}
 
-	public static Fraction convertToFraction(String numeratorString,
+	public static IFraction convertToFraction(String numeratorString,
 			String denominatorString) throws IllegalArgumentException
 	{
 		try
@@ -145,43 +135,43 @@ public class FractionPresenter
 
 		catch (IllegalArgumentException e)
 		{
-			m_view.setOutputError("Invalid Input Data!");
+			m_view.errorCondition(true, "Invalid Input Data!");
 			return null;
 		}
 
 	}
 
-	void processAddAction()
+	protected void processAddAction()
 	{
-		Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
+		IFraction fraction1 = convertToFraction(m_view.getNumerator1(),
 				m_view.getDenominator1());
-		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
+		IFraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.add(fraction2);
+		IFraction result = fraction1.add(fraction2);
 		m_view.setResult(result.toString());
 	}
 
 	protected void processSubtractAction()
 	{
-		Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
+		IFraction fraction1 = convertToFraction(m_view.getNumerator1(),
 				m_view.getDenominator1());
-		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
+		IFraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.subtract(fraction2);
+		IFraction result = fraction1.subtract(fraction2);
 		m_view.setResult(result.toString());
 
 	}
 
 	protected void processMultiplyAction()
 	{
-		Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
+		IFraction fraction1 = convertToFraction(m_view.getNumerator1(),
 				m_view.getDenominator1());
-		Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
+		IFraction fraction2 = convertToFraction(m_view.getNumerator2(),
 				m_view.getDenominator2());
 
-		Fraction result = fraction1.multiply(fraction2);
+		IFraction result = fraction1.multiply(fraction2);
 		m_view.setResult(result.toString());
 
 	}
@@ -190,21 +180,19 @@ public class FractionPresenter
 	{
 		try
 		{
-			Fraction fraction1 = convertToFraction(m_view.getNumerator1(),
+			IFraction fraction1 = convertToFraction(m_view.getNumerator1(),
 					m_view.getDenominator1());
-			Fraction fraction2 = convertToFraction(m_view.getNumerator2(),
+			IFraction fraction2 = convertToFraction(m_view.getNumerator2(),
 					m_view.getDenominator2());
 
-			Fraction result = fraction2.divide(fraction1);
+			IFraction result = fraction2.divide(fraction1);
 			m_view.setResult(result.toString());
 		}
 		catch (ArithmeticException e)
 		{
-			m_view.setOutputError("there is a zero in the denominator!");
-			// e.getMessage();
+			m_view.errorCondition(true, "there is a zero in the denominator!");
 
 		}
-
 	}
 
 	protected void processClearAction()
@@ -217,4 +205,3 @@ public class FractionPresenter
 
 	}
 }
-

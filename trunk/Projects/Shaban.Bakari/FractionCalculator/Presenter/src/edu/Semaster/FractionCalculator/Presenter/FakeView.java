@@ -109,13 +109,6 @@ public class FakeView implements IFractionView
 	}
 
 	@Override
-	public void setOutputError(String message)
-	{
-		m_alertErrorMessage = message;
-
-	}
-
-	@Override
 	public void setInputActionHandler(IActionHandler handler)
 	{
 		m_inputActionHandler = handler;
@@ -123,18 +116,10 @@ public class FakeView implements IFractionView
 	}
 
 	@Override
-	public void imageLabel(boolean flag)
+	public void errorCondition(boolean error, String message)
 	{
-		enableButton = flag;
+		m_alertErrorMessage = message;
+		enableButton = error;
 
 	}
-
-	@Override
-	public void setActionEnabled(boolean flag)
-	{
-		enableButton=flag;
-		
-	}
-
 }
-
