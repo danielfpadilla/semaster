@@ -69,7 +69,7 @@ public class TorusTests
 		new Torus(10, -19);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expected = ArithmeticException.class)
 	public void checkWhetherAnExceptionIsThrownWhenMinorRadiusIsGreaterThanMajorRadius()
 			throws Exception
 	{
