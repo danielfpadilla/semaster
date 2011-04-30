@@ -146,7 +146,7 @@ public class Presenter
 					.calculateArea()));
 		} catch (InvalidParameterException e)
 		{
-			e.getErrorMessage();
+			
 		}
 	}
 
