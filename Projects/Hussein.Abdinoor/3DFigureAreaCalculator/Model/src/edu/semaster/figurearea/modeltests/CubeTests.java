@@ -1,7 +1,6 @@
 package edu.semaster.figurearea.modeltests;
 
 import static org.junit.Assert.*;
-import junit.framework.Assert;
 import org.junit.Test;
 
 import edu.semaster.figurearea.model.Cube;
@@ -9,18 +8,18 @@ import edu.semaster.figurearea.model.Cube;
 public class CubeTests
 {
 	private final double DELTA = 0.0001;
+
 	@Test
 	public void cubeIsNotNull()
 	{
-		 Cube m_cube = new Cube(10);
-			assertNotNull(m_cube);
+		Cube m_cube = new Cube(10);
+		assertNotNull(m_cube);
 	}
 
 	@Test
 	public void canSetFaceLengthOfCube()
 	{
 		Cube m_cube = new Cube(10);
-		Assert.assertNotNull(m_cube);
 		assertEquals(10, m_cube.getFaceLength(), DELTA);
 	}
 
