@@ -55,12 +55,17 @@ public class Presenter
 	{
 		try
 		{
-			double val = Double.parseDouble(text);
-			if(val <=0)
+			if (text.length() == 0)
 			{
-				throw new InvalidParameterException("Negative argument not allowed");
+				throw new InvalidParameterException("Empty or null input");
 			}
-			
+			double val = Double.parseDouble(text);
+			if (val <= 0)
+			{
+				throw new InvalidParameterException(
+						"Negative argument not allowed");
+			}
+
 		} catch (NumberFormatException e)
 		{
 			throw new InvalidParameterException(exceptionMessage);
@@ -146,7 +151,7 @@ public class Presenter
 					.calculateArea()));
 		} catch (InvalidParameterException e)
 		{
-			
+
 		}
 	}
 
