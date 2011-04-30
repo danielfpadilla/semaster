@@ -1,4 +1,5 @@
 package edu.Semaster.FractionCalculator.View;
+
 import edu.Semaster.FractionCalculator.Presenter.FractionPresenter;
 import edu.Semaster.FractionCalculator.Presenter.IActionHandler;
 import edu.Semaster.FractionCalculator.Presenter.IFractionView;
@@ -15,9 +16,6 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-
-
-
 public class FractionCalculator implements IFractionView
 {
 
@@ -33,12 +31,12 @@ public class FractionCalculator implements IFractionView
 	private IActionHandler m_divideActionHandler;
 	private IActionHandler m_clearActionHandler;
 	private IActionHandler m_inputActionHandler;
-	Button addButton;
-	Button substractButton;
-	Button MultiplyButton;
-	Button DivideButton;
-	private Label myImage;
-	private Label errorLabel;
+	Button m_addButton;
+	Button m_substractButton;
+	Button m_multiplyButton;
+	Button m_divideButton;
+	private Label m_myImage;
+	private Label m_errorLabel;
 
 	/**
 	 * Launch the application.
@@ -128,8 +126,8 @@ public class FractionCalculator implements IFractionView
 		m_denominator2Text.setBounds(335, 65, 76, 20);
 		m_denominator2Text.addModifyListener(listener);
 
-		addButton = new Button(shlFractionCalculator, SWT.NONE);
-		addButton.addSelectionListener(new SelectionAdapter()
+		m_addButton = new Button(shlFractionCalculator, SWT.NONE);
+		m_addButton.addSelectionListener(new SelectionAdapter()
 		{
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -138,11 +136,11 @@ public class FractionCalculator implements IFractionView
 			}
 
 		});
-		addButton.setBounds(25, 109, 69, 24);
-		addButton.setText("Add");
+		m_addButton.setBounds(25, 109, 69, 24);
+		m_addButton.setText("Add");
 
-		substractButton = new Button(shlFractionCalculator, SWT.NONE);
-		substractButton.addSelectionListener(new SelectionAdapter()
+		m_substractButton = new Button(shlFractionCalculator, SWT.NONE);
+		m_substractButton.addSelectionListener(new SelectionAdapter()
 		{
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -150,11 +148,11 @@ public class FractionCalculator implements IFractionView
 				m_substractActionHandler.processAction();
 			}
 		});
-		substractButton.setBounds(25, 152, 69, 24);
-		substractButton.setText("Substract");
+		m_substractButton.setBounds(25, 152, 69, 24);
+		m_substractButton.setText("Substract");
 
-		MultiplyButton = new Button(shlFractionCalculator, SWT.NONE);
-		MultiplyButton.addSelectionListener(new SelectionAdapter()
+		m_multiplyButton = new Button(shlFractionCalculator, SWT.NONE);
+		m_multiplyButton.addSelectionListener(new SelectionAdapter()
 		{
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -162,11 +160,11 @@ public class FractionCalculator implements IFractionView
 				m_multiplyActionHandler.processAction();
 			}
 		});
-		MultiplyButton.setBounds(288, 109, 69, 24);
-		MultiplyButton.setText("Multiply");
+		m_multiplyButton.setBounds(288, 109, 69, 24);
+		m_multiplyButton.setText("Multiply");
 
-		DivideButton = new Button(shlFractionCalculator, SWT.NONE);
-		DivideButton.addSelectionListener(new SelectionAdapter()
+		m_divideButton = new Button(shlFractionCalculator, SWT.NONE);
+		m_divideButton.addSelectionListener(new SelectionAdapter()
 		{
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -174,8 +172,8 @@ public class FractionCalculator implements IFractionView
 				m_divideActionHandler.processAction();
 			}
 		});
-		DivideButton.setBounds(288, 152, 69, 24);
-		DivideButton.setText("Divide");
+		m_divideButton.setBounds(288, 152, 69, 24);
+		m_divideButton.setText("Divide");
 
 		Button clearButton = new Button(shlFractionCalculator, SWT.NONE);
 		clearButton.addSelectionListener(new SelectionAdapter()
@@ -197,15 +195,16 @@ public class FractionCalculator implements IFractionView
 		m_result.setBounds(135, 10, 183, 20);
 		m_result.setEditable(false);
 
-		myImage = new Label(shlFractionCalculator, SWT.NONE);
-		myImage.setImage(SWTResourceManager.getImage(FractionCalculator.class,
+		m_myImage = new Label(shlFractionCalculator, SWT.NONE);
+		m_myImage.setImage(SWTResourceManager.getImage(
+				FractionCalculator.class,
 				"/com/sun/java/swing/plaf/windows/icons/Error.gif"));
-		myImage.setBounds(60, 206, 34, 32);
-		myImage.setVisible(false);
+		m_myImage.setBounds(60, 206, 34, 32);
+		m_myImage.setVisible(false);
 
-		errorLabel = new Label(shlFractionCalculator, SWT.NONE);
-		errorLabel.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
-		errorLabel.setBounds(109, 216, 206, 20);
+		m_errorLabel = new Label(shlFractionCalculator, SWT.NONE);
+		m_errorLabel.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		m_errorLabel.setBounds(109, 216, 206, 20);
 	}
 
 	@Override
@@ -304,34 +303,30 @@ public class FractionCalculator implements IFractionView
 	}
 
 	@Override
-	public void setOutputError(String message)
-	{
-		myImage.setVisible(true);
-		errorLabel.setVisible(true);
-		errorLabel.setText(message);
-
-	}
-
-	@Override
 	public void setInputActionHandler(IActionHandler handler)
 	{
 		m_inputActionHandler = handler;
 	}
 
 	@Override
-	public void imageLabel(boolean flag)
+	public void errorCondition(boolean error, String message)
 	{
-		myImage.setVisible(flag);
-	}
+		if (error)
+		{
+			m_errorLabel.setVisible(true);
+			m_errorLabel.setText(message);
+			m_myImage.setVisible(true);
+		}
+		else
+		{
+			m_myImage.setVisible(false);
+			m_addButton.setEnabled(true);
+			m_substractButton.setEnabled(true);
+			m_divideButton.setEnabled(true);
+			m_multiplyButton.setEnabled(true);
+			m_errorLabel.setVisible(false);
 
-	@Override
-	public void setActionEnabled(boolean flag)
-	{
-		addButton.setEnabled(flag);
-		substractButton.setEnabled(flag);
-		DivideButton.setEnabled(flag);
-		MultiplyButton.setEnabled(flag);
-		
-		
+		}
+
 	}
 }
