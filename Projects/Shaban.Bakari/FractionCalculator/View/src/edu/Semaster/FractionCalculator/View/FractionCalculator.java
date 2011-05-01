@@ -309,22 +309,26 @@ public class FractionCalculator implements IFractionView
 	}
 
 	@Override
-	public void errorCondition(boolean error, String message)
+	public void setErrorCondition(boolean error, String message)
 	{
 		if (error)
 		{
-			m_errorLabel.setVisible(true);
+			m_errorLabel.setVisible(error);
 			m_errorLabel.setText(message);
-			m_myImage.setVisible(true);
+			m_myImage.setVisible(error);
+			m_addButton.setEnabled(!error);
+			m_substractButton.setEnabled(!error);
+			m_divideButton.setEnabled(!error);
+			m_multiplyButton.setEnabled(!error);
 		}
 		else
 		{
-			m_myImage.setVisible(false);
-			m_addButton.setEnabled(true);
-			m_substractButton.setEnabled(true);
-			m_divideButton.setEnabled(true);
-			m_multiplyButton.setEnabled(true);
-			m_errorLabel.setVisible(false);
+			m_myImage.setVisible(error);
+			m_addButton.setEnabled(!error);
+			m_substractButton.setEnabled(!error);
+			m_divideButton.setEnabled(!error);
+			m_multiplyButton.setEnabled(!error);
+			m_errorLabel.setVisible(error);
 
 		}
 
