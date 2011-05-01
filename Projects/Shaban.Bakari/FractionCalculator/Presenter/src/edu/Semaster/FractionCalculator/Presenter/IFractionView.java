@@ -32,6 +32,6 @@ public interface IFractionView
 
 	public void setClearActionHandler(IActionHandler handler);
 
-	public void errorCondition(boolean error, String message);
+	public void setErrorCondition(boolean error, String message);
 
 }

@@ -77,12 +77,6 @@ public class FractionPresenter
 
 	protected void validate(String input)
 	{
-
-		if (input.length() == 0)
-		{
-			throw new NumberFormatException();
-		}
-
 		if ((m_view.getDenominator1() == "0" || m_view.getDenominator2() == "0"))
 		{
 			throw new NumberFormatException();
@@ -109,18 +103,18 @@ public class FractionPresenter
 		}
 		catch (NumberFormatException e)
 		{
-			m_view.errorCondition(true, "there is a zero in the denominator");
+			m_view.setErrorCondition(true, "there is a zero in the denominator");
 
 			return;
 		}
 
 		catch (IllegalArgumentException e)
 		{
-			m_view.errorCondition(true, "Invalid input Character");
+			m_view.setErrorCondition(true, "Invalid input Character");
 
 			return;
 		}
-		m_view.errorCondition(true, "");
+		m_view.setErrorCondition(false, "");
 
 	}
 
@@ -135,7 +129,7 @@ public class FractionPresenter
 
 		catch (IllegalArgumentException e)
 		{
-			m_view.errorCondition(true, "Invalid Input Data!");
+			m_view.setErrorCondition(true, "Invalid Input Data!");
 			return null;
 		}
 
@@ -190,7 +184,7 @@ public class FractionPresenter
 		}
 		catch (ArithmeticException e)
 		{
-			m_view.errorCondition(true, "there is a zero in the denominator!");
+			m_view.setErrorCondition(true, "there is a zero in the denominator!");
 
 		}
 	}
@@ -202,6 +196,7 @@ public class FractionPresenter
 		m_view.setDenominator2("");
 		m_view.setNumerator2("");
 		m_view.setResult("");
+		
 
 	}
 }

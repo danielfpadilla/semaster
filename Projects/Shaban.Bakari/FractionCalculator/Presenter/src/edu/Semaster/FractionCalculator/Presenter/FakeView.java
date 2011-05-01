@@ -8,7 +8,7 @@ public class FakeView implements IFractionView
 	public String m_numerator2;
 	public String m_denominator2;
 	public String m_result;
-	public boolean enableButton;
+	public boolean m_enableButton;
 	public IActionHandler m_addActionHandler;
 	public IActionHandler m_substractActionHandler;
 	public IActionHandler m_multiplyActionHandler;
@@ -116,10 +116,10 @@ public class FakeView implements IFractionView
 	}
 
 	@Override
-	public void errorCondition(boolean error, String message)
+	public void setErrorCondition(boolean error, String message)
 	{
 		m_alertErrorMessage = message;
-		enableButton = error;
+		m_enableButton = error;
 
 	}
 }
