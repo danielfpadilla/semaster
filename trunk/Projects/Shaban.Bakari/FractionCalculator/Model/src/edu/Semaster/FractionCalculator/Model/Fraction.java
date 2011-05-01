@@ -101,11 +101,11 @@ public class Fraction implements IFraction
 	public IFraction add(IFraction myFraction)
 	{
 		Fraction result = new Fraction();
-		result.setNumerator((((Fraction) myFraction).getNumerator() * this
-				.getDenominator())
+		result.setNumerator(myFraction.getNumerator() * this
+				.getDenominator()
 				+ this.getNumerator()
-				* ((Fraction) myFraction).getDenominator());
-		result.setDenominator(((Fraction) myFraction).getDenominator()
+				*  myFraction.getDenominator());
+		result.setDenominator(myFraction.getDenominator()
 				* this.getDenominator());
 		// ((a*d)+(c*b))/(b*d)
 		result.reduce();
@@ -116,12 +116,11 @@ public class Fraction implements IFraction
 	public IFraction subtract(IFraction fraction1)
 	{
 		IFraction result = new Fraction();
-		((Fraction) result)
-				.setNumerator((((Fraction) fraction1).getNumerator() * this
-						.getDenominator())
+		 result.setNumerator( fraction1.getNumerator() * this
+						.getDenominator()
 						- this.getNumerator()
-						* ((Fraction) fraction1).getDenominator());
-		((Fraction) result).setDenominator(((Fraction) fraction1)
+						*  fraction1.getDenominator());
+		 result.setDenominator( fraction1
 				.getDenominator() * this.getDenominator());
 		// ((a*d)-(c*b))/(b*d)
 		result.reduce();
@@ -132,9 +131,9 @@ public class Fraction implements IFraction
 	public IFraction multiply(IFraction fraction1)
 	{
 		IFraction result = new Fraction();
-		((Fraction) result).setNumerator(((Fraction) fraction1).getNumerator()
+		result.setNumerator((fraction1).getNumerator()
 				* this.getNumerator());
-		((Fraction) result).setDenominator(((Fraction) fraction1)
+		result.setDenominator( fraction1
 				.getDenominator() * this.getDenominator());
 		// (a*c)/(b*d)
 		result.reduce();
@@ -147,9 +146,10 @@ public class Fraction implements IFraction
 		IFraction result = new Fraction();
 		if (this.getNumerator() != 0)
 		{
-			((Fraction) result).setNumerator(((Fraction) fraction1)
+			result.setNumerator( fraction1
 					.getNumerator() * this.getDenominator());
-			((Fraction) result).setDenominator(((Fraction) fraction1)
+
+            result.setDenominator( fraction1
 					.getDenominator() * this.getNumerator());
 			// (a*d)/(b*c)
 			result.reduce();
