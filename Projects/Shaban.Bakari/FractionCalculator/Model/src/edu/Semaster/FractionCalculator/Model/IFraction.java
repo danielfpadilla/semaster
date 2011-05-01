@@ -14,4 +14,12 @@ public interface IFraction
 
 	public IFraction divide(IFraction fraction1);
 
+	public int getNumerator();
+
+	public int getDenominator();
+
+	public void setNumerator(int i);
+
+	public void setDenominator(int i);
+
 }
