@@ -3,10 +3,9 @@ package matrixPackage;
 public class Matrix
 {
 
-	public double[][] m_data;
+	private double[][] m_data;
 	private int m_size;
-	private int iDF = 0;
-	final double DELTA = 0.00001;
+	private int iDF = 1;
 
 	public Matrix()
 	{
@@ -30,12 +29,6 @@ public class Matrix
 	public Matrix(int size)
 	{
 		m_data = new double[size][size];
-		m_size = size;
-
-	}
-
-	public void setSize(int size)
-	{
 		m_size = size;
 
 	}
@@ -106,18 +99,18 @@ public class Matrix
 		return result;
 	}
 
-	public double Determinant(double[][] matrix)
+	public double Determinant()
 	{
 
-		int tms = matrix.length;
+		int tms = m_data.length;
 
 		double det = 1;
 
-		matrix = UpperTriangle(matrix);
+		m_data = upperTriangle(m_data);
 
 		for (int i = 0; i < tms; i++)
 		{
-			det = det * matrix[i][i];
+			det = det * m_data[i][i];
 		} // multiply down diagonal
 
 		det = det * iDF;
@@ -134,8 +127,8 @@ public class Matrix
 
 		double m[][] = new double[tms][tms];
 		double mm[][] = Adjoint(a);
-
-		double det = Determinant(a);
+Matrix myMatrix=new Matrix(a,tms);
+		double det = myMatrix.Determinant();
 		double dd = 0;
 
 		if (det == 0)
@@ -197,8 +190,8 @@ public class Matrix
 					}
 					ja = 0;
 				}
-
-				det = Determinant(ap);
+            Matrix myMatrix=new Matrix(ap,tms-1);
+				det = myMatrix.Determinant();
 
 				m[i][j] = (float) Math.pow(-1, i + j) * det;
 		
@@ -207,7 +200,7 @@ public class Matrix
 		return m;
 	}
 
-	public double[][] UpperTriangle(double[][] m)
+	public double[][] upperTriangle(double[][] m)
 	{
 
 		double f1 = 0;

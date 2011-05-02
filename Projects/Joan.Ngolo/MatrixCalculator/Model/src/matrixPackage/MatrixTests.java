@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class testing
+public class MatrixTests
 {
-	private int m_size;
+	
 	private final double DELTA =0.0001;
 	@Test public void CanCreateMatrix()
 	{ 
@@ -37,14 +37,6 @@ public class testing
 		Matrix matrix=new Matrix();
 		matrix.getSize();
 		Assert.assertNotNull(matrix);
-	}
-	@Test 
-	public void canSetSize()
-	{
-		Matrix matrix = new Matrix();
-		matrix.setSize(m_size);
-		Assert.assertEquals(m_size, matrix.getSize());
-
 	}
 	
 
@@ -91,8 +83,9 @@ public class testing
 	    public void calculateDeterminant2X2()
 	    {
 	        double [][] matrixData = {{2, 1},{5, 1}};
-	        Matrix matrix = new Matrix();
-	        double result = matrix.Determinant(matrixData);
+	        Matrix matrix = new Matrix(matrixData,2);
+	        
+	        double result = matrix.Determinant();
 	        Assert.assertEquals(-3, result, DELTA);
 	    }
 	    
@@ -104,8 +97,8 @@ public class testing
 	        Matrix matrix=new Matrix();
 	    	
 	    	double[][] exp= matrix.Adjoint(data);
-	    	Matrix actual=new Matrix(exp,2);
-	    	Matrix expected =new Matrix(act,2);    	
+	    	Matrix actual=new Matrix(act,2);
+	    	Matrix expected =new Matrix(exp,2);    	
 	    	Assert.assertSame(expected,actual);
 	    }
 	    
