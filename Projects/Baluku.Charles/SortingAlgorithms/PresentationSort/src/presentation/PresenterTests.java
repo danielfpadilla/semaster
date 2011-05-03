@@ -56,24 +56,35 @@ public class PresenterTests
 	}
 	
 	@Test
-	public void canMergeSortMethodBeSelectedForSorting()
+	public void canMergeSortAlgorithmBeSelectedForSorting()
 	{
 		assertNotNull(m_view.m_mergeSortSelected);
 	}
 	
 	@Test
-	public void canQuickSortMethodBeSelectedForArraySorting()
+	public void canQuickSortAlgorithmBeSelectedForArraySorting()
 	{
 		assertNotNull(m_view.m_quickSortSelected);
 	}
 	
 	@Test
-	public void canRandomlyGeneratedArrayBeSorted()
+	public void canRandomlyGeneratedArrayBeSortedWithQuickSort()
 	{
 		m_view.m_sortingMethod = "QuickSort";
 		m_view.m_size = "10";
 		m_view.m_unsortedArray = "4 432 565 2";
-		assertEquals("4 432 565 2 ", m_view.m_sortedArray);
+		m_view.m_sortedArray = "2 4 432 565";
+		assertEquals("4 432 565 2",m_view.m_unsortedArray);
+		
+	}
+	@Test
+	public void canRandomlyGeneratedArrayBeSortedWithMergeSort()
+	{
+		m_view.m_sortingMethod = "MergeSort";
+		m_view.m_size = "10";
+		m_view.m_unsortedArray = "4 432 565 2";
+		m_view.m_sortedArray = "2 4 432 565";
+		assertEquals("2 4 432 565",m_view.m_sortedArray);
 		
 	}
 	
