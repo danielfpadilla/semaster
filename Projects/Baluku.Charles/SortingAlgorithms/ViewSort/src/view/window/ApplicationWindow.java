@@ -176,6 +176,7 @@ public class ApplicationWindow implements IView
 	@Override
 	public void sortingArray(IActionHandler handler) 
 	{
+		m_arrayGeneratorHandler = handler;
 		
 	}
 }
