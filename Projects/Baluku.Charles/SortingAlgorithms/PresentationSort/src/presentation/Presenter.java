@@ -40,13 +40,13 @@ public class Presenter
 			@Override
 			public void processAction()
 			{
-				Presenter.this.arraySizeParsing();
+				Presenter.this.verifyArraySize();
 
 			}
 		});
 	}
 
-	public void arraySizeParsing()
+	public void verifyArraySize()
 	{
 		int arraySize;
 		arraySize = Integer.parseInt(m_view.getArraySize());
