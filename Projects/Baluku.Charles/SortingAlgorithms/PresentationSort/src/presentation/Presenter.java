@@ -62,7 +62,7 @@ public class Presenter
 		{
 
 			m_view.setSortedArray(convertIntArrayToString(m_mergeSort
-					.sortInternal(convertStringToIntArray(m_view
+					.sortArray(convertStringToIntArray(m_view
 							.getUnsortedArray()))));
 
 		}
@@ -70,7 +70,7 @@ public class Presenter
 		{
 
 			m_view.setSortedArray(convertIntArrayToString(m_quickSort
-					.sortInternal(convertStringToIntArray(m_view
+					.sortArray(convertStringToIntArray(m_view
 							.getUnsortedArray()))));
 
 		}
