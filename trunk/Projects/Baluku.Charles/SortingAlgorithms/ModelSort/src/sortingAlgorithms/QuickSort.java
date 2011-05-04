@@ -9,7 +9,7 @@ public class QuickSort extends Sorting
 	}
 
 	@Override
-	public int[] sortInternal(int[] unsortedArray)
+	protected int[] sortInternal(int[] unsortedArray)
 	{
 		int[] sortedArray = new int[unsortedArray.length];
 		for (int k = 0; k < unsortedArray.length; k++)
