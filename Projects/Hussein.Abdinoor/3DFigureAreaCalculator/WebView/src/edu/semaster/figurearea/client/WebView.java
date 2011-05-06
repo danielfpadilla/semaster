@@ -23,7 +23,7 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 public class WebView extends Composite implements EntryPoint, IView
 {
 	Presenter m_presenter;
-	private static final Binder binder = GWT.create(Binder.class);
+	private static final Binder m_binder = GWT.create(Binder.class);
 	@UiField TextBox m_coneRadius;
 	@UiField TextBox m_cubeFaceLength;
 	@UiField TextBox m_coneHeight;
@@ -49,7 +49,7 @@ public class WebView extends Composite implements EntryPoint, IView
 
 	public WebView()
 	{
-		initWidget(binder.createAndBindUi(this));
+		initWidget(m_binder.createAndBindUi(this));
 	}
 
 	public void onModuleLoad()
@@ -58,59 +58,56 @@ public class WebView extends Composite implements EntryPoint, IView
 		m_presenter = new Presenter(this);
 		m_errorImage.setVisible(false);
 	}
-
-	@Override
-	public boolean coneIsSelected()
+	private Widget getSelectedTab()
 	{
 		int index = m_selectedTab.getSelectedIndex();
 		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Cone");
-		return selected;
+		return widget;
+	}
+	@Override
+	public boolean coneIsSelected()
+	{
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Cone");
+		
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		int index = m_selectedTab.getSelectedIndex();
-		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Cube");
-		return selected;
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Cube");
+		
 	}
 
 	@Override
 	public boolean cylinderIsSelected()
 	{
-		int index = m_selectedTab.getSelectedIndex();
-		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Cylinder");
-		return selected;
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Cylinder");
+		
 	}
 
 	@Override
 	public boolean sphereIsSelected()
 	{
-		int index = m_selectedTab.getSelectedIndex();
-		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Sphere");
-		return selected;
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Sphere");
+	
 	}
 
 	@Override
 	public boolean squarePyramidIsSelected()
 	{
-		int index = m_selectedTab.getSelectedIndex();
-		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Pyramid");
-		return selected;
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Pyramid");
 	}
 
 	@Override
 	public boolean torusIsSelected()
 	{
-		int index = m_selectedTab.getSelectedIndex();
-		Widget widget = m_selectedTab.getTabWidget(index);
-		boolean selected = widget.toString().contains("Torus");
-		return selected;
+		Widget widget = getSelectedTab();
+		return widget.toString().contains("Torus");
 	}
 
 	@Override
