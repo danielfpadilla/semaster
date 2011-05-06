@@ -8,11 +8,24 @@
 	</ui:style>
 
 	<g:FlowPanel styleName="{style.panel}">
-		<g:AbsolutePanel height="327px" width="502px">
-			<g:at left="10" top="10">
-				<g:DecoratedTabPanel width="430px" height="189px">
-					<g:Tab text="Cone">
-						<g:VerticalPanel width="402px" height="3cm">
+		<g:AbsolutePanel height="354px" width="502px">
+			<g:at left="10" top="244">
+				<g:Button width="150px" height="28px" text="Calculate Area" ui:field="m_calculateAreaButton"/>
+			</g:at>
+			<g:at left="182" top="244">
+				<g:TextBox width="231px" height="20px" readOnly="true" ui:field="m_areaResult"/>
+			</g:at>
+			<g:at left="25" top="198">
+				<g:Image ui:field="m_errorImage" url="images.jpg" width="36px" height="33px"/>
+			</g:at>
+			<g:at left="82" top="208">
+				<g:Label text="Input parameters" width="339px" height="16px" ui:field="m_labelErrorMessage"/>
+			</g:at>
+			<g:at left="32" top="21">
+				<g:TabLayoutPanel barHeight="2" barUnit="EM" width="394px" height="171px" ui:field="m_selectedTab">
+					<g:tab>
+						<g:header>Cone</g:header>
+						<g:VerticalPanel width="396px">
 							<g:AbsolutePanel height="113px">
 								<g:at left="26" top="10">
 									<g:Label text="Radius :"/>
@@ -28,9 +41,10 @@
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-					<g:Tab text="Cube">
-						<g:VerticalPanel width="402px" height="3cm">
+					</g:tab>
+					<g:tab>
+						<g:header>Cube</g:header>
+						<g:VerticalPanel width="389px">
 							<g:AbsolutePanel height="113px" >
 								<g:at left="20" top="39">
 									<g:Label text="Facelength:"/>
@@ -40,10 +54,11 @@
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-					<g:Tab text="Cylinder">
-						<g:VerticalPanel width="402px" height="3cm">
-							<g:AbsolutePanel height="113px">
+					</g:tab>
+					<g:tab>
+						<g:header>Cylinder</g:header>
+						<g:VerticalPanel>
+							<g:AbsolutePanel height="113px" width="386px">
 								<g:at left="38" top="16">
 									<g:Label text="Radius :"/>
 								</g:at>
@@ -58,10 +73,11 @@
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-					<g:Tab text="Sphere">
-						<g:VerticalPanel width="402px" height="3cm">
-							<g:AbsolutePanel height="113px">
+					</g:tab>
+					<g:tab>
+						<g:header>Sphere</g:header>
+						<g:VerticalPanel>
+							<g:AbsolutePanel height="113px" width="385px">
 								<g:at left="27" top="41">
 									<g:Label text="Radius :"/>
 								</g:at>
@@ -70,9 +86,10 @@
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-					<g:Tab text="Pyramid">
-						<g:VerticalPanel width="402px" height="3cm">
+					</g:tab>
+					<g:tab>
+						<g:header>Pyramid</g:header>
+						<g:VerticalPanel width="389px">
 							<g:AbsolutePanel height="113px">
 								<g:at left="26" top="10">
 									<g:Label text="Base Length :" width="132px" height="28px"/>
@@ -81,21 +98,22 @@
 									<g:Label height="18px" text="Height:" width="48px"/>
 								</g:at>
 								<g:at left="116" top="10">
-									<g:TextBox height="20px" width="197px" ui:field="m_pramidLength"/>
+									<g:TextBox height="20px" width="197px" ui:field="m_pyramidLength"/>
 								</g:at>
 								<g:at left="116" top="44">
 									<g:TextBox height="20px" width="197px" ui:field="m_pyramidHeight"/>
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-					<g:Tab text="Torus">
-						<g:VerticalPanel width="402px" height="129px">
+					</g:tab>
+					<g:tab>
+						<g:header>Torus</g:header>
+						<g:VerticalPanel width="394px">
 							<g:AbsolutePanel height="144px">
-								<g:at left="20" top="10">
+								<g:at left="22" top="43">
 									<g:Label text="Minor radius :" width="132px" height="27px"/>
 								</g:at>
-								<g:at left="20" top="43">
+								<g:at left="22" top="11">
 									<g:Label height="26px" text="Major radius:" width="95px"/>
 								</g:at>
 								<g:at left="148" top="10">
@@ -106,20 +124,8 @@
 								</g:at>
 							</g:AbsolutePanel>
 						</g:VerticalPanel>
-					</g:Tab>
-				</g:DecoratedTabPanel>
-			</g:at>
-			<g:at left="10" top="277">
-				<g:Button width="150px" height="28px" text="Calculate Area" ui:field="m_calculateAreaButton"/>
-			</g:at>
-			<g:at left="180" top="281">
-				<g:TextBox width="231px" height="28px" readOnly="true" ui:field="m_areaResult"/>
-			</g:at>
-			<g:at left="24" top="245">
-				<g:Image url="home.gif"/>
-			</g:at>
-			<g:at left="116" top="245">
-				<g:Label text="error message" width="199px" height="16px"/>
+					</g:tab>
+				</g:TabLayoutPanel>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:FlowPanel>

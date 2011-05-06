@@ -3,10 +3,8 @@ package edu.semaster.figurearea.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
-//import com.google.gwt.user.client.ui.DecoratedTabPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TabBar.Tab;
-import com.google.gwt.user.client.ui.TabPanel;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.core.client.EntryPoint;
 
@@ -18,27 +16,33 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 
 public class WebView extends Composite implements EntryPoint, IView
 {
 	Presenter m_presenter;
-	//DecoratedTabPanel m_selectedTab = new DecoratedTabPanel();
-	TabPanel m_selectedTab = new TabPanel();
 	private static final Binder binder = GWT.create(Binder.class);
 	@UiField TextBox m_coneRadius;
+	@UiField TextBox m_cubeFaceLength;
 	@UiField TextBox m_coneHeight;
 	@UiField TextBox m_cylinderRadius;
 	@UiField TextBox m_cylinderHeight;
-	@UiField TextBox m_pramidLength;
+	@UiField TextBox m_sphereRadius;
+	@UiField TextBox m_pyramidLength;
 	@UiField TextBox m_pyramidHeight;
 	@UiField TextBox m_torusMajorRadius;
 	@UiField TextBox m_torusMinorRadius;
-	@UiField TextBox m_sphereRadius;
-	@UiField TextBox m_cubeFaceLength;
 	@UiField TextBox m_areaResult;
 	@UiField Button m_calculateAreaButton;
+	@UiField TabLayoutPanel m_selectedTab;
+	@UiField Label m_labelErrorMessage;
+	@UiField Image m_errorImage;
+	TextBox m_textBox;
 	private IActionHandler m_figureAreaHandler;
-    // private IActionHandler m_processInputHandler;
+	private IActionHandler m_processInputHandler;
+
 	interface Binder extends UiBinder<Widget, WebView>
 	{
 	}
@@ -52,51 +56,61 @@ public class WebView extends Composite implements EntryPoint, IView
 	{
 		RootPanel.get().add(this);
 		m_presenter = new Presenter(this);
+		m_errorImage.setVisible(false);
 	}
+
 	@Override
 	public boolean coneIsSelected()
 	{
-		//return m_selectedTab.getTabBar().getSelectedTab() == 0;
-	    return false;
-		
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Cone");
+		return selected;
 	}
 
 	@Override
 	public boolean cubeIsSelected()
 	{
-		//return m_selectedTab.getStylePrimaryName() == "Cube";
-		return false;
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Cube");
+		return selected;
 	}
 
 	@Override
 	public boolean cylinderIsSelected()
 	{
-		return m_selectedTab.getStylePrimaryName() =="Cylinder";
-		//return true;
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Cylinder");
+		return selected;
 	}
 
 	@Override
 	public boolean sphereIsSelected()
 	{
-		Tab tab = (Tab)m_selectedTab.getTabBar().getTab(
-				m_selectedTab.getTabBar().getSelectedTab());
-		//String str = tab.toString();
-		
-		return tab.toString() == "Sphere";
-		
-		//getStylePrimaryName() =="Sphere";
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Sphere");
+		return selected;
 	}
 
 	@Override
 	public boolean squarePyramidIsSelected()
 	{
-		return m_selectedTab.getStylePrimaryName() =="Pyramid";
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Pyramid");
+		return selected;
 	}
 
 	@Override
 	public boolean torusIsSelected()
 	{
-		return m_selectedTab.getStylePrimaryName() =="Torus";
+		int index = m_selectedTab.getSelectedIndex();
+		Widget widget = m_selectedTab.getTabWidget(index);
+		boolean selected = widget.toString().contains("Torus");
+		return selected;
 	}
 
 	@Override
@@ -126,7 +140,7 @@ public class WebView extends Composite implements EntryPoint, IView
 	@Override
 	public String getCylinderHeight()
 	{
-		return m_cylinderHeight.getName();
+		return m_cylinderHeight.getText();
 	}
 
 	@Override
@@ -138,7 +152,7 @@ public class WebView extends Composite implements EntryPoint, IView
 	@Override
 	public String getSquareBasedPyramidBaseLength()
 	{
-		return m_pramidLength.getText();
+		return m_pyramidLength.getText();
 	}
 
 	@Override
@@ -169,28 +183,27 @@ public class WebView extends Composite implements EntryPoint, IView
 	@Override
 	public void setErrorMessage(String message)
 	{
-		// TODO Auto-generated method stub
+		m_labelErrorMessage.setText(message);
 
 	}
 
 	@Override
 	public void setStateOfCalculateAreaButton(boolean flag)
 	{
-		// TODO Auto-generated method stub
+		m_calculateAreaButton.setEnabled(flag);
 
 	}
 
 	@Override
 	public void setStateOfErrorIcon(boolean flag)
 	{
-		// TODO Auto-generated method stub
-
+		m_errorImage.setVisible(flag);
 	}
 
 	@Override
 	public void processInputActionHandler(IActionHandler handler)
 	{
-		//m_processInputHandler = handler;
+		m_processInputHandler = handler;
 
 	}
 
@@ -200,9 +213,55 @@ public class WebView extends Composite implements EntryPoint, IView
 		m_figureAreaHandler = handler;
 
 	}
+
 	@UiHandler("m_calculateAreaButton")
-	void onM_calculateAreaButtonClick(ClickEvent event) {
+	void onM_calculateAreaButtonClick(ClickEvent event)
+	{
 		m_figureAreaHandler.processAction();
 	}
 
+	@UiHandler("m_coneRadius")
+	void onM_coneRadiusKeyPress(KeyUpEvent event)
+	{
+		m_processInputHandler.processAction();
+	}
+
+	@UiHandler("m_coneHeight")
+	void onM_coneHeightKeyPress(KeyUpEvent event)
+	{
+		m_processInputHandler.processAction();
+	}
+
+	@UiHandler("m_cylinderHeight")
+	void onM_cylinderHeightKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_cylinderRadius")
+	void onM_cylinderRadiusKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_cubeFaceLength")
+	void onM_cubeFaceLengthKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_pyramidLength")
+	void onM_pyramidLengthKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_sphereRadius")
+	void onM_sphereRadiusKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_torusMinorRadius")
+	void onM_torusMinorRadiusKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_pyramidHeight")
+	void onM_pyramidHeightKeyPress(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
+	@UiHandler("m_torusMajorRadius")
+	void onM_torusMajorRadiusKeyUp(KeyUpEvent event) {
+		m_processInputHandler.processAction();
+	}
 }
