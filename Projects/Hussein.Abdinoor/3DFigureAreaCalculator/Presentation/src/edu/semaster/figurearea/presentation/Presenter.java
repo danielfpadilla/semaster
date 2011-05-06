@@ -50,7 +50,7 @@ public class Presenter
 
 	}
 
-	protected void verifyInput(String text, String exceptionMessage)
+	protected double verifyInput(String text, String exceptionMessage)
 			throws InvalidParameterException
 	{
 		try
@@ -70,6 +70,7 @@ public class Presenter
 		{
 			throw new InvalidParameterException(exceptionMessage);
 		}
+		return Double.parseDouble(text);
 
 	}
 
@@ -88,56 +89,46 @@ public class Presenter
 		I3DFigure m_selectedFigure = null;
 		if (m_view.coneIsSelected())
 		{
-			verifyInput(m_view.getConeRadius(), "Invalid cone radius");
-			verifyInput(m_view.getConeHeight(), "Invalid cone height");
-			m_selectedFigure = new Cone(Double.parseDouble(m_view
-					.getConeRadius()), Double.parseDouble(m_view
-					.getConeHeight()));
+			m_selectedFigure = new Cone(verifyInput(m_view.getConeRadius(),
+					"Invalid cone radius"), verifyInput(m_view.getConeHeight(),
+					"Invalid cone height"));
 
 		}
 		if (m_view.cubeIsSelected())
 		{
-			verifyInput(m_view.getCubeEdgeLength(), "Invalid cube facelength");
-			m_selectedFigure = new Cube(Double.parseDouble(m_view
-					.getCubeEdgeLength()));
+			m_selectedFigure = new Cube(verifyInput(m_view.getCubeEdgeLength(),
+					"Invalid cube facelength"));
 		}
 		if (m_view.cylinderIsSelected())
 		{
-			verifyInput(m_view.getCylinderRadius(), "Invalid Cylinder radius");
-			verifyInput(m_view.getCylinderHeight(), "Invalid Cylinder height");
-			m_selectedFigure = new Cylinder(Double.parseDouble(m_view
-					.getCylinderRadius()), Double.parseDouble(m_view
-					.getCylinderHeight()));
+			m_selectedFigure = new Cylinder(verifyInput(
+					m_view.getCylinderRadius(), "Invalid Cylinder radius"),
+					verifyInput(m_view.getCylinderHeight(),
+							"Invalid Cylinder height"));
 		}
 		if (m_view.sphereIsSelected())
 		{
-			verifyInput(m_view.getSphereRadius(), "Invalid Sphere radius");
-
-			m_selectedFigure = new Sphere(Double.parseDouble(m_view
-					.getSphereRadius()));
+			m_selectedFigure = new Sphere(verifyInput(m_view.getSphereRadius(),
+					"Invalid Sphere radius"));
 
 		}
 		if (m_view.squarePyramidIsSelected())
 		{
-			verifyInput(m_view.getSquareBasedPyramidBaseLength(),
-					"Invalid Pyramid base length");
-			verifyInput(m_view.getSquareBasedPyramidBaseHeight(),
-					"Invalid Pyramid base height");
-			m_selectedFigure = new SquareBasedPyramid(
-					Double.parseDouble(m_view.getSquareBasedPyramidBaseLength()),
-					Double.parseDouble(m_view.getSquareBasedPyramidBaseHeight()));
+			m_selectedFigure = new SquareBasedPyramid(verifyInput(
+					m_view.getSquareBasedPyramidBaseLength(),
+					"Invalid Pyramid base length"), verifyInput(
+					m_view.getSquareBasedPyramidBaseHeight(),
+					"Invalid Pyramid base height"));
 		}
 		if (m_view.torusIsSelected())
 		{
-			verifyInput(m_view.getTorusMinorRadius(),
-					"Invalid torus minor radius");
-			verifyInput(m_view.getTorusMajorRadius(),
-					"Invalid torus major radius");
+			m_selectedFigure = new Torus(
+					verifyInput(m_view.getTorusMinorRadius(),
+							"Invalid torus minor radius"), verifyInput(
+							m_view.getTorusMajorRadius(),
+							"Invalid torus major radius"));
 			checkTorusValidity(m_view.getTorusMajorRadius(),
 					m_view.getTorusMinorRadius());
-			m_selectedFigure = new Torus(Double.parseDouble(m_view
-					.getTorusMinorRadius()), Double.parseDouble(m_view
-					.getTorusMajorRadius()));
 		}
 		return m_selectedFigure;
 	}
