@@ -1,5 +1,7 @@
 package edu.semaster.figurearea.presentation;
 
+//import java.text.NumberFormat;
+
 import edu.semaster.figurearea.model.*;
 
 public class Presenter
@@ -31,6 +33,13 @@ public class Presenter
 		});
 	}
 
+	private void setState()
+	{
+		m_view.setStateOfErrorIcon(true);
+		m_view.setStateOfCalculateAreaButton(false);
+		return;
+	}
+
 	protected void processUserInput()
 	{
 		try
@@ -39,8 +48,17 @@ public class Presenter
 		} catch (InvalidParameterException ex)
 		{
 			m_view.setErrorMessage(ex.getErrorMessage());
-			m_view.setStateOfErrorIcon(true);
-			m_view.setStateOfCalculateAreaButton(false);
+			setState();
+			return;
+		} catch (IllegalArgumentException i)
+		{
+			m_view.setErrorMessage(i.getMessage());
+			setState();
+			return;
+		} catch (ArithmeticException a)
+		{
+			m_view.setErrorMessage(a.getMessage());
+			setState();
 			return;
 		}
 
@@ -59,29 +77,13 @@ public class Presenter
 			{
 				throw new InvalidParameterException("Empty or null input");
 			}
-			double val = Double.parseDouble(text);
-			if (val <= 0)
-			{
-				throw new InvalidParameterException(
-						"Negative argument not allowed");
-			}
-
+			Double.parseDouble(text);
 		} catch (NumberFormatException e)
 		{
 			throw new InvalidParameterException(exceptionMessage);
 		}
 		return Double.parseDouble(text);
 
-	}
-
-	protected void checkTorusValidity(String a, String b)
-			throws InvalidParameterException
-	{
-		if (Double.parseDouble(a) <= Double.parseDouble(b))
-		{
-			throw new InvalidParameterException(
-					"Incorrect input : minor radius greater than major radius");
-		}
 	}
 
 	protected I3DFigure getFigure() throws InvalidParameterException
@@ -127,8 +129,6 @@ public class Presenter
 							"Invalid torus minor radius"), verifyInput(
 							m_view.getTorusMajorRadius(),
 							"Invalid torus major radius"));
-			checkTorusValidity(m_view.getTorusMajorRadius(),
-					m_view.getTorusMinorRadius());
 		}
 		return m_selectedFigure;
 	}
