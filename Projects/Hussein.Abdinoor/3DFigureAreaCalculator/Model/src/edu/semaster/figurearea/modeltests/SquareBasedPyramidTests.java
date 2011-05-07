@@ -11,45 +11,45 @@ public class SquareBasedPyramidTests
 	@Test
 	public void squareBasedPyramidIsNotNull()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		assertNotNull(m_sqPyramid);
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		assertNotNull(sqPyramid);
 	}
 
 	@Test
 	public void canCreateASquareBasedPyramid()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		assertNotNull(m_sqPyramid);
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		assertNotNull(sqPyramid);
 	}
 
 	@Test
 	public void canSetBaseLengthAndHeightOfASquareBasedPyramid()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		assertNotNull(m_sqPyramid);
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		assertNotNull(sqPyramid);
 	}
 
 	@Test
 	public void canSetBaseLengthOfSquareBasedPyramid()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		double actual = m_sqPyramid.getBaselength();
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		double actual = sqPyramid.getBaselength();
 		assertEquals(6, actual, DELTA);
 	}
 
 	@Test
 	public void canSetHeightOfSquareBasedPyramid()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		double actual = m_sqPyramid.getHeight();
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		double actual = sqPyramid.getHeight();
 		assertEquals(4, actual, DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfSquarePyramidSixByFour()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(6.0, 4.0);
-		double actual = m_sqPyramid.calculateArea();
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(6.0, 4.0);
+		double actual = sqPyramid.calculateArea();
 		double expected = 96.0;
 		assertEquals(expected, actual, DELTA);
 	}
@@ -57,8 +57,8 @@ public class SquareBasedPyramidTests
 	@Test
 	public void canCalculateAreaOfSquarePyramidWithDecimals()
 	{
-		SquareBasedPyramid m_sqPyramid = new SquareBasedPyramid(23.44, 54.88);
-		double actual = m_sqPyramid.calculateArea();
+		SquareBasedPyramid sqPyramid = new SquareBasedPyramid(23.44, 54.88);
+		double actual = sqPyramid.calculateArea();
 		double expected = 3180.2215;
 		assertEquals(expected, actual, DELTA);
 	}

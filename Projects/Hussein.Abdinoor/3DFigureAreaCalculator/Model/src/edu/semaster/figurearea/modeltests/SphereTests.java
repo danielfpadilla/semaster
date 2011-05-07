@@ -11,22 +11,22 @@ public class SphereTests
 	@Test
 	public void canCreateASphere()
 	{
-		Sphere m_sphere = new Sphere(10);
-		assertNotNull(m_sphere);
+		Sphere sphere = new Sphere(10);
+		assertNotNull(sphere);
 	}
 
 	@Test
 	public void canSetRadiusOfASphere()
 	{
-		Sphere m_sphere = new Sphere(10);
-		assertEquals(10.0, m_sphere.getRadius(), DELTA);
+		Sphere sphere = new Sphere(10);
+		assertEquals(10.0, sphere.getRadius(), DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfSphereGivenRadiusEquals10()
 	{
-		Sphere m_sphere = new Sphere(10.0);
-		double actual = m_sphere.calculateArea();
+		Sphere sphere = new Sphere(10.0);
+		double actual = sphere.calculateArea();
 		double expected = 1256.6371;
 		assertEquals(expected, actual, DELTA);
 	}
@@ -34,8 +34,8 @@ public class SphereTests
 	@Test
 	public void canCalculateAreaOfSphereGivenRadiusEquals43pointEightFive()
 	{
-		Sphere m_sphere = new Sphere(43.85);
-		double actual = m_sphere.calculateArea();
+		Sphere sphere = new Sphere(43.85);
+		double actual = sphere.calculateArea();
 		double expected = 24162.9001;
 		assertEquals(expected, actual, DELTA);
 	}

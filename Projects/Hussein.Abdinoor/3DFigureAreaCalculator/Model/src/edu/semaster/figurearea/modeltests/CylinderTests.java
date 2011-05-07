@@ -9,49 +9,49 @@ public class CylinderTests
 	private final double DELTA = 0.0001;
 
 	@Test
-	public void canCreateAm_cylinder()
+	public void canCreateAcylinder()
 	{
-		Cylinder m_cylinder = new Cylinder(7, 10);
-		assertNotNull(m_cylinder);
+		Cylinder cylinder = new Cylinder(7, 10);
+		assertNotNull(cylinder);
 	}
 
 	@Test
-	public void canSetRadiusAndHeightOfm_cylinder()
+	public void canSetRadiusAndHeightOfcylinder()
 	{
-		Cylinder m_cylinder = new Cylinder(7, 10);
-		assertNotNull(m_cylinder);
+		Cylinder cylinder = new Cylinder(7, 10);
+		assertNotNull(cylinder);
 	}
 
 	@Test
-	public void canSetRadiusofm_cylinder()
+	public void canSetRadiusofcylinder()
 	{
-		Cylinder m_cylinder = new Cylinder(7, 10);
-		assertEquals(7, m_cylinder.getRadius(), DELTA);
+		Cylinder cylinder = new Cylinder(7, 10);
+		assertEquals(7, cylinder.getRadius(), DELTA);
 
 	}
 
 	@Test
-	public void canSetheightOfm_cylinder()
+	public void canSetheightOfcylinder()
 	{
-		Cylinder m_cylinder = new Cylinder(7, 10);
-		assertEquals(10, m_cylinder.getHeight(), DELTA);
+		Cylinder cylinder = new Cylinder(7, 10);
+		assertEquals(10, cylinder.getHeight(), DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfCylinderSevenByTen()
 	{
-		Cylinder m_cylinder = new Cylinder(7, 10);
-		double actual = m_cylinder.calculateArea();
+		Cylinder cylinder = new Cylinder(7, 10);
+		double actual = cylinder.calculateArea();
 		double expected = 747.6990;
 		assertEquals(expected, actual, DELTA);
 	}
 
 	@Test
-	public void calculateAreaOfm_cylinderWithDecimalValues()
+	public void calculateAreaOfcylinderWithDecimalValues()
 	{
 
-		Cylinder m_cylinder = new Cylinder(50.75, 70.35);
-		double actual = m_cylinder.calculateArea();
+		Cylinder cylinder = new Cylinder(50.75, 70.35);
+		double actual = cylinder.calculateArea();
 		double expected = 38615.357343;
 		assertEquals(expected, actual, DELTA);
 	}
