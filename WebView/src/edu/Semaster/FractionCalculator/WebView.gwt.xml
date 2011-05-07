@@ -1,9 +1,0 @@
-<module>
-	<inherits name="com.google.gwt.user.User"/>
-	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
-	<entry-point class="edu.Semaster.FractionCalculator.client.WebView"/>
-	
-	<source path='client'/>
-    <source path='Model'/>
-    <source path='Presenter'/>
-</module>
