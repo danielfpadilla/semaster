@@ -214,7 +214,7 @@ public class PresenterTests
 		m_view.m_torusMajorRadius = "5.0";
 		m_view.m_inputHandler.processAction();
 		assertEquals(
-				"Incorrect input : minor radius greater than major radius",
+				"Minor radius less than major radius",
 				m_view.m_warningErrorMessage);
 
 	}
