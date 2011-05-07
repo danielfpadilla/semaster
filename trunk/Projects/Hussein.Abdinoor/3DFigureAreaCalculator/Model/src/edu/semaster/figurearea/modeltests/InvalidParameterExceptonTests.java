@@ -11,14 +11,14 @@ public class InvalidParameterExceptonTests
 	public void canCreateInvalidParameterException()
 	{
 		
-		InvalidParameterException m_exception = new InvalidParameterException("");
-		assertNotNull(m_exception);
+		InvalidParameterException exception = new InvalidParameterException("");
+		assertNotNull(exception);
 	}
 	@Test
 	public void canGetErrorMessage()
 	{
-		InvalidParameterException m_exception = new InvalidParameterException("Invalid Input");
-		assertEquals("Invalid Input", m_exception.getErrorMessage());
+		InvalidParameterException exception = new InvalidParameterException("Invalid Input");
+		assertEquals("Invalid Input", exception.getErrorMessage());
 
 	}
 

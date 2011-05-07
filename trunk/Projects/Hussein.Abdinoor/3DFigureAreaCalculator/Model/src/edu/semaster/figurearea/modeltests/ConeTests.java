@@ -13,36 +13,36 @@ public class ConeTests
 	@Test
 	public void coneIsNotNull()
 	{
-		Cone m_cone = new Cone(3.0, 4.0);
-		assertNotNull(m_cone);
+		Cone cone = new Cone(3.0, 4.0);
+		assertNotNull(cone);
 	}
 
 	@Test
 	public void canSetRadiusAndHeightOfCone()
 	{
-		Cone m_cone = new Cone(3.0, 4.0);
-		assertNotNull(m_cone);
+		Cone cone = new Cone(3.0, 4.0);
+		assertNotNull(cone);
 	}
 
 	@Test
 	public void canSetRadiusOfCone()
 	{
-		Cone m_cone = new Cone(3.0, 4.0);
-		assertEquals(3, m_cone.getRadius(), DELTA);
+		Cone cone = new Cone(3.0, 4.0);
+		assertEquals(3, cone.getRadius(), DELTA);
 	}
 
 	@Test
 	public void canSetHeightOfCone()
 	{
-		Cone m_cone = new Cone(3.0, 4.0);
-		assertEquals(4, m_cone.getHeight(), DELTA);
+		Cone cone = new Cone(3.0, 4.0);
+		assertEquals(4, cone.getHeight(), DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfConeGivenRadiusEqualsThreeByFour()
 	{
-		Cone m_cone = new Cone(3.0, 4.0);
-		double actual = m_cone.calculateArea();
+		Cone cone = new Cone(3.0, 4.0);
+		double actual = cone.calculateArea();
 		double expected = 75.398223;
 		assertEquals(expected, actual, DELTA);
 	}

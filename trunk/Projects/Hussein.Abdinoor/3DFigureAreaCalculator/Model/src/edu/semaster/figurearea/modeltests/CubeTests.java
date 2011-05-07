@@ -12,25 +12,25 @@ public class CubeTests
 	@Test
 	public void cubeIsNotNull()
 	{
-		Cube m_cube = new Cube(10);
-		assertNotNull(m_cube);
+		Cube cube = new Cube(10);
+		assertNotNull(cube);
 	}
 
 	@Test
 	public void canSetFaceLengthOfCube()
 	{
-		Cube m_cube = new Cube(10);
-		assertEquals(10, m_cube.getFaceLength(), DELTA);
+		Cube cube = new Cube(10);
+		assertEquals(10, cube.getFaceLength(), DELTA);
 	}
 
 	@Test
 	public void canCalculateAreaOfCubeWithFaceLenghtequalsTo10()
 	{
-		Cube m_cube = new Cube(10);
-		double actual = m_cube.calculateArea();
+		Cube cube = new Cube(10);
+		double actual = cube.calculateArea();
 		double expected = 600;
 		assertTrue("Checking Whether face length is greater than zero",
-				m_cube.getFaceLength() >= 0);
+				cube.getFaceLength() >= 0);
 		assertEquals(expected, actual, DELTA);
 	}
 
