@@ -47,10 +47,9 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	private IActionHandler m_multiplyActionHandler;
 	private IActionHandler m_divideActionHandler;
 	private IActionHandler m_clearActionHandler;
-	//private IActionHandler m_inputActionHandler;
-	private Label m_errorLabel;
-	private Label m_myImage;
 	FractionPresenter m_presenter;
+	public boolean m_enableButton;
+	public String m_alertErrorMessage;
 
 	interface Binder extends UiBinder<Widget, WebView>
 	{
@@ -201,7 +200,8 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@Override
 	public void setErrorCondition(boolean error, String message)
 	{
-		
+		m_alertErrorMessage = message;
+		m_enableButton = error;
 		
 
 	}
