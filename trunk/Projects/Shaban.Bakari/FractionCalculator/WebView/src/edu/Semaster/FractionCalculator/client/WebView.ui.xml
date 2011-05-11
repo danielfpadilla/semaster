@@ -25,16 +25,16 @@
 				<g:Label text="denominator2" ui:field="m_denominator2"/>
 			</g:at>
 			<g:at left="94" top="63">
-				<g:TextBox width="30px" height="8px"/>
+				<g:TextBox width="30px" height="8px" ui:field="textBox"/>
 			</g:at>
 			<g:at left="94" top="102">
-				<g:TextBox width="30px" height="8px"/>
+				<g:TextBox width="30px" height="8px" ui:field="textBox_2"/>
 			</g:at>
 			<g:at left="232" top="63">
-				<g:TextBox width="30px" height="8px"/>
+				<g:TextBox width="30px" height="8px" ui:field="textBox_1"/>
 			</g:at>
 			<g:at left="232" top="102">
-				<g:TextBox width="30px" height="8px"/>
+				<g:TextBox width="30px" height="8px" ui:field="textBox_3"/>
 			</g:at>
 			<g:at left="36" top="153">
 				<g:Button width="52px" height="24px" ui:field="m_addButton" text="+"/>

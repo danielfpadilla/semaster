@@ -16,6 +16,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import edu.Semaster.FractionCalculator.Presenter.FractionPresenter;
 import edu.Semaster.FractionCalculator.Presenter.IActionHandler;
 import edu.Semaster.FractionCalculator.Presenter.IFractionView;
+import com.google.gwt.event.dom.client.KeyPressEvent;
 
 public class WebView extends Composite implements EntryPoint, IFractionView
 {
@@ -41,12 +42,21 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	Button m_divideButton;
 	@UiField
 	Button m_multiplyButton;
+	@UiField
+	TextBox textBox;
+	@UiField
+	TextBox textBox_1;
+	@UiField
+	TextBox textBox_2;
+	@UiField
+	TextBox textBox_3;
 
 	private IActionHandler m_addActionHandler;
 	private IActionHandler m_substractActionHandler;
 	private IActionHandler m_multiplyActionHandler;
 	private IActionHandler m_divideActionHandler;
 	private IActionHandler m_clearActionHandler;
+	private IActionHandler m_inputActionHandler;
 	FractionPresenter m_presenter;
 	public boolean m_enableButton;
 	public String m_alertErrorMessage;
@@ -63,7 +73,7 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	public void onModuleLoad()
 	{
 		RootPanel.get().add(this);
-		 m_presenter = new FractionPresenter(this);
+		m_presenter = new FractionPresenter(this);
 	}
 
 	@UiHandler("m_addButton")
@@ -186,7 +196,7 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@Override
 	public void setInputActionHandler(IActionHandler handler)
 	{
-		//m_inputActionHandler = handler;
+		m_inputActionHandler = handler;
 
 	}
 
@@ -202,7 +212,31 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	{
 		m_alertErrorMessage = message;
 		m_enableButton = error;
-		
 
+	}
+
+	@UiHandler("textBox")
+	void onTextBoxKeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+
+	}
+
+	@UiHandler("textBox_1")
+	void onTextBox_1KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("textBox_2")
+	void onTextBox_2KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("textBox_3")
+	void onTextBox_3KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
 	}
 }
