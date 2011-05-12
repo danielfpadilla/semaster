@@ -10,7 +10,7 @@ public class Torus implements I3DFigure
 		if (minorRadius <= 0.0 || majorRadius <= 0.0)
 			throw new IllegalArgumentException(
 					"Invalid arguments of minor and major radius");
-		if(minorRadius > majorRadius)
+		if(minorRadius >= majorRadius)
 		throw new ArithmeticException("Minor radius less than major radius");
 		m_minorRadius = minorRadius;
 		m_majorRadius = majorRadius;
