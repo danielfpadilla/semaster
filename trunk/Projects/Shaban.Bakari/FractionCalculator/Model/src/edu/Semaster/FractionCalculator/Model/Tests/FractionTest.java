@@ -1,9 +1,11 @@
-package edu.Semaster.FractionCalculator.Model;
+package edu.Semaster.FractionCalculator.Model.Tests;
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import edu.Semaster.FractionCalculator.Model.Fraction;
 
 public class FractionTest
 {
