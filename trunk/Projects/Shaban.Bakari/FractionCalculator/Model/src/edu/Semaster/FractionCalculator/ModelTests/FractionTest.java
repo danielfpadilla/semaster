@@ -1,4 +1,4 @@
-package edu.Semaster.FractionCalculator.Model.Tests;
+package edu.Semaster.FractionCalculator.ModelTests;
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
