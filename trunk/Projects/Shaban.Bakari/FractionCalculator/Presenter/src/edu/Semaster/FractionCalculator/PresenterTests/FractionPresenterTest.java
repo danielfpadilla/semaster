@@ -1,4 +1,4 @@
-package edu.Semaster.FractionCalculator.Presenter.Tests;
+package edu.Semaster.FractionCalculator.PresenterTests;
 
 import org.junit.After;
 import org.junit.Before;
