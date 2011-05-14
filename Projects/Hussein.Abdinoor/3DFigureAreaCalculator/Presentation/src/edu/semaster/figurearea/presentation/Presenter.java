@@ -89,6 +89,7 @@ public class Presenter
 	protected I3DFigure getFigure() throws InvalidParameterException
 	{
 		I3DFigure m_selectedFigure = null;
+		m_view.setCalculatedAreaResult("");
 		if (m_view.coneIsSelected())
 		{
 			m_selectedFigure = new Cone(verifyInput(m_view.getConeRadius(),
