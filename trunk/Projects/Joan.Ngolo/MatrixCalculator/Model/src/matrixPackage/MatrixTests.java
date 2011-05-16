@@ -15,13 +15,8 @@ public class MatrixTests
 		Matrix matrix=new Matrix();
 		Assert.assertNotNull(matrix);	
 	}
-	@Test public void canSetSizeForMatrix()
-	{
-		Matrix matrix=new Matrix(2);
-		Assert.assertNotNull(matrix);
-	}
-
-	@Test public void CanInitializeMatrix()	
+	
+	@Test public void canInitializeMatrix()	
 	{       double [][]a={{1,2},{1,3}};
 	        Assert.assertNotNull(a);
 	}
@@ -30,7 +25,18 @@ public class MatrixTests
 		Matrix matrix=new Matrix();
 		Assert.assertNotNull(matrix);
 	}
-
+	@Test public void canSetSizeOfMatrixIsEqualToTwo()
+	{
+		Matrix matrix=new Matrix(2);
+		Assert.assertNotNull(matrix);
+	}
+	/*
+	@Test public void canSetSizeForMatrix()
+	{
+		Matrix matrix=new Matrix(2);
+		Assert.assertNotNull(matrix);
+	}
+       
 	@Test
 	public void canGetSize()
 	{
@@ -39,7 +45,7 @@ public class MatrixTests
 		Assert.assertNotNull(matrix);
 	}
 	
-
+*/
 	@Test public void canAddMatrices()
 	{
 
@@ -75,9 +81,6 @@ public class MatrixTests
 		Assert.assertEquals(object3,object4);
 
 	}
-
-	
-	
 	
 	@Test
 	    public void calculateDeterminant2X2()
@@ -88,7 +91,7 @@ public class MatrixTests
 	        double result = matrix.Determinant();
 	        Assert.assertEquals(-3, result, DELTA);
 	    }
-	    
+	   /* 
 	    @Test
 	    public void canFindAdjointOfMatrix()
 	    {
@@ -130,7 +133,7 @@ public class MatrixTests
 	    	catch(IllegalArgumentException e){}
 	    	   	
 	    }
-	    
+	    /*
 	    /*@Test 
 	    public void canGetUpperTiangularMatrix()
 	    {

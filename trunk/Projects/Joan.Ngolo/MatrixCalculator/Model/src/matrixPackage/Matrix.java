@@ -4,12 +4,12 @@ public class Matrix
 {
 
 	private double[][] m_data;
-	private int m_size;
+	private int m_size=2;
 	private int iDF = 1;
 
 	public Matrix()
 	{
-		// Do nothing
+	
 	}
 
 	public Matrix(double[][] matrixData, int size)
@@ -32,17 +32,29 @@ public class Matrix
 		m_size = size;
 
 	}
-
+/*
+	public void setSize(int size)	
+		{
+			m_size = size;
+		}
 	public int getSize()
 	{
 		return m_size;
 
 	}
-
+*/
 	public void setValue(int i, int j, double value)
-	{
+	{/*
+		if((i>0)&&(j>0))
+	         {
+		m_data[i][j] = value;   //problem:if i throw exception it doesn't work
+		 }
+		else
+		 {
+		throw new IllegalArgumentException("invalid size of matrix");
+		 }
+		 */
 		m_data[i][j] = value;
-
 	}
 
 	public double getValue(int i, int j)
@@ -102,13 +114,13 @@ public class Matrix
 	public double Determinant()
 	{
 
-		int tms = m_data.length;
+		int matrixlength = m_data.length;
 
 		double det = 1;
 
 		m_data = upperTriangle(m_data);
 
-		for (int i = 0; i < tms; i++)
+		for (int i = 0; i < matrixlength; i++)
 		{
 			det = det * m_data[i][i];
 		} // multiply down diagonal
@@ -119,16 +131,17 @@ public class Matrix
 	}
 
 	// --------------------------------------------------------------
-
-	public double[][] Inverse(double[][] a) throws Exception
+/*
+	public Matrix Inverse() throws Exception
 	{
+		int matrixlength = a.length;
 
-		int tms = a.length;
-
-		double m[][] = new double[tms][tms];
-		double mm[][] = Adjoint(a);
-Matrix myMatrix=new Matrix(a,tms);
+		double m[][] = new double[matrixlength][matrixlength];
+		double mm[][] = Adjoint();
+		
+                Matrix myMatrix=new Matrix();
 		double det = myMatrix.Determinant();
+		
 		double dd = 0;
 
 		if (det == 0)
@@ -141,40 +154,40 @@ Matrix myMatrix=new Matrix(a,tms);
 			dd = det;
 		}
 
-		for (int i = 0; i < tms; i++)
+		for (int i = 0; i < matrixlength; i++)
 		{
-			for (int j = 0; j < tms; j++)
+			for (int j = 0; j < matrixlength; j++)
 			{
 				m[i][j] = mm[i][j] / dd;
 
 			}
 		}
 
-		return m;
+		return myMatrix;
 	}
 
 	// --------------------------------------------------------------
 
-	public double[][] Adjoint(double[][] a)
+	public Matrix Adjoint()
 	{
 
-		int tms = a.length;
+		int matrixlength = a.length;
 
-		double m[][] = new double[tms][tms];
+		double m[][] = new double[matrixlength][matrixlength];
 
 		int ii, jj, ia, ja;
 		double det;
 		
-		for (int i = 0; i < tms; i++)
-			for (int j = 0; j < tms; j++)
+		for (int i = 0; i < matrixlength; i++)
+			for (int j = 0; j < matrixlength; j++)
 			{
 				ia = ja = 0;
 
-				double ap[][] = new double[tms - 1][tms - 1];
+				double ap[][] = new double[matrixlength - 1][matrixlength - 1];
 
-				for (ii = 0; ii < tms; ii++)
+				for (ii = 0; ii < matrixlength; ii++)
 				{
-					for (jj = 0; jj < tms; jj++)
+					for (jj = 0; jj < matrixlength; jj++)
 					{
 
 						if ((ii != i) && (jj != j))
@@ -190,16 +203,16 @@ Matrix myMatrix=new Matrix(a,tms);
 					}
 					ja = 0;
 				}
-            Matrix myMatrix=new Matrix(ap,tms-1);
+            Matrix myMatrix=new Matrix(ap,matrixlength-1);
 				det = myMatrix.Determinant();
 
 				m[i][j] = (float) Math.pow(-1, i + j) * det;
 		
 			}
 
-		return m;
+		return myMatrix;
 	}
-
+*/
 	public double[][] upperTriangle(double[][] m)
 	{
 
