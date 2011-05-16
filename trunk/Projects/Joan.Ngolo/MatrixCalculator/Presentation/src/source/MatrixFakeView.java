@@ -18,7 +18,7 @@ public class MatrixFakeView implements IMatrixView
 	IActionHandler m_determinantActionHandler;
 	IActionHandler m_subtractActionHandler;
 	IActionHandler m_multiplyActionHandler;
-	IActionHandler m_inverseActionHandler;
+	//IActionHandler m_inverseActionHandler;
 
 
 	@Override
@@ -72,7 +72,7 @@ public class MatrixFakeView implements IMatrixView
 	@Override
 	public void setResultC00(String c00)
 	{
-		m_c00  = c00;
+		m_c00 = c00;
 	}
 
 	@Override
@@ -111,28 +111,28 @@ public class MatrixFakeView implements IMatrixView
 	@Override
 	public void setDeterminantActionHandler(IActionHandler handler)
 	{
-		m_determinantActionHandler =  handler;
+		m_determinantActionHandler = handler;
 
 	}
 
 	@Override
 	public void setSubtractActionHandler(IActionHandler handler)
 	{
-		m_subtractActionHandler=handler;
+		m_subtractActionHandler = handler;
 
 	}
 
 	@Override
 	public void setMultiplyActionHandler(IActionHandler handler)
 	{
-		m_multiplyActionHandler=handler;
+		m_multiplyActionHandler = handler;
 	}
-
+/*
 	@Override
 	public void setInverseActionHandler(IActionHandler handler)
 	{
 
-		m_inverseActionHandler	=handler;
+		m_inverseActionHandler = handler;
 	}
-
+*/
 }
