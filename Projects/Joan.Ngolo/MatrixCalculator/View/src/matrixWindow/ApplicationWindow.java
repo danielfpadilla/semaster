@@ -33,7 +33,7 @@ public class ApplicationWindow implements IMatrixView
 	private IActionHandler m_determinantHandler;
 	private IActionHandler m_AddMatrixHandler;
 	private IActionHandler m_SubtractHandler;
-	private IActionHandler m_InverseHandler;
+	//private IActionHandler m_InverseHandler;
 	private IActionHandler m_MultiplicationHandler;
 	private Button button;
 	
@@ -166,7 +166,7 @@ public class ApplicationWindow implements IMatrixView
 		});
 		buttonSubtract.setText("-");
 		buttonSubtract.setBounds(189, 64, 43, 29);
-		
+		/*
 		Button btnInverse = new Button(shlMatrixbycalculator, SWT.NONE);
 		btnInverse.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -176,7 +176,7 @@ public class ApplicationWindow implements IMatrixView
 		});
 		btnInverse.setBounds(238, 64, 94, 29);
 		btnInverse.setText("Inverse");
-		
+		*/
 		button = new Button(shlMatrixbycalculator, SWT.NONE);
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -293,11 +293,11 @@ public class ApplicationWindow implements IMatrixView
 	{
 		m_MultiplicationHandler = handler;
 	}
-
+/*
 	@Override
 	public void setInverseActionHandler(IActionHandler handler)
 	{
 		m_InverseHandler = handler;
 		
-	}
+	}*/
 }
