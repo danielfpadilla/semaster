@@ -13,43 +13,49 @@
 				<g:TextBox ui:field="m_result" readOnly="true"/>
 			</g:at>
 			<g:at left="23" top="63">
-				<g:Label text="numerator1" ui:field="m_numerator1"/>
+				<g:Label text="numerator1" ui:field="numerator1Label"/>
 			</g:at>
 			<g:at left="10" top="102">
-				<g:Label text="denominator1" ui:field="m_denominator1"/>
+				<g:Label text="denominator1" ui:field="denominator1Label"/>
 			</g:at>
 			<g:at left="158" top="63">
-				<g:Label text="numerator2&#13;&#10;" ui:field="m_numerator2"/>
+				<g:Label text="numerator2&#13;&#10;" ui:field="numerator2Label"/>
 			</g:at>
 			<g:at left="145" top="102">
-				<g:Label text="denominator2" ui:field="m_denominator2"/>
+				<g:Label text="denominator2" ui:field="denominator2Label"/>
 			</g:at>
 			<g:at left="94" top="63">
-				<g:TextBox width="30px" height="8px" ui:field="textBox"/>
+				<g:TextBox width="30px" height="16px" ui:field="m_numerator1"/>
 			</g:at>
 			<g:at left="94" top="102">
-				<g:TextBox width="30px" height="8px" ui:field="textBox_2"/>
+				<g:TextBox width="30px" height="16px" ui:field="m_denominator1"/>
 			</g:at>
 			<g:at left="232" top="63">
-				<g:TextBox width="30px" height="8px" ui:field="textBox_1"/>
+				<g:TextBox width="30px" height="16px" ui:field="m_numerator2"/>
 			</g:at>
 			<g:at left="232" top="102">
-				<g:TextBox width="30px" height="8px" ui:field="textBox_3"/>
+				<g:TextBox width="30px" height="16px" ui:field="m_denominator2"/>
 			</g:at>
-			<g:at left="36" top="153">
+			<g:at left="36" top="138">
 				<g:Button width="52px" height="24px" ui:field="m_addButton" text="+"/>
 			</g:at>
-			<g:at left="186" top="153">
+			<g:at left="186" top="138">
 				<g:Button width="52px" height="24px" ui:field="m_substractButton" text="-"/>
 			</g:at>
-			<g:at left="36" top="213">
+			<g:at left="36" top="197">
 				<g:Button width="52px" height="24px" ui:field="m_divideButton" text="/"/>
 			</g:at>
-			<g:at left="186" top="213">
+			<g:at left="186" top="197">
 				<g:Button width="52px" height="24px" ui:field="m_multiplyButton" text="*"/>
 			</g:at>
-			<g:at left="116" top="182">
+			<g:at left="114" top="167">
 				<g:Button width="52px" height="24px" ui:field="m_clearButton" text="clear"/>
+			</g:at>
+			<g:at left="68" top="234">
+				<g:Label width="202px" height="16px" ui:field="m_errorLabel"/>
+			</g:at>
+			<g:at left="10" top="227">
+				<g:Image width="41px" height="30px" url="error.gif" ui:field="m_myImage" visible="false"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:FlowPanel>

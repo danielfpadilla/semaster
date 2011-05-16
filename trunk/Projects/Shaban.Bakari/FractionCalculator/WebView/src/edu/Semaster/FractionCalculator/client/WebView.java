@@ -17,6 +17,7 @@ import edu.Semaster.FractionCalculator.Presenter.FractionPresenter;
 import edu.Semaster.FractionCalculator.Presenter.IActionHandler;
 import edu.Semaster.FractionCalculator.Presenter.IFractionView;
 import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.user.client.ui.Image;
 
 public class WebView extends Composite implements EntryPoint, IFractionView
 {
@@ -25,13 +26,13 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@UiField
 	TextBox m_result;
 	@UiField
-	Label m_numerator1;
+	Label numerator1Label;
 	@UiField
-	Label m_numerator2;
+	Label numerator2Label;
 	@UiField
-	Label m_denominator1;
+	Label denominator1Label;
 	@UiField
-	Label m_denominator2;
+	Label denominator2Label;
 	@UiField
 	Button m_addButton;
 	@UiField
@@ -43,13 +44,15 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@UiField
 	Button m_multiplyButton;
 	@UiField
-	TextBox textBox;
+	TextBox m_numerator1;
 	@UiField
-	TextBox textBox_1;
+	TextBox m_numerator2;
 	@UiField
-	TextBox textBox_2;
+	TextBox m_denominator1;
 	@UiField
-	TextBox textBox_3;
+	TextBox m_denominator2;
+	@UiField Label m_errorLabel;
+	@UiField Image m_myImage;
 
 	private IActionHandler m_addActionHandler;
 	private IActionHandler m_substractActionHandler;
@@ -207,36 +210,56 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 
 	}
 
+	@UiHandler("m_numerator1")
+	void onM_numerator1KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+
+	}
+
+	@UiHandler("m_numerator2")
+	void onM_numerator2KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("m_denominator1")
+	void onM_denominator1KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("m_denominator2")
+	void onM_denominator2KeyPress(KeyPressEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+	
 	@Override
 	public void setErrorCondition(boolean error, String message)
 	{
-		m_alertErrorMessage = message;
-		m_enableButton = error;
+		//m_alertErrorMessage = message;
+		//m_enableButton = error;
+		if (error)
+		{
+			m_errorLabel.setVisible(error);
+			m_errorLabel.setText(message);
+			m_myImage.setVisible(error);
+			m_addButton.setEnabled(!error);
+			m_substractButton.setEnabled(!error);
+			m_divideButton.setEnabled(!error);
+			m_multiplyButton.setEnabled(!error);
+		}
+		else
+		{
+			m_myImage.setVisible(error);
+			m_addButton.setEnabled(!error);
+			m_substractButton.setEnabled(!error);
+			m_divideButton.setEnabled(!error);
+			m_multiplyButton.setEnabled(!error);
+			m_errorLabel.setVisible(error);
 
-	}
+		}
 
-	@UiHandler("textBox")
-	void onTextBoxKeyPress(KeyPressEvent event)
-	{
-		m_inputActionHandler.processAction();
-
-	}
-
-	@UiHandler("textBox_1")
-	void onTextBox_1KeyPress(KeyPressEvent event)
-	{
-		m_inputActionHandler.processAction();
-	}
-
-	@UiHandler("textBox_2")
-	void onTextBox_2KeyPress(KeyPressEvent event)
-	{
-		m_inputActionHandler.processAction();
-	}
-
-	@UiHandler("textBox_3")
-	void onTextBox_3KeyPress(KeyPressEvent event)
-	{
-		m_inputActionHandler.processAction();
 	}
 }
