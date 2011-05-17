@@ -18,6 +18,7 @@ import edu.Semaster.FractionCalculator.Presenter.IActionHandler;
 import edu.Semaster.FractionCalculator.Presenter.IFractionView;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 
 public class WebView extends Composite implements EntryPoint, IFractionView
 {
@@ -51,8 +52,10 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	TextBox m_denominator1;
 	@UiField
 	TextBox m_denominator2;
-	@UiField Label m_errorLabel;
-	@UiField Image m_myImage;
+	@UiField
+	Label m_errorLabel;
+	@UiField
+	Image m_myImage;
 
 	private IActionHandler m_addActionHandler;
 	private IActionHandler m_substractActionHandler;
@@ -61,8 +64,6 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	private IActionHandler m_clearActionHandler;
 	private IActionHandler m_inputActionHandler;
 	FractionPresenter m_presenter;
-	public boolean m_enableButton;
-	public String m_alertErrorMessage;
 
 	interface Binder extends UiBinder<Widget, WebView>
 	{
@@ -234,12 +235,10 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	{
 		m_inputActionHandler.processAction();
 	}
-	
+
 	@Override
 	public void setErrorCondition(boolean error, String message)
 	{
-		//m_alertErrorMessage = message;
-		//m_enableButton = error;
 		if (error)
 		{
 			m_errorLabel.setVisible(error);
@@ -260,6 +259,29 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 			m_errorLabel.setVisible(error);
 
 		}
+	}
 
+	@UiHandler("m_numerator1")
+	void onM_numerator1KeyUp(KeyUpEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("m_numerator2")
+	void onM_numerator2KeyUp(KeyUpEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("m_denominator1")
+	void onM_denominator1KeyUp(KeyUpEvent event)
+	{
+		m_inputActionHandler.processAction();
+	}
+
+	@UiHandler("m_denominator2")
+	void onM_denominator2KeyUp(KeyUpEvent event)
+	{
+		m_inputActionHandler.processAction();
 	}
 }
