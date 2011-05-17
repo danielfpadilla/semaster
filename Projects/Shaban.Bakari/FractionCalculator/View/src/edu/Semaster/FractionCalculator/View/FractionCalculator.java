@@ -331,6 +331,5 @@ public class FractionCalculator implements IFractionView
 			m_errorLabel.setVisible(error);
 
 		}
-
 	}
 }
