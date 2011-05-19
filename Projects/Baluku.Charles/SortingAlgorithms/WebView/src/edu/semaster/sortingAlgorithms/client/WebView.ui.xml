@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+	<ui:style>
+		.panel {
+			background-color: ivory;
+		}
+	</ui:style>
+
+	<g:FlowPanel styleName="{style.panel}">
+		<g:RadioButton name="m_mergeSort" text="Merge Sort"/>
+		<g:TextBox width="222px" name="m_randomlyGeneratedArray"/>
+		<g:RadioButton name="m_quickSort" text="Quick Sort"/>
+		<g:Button width="166px">Randomly Generate Array </g:Button>
+		<g:Label text="Sorted Array" width="120px" height="24px"/>
+		<g:TextBox name="m_sortedArray" width="248px"/>
+	</g:FlowPanel>
+</ui:UiBinder>
