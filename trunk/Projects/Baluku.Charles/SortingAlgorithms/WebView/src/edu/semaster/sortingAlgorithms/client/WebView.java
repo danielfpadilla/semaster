@@ -18,14 +18,20 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.user.client.ui.RadioButton;
+import com.google.gwt.event.logical.shared.AttachEvent;
 
 public class WebView extends Composite implements EntryPoint, IView
 {
 	Presenter m_presenter;
 	private static final Binder m_binder = GWT.create(Binder.class);
 	@UiField TextBox m_sortedArray;
-	@UiField TextBox m_randomlygeneratedArray;
-	@UiField Button m_randomlygenerateArray;
+	@UiField TextBox m_randomlygenerateArray;
+	@UiField Button m_randomlygeneratedArray;
+	@UiField RadioButton radioButton;
+	@UiField TextBox textBox;
+	@UiField Button button;
+	@UiField TextBox textBox_1;
 	TextBox m_textBox;
 
 	private static final Binder binder = GWT.create(Binder.class);
@@ -100,9 +106,41 @@ public class WebView extends Composite implements EntryPoint, IView
 	}
 
 	@Override
-	public void sortingArray(IActionHandler handler) {
+	public void sortingArray(IActionHandler handler) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
+	@UiHandler("radioButton")//MergeSort
+	public void onRadioButtonClick(ClickEvent event) 
+	{
+	}
+	@UiHandler("textBox")//GeneratedArray 
+	public void onTextBoxAttachOrDetach(ClickEvent event) 
+	{
+	}
+	@UiHandler("button")//Randomly generate Array button
+	public void onButtonClick(ClickEvent event) 
+	{
+	}
+	
+	
+	
+	@UiHandler("textBox_1")//Array size
+	public void onTextBox_1AttachOrDetach(AttachEvent event)
+	{
+	}
+	
+
+    
+    @UiHandler("button_1")//enterArraySize
+	public void onButton_1Click(ClickEvent event) {
+	}
+ 
+	{
+	}
+	
+	
+	
 }
