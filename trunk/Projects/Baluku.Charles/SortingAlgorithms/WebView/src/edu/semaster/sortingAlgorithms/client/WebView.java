@@ -115,12 +115,12 @@ public class WebView extends Composite  implements EntryPoint, IView
 	{
 	}
 	@UiHandler("m_generateArray")
-	void M_generateArrayOnClick(AttachEvent event) 
+	void OnM_generateArrayClick(AttachEvent event) 
 	{
 		
 	}
 	@UiHandler("m_randomlyGeneratedArray")
-	void M_randomlyGeneratedArrayOnAttachOrDetach(AttachEvent event)
+	void OnM_randomlyGeneratedArrayAttachOrDetach(AttachEvent event)
 	{
 	}	@UiHandler("m_mergeSort")
 	void onM_mergeSortClick(ClickEvent event) 
