@@ -16,6 +16,9 @@ import com.google.gwt.user.client.ui.AbsolutePanel;
 import edu.semaster.sortingAlgorithms.presentation.IActionHandler;
 import edu.semaster.sortingAlgorithms.presentation.IView;
 import edu.semaster.sortingAlgorithms.presentation.Presenter;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.logical.shared.AttachEvent;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 
 public class WebView extends Composite  implements EntryPoint, IView
@@ -98,7 +101,6 @@ public class WebView extends Composite  implements EntryPoint, IView
 
 	@Override
 	public void sortArray(IActionHandler handler) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -108,4 +110,34 @@ public class WebView extends Composite  implements EntryPoint, IView
 		
 	}
 
+	@UiHandler("m_arraySize")
+	void onM_arraySizeAttachOrDetach(AttachEvent event)
+	{
+	}
+	@UiHandler("m_generateArray")
+	void M_generateArrayOnClick(AttachEvent event) 
+	{
+		
+	}
+	@UiHandler("m_randomlyGeneratedArray")
+	void M_randomlyGeneratedArrayOnAttachOrDetach(AttachEvent event)
+	{
+	}	@UiHandler("m_mergeSort")
+	void onM_mergeSortClick(ClickEvent event) 
+	{
+	}
+
+	
+	
+	
+		@UiHandler("m_quickSort")
+	void onM_quickSortClick(ClickEvent event) {
+	}
+
+	
+	
+	
+	@UiHandler("m_sortArray")
+	void onM_sortArrayClick(ClickEvent event) {
+	}
 }
