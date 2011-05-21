@@ -18,9 +18,6 @@
 			<g:at left="16" top="71">
 				<g:Button width="100px" height="28px" text="Generate Array" ui:field="m_generateArray"/>
 			</g:at>
-			<g:at left="133" top="75">
-				<g:TextBox ui:field="m_randomlyGeneratedArray" text="Randomly Generated Array"/>
-			</g:at>
 			<g:at left="32" top="130">
 				<g:RadioButton name="new name" text="Merge Sort" ui:field="m_mergeSort"/>
 			</g:at>
@@ -32,6 +29,9 @@
 			</g:at>
 			<g:at left="133" top="189">
 				<g:TextBox ui:field="m_sortedArray" text="Sorted Array"/>
+			</g:at>
+			<g:at left="133" top="71">
+				<g:TextBox width="242px" height="16px" ui:field="m_unsortedArray" text="Randomly Generated Array"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:FlowPanel>

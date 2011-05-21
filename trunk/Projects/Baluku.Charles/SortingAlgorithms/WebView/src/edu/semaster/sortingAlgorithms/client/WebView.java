@@ -9,7 +9,7 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.Button;
+//import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 
@@ -28,13 +28,13 @@ public class WebView extends Composite  implements EntryPoint, IView
 	private static final Binder binder = GWT.create(Binder.class);
 	@UiField Label m_enterArraySize;
 	@UiField TextBox m_arraySize;
-	@UiField Button m_generateArray;
-	@UiField TextBox m_randomlyGeneratedArray;
+	@UiField IActionHandler m_generateArray;
 	@UiField RadioButton m_mergeSort;
 	@UiField RadioButton m_quickSort;
-	@UiField Button m_sortArray;
+	@UiField IActionHandler m_sortArray;
 	@UiField TextBox m_sortedArray;
 	@UiField AbsolutePanel m_binder;
+	@UiField TextBox m_unsortedArray;
 	
 
 	interface Binder extends UiBinder<Widget, WebView> {
@@ -52,62 +52,64 @@ public class WebView extends Composite  implements EntryPoint, IView
     }
 
 	@Override
-	public String getUnsortedArray() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getUnsortedArray()
+	{
+		return m_unsortedArray.getText();
 	}
 
 	@Override
-	public void setUnsortedArray(String unsortedArray) {
-		// TODO Auto-generated method stub
-		
+	public void setUnsortedArray(String unsortedArray) 
+	{
+		m_unsortedArray.setText(unsortedArray);	
 	}
 
 	@Override
-	public boolean mergeSortIsSelected() {
-		// TODO Auto-generated method stub
+	public boolean mergeSortIsSelected() 
+	{
+		return true;
+	}
+
+	@Override
+	public boolean quickSortIsSelected() 
+	{
 		return false;
 	}
 
 	@Override
-	public boolean quickSortIsSelected() {
-		// TODO Auto-generated method stub
-		return false;
+	public void setSortedArray(String sortedArray) 
+	{
+		m_sortedArray.setText(sortedArray);	
 	}
 
 	@Override
-	public void setSortedArray(String sortedArray) {
-		// TODO Auto-generated method stub
+	public String getArraySize() 
+	{
+		return m_arraySize.getText();
+	}
+
+	@Override
+	public void generateRandomArray(IActionHandler handler) 
+	{
+		m_generateArray = handler;
 		
 	}
 
 	@Override
-	public String getArraySize() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void generateRandomArray(IActionHandler handler) {
-		// TODO Auto-generated method stub
+	public void selectedArraySize(IActionHandler handler) 
+	{
 		
 	}
 
 	@Override
-	public void selectedArraySize(IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+	public void sortArray(IActionHandler handler) 
+	{
+		 m_sortArray = handler;
 	}
 
 	@Override
-	public void sortArray(IActionHandler handler) {
-		
-	}
-
-	@Override
-	public void sortingArray(IActionHandler handler) {
-		// TODO Auto-generated method stub
-		
+	public void sortingArray(IActionHandler handler)
+	{
+		// m_sortArrayHandler = handler;
 	}
 
 	@UiHandler("m_arraySize")
@@ -118,26 +120,25 @@ public class WebView extends Composite  implements EntryPoint, IView
 	void OnM_generateArrayClick(AttachEvent event) 
 	{
 		
-	}
-	@UiHandler("m_randomlyGeneratedArray")
-	void OnM_randomlyGeneratedArrayAttachOrDetach(AttachEvent event)
-	{
 	}	@UiHandler("m_mergeSort")
 	void onM_mergeSortClick(ClickEvent event) 
 	{
+	
 	}
 
-	
-	
-	
 		@UiHandler("m_quickSort")
-	void onM_quickSortClick(ClickEvent event) {
+	void onM_quickSortClick(ClickEvent event) 
+	{
 	}
 
-	
-	
 	
 	@UiHandler("m_sortArray")
-	void onM_sortArrayClick(ClickEvent event) {
+	void onM_sortArrayClick(ClickEvent event) 
+	{
+	}
+	
+	@UiHandler("m_unsortedArray")
+	void onM_unsortedArrayAttachOrDetach(AttachEvent event) 
+	{
 	}
 }
