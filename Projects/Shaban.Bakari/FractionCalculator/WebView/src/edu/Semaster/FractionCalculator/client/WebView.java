@@ -27,14 +27,6 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@UiField
 	TextBox m_result;
 	@UiField
-	Label numerator1Label;
-	@UiField
-	Label numerator2Label;
-	@UiField
-	Label denominator1Label;
-	@UiField
-	Label denominator2Label;
-	@UiField
 	Button m_addButton;
 	@UiField
 	Button m_substractButton;
@@ -63,7 +55,7 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	private IActionHandler m_divideActionHandler;
 	private IActionHandler m_clearActionHandler;
 	private IActionHandler m_inputActionHandler;
-	FractionPresenter m_presenter;
+	private FractionPresenter m_presenter;
 
 	interface Binder extends UiBinder<Widget, WebView>
 	{
@@ -244,10 +236,7 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 			m_errorLabel.setVisible(error);
 			m_errorLabel.setText(message);
 			m_myImage.setVisible(error);
-			m_addButton.setEnabled(!error);
-			m_substractButton.setEnabled(!error);
-			m_divideButton.setEnabled(!error);
-			m_multiplyButton.setEnabled(!error);
+			
 		}
 		else
 		{
