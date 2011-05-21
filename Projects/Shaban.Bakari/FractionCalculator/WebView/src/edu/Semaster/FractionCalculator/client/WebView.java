@@ -231,23 +231,18 @@ public class WebView extends Composite implements EntryPoint, IFractionView
 	@Override
 	public void setErrorCondition(boolean error, String message)
 	{
+
 		if (error)
 		{
-			m_errorLabel.setVisible(error);
 			m_errorLabel.setText(message);
-			m_myImage.setVisible(error);
-			
 		}
-		else
-		{
-			m_myImage.setVisible(error);
-			m_addButton.setEnabled(!error);
-			m_substractButton.setEnabled(!error);
-			m_divideButton.setEnabled(!error);
-			m_multiplyButton.setEnabled(!error);
-			m_errorLabel.setVisible(error);
+		m_myImage.setVisible(error);
+		m_addButton.setEnabled(!error);
+		m_substractButton.setEnabled(!error);
+		m_divideButton.setEnabled(!error);
+		m_multiplyButton.setEnabled(!error);
+		m_errorLabel.setVisible(error);
 
-		}
 	}
 
 	@UiHandler("m_numerator1")
