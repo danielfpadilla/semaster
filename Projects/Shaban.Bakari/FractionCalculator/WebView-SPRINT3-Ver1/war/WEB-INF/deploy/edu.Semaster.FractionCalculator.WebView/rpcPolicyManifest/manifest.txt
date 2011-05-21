@@ -1,2 +1,0 @@
-# Module edu.Semaster.FractionCalculator.WebView
-# RPC service class, partial path of RPC policy file
