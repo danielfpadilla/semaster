@@ -1,2 +1,0 @@
-# Module edu.semaster.sortingAlgorithms.WebView
-# RPC service class, partial path of RPC policy file
