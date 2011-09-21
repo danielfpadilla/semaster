@@ -1,0 +1,10 @@
+syntax: glob
+
+bin/
+gen/
+libs/
+obj/
+build.xml
+local.properties
+proguard.cfg
+*.swp
