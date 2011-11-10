@@ -18,8 +18,6 @@ public class MenuClass {
   menu = new Menu(shell, SWT.BAR);
   MenuItem gameItem = new MenuItem(menu, SWT.CASCADE);
   gameItem.setText("Game");
-  MenuItem helpItem = new MenuItem(menu, SWT.CASCADE);
-  helpItem.setText("Help");
   MenuItem actionItem = new MenuItem(menu, SWT.CASCADE);
   actionItem.setText("Action");
   MenuItem rulesItem = new MenuItem(menu, SWT.CASCADE);
@@ -28,7 +26,8 @@ public class MenuClass {
   historyItem.setText("History");
   MenuItem aboutItem = new MenuItem(menu, SWT.CASCADE);
   aboutItem.setText("About Checkers");
-  
+  MenuItem helpItem = new MenuItem(menu, SWT.CASCADE);
+  helpItem.setText("Help");
   
 
 
