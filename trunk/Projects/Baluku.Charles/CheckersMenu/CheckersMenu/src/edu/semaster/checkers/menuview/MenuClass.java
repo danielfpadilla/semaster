@@ -4,7 +4,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.widgets.*;
 
-public class MenuClass {
+public class MenuClass 
+{
   Display display;
   Shell shell;
   Menu menu, fileMenu, editMenu, viewMenu;
@@ -12,7 +13,8 @@ public class MenuClass {
   /**
    * @wbp.parser.entryPoint
    */
-  public MenuClass() {
+  public MenuClass() 
+  {
   display = new Display();
   shell = new Shell(display);
   shell.setText("Menu Example");
@@ -68,10 +70,11 @@ public class MenuClass {
   
   
   
-  exitItem.addSelectionListener(new MenuItemListener());
+  //exitItem.addSelectionListener(new MenuItemListener());
   
   
-	newItem.addListener(SWT.Selection, new Listener() {
+	newItem.addListener(SWT.Selection, new Listener()
+	{
 		public void handleEvent(Event event) {
 			MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
 					| SWT.YES | SWT.NO);
@@ -88,14 +91,18 @@ public class MenuClass {
   
   shell.setMenuBar(menu);
   shell.open();
-  while (!shell.isDisposed()) {
+  while (!shell.isDisposed()) 
+  {
   if (!display.readAndDispatch())
   display.sleep();
   }
  }
-  class MenuItemListener extends SelectionAdapter {
-  public void widgetSelected(SelectionEvent event) {
-  if (((MenuItem) event.widget).getText().equals("Exit")) {
+  class MenuItemListener extends SelectionAdapter 
+  {
+  public void widgetSelected(SelectionEvent event) 
+  {
+  if (((MenuItem) event.widget).getText().equals("Exit"))
+  {
   shell.close();
   }
  }
