@@ -54,11 +54,6 @@ public class MenuClass {
   MenuItem previousGameItem = new MenuItem(openMenu, SWT.NONE);
   previousGameItem.setText("Previous Game");
   
-  /*Menu informationMenu = new Menu(menu);
-  aboutItem.setMenu(informationMenu);
-  MenuItem informationItem = new MenuItem(aboutItem, SWT.NONE);
-  informationItem.setText("Read About Checkers");*/
-  
   Menu rulesMenu = new Menu(menu);
   rulesItem.setMenu(rulesMenu);
   MenuItem GamerulesItem = new MenuItem(rulesMenu, SWT.NONE);
@@ -68,6 +63,8 @@ public class MenuClass {
   helpItem.setMenu(helpMenu);
   MenuItem helpContentsItem = new MenuItem(helpMenu, SWT.NONE);
   helpContentsItem.setText("Help Contents");
+  
+  
   
   //exitItem.addSelectionListener(new MenuItemListener());
 	newItem.addListener(SWT.Selection, new Listener() {
@@ -80,6 +77,8 @@ public class MenuClass {
 
 			System.out.println(rc == SWT.YES);
 			System.out.println(rc == SWT.NO);
+			
+			
 		}
 		});
   
