@@ -32,7 +32,7 @@ public class MenuClass {
   
 
 
-  Menu gameMenu = new Menu(menu);
+  //Menu gameMenu = new Menu(menu);
   gameItem.setMenu(gameMenu);
   MenuItem newItem = new MenuItem(gameMenu, SWT.NONE);
   newItem.setText("New Game");
