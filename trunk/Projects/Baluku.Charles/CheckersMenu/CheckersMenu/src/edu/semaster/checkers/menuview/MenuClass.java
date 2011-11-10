@@ -9,6 +9,9 @@ public class MenuClass {
   Shell shell;
   Menu menu, fileMenu, editMenu, viewMenu;
 
+  /**
+   * @wbp.parser.entryPoint
+   */
   public MenuClass() {
   display = new Display();
   shell = new Shell(display);
@@ -65,7 +68,9 @@ public class MenuClass {
   
   
   
-  //exitItem.addSelectionListener(new MenuItemListener());
+  exitItem.addSelectionListener(new MenuItemListener());
+  
+  
 	newItem.addListener(SWT.Selection, new Listener() {
 		public void handleEvent(Event event) {
 			MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
@@ -96,6 +101,6 @@ public class MenuClass {
  }
   }
   public static void main(String[] args) {
-  MenuClass example = new MenuClass();
+  //MenuClass example = new MenuClass();
   }
 }
