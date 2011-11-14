@@ -55,13 +55,13 @@ public class MenuClass
   
   Menu historyMenu = new Menu(menu);
   historyItem.setMenu(historyMenu);
-  MenuItem previousGameItem = new MenuItem(openMenu, SWT.NONE);
+  MenuItem previousGameItem = new MenuItem(historyMenu, SWT.NONE);
   previousGameItem.setText("Previous Game");
   
   Menu rulesMenu = new Menu(menu);
   rulesItem.setMenu(rulesMenu);
   MenuItem GamerulesItem = new MenuItem(rulesMenu, SWT.NONE);
-  GamerulesItem.setText("Game rules");
+  GamerulesItem.setText("Game Rules");
   
   Menu helpMenu = new Menu(menu);
   helpItem.setMenu(helpMenu);
@@ -70,12 +70,29 @@ public class MenuClass
   
   
   
-  //exitItem.addSelectionListener(new MenuItemListener());
+ // exitItem.addSelectionListener(new MenuItemListener());
+  exitItem.addListener(SWT.Selection, new Listener()
+  {
+		public void handleEvent(Event event)
+		{
+			MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
+					| SWT.YES | SWT.NO);
+			messageBox.setMessage("Are you sure you want to exit checkers?");
+			messageBox.setText("Checkers");
+			int rc = messageBox.open();
+
+			System.out.println(rc == SWT.YES);
+			System.out.println(rc == SWT.NO);
+			
+			
+		}
+  });
   
   
 	newItem.addListener(SWT.Selection, new Listener()
 	{
-		public void handleEvent(Event event) {
+		public void handleEvent(Event event)
+		{
 			MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
 					| SWT.YES | SWT.NO);
 			messageBox.setMessage("Create a new game?");
@@ -107,7 +124,8 @@ public class MenuClass
   }
  }
   }
-  public static void main(String[] args) {
-  //MenuClass example = new MenuClass();
+  public static void main(String[] args) 
+  {
+ // MenuClass example = new MenuClass();
   }
 }
