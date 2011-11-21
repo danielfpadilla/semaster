@@ -17,7 +17,7 @@ public class MenuClass
   {
   display = new Display();
   shell = new Shell(display);
-  shell.setText("Menu Example");
+  shell.setText("Checkers Menu");
   shell.setSize(386, 200);
 
   menu = new Menu(shell, SWT.BAR);
@@ -49,9 +49,9 @@ public class MenuClass
   exitItem.setText("Exit");
   
   Menu openMenu = new Menu(menu);
-  openItem.setMenu(openMenu);
+  actionItem.setMenu(openMenu);
   MenuItem fileItem = new MenuItem(openMenu, SWT.NONE);
-  fileItem.setText("File");
+  fileItem.setText("Undo");
   
   Menu historyMenu = new Menu(menu);
   historyItem.setMenu(historyMenu);
@@ -67,6 +67,7 @@ public class MenuClass
   helpItem.setMenu(helpMenu);
   MenuItem helpContentsItem = new MenuItem(helpMenu, SWT.NONE);
   helpContentsItem.setText("Help Contents");
+  
   
   
   
@@ -107,6 +108,9 @@ public class MenuClass
 		});
   
   shell.setMenuBar(menu);
+  
+  CoolBar coolBar = new CoolBar(shell, SWT.FLAT);
+  coolBar.setBounds(-67, -30, 150, 30);
   shell.open();
   while (!shell.isDisposed()) 
   {
@@ -126,6 +130,7 @@ public class MenuClass
   }
   public static void main(String[] args) 
   {
- // MenuClass example = new MenuClass();
+  MenuClass example = new MenuClass();
+	  //example.open();
   }
 }
