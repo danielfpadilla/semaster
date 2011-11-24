@@ -19,6 +19,7 @@ public class View {
 	static int BOARD_OFFSET_Y = 0;
 	static int FIGURE_HEIGHT ;
 	static int FIGURE_WIDTH;
+	
 	protected Shell shell;
 	 static int[][] m_board;
 
@@ -33,6 +34,11 @@ public class View {
 	final Display display = new Display();
 	Shell shell = new Shell(display);
 	
+	final Image redFigure = new Image(display,
+		    View.class.getResourceAsStream("red_normal.jpg"));
+	final Image yellowFigure = new Image(display,
+	        View.class.getResourceAsStream("yellow_normal.jpg"));
+
 	shell.addListener(SWT.Paint, new Listener() {
 		
 	public void initializeBoard() 
@@ -119,7 +125,7 @@ public class View {
 	View.class.getResourceAsStream("board.jpg"));
 
 	Image redFigure = new Image(display,
-	View.class.getResourceAsStream("red_normal.jpg"));
+	    View.class.getResourceAsStream("red_normal.jpg"));
 	GC gc = new GC(image);
 	gc.drawImage(redFigure, 22, 20);
 	gc.drawImage(redFigure, 138, 20);
@@ -147,7 +153,7 @@ public class View {
 	System.out.println(x + "," + y);
 
 	Image yellowFigure = new Image(display,
-	View.class.getResourceAsStream("yellow_normal.jpg"));
+        View.class.getResourceAsStream("yellow_normal.jpg"));
 	gc.drawImage(yellowFigure, 80, 430);
 	gc.drawImage(yellowFigure, 196, 430);
 	gc.drawImage(yellowFigure, 312, 430);
