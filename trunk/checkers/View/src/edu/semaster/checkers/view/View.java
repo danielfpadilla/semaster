@@ -32,6 +32,7 @@ public class View {
 
 	final Display display = new Display();
 	Shell shell = new Shell(display);
+	
 	shell.addListener(SWT.Paint, new Listener() {
 		
 	public void initializeBoard() 
@@ -76,9 +77,6 @@ public class View {
 	}
 	*/
 	//});
-
-
-//	shell.addListener(SWT.Paint, new Listener() {
 		public void handleEvent(Event event){
 	           // drawImages()
 			//{
