@@ -6,11 +6,7 @@ public class FakeView implements IView {
 	FigureType mType;
 	String mStatusMessage;
 
-	@Override
-	public void setFigurePosition(Point p) {
-		p1.x = p.x;
-		p1.y = p.y;
-	}
+
 
 	@Override
 	public void processInputActionHandler(IFigureMoveHandler handler) {
@@ -18,11 +14,7 @@ public class FakeView implements IView {
 		mActionHandler = handler;
 	}
 
-	@Override
-	public void setFigureType(FigureType type) {
-		mType = type;
-
-	}
+	
 
 	@Override
 	public void refreshUserInterface() {
@@ -30,7 +22,7 @@ public class FakeView implements IView {
 	}
 
 	@Override
-	public void highlightClickedSquarePosition() {
+	public void highlightClickedSquarePosition(Point p) {
 		// TODO Auto-generated method stub
 
 	}
@@ -39,6 +31,16 @@ public class FakeView implements IView {
 	public void setStatusMessage(String message) {
 		mStatusMessage = message;
 
+	}
+
+
+
+	@Override
+	public void setFigurePosition(Point p, FigureType type) {
+		p1.x = p.x;
+		p1.y = p.y;
+		mType = type;
+		
 	}
 
 }
