@@ -6,6 +6,8 @@ import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
@@ -13,12 +15,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 public class View {
-	int BOARD_OFFSET_X = 0;
-	int BOARD_OFFSET_Y = 0;
-	int FIGURE_HEIGHT ;
-	int FIGURE_WIDTH;
+	static int BOARD_OFFSET_X = 0;
+	static int BOARD_OFFSET_Y = 0;
+	static int FIGURE_HEIGHT ;
+	static int FIGURE_WIDTH;
 	protected Shell shell;
-	static int[][] m_board;
+	 static int[][] m_board;
 
 	public static void main(String[] args) {
 	try {
@@ -63,16 +65,45 @@ public class View {
 	
 	      return 0;
 	}
-
+/*
 	@Override
-	public void handleEvent(Event e) {
-	
-	 GC gc = e.gc; 
-	for (int i = 0; i < 8; i++) 
+	public void handleEvent(Event e) 
+	{
+	 GC gc = event.gc; 
+	 for (int i = 0; i < 8; i++) 
 	   for (int j = 0; j <8; j++)
-		   gc.drawImage(redFigure, boardToMousePosition(new Position(i, j));
+		   gc.drawImage(redFigure,boardToMousePosition(new Position(i, j)));
 	}
+	*/
+	//});
+
+
+//	shell.addListener(SWT.Paint, new Listener() {
+		public void handleEvent(Event event){
+	           // drawImages()
+			//{
+			GC gc=event.gc;
+			  for (int i = 0; i < 8; i ++)
+			     {
+			      for (int j = 0; j < 8; j++)
+			       {
+			    
+			if (m_board[i][j] == 1)
+			       gc.drawImage(redFigure,
+			       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
+			       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
+			     
+			if (m_board[i][j] == 2)
+			       gc.drawImage(yellowFigure,
+			       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
+			       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
+			       }
+			      }
+		          //}	
+		}
+
 	});
+	
 	shell.open();
 	while (!shell.isDisposed()) {
 	if (!display.readAndDispatch())
@@ -134,24 +165,7 @@ public class View {
 	gc.drawImage(yellowFigure, 312, 310);
 	gc.drawImage(yellowFigure, 428, 310);
 
-	public void drawImages()
-	{
-	  for (int i = 0; i < 8; i ++)
-	     {
-	      for (int j = 0; j < 8; j++)
-	       {
-	      if (m_board[i][j] == 1)
-	       gc.drawImage(blackImage,
-	       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
-	       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
-	      
-	       if (m_board[i][j] == 2)
-	       gc.drawImage(whiteImage,
-	       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
-	       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
-	       }
-	      }
-	}
+	
 	for (int i = 0; i < 8; i++)
 	   for (int j = 0; j < 8; j++) 
 	   {
