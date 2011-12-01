@@ -6,15 +6,11 @@ public class FakeView implements IView {
 	FigureType mType;
 	String mStatusMessage;
 
-
-
 	@Override
 	public void processInputActionHandler(IFigureMoveHandler handler) {
 
 		mActionHandler = handler;
 	}
-
-	
 
 	@Override
 	public void refreshUserInterface() {
@@ -22,7 +18,7 @@ public class FakeView implements IView {
 	}
 
 	@Override
-	public void highlightClickedSquarePosition(Point p) {
+	public void highlightClickedSquarePosition(Point p, boolean highlighted) {
 		// TODO Auto-generated method stub
 
 	}
@@ -33,13 +29,17 @@ public class FakeView implements IView {
 
 	}
 
-
-
 	@Override
 	public void setFigurePosition(Point p, FigureType type) {
 		p1.x = p.x;
 		p1.y = p.y;
 		mType = type;
+
+	}
+
+	@Override
+	public void clearHighlighting() {
+		// TODO Auto-generated method stub
 		
 	}
 
