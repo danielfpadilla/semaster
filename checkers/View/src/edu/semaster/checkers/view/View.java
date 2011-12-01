@@ -1,7 +1,9 @@
 package edu.semaster.checkers.view;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -14,218 +16,202 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-public class View {
-	static int BOARD_OFFSET_X = 0;
-	static int BOARD_OFFSET_Y = 0;
-	static int FIGURE_HEIGHT ;
-	static int FIGURE_WIDTH;
+import edu.semaster.checkers.presenter.FigureType;
+import edu.semaster.checkers.presenter.IView;
+import edu.semaster.checkers.presenter.Presentation;
+
+public class View implements IView {
+	static int BOARD_OFFSET_X = 15;
+	static int BOARD_OFFSET_Y = 20;
+	static int FIGURE_HEIGHT = 60;
+	static int FIGURE_WIDTH = 60;
+
+	private Shell shell;
+	private FigureType[][] m_board;
+	private Image m_boardImage;
+	private Image m_redFigure;
+	private Image m_yellowFigure;
+	private Presentation m_presenter;
 	
-	protected Shell shell;
-	 static int[][] m_board;
+	private Position m_highlightedPosition = new Position(-1, -1);
 
 	public static void main(String[] args) {
-	try {
-	View window = new View();
-	window.open();
-	} catch (Exception e) {
-	e.printStackTrace();
+		try {
+			View window = new View();
+			window.open();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	final Display display = new Display();
-	Shell shell = new Shell(display);
-	
-	final Image redFigure = new Image(display,
-		    View.class.getResourceAsStream("red_normal.jpg"));
-	final Image yellowFigure = new Image(display,
-	        View.class.getResourceAsStream("yellow_normal.jpg"));
-
-	shell.addListener(SWT.Paint, new Listener() {
+	public void open() {
 		
-	public void initializeBoard() 
-	{
-	for (int i = 0; i < 8; i++)
-	  for (int j = 0; j < 8; j++)
-	     m_board[i][j] = getImagePositions(i, j);
-        }
+		Display display = Display.getDefault();
+		createContents();
+		loadFigures(display);
+		initializeBoard();
+		
+		m_presenter = new Presentation(this);
 
-	private int getImagePositions(int x, int y) 
-	{
+		shell.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseDown(MouseEvent e) {
+				onClick(new Position(e.x, e.y));
+			}
+		});
 
-	     if (x < 4) 
-	      {
-	        if ((x % 2 == 0 && y % 2 != 0)
-	        || (x % 2 != 0 && y % 2 == 1))
-	        {
-	         return 1;
-	        }
-              }
+		shell.addListener(SWT.Paint, new Listener() {
+			public void handleEvent(Event event) {
+				paintBoard(event.gc);
+			}
+		});
 
-	      if (x > 5) 
-	       {
+		shell.setBackgroundImage(m_boardImage);
+		shell.open();
+		shell.layout();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
 
-	         if ((x % 2 == 0 && y % 2 != 0)
-	         || (x % 2 != 0 && y % 2 == 0)) 
-	         {
-	         return 2;
-                 }
-	        }
+	private void paintBoard(GC gc) {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+
+				if (m_board[i][j].getFigureType() == FigureType.Type.BLACK)
+					gc.drawImage(m_redFigure, BOARD_OFFSET_X
+							+ FIGURE_HEIGHT * j, BOARD_OFFSET_Y
+							+ FIGURE_WIDTH * i);
+
+				if (m_board[i][j].getFigureType() == FigureType.Type.WHITE)
+					gc.drawImage(m_yellowFigure, BOARD_OFFSET_X
+							+ FIGURE_HEIGHT * j, BOARD_OFFSET_Y
+							+ FIGURE_WIDTH * i);
+			}
+		}
+		
+		if (m_highlightedPosition.getx() != -1)
+		{
+			gc.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_YELLOW));
+			gc.setLineWidth(5);
+			gc.drawRectangle(
+					BOARD_OFFSET_X
+					+ FIGURE_HEIGHT * m_highlightedPosition.getx(), BOARD_OFFSET_Y
+					+ FIGURE_WIDTH * m_highlightedPosition.gety(),
+					
+					
+					FIGURE_WIDTH, FIGURE_HEIGHT);
+			
+			
+			
+		}
+	}
 	
-	      return 0;
-	}
-/*
-	@Override
-	public void handleEvent(Event e) 
+	private void onClick(Position position)
 	{
-	 GC gc = event.gc; 
-	 for (int i = 0; i < 8; i++) 
-	   for (int j = 0; j <8; j++)
-		   gc.drawImage(redFigure,boardToMousePosition(new Position(i, j)));
+		Position pos = mouseToBoardPosition(position);
+		if (pos.x >= 0 && pos.x < 8 &&
+				pos.y >= 0 && pos.y < 8)
+		{
+			m_presenter.onBoardPositionClicked(new edu.semaster.checkers.presenter.Point(pos.x, pos.y));
+		}
 	}
-	*/
-	//});
-		public void handleEvent(Event event){
-	           // drawImages()
-			//{
-			GC gc=event.gc;
-			  for (int i = 0; i < 8; i ++)
-			     {
-			      for (int j = 0; j < 8; j++)
-			       {
-			    
-			if (m_board[i][j] == 1)
-			       gc.drawImage(redFigure,
-			       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
-			       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
-			     
-			if (m_board[i][j] == 2)
-			       gc.drawImage(yellowFigure,
-			       BOARD_OFFSET_X + FIGURE_HEIGHT * i,
-			       BOARD_OFFSET_Y + FIGURE_WIDTH * j);
-			       }
-			      }
-		          //}	
+
+	private Position boardToMousePosition(Position boardPosition) {
+		Position p = new Position();
+		p.x = BOARD_OFFSET_X + FIGURE_WIDTH * boardPosition.x;
+		p.y = BOARD_OFFSET_Y + FIGURE_HEIGHT * boardPosition.y;
+		return p;
+	}
+
+	private Position mouseToBoardPosition(Position mousePosition) {
+		Position p = new Position();
+		p.x = (mousePosition.x - BOARD_OFFSET_X) / FIGURE_WIDTH;
+		p.y = (mousePosition.y - BOARD_OFFSET_Y) / FIGURE_HEIGHT;
+		return p;
+	}
+
+	/**
+	 * Create contents of the window.
+	 */
+	protected void createContents() {
+		shell = new Shell(SWT.DIALOG_TRIM);
+		shell.setSize(500, 530);
+		shell.setText("Checkers Game");
+
+	}
+	
+	private void loadFigures(Display display)
+	{
+		m_boardImage = new Image(display,
+				View.class.getResourceAsStream("board.jpg"));
+
+		m_redFigure = new Image(display,
+				View.class.getResourceAsStream("red_normal.jpg"));
+		m_yellowFigure = new Image(display,
+				View.class.getResourceAsStream("yellow_normal.jpg"));
+		
+		ImageData data = m_redFigure.getImageData();
+	}
+
+	private void initializeBoard() {
+		m_board = new FigureType[8][8];
+		
+		for (int i = 0; i < 8; i++)
+			for (int j = 0; j < 8; j++)
+				m_board[i][j] = new FigureType(FigureType.Type.NONE);
+			
+	}
+
+	/*
+	private FigureType getDefaultFigure(int x, int y) {
+
+		if (x < 3) {
+			if (!((x % 2 == 0 && y % 2 != 0)
+					|| (x % 2 != 0 && y % 2 == 0))) {
+				return new FigureType(FigureType.Type.BLACK);
+			}
 		}
 
-	});
-	
-	shell.open();
-	while (!shell.isDisposed()) {
-	if (!display.readAndDispatch())
-	display.sleep();
-	}
-	}
+		if (x > 4) {
 
-	/**
-	* Open the window.
+			if (!((x % 2 == 0 && y % 2 != 0)
+					|| (x % 2 != 0 && y % 2 == 0))) {
+				return new FigureType(FigureType.Type.WHITE);
+			}
+		}
+
+		return new FigureType(FigureType.Type.NONE);
+	}
 	*/
-	public void open() {
-	Display display = Display.getDefault();
-	createContents();
-	Image image = new Image(display,
-	View.class.getResourceAsStream("board.jpg"));
 
-	Image redFigure = new Image(display,
-	    View.class.getResourceAsStream("red_normal.jpg"));
-	GC gc = new GC(image);
-	gc.drawImage(redFigure, 22, 20);
-	gc.drawImage(redFigure, 138, 20);
-	gc.drawImage(redFigure, 254, 20);
-	gc.drawImage(redFigure, 370, 20);
-
-	gc.drawImage(redFigure, 80, 80);
-	gc.drawImage(redFigure, 196, 80);
-	gc.drawImage(redFigure, 310, 80);
-	gc.drawImage(redFigure, 427, 80);
-
-	gc.drawImage(redFigure, 22, 140);
-	gc.drawImage(redFigure, 138, 140);
-	gc.drawImage(redFigure, 254, 140);
-	gc.drawImage(redFigure, 370, 140);
-
-	Button button = new Button(shell, SWT.PUSH);
-	button.setImage(redFigure);
-
-	ImageData img = image.getImageData();
-
-	int x = img.height;
-	int y = img.width;
-
-	System.out.println(x + "," + y);
-
-	Image yellowFigure = new Image(display,
-        View.class.getResourceAsStream("yellow_normal.jpg"));
-	gc.drawImage(yellowFigure, 80, 430);
-	gc.drawImage(yellowFigure, 196, 430);
-	gc.drawImage(yellowFigure, 312, 430);
-	gc.drawImage(yellowFigure, 428, 430);
-
-	gc.drawImage(yellowFigure, 22, 370);
-	gc.drawImage(yellowFigure, 138, 370);
-	gc.drawImage(yellowFigure, 254, 370);
-	gc.drawImage(yellowFigure, 370, 370);
-
-	gc.drawImage(yellowFigure, 80, 310);
-	gc.drawImage(yellowFigure, 196, 310);
-	gc.drawImage(yellowFigure, 312, 310);
-	gc.drawImage(yellowFigure, 428, 310);
-
-	
-	for (int i = 0; i < 8; i++)
-	   for (int j = 0; j < 8; j++) 
-	   {
-	    Rectangle r = new Rectangle(BOARD_OFFSET_X + FIGURE_HEIGHT * i,
-	    BOARD_OFFSET_Y + FIGURE_WIDTH * j, FIGURE_HEIGHT,
-	    FIGURE_WIDTH);
-
-	    if (r.contains(new Point(i, j))) 
-	    {
-	    // we have clicked on figure (i, j)
-	    }
-	   }
-
-	shell.addMouseMoveListener(new MouseMoveListener()
-	{
-	public void mouseMove(MouseEvent arg0) 
-	{
-	System.out.println(arg0.x + " , " + arg0.y);
-	}
-	});
-
-	gc.dispose();
-	
-
-	shell.setBackgroundImage(image);
-	shell.open();
-	shell.layout();
-	while (!shell.isDisposed()) {
-	if (!display.readAndDispatch()) {
-	display.sleep();
-	}
-	}
+	@Override
+	public void setFigurePosition(edu.semaster.checkers.presenter.Point p,
+			FigureType type) {
+		m_board[p.getX()][p.getY()] = type;
+		
 	}
 
-	Position boardToMousePosition(Position boardPosition) {
-	Position p = new Position();
-	p.x = BOARD_OFFSET_X + FIGURE_WIDTH * boardPosition.x;
-	p.y = BOARD_OFFSET_Y + FIGURE_HEIGHT * boardPosition.y;
-	return p;
+	@Override
+	public void refreshUserInterface() {
+		shell.redraw();
+		shell.update();
+		
 	}
 
-	Position mouseToBoardPosition(Position mousePosition) {
-	Position p = new Position();
-	p.x = (mousePosition.x - BOARD_OFFSET_X) / FIGURE_WIDTH;
-	p.y = (mousePosition.y - BOARD_OFFSET_Y) / FIGURE_HEIGHT;
-	return p;
+	@Override
+	public void highlightClickedSquarePosition(
+			edu.semaster.checkers.presenter.Point p) {
+		// TODO Auto-generated method stub
+		m_highlightedPosition = new Position(p.getX(), p.getY());
+		
 	}
 
-	/**
-	* Create contents of the window.
-	*/
-	protected void createContents() {
-	shell = new Shell();
-	shell.setSize(495, 525);
-	shell.setText("Checkers Game");
-
+	@Override
+	public void setStatusMessage(String message) {
+		// TODO Auto-generated method stub
+		
 	}
-
-	}
+}
