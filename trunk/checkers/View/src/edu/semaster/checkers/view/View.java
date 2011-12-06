@@ -161,11 +161,10 @@ public class View implements IView {
 		
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++)
-				m_board[i][j] = new FigureType(FigureType.Type.NONE);
+				m_board[i][j] = getDefaultFigure(i, j);//new FigureType(FigureType.Type.NONE);
 			
 	}
 
-	/*
 	private FigureType getDefaultFigure(int x, int y) {
 
 		if (x < 3) {
@@ -185,7 +184,6 @@ public class View implements IView {
 
 		return new FigureType(FigureType.Type.NONE);
 	}
-	*/
 
 	@Override
 	public void setFigurePosition(edu.semaster.checkers.presenter.Point p,
@@ -202,15 +200,25 @@ public class View implements IView {
 	}
 
 	@Override
-	public void highlightClickedSquarePosition(
-			edu.semaster.checkers.presenter.Point p) {
+	public void setStatusMessage(String message) {
 		// TODO Auto-generated method stub
-		m_highlightedPosition = new Position(p.getX(), p.getY());
 		
 	}
 
 	@Override
-	public void setStatusMessage(String message) {
+	public void highlightClickedSquarePosition(
+			edu.semaster.checkers.presenter.Point p, boolean highlighted) {
+		if (p == null)
+		{
+			m_highlightedPosition = null;
+		}
+		m_highlightedPosition = new Position(p.getX(), p.getY());
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void clearHighlighting() {
 		// TODO Auto-generated method stub
 		
 	}
