@@ -1,4 +1,6 @@
 package edu.semaster.checkers.model;
+import edu.semaster.checkers.baseProject.Piece;
+
 
 public class Board {
 	private final Piece[][] pieces;
@@ -28,14 +30,39 @@ public class Board {
 		}
 	}
 
-	public boolean isPositionPainted(int i, int j) {
-		if ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) {
+	public boolean isPositionPainted(int i, int j)
+	{
+		if ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0))
+		{
+			
 			return true;
 
-		} else {
+		}
+		else 
+		{
 			return false;
 		}
 
+	}
+	
+	public edu.semaster.checkers.baseProject.Piece getDefaultFigure(int x, int y) {
+
+		if (x < 3) {
+			if (!((x % 2 == 0 && y % 2 != 0)
+					|| (x % 2 != 0 && y % 2 == 0))) {
+				return new Piece(Piece.Color.BLACK);
+			}
+		}
+
+		if (x > 4) {
+
+			if (!((x % 2 == 0 && y % 2 != 0)
+					|| (x % 2 != 0 && y % 2 == 0))) {
+				return new Piece(Piece.Color.WHITE);
+			}
+		}
+
+		return new Piece(Piece.Color.EMPTY);
 	}
 
 
