@@ -6,8 +6,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import edu.semaster.checkers.baseProject.Piece;
 import edu.semaster.checkers.model.Board;
-import edu.semaster.checkers.model.Piece;
+
+
 
 
 
@@ -33,8 +35,9 @@ public class BoardTests {
 	}
 
 	@Test
-	public void PieceIsNotNull() {
-		Piece mPiece = new Piece(edu.semaster.checkers.model.Piece.Color.BLACK);
+	public void PieceIsNotNull()
+	{
+		Piece mPiece = new Piece(edu.semaster.checkers.baseProject.Piece.Color.BLACK);
 		assertNotNull(mPiece);
 	}
 
