@@ -1,5 +1,7 @@
 package edu.semaster.checkers.model;
 
+import edu.semaster.checkers.baseProject.Piece;
+
 public class Walk extends Move {
     Board board = new Board(8, 8);
 	public Walk(int sourceX, int sourceY, int targetX, int targetY) {
