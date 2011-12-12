@@ -1,8 +1,10 @@
-package edu.semaster.checkers.presenter;
+package edu.semaster.checkers.presentatation;
+
+import edu.semaster.checkers.baseProject.Piece;
 
 public class FakeView implements IView {
 	Point p1;
-	FigureType mType;
+	Piece mType;
 	String mStatusMessage;
 
 
@@ -23,7 +25,7 @@ public class FakeView implements IView {
 	}
 
 	@Override
-	public void setFigurePosition(Point p, FigureType type) {
+	public void setFigurePosition(Point p, Piece type) {
 		p1.x = p.x;
 		p1.y = p.y;
 		mType = type;

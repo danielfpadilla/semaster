@@ -1,12 +1,13 @@
-package edu.semaster.checkers.presenter;
+package edu.semaster.checkers.presentatation;
 
 import edu.semaster.checkers.model.Board;
 
-public class Presentation{
+public class Presenter{
 	private IView m_view;
 	private Board m_board = new Board(8, 8);
+	
 
-	public Presentation(IView view)
+	public Presenter(IView view)
 	{
 		m_view = view;
 		m_board.InitializeBoard();
@@ -29,6 +30,8 @@ public class Presentation{
 		{
 			for (int j = 0; j < 8; j++)
 			{
+				Point p = new Point(i,j);
+				m_view.setFigurePosition( p , m_board.getDefaultFigure(i, j));
 				// take figure from model
 				// set figure to view
 			}
@@ -36,4 +39,7 @@ public class Presentation{
 		
 		m_view.refreshUserInterface();
 	}
+
+
+	
 }
