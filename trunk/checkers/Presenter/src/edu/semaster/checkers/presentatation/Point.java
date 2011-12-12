@@ -1,12 +1,14 @@
-package edu.semaster.checkers.presenter;
+package edu.semaster.checkers.presentatation;
 
 public class Point {
-	protected int x, y;
+	public int x, y;
+	
+	public Point(){}
 
 	public Point(int xCoordinate, int yCoordinate) {
 		setPoint(xCoordinate, yCoordinate);
 	}
-
+	
 	public void setPoint(int xCoordinate, int yCoordinate) {
 		x = xCoordinate;
 		y = yCoordinate;
