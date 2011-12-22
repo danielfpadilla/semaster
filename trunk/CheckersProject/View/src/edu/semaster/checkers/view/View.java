@@ -11,11 +11,10 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 import edu.semaster.checkers.baseproject.FigureType;
+import edu.semaster.checkers.baseproject.Point;
 import edu.semaster.checkers.baseproject.Position;
 import edu.semaster.checkers.presentation.IView;
-import edu.semaster.checkers.presentation.Point;
 import edu.semaster.checkers.presentation.Presenter;
-
 
 public class View implements IView {
 	static int BOARD_OFFSET_X = 16;
@@ -47,7 +46,7 @@ public class View implements IView {
 		createContents();
 		loadFigures(display);
 		initializeBoard();
-		
+
 		// TODO (Charles): initialize the menu as a separate method
 		// initializeMenu();
 
@@ -57,7 +56,8 @@ public class View implements IView {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				Position boardPos = mouseToBoardPosition(new Position(e.x, e.y));
-				m_presenter.onBoardPositionClicked(new Point(boardPos.getx(), boardPos.gety()));
+				m_presenter.onBoardPositionClicked(new Point(boardPos.getx(),
+						boardPos.gety()));
 			}
 		});
 
@@ -91,8 +91,8 @@ public class View implements IView {
 			}
 		}
 
-		if (m_highlightedPosition != null && m_highlightedPosition.getx() != -1 &&
-				m_highlightedPosition.gety() != -1) {
+		if (m_highlightedPosition != null && m_highlightedPosition.getx() != -1
+				&& m_highlightedPosition.gety() != -1) {
 			gc.setForeground(Display.getDefault().getSystemColor(
 					SWT.COLOR_YELLOW));
 			gc.setLineWidth(5);
@@ -169,7 +169,6 @@ public class View implements IView {
 	@Override
 	public void setFigurePosition(Point p, FigureType type) {
 		m_board[p.getY()][p.getX()] = type;
-
 	}
 
 	@Override
@@ -188,12 +187,9 @@ public class View implements IView {
 
 	@Override
 	public void highlightClickedSquarePosition(Point p, boolean highlighted) {
-		if (p != null && highlighted)
-		{
+		if (p != null && highlighted) {
 			m_highlightedPosition = new Position(p.getX(), p.getY());
-		}
-		else
-		{
+		} else {
 			m_highlightedPosition = null;
 		}
 	}
@@ -203,6 +199,8 @@ public class View implements IView {
 		// TODO Auto-generated method stub
 
 	}
+
+
 
 
 }
