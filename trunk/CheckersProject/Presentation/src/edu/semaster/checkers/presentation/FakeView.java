@@ -1,12 +1,13 @@
 package edu.semaster.checkers.presentation;
 
 import edu.semaster.checkers.baseproject.FigureType;
+import edu.semaster.checkers.baseproject.Point;
+
 
 public class FakeView implements IView {
 	Point p1;
 	FigureType mType;
 	String mStatusMessage;
-
 
 	public void refreshUserInterface() {
 		// TODO Auto-generated method stub
@@ -27,7 +28,7 @@ public class FakeView implements IView {
 	@Override
 	public void clearHighlighting() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -36,7 +37,6 @@ public class FakeView implements IView {
 		p1.y = p.y;
 		mType = figureType;
 
-		
 	}
 
 }
