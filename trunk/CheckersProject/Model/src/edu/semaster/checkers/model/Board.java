@@ -1,6 +1,6 @@
 package edu.semaster.checkers.model;
 import edu.semaster.checkers.baseproject.FigureType;
-
+import edu.semaster.checkers.baseproject.Point;
 
 public class Board {
 	private final FigureType[][] pieces;
@@ -63,6 +63,22 @@ public class Board {
 		}
 
 		return new FigureType(FigureType.Type.NONE);
+	}
+   
+	public FigureType getFigureTypeAt(int y, int x) {
+		if(pieces[x][y] == null)
+			return new FigureType(FigureType.Type.NONE);
+		if(pieces[x][y].getFigureType() == FigureType.Type.BLACK)
+		return new FigureType(FigureType.Type.BLACK);
+		if(pieces[x][y].getFigureType() == FigureType.Type.WHITE)
+			return  new FigureType(FigureType.Type.WHITE);
+		return new FigureType(FigureType.Type.NONE);
+		
+	}
+	
+	public void setFigurePosition(Point p, FigureType type) {
+		pieces[p.getY()][p.getX()] = type;
+
 	}
 
 
