@@ -1,6 +1,7 @@
 package edu.semaster.checkers.model;
 
 import edu.semaster.checkers.baseproject.FigureType;
+import edu.semaster.checkers.baseproject.FigureType.Type;
 
 public class Walk extends Move {
     Board board = new Board(8, 8);
@@ -10,7 +11,8 @@ public class Walk extends Move {
 	
 	public Boolean isAValidWalk(int sX, int sY, int dX, int dY)
 	{
-		while(board.isPositionPainted(sX, sY))
+		while(board.isPositionPainted(sX, sY) &&
+				(board.getDefaultFigure(dX, dY).equals(FigureType.Type.NONE)))
 		{
 		if((sX == dX+1 && sY == dY+1) || (sX == dX+1 && sY == dY-1))
 			return true;
