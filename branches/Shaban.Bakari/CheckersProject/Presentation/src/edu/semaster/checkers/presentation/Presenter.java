@@ -3,11 +3,13 @@ package edu.semaster.checkers.presentation;
 import edu.semaster.checkers.baseproject.FigureType;
 import edu.semaster.checkers.baseproject.Point;
 import edu.semaster.checkers.model.Board;
+import edu.semaster.checkers.model.Walk;
 
 public class Presenter {
 	private IView m_view;
 	private Board m_board = new Board(8, 8);
 	FigureType m_type = new FigureType(FigureType.Type.BLACK);
+	 //private Walk walk;
 
 	public static enum FigureChoice {
 		EXPECTING_FIGURE_SELECTION, EXPECTING_TARGET_LOCATION
@@ -43,16 +45,19 @@ public class Presenter {
 
 		}
 
-		else if (choice == FigureChoice.EXPECTING_TARGET_LOCATION
-				&& m_selectedFigure != null) {
+		else if (choice == FigureChoice.EXPECTING_TARGET_LOCATION && m_selectedFigure != null) {
 			FigureType type = m_board.getFigureTypeAt(m_selectedFigure.x, m_selectedFigure.y);
-			if (type != null && type.getFigureType() == FigureType.Type.BLACK) {
+			if ((type != null && type.getFigureType() == FigureType.Type.BLACK) &&  
+					m_board.isAValidWalk(m_selectedFigure, p)){
+				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(m_selectedFigure, new FigureType(
 						FigureType.Type.NONE));
 				m_board.setFigurePosition(p, new FigureType(
 						FigureType.Type.BLACK));
 			}
-			if (type != null && type.getFigureType() == FigureType.Type.WHITE) {
+			if ((type != null && type.getFigureType() == FigureType.Type.WHITE) &&  
+					m_board.isAValidWalk(m_selectedFigure, p)) {
+				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(m_selectedFigure, new FigureType(
 						FigureType.Type.NONE));
 				m_board.setFigurePosition(p, new FigureType(
