@@ -80,6 +80,21 @@ public class Board {
 		pieces[p.getY()][p.getX()] = type;
 
 	}
+	
+	public Boolean isAValidWalk(Point source, Point destination)
+	{
+		while(isPositionPainted(source.getX(), source.getY()) &&
+				(getDefaultFigure(destination.getX(), destination.getY()).equals(FigureType.Type.NONE)))
+		{
+		if((source.getX() == destination.getX()+1 && source.getY() == destination.getY()+1) 
+				|| (source.getX() == destination.getX()+1 && source.getY() ==source.getY()-1))
+			return true;
+		else
+			return false;
+		}
+		return false;
+		
+	}
 
 
 }
