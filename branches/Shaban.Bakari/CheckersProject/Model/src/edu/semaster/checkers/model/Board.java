@@ -4,7 +4,7 @@ import edu.semaster.checkers.baseproject.Point;
 
 public class Board {
 	private final FigureType[][] pieces;
-
+	
 	public Board(final int rowCount, final int columnCount) {
 		if (rowCount <= 0 || columnCount <= 0)
 			throw new IllegalArgumentException();
@@ -14,8 +14,8 @@ public class Board {
 	public void InitializeBoard() {
 		for (int i = 0; i < 8; i++) {
 
-			for (int j = 0; j < 8; j++) {
-               if(isPositionPainted(i, j) == true)
+			for (int j = 0; j < 8; j++) {               
+				if(isPositionPainted(i, j) == true)
                {
             	   if(i < 3)
             		   pieces[i][j]= new FigureType(FigureType.Type.BLACK);
@@ -40,7 +40,7 @@ public class Board {
 		}
 		else 
 		{
-			return false;
+		return false;
 		}
 
 	}
@@ -81,20 +81,25 @@ public class Board {
 
 	}
 	
-	public Boolean isAValidWalk(Point source, Point destination)
+	public boolean isAValidWalk(Point source, Point destination)
 	{
-		while(isPositionPainted(source.getX(), source.getY()) &&
-				(getDefaultFigure(destination.getX(), destination.getY()).equals(FigureType.Type.NONE)))
-		{
-		if((source.getX() == destination.getX()+1 && source.getY() == destination.getY()+1) 
-				|| (source.getX() == destination.getX()+1 && source.getY() ==source.getY()-1))
-			return true;
-		else
+	
+	   	if(!isPositionPainted(source.getX(), source.getY())) 
+			 return false;
+	   	
+			
+		if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
+				|| (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)) )
 			return false;
-		}
-		return false;
 		
-	}
-
-
+	   if(((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
+				|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)))
+		return false;
+	   
+	  /*if(!getFigureTypeAt(destination.getY(), destination.getX()).equals(FigureType.Type.NONE))
+	     return false;*/
+	
+		return true;
+	
+    }
 }
