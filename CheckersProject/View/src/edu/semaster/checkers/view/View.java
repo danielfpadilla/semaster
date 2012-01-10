@@ -121,9 +121,15 @@ public class View implements IView {
 					  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
 				        
 				        messageBox.setText("CHECKERS RULES");
-				        messageBox.setMessage("1-Checkers is played by two players. Each player begins the game with 12 colored discs." +
-				        		" 2-(Typically, one set of pieces is black and the other red.)"+
-				        		"3-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.");
+				        messageBox.setMessage(
+				        		"1-Checkers is played by two players. Each player begins the game with 12 colored discs.(Typically, one set of pieces is black and the other red.)=>" + 
+				        		"2-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.=>" +
+				        		"3-Each player places his or her pieces on the 12 dark squares closest to him or her.=>" +
+				        		"4-Black moves first. Players then alternate moves.=>" +
+				        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).=>" +
+				        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.=>" +
+				        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn." +
+                                 "When a piece is captured, it is removed from the board." );
 				        int buttonID = messageBox.open();
 				        switch(buttonID) {
 				          case SWT.YES:
