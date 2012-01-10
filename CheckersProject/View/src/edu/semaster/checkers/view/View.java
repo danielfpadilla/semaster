@@ -8,6 +8,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 import edu.semaster.checkers.baseproject.FigureType;
@@ -30,6 +33,7 @@ public class View implements IView {
 	private Presenter m_presenter;
 
 	private Position m_highlightedPosition = new Position(-1, -1);
+	Menu menu, fileMenu, editMenu, viewMenu;
 
 	public static void main(String[] args) {
 		try {
@@ -47,8 +51,116 @@ public class View implements IView {
 		loadFigures(display);
 		initializeBoard();
 
-		// TODO (Charles): initialize the menu as a separate method
-		// initializeMenu();
+		menu = new Menu(shell, SWT.BAR);
+		MenuItem gameItem = new MenuItem(menu, SWT.CASCADE);
+		gameItem.setText("Game");
+		MenuItem actionItem = new MenuItem(menu, SWT.CASCADE);
+		actionItem.setText("Action");
+		MenuItem rulesItem = new MenuItem(menu, SWT.CASCADE);
+		rulesItem.setText("Rules");
+		MenuItem historyItem = new MenuItem(menu, SWT.CASCADE);
+		historyItem.setText("History");
+		MenuItem aboutItem = new MenuItem(menu, SWT.CASCADE);
+		aboutItem.setText("About Checkers");
+		MenuItem helpItem = new MenuItem(menu, SWT.CASCADE);
+		helpItem.setText("Help");
+
+		Menu gameMenu = new Menu(menu);
+		gameItem.setMenu(gameMenu);
+		MenuItem newItem = new MenuItem(gameMenu, SWT.NONE);
+		newItem.setText("New Game");
+		MenuItem openItem = new MenuItem(gameMenu, SWT.NONE);
+		openItem.setText("Open...");
+		MenuItem saveItem = new MenuItem(gameMenu, SWT.NONE);
+		saveItem.setText("Save");
+		new MenuItem(gameMenu, SWT.SEPARATOR);
+		MenuItem exitItem = new MenuItem(gameMenu, SWT.NONE);
+		exitItem.setText("Exit");
+
+		Menu openMenu = new Menu(menu);
+		actionItem.setMenu(openMenu);
+		MenuItem fileItem = new MenuItem(openMenu, SWT.NONE);
+		fileItem.setText("Undo");
+
+		Menu historyMenu = new Menu(menu);
+		historyItem.setMenu(historyMenu);
+		MenuItem previousGameItem = new MenuItem(historyMenu, SWT.NONE);
+		previousGameItem.setText("Previous Game");
+
+		Menu rulesMenu = new Menu(menu);
+		rulesItem.setMenu(rulesMenu);
+		MenuItem GamerulesItem = new MenuItem(rulesMenu, SWT.NONE);
+		GamerulesItem.setText("Game Rules");
+
+		Menu helpMenu = new Menu(menu);
+		helpItem.setMenu(helpMenu);
+		MenuItem helpContentsItem = new MenuItem(helpMenu, SWT.NONE);
+		helpContentsItem.setText("Help Contents");
+		
+		  
+		 //exitItem.addSelectionListener(new MenuItemListener());
+		  exitItem.addListener(SWT.Selection, new Listener()
+		  {
+				public void handleEvent(Event event)
+				{
+					MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
+							| SWT.YES | SWT.NO);
+					messageBox.setMessage("Are you sure you want to exit checkers?");
+					messageBox.setText("Checkers");
+					if(true) shell.close();
+				
+					
+					
+				}
+		  });
+		  
+		  GamerulesItem.addListener(SWT.Selection, new Listener()
+		  {
+				public void handleEvent(Event event)
+				{
+					  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
+				        
+				        messageBox.setText("CHECKERS RULES");
+				        messageBox.setMessage("1-Checkers is played by two players. Each player begins the game with 12 colored discs." +
+				        		" 2-(Typically, one set of pieces is black and the other red.)"+
+				        		"3-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.");
+				        int buttonID = messageBox.open();
+				        switch(buttonID) {
+				          case SWT.YES:
+				            // saves changes ...
+				          case SWT.NO:
+				            // exits here ...
+				            break;
+				          case SWT.CANCEL:
+				            // does nothing ...
+				        }
+				        System.out.println(buttonID);
+				      }
+					
+				
+		  });
+
+	
+		  
+		  
+			newItem.addListener(SWT.Selection, new Listener()
+			{
+				public void handleEvent(Event event)
+				{
+					MessageBox messageBox = new MessageBox(shell, SWT.ICON_QUESTION
+							| SWT.YES | SWT.NO);
+					messageBox.setMessage("Create a new game?");
+					messageBox.setText("Checkers");
+					int rc = messageBox.open();
+
+					System.out.println(rc == SWT.YES);
+					System.out.println(rc == SWT.NO);
+					
+					
+				}
+				});
+		  
+		  shell.setMenuBar(menu);
 
 		m_presenter = new Presenter(this);
 
@@ -199,8 +311,5 @@ public class View implements IView {
 		// TODO Auto-generated method stub
 
 	}
-
-
-
 
 }
