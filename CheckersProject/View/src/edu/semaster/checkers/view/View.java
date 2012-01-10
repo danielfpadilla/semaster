@@ -5,6 +5,7 @@ import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.ole.win32.OleClientSite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -114,6 +115,36 @@ public class View implements IView {
 				}
 		  });
 		  
+		  /* class MySaveListener implements Listener
+		  {
+
+				public OleClientSite olecs;
+				public java.io.File file;
+
+				public MySaveListener(OleClientSite clientsite,java.io.File f) 
+				{
+					olecs = clientsite;	
+					file =  f;
+				}
+
+				public void handleEvent (Event e) {
+					System.out.println ("Save");
+					if (olecs.isDirty()) {
+						java.io.File tempFile = new java.io.File(file.getAbsolutePath() + ".tmp");
+						file.renameTo(tempFile);
+						if (olecs.save(file, true)){
+							// save was successful so discard the backup
+							tempFile.delete();
+						}else {
+				// save failed so restore the backup
+						tempFile.renameTo(file);
+			}
+		}
+	}		
+}*/
+ 
+						
+		  
 		  GamerulesItem.addListener(SWT.Selection, new Listener()
 		  {
 				public void handleEvent(Event event)
@@ -141,7 +172,33 @@ public class View implements IView {
 				            // does nothing ...
 				        }
 				        System.out.println(buttonID);
-				      }
+				}
+				      });
+		  
+				 helpContentsItem.addListener(SWT.Selection, new Listener()
+				  {
+						public void handleEvent(Event event)
+						{
+							  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
+						        
+						        messageBox.setText("Help Contents");
+						        messageBox.setMessage(
+						        		"1-How to play checkers" + 
+						        		"2-How to install checkers on your computer.=>" +
+						        		"3-Get updates of checkers." 
+						        		);
+						        int buttonID = messageBox.open();
+						        switch(buttonID) {
+						          case SWT.YES:
+						            // saves changes ...
+						          case SWT.NO:
+						            // exits here ...
+						            break;
+						          case SWT.CANCEL:
+						            // does nothing ...
+						        }
+						        System.out.println(buttonID);
+						      }
 					
 				
 		  });
