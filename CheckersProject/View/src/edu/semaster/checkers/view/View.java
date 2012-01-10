@@ -115,13 +115,15 @@ public class View implements IView {
 				}
 		  });
 		  
-		  /* class MySaveListener implements Listener
+		/* saveItem.addListener(SWT.Selection, new Listener()
+		 {
+		  class SaveListener implements Listener
 		  {
 
 				public OleClientSite olecs;
 				public java.io.File file;
 
-				public MySaveListener(OleClientSite clientsite,java.io.File f) 
+				public SaveListener(OleClientSite clientsite,java.io.File f) 
 				{
 					olecs = clientsite;	
 					file =  f;
@@ -141,9 +143,11 @@ public class View implements IView {
 			}
 		}
 	}		
-}*/
- 
-						
+}
+		
+		 	 });*/
+	
+		  					
 		  
 		  GamerulesItem.addListener(SWT.Selection, new Listener()
 		  {
