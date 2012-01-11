@@ -90,8 +90,8 @@ public class View implements IView {
 		Menu openMenu = new Menu(menu);
 		actionItem.setMenu(openMenu);
 		MenuItem fileItem = new MenuItem(openMenu, SWT.NONE);
-		fileItem.setText("Undo");
-
+		fileItem.setText("Undo Move");
+		
 		Menu historyMenu = new Menu(menu);
 		historyItem.setMenu(historyMenu);
 		MenuItem previousGameItem = new MenuItem(historyMenu, SWT.NONE);
