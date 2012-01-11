@@ -3,11 +3,15 @@ package edu.semaster.checkers.view;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.ole.win32.OleClientSite;
+//import org.eclipse.swt.ole.win32.OleClientSite;
+//import org.eclipse.swt.ole.win32.OleFrame;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
@@ -51,7 +55,12 @@ public class View implements IView {
 		createContents();
 		loadFigures(display);
 		initializeBoard();
-
+		
+		/*OleFrame frame = new OleFrame(shell, SWT.NONE);	
+		OleClientSite clientsite;
+		java.io.File file;
+*/
+		
 		menu = new Menu(shell, SWT.BAR);
 		MenuItem gameItem = new MenuItem(menu, SWT.CASCADE);
 		gameItem.setText("Game");
@@ -98,7 +107,44 @@ public class View implements IView {
 		MenuItem helpContentsItem = new MenuItem(helpMenu, SWT.NONE);
 		helpContentsItem.setText("Help Contents");
 		
-		  
+		
+		
+		 class Open implements SelectionListener {
+		      public void widgetSelected(SelectionEvent event) {
+		        Shell s = shell; 
+		        
+				FileDialog fd = new FileDialog(s, SWT.OPEN);
+		        fd.setText("Open");
+		        fd.setFilterPath("C:/");
+		        String[] filterExt = { "*.txt", "*.doc", ".rtf", "*.*" };
+		        fd.setFilterExtensions(filterExt);
+		        String selected = fd.open();
+		        System.out.println(selected);
+		      }
+
+		      public void widgetDefaultSelected(SelectionEvent event) {
+		      }
+		    }
+
+		    class Save implements SelectionListener {
+		      public void widgetSelected(SelectionEvent event) {
+		        Shell s = shell; 
+		        
+				FileDialog fd = new FileDialog(s, SWT.SAVE);
+		        fd.setText("Save");
+		        fd.setFilterPath("C:/");
+		        String[] filterExt = { "*.txt", "*.doc", ".rtf", "*.*" };
+		        fd.setFilterExtensions(filterExt);
+		        String selected = fd.open();
+		        System.out.println(selected);
+		      }
+
+		      public void widgetDefaultSelected(SelectionEvent event) {
+		      }
+		    }
+		    openItem.addSelectionListener(new Open());
+		    saveItem.addSelectionListener(new Save());
+
 		 //exitItem.addSelectionListener(new MenuItemListener());
 		  exitItem.addListener(SWT.Selection, new Listener()
 		  {
@@ -115,39 +161,7 @@ public class View implements IView {
 				}
 		  });
 		  
-		/* saveItem.addListener(SWT.Selection, new Listener()
-		 {
-		  class SaveListener implements Listener
-		  {
-
-				public OleClientSite olecs;
-				public java.io.File file;
-
-				public SaveListener(OleClientSite clientsite,java.io.File f) 
-				{
-					olecs = clientsite;	
-					file =  f;
-				}
-
-				public void handleEvent (Event e) {
-					System.out.println ("Save");
-					if (olecs.isDirty()) {
-						java.io.File tempFile = new java.io.File(file.getAbsolutePath() + ".tmp");
-						file.renameTo(tempFile);
-						if (olecs.save(file, true)){
-							// save was successful so discard the backup
-							tempFile.delete();
-						}else {
-				// save failed so restore the backup
-						tempFile.renameTo(file);
-			}
-		}
-	}		
-}
-		
-		 	 });*/
 	
-		  					
 		  
 		  GamerulesItem.addListener(SWT.Selection, new Listener()
 		  {
@@ -157,9 +171,9 @@ public class View implements IView {
 				        
 				        messageBox.setText("CHECKERS RULES");
 				        messageBox.setMessage(
-				        		"1-Checkers is played by two players. Each player begins the game with 12 colored discs.(Typically, one set of pieces is black and the other red.)=>" + 
-				        		"2-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.=>" +
-				        		"3-Each player places his or her pieces on the 12 dark squares closest to him or her.=>" +
+				        		"1-Each player is given amaximum of 3minutes to make amove.)=>" + 
+				        		"2-No cheating is allowed.=>" +
+				        		"3-For those who decide to play against the computer watchout for game fines incase of an invalid move.=>" +
 				        		"4-Black moves first. Players then alternate moves.=>" +
 				        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).=>" +
 				        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.=>" +
@@ -206,6 +220,36 @@ public class View implements IView {
 					
 				
 		  });
+				 
+				 aboutItem.addListener(SWT.Selection, new Listener()
+				  {
+						public void handleEvent(Event event)
+						{
+							  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
+						        
+						        messageBox.setText("About Checkers");
+						        messageBox.setMessage(
+						        		"1-Checkers is played by two players. Each player begins the game with 12 colored discs.(Typically, one set of pieces is black and the other red.)=>" + 
+						        		"2-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.=>" +
+						        		"3-Each player places his or her pieces on the 12 dark squares closest to him or her.=>" +
+						        		"4-Black moves first. Players then alternate moves.=>" +
+						        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).=>" +
+						        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.=>" +
+						        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn." +
+		                                 "When a piece is captured, it is removed from the board." );
+						        int buttonID = messageBox.open();
+						        switch(buttonID) {
+						          case SWT.YES:
+						            // saves changes ...
+						          case SWT.NO:
+						            // exits here ...
+						            break;
+						          case SWT.CANCEL:
+						            // does nothing ...
+						        }
+						        System.out.println(buttonID);
+						}
+						      });
 
 	
 		  
