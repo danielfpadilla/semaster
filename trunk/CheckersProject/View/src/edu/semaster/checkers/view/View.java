@@ -24,7 +24,8 @@ import edu.semaster.checkers.baseproject.Position;
 import edu.semaster.checkers.presentation.IView;
 import edu.semaster.checkers.presentation.Presenter;
 
-public class View implements IView {
+public class View implements IView 
+{
 	static int BOARD_OFFSET_X = 16;
 	static int BOARD_OFFSET_Y = 15;
 	static int FIGURE_HEIGHT = 58;
@@ -40,7 +41,8 @@ public class View implements IView {
 	private Position m_highlightedPosition = new Position(-1, -1);
 	Menu menu, fileMenu, editMenu, viewMenu;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		try {
 			View window = new View();
 			window.open();
@@ -56,10 +58,7 @@ public class View implements IView {
 		loadFigures(display);
 		initializeBoard();
 		
-		/*OleFrame frame = new OleFrame(shell, SWT.NONE);	
-		OleClientSite clientsite;
-		java.io.File file;
-*/
+		
 		
 		menu = new Menu(shell, SWT.BAR);
 		MenuItem gameItem = new MenuItem(menu, SWT.CASCADE);
@@ -171,7 +170,7 @@ public class View implements IView {
 				        
 				        messageBox.setText("CHECKERS RULES");
 				        messageBox.setMessage(
-				        		"1-Each player is given amaximum of 3minutes to make amove.)=>" + 
+				        		"1-Each player is given amaximum of 3minutes to make amove.)=> " +
 				        		"2-No cheating is allowed.=>" +
 				        		"3-For those who decide to play against the computer watchout for game fines incase of an invalid move.=>" +
 				        		"4-Black moves first. Players then alternate moves.=>" +
@@ -327,14 +326,16 @@ public class View implements IView {
 
 	}
 
-	private Position boardToMousePosition(Position boardPosition) {
+	private Position boardToMousePosition(Position boardPosition) 
+	{
 		Position p = new Position();
 		p.x = BOARD_OFFSET_X + FIGURE_WIDTH * boardPosition.x;
 		p.y = BOARD_OFFSET_Y + FIGURE_HEIGHT * boardPosition.y;
 		return p;
 	}
 
-	private Position mouseToBoardPosition(Position mousePosition) {
+	private Position mouseToBoardPosition(Position mousePosition)
+	{
 		Position p = new Position();
 		p.x = (mousePosition.x - BOARD_OFFSET_X) / FIGURE_WIDTH;
 		p.y = (mousePosition.y - BOARD_OFFSET_Y) / FIGURE_HEIGHT;
@@ -344,14 +345,16 @@ public class View implements IView {
 	/**
 	 * Create contents of the window.
 	 */
-	protected void createContents() {
+	protected void createContents() 
+	{
 		shell = new Shell(SWT.DIALOG_TRIM);
 		shell.setSize(500, 530);
 		shell.setText("Checkers Game");
 
 	}
 
-	private void loadFigures(Display display) {
+	private void loadFigures(Display display)
+	{
 		m_boardImage = new Image(display,
 				View.class.getResourceAsStream("board.jpg"));
 
@@ -361,7 +364,8 @@ public class View implements IView {
 				View.class.getResourceAsStream("yellow_normal.jpg"));
 	}
 
-	private void initializeBoard() {
+	private void initializeBoard()
+	{
 		m_board = new FigureType[8][8];
 
 		for (int i = 0; i < 8; i++)
@@ -371,17 +375,20 @@ public class View implements IView {
 
 	}
 
-	private FigureType getDefaultFigure(int x, int y) {
+	private FigureType getDefaultFigure(int x, int y) 
+	{
 
 		if (x < 3) {
-			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
+			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) 
+			{
 				return new FigureType(FigureType.Type.BLACK);
 			}
 		}
 
 		if (x > 4) {
 
-			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
+			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) 
+			{
 				return new FigureType(FigureType.Type.WHITE);
 			}
 		}
@@ -390,27 +397,32 @@ public class View implements IView {
 	}
 
 	@Override
-	public void setFigurePosition(Point p, FigureType type) {
+	public void setFigurePosition(Point p, FigureType type)
+	{
 		m_board[p.getY()][p.getX()] = type;
 	}
 
 	@Override
-	public void refreshUserInterface() {
+	public void refreshUserInterface()
+	{
 		shell.redraw();
 		shell.update();
 
 	}
 
 	@Override
-	public void setStatusMessage(String message) {
+	public void setStatusMessage(String message)
+	{
 		// TODO (Charles): Implement it
 		// A call to some SWT API
 
 	}
 
 	@Override
-	public void highlightClickedSquarePosition(Point p, boolean highlighted) {
-		if (p != null && highlighted) {
+	public void highlightClickedSquarePosition(Point p, boolean highlighted) 
+	{
+		if (p != null && highlighted) 
+		{
 			m_highlightedPosition = new Position(p.getX(), p.getY());
 		} else {
 			m_highlightedPosition = null;
@@ -418,7 +430,8 @@ public class View implements IView {
 	}
 
 	@Override
-	public void clearHighlighting() {
+	public void clearHighlighting() 
+	{
 		// TODO Auto-generated method stub
 
 	}
