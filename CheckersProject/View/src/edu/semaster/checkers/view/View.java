@@ -87,16 +87,17 @@ public class View implements IView
 		MenuItem exitItem = new MenuItem(gameMenu, SWT.NONE);
 		exitItem.setText("Exit");
 
-		Menu openMenu = new Menu(menu);
-		actionItem.setMenu(openMenu);
-		MenuItem fileItem = new MenuItem(openMenu, SWT.NONE);
-		fileItem.setText("Undo Move");
+		Menu actionMenu = new Menu(menu);
+		actionItem.setMenu(actionMenu);
+		MenuItem undoItem = new MenuItem(actionMenu, SWT.NONE);
+		undoItem.setText("Undo Move");
 		//undo eventHandler
-		fileItem.addSelectionListener(new SelectionAdapter() {
+		actionItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 			undo();
 			}
 			});
+		
 		
 		Menu historyMenu = new Menu(menu);
 		historyItem.setMenu(historyMenu);
@@ -115,8 +116,10 @@ public class View implements IView
 		
 		
 		
-		 class Open implements SelectionListener {
-		      public void widgetSelected(SelectionEvent event) {
+		 class Open implements SelectionListener 
+		 {
+		      public void widgetSelected(SelectionEvent event) 
+		      {
 		        Shell s = shell; 
 		        
 				FileDialog fd = new FileDialog(s, SWT.OPEN);
@@ -132,8 +135,10 @@ public class View implements IView
 		      }
 		    }
 
-		    class Save implements SelectionListener {
-		      public void widgetSelected(SelectionEvent event) {
+		    class Save implements SelectionListener 
+		    {
+		      public void widgetSelected(SelectionEvent event)
+		      {
 		        Shell s = shell; 
 		        
 				FileDialog fd = new FileDialog(s, SWT.SAVE);
