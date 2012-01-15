@@ -3,6 +3,7 @@ package edu.semaster.checkers.view;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.GC;
@@ -90,6 +91,12 @@ public class View implements IView
 		actionItem.setMenu(openMenu);
 		MenuItem fileItem = new MenuItem(openMenu, SWT.NONE);
 		fileItem.setText("Undo Move");
+		//undo eventHandler
+		fileItem.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+			undo();
+			}
+			});
 		
 		Menu historyMenu = new Menu(menu);
 		historyItem.setMenu(historyMenu);
@@ -160,7 +167,22 @@ public class View implements IView
 				}
 		  });
 		  
-	
+		  /*s.setMenuBar(m);
+		    s.open();
+
+		    while (!s.isDisposed()) {
+		      if (!d.readAndDispatch())
+		        d.sleep();
+		    }
+		    d.dispose();
+		  }
+
+		  public static void main(String[] argv) {
+		    new FileDialogExample();
+		  }
+
+		}*/
+		  
 		  
 		  GamerulesItem.addListener(SWT.Selection, new Listener()
 		  {
@@ -199,11 +221,8 @@ public class View implements IView
 							  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
 						        
 						        messageBox.setText("Help Contents");
-						        messageBox.setMessage(
-						        		"1-How to play checkers" + 
-						        		"2-How to install checkers on your computer.=>" +
-						        		"3-Get updates of checkers." 
-						        		);
+						        messageBox.setMessage(helpMessage()	);        	 
+						        		
 						        int buttonID = messageBox.open();
 						        switch(buttonID) {
 						          case SWT.YES:
@@ -216,6 +235,15 @@ public class View implements IView
 						        }
 						        System.out.println(buttonID);
 						      }
+						private String helpMessage()
+						{
+							StringBuilder helpText = new StringBuilder();
+							helpText.append("1-How to play checkers");
+							helpText.append("2-How to install checkers on your computer");
+							helpText.append("3-Get updates of checkers.");
+							
+							return helpText.toString();
+						}
 					
 				
 		  });
@@ -297,6 +325,13 @@ public class View implements IView
 				display.sleep();
 			}
 		}
+	}
+//to be removed
+	private void undo() {
+		System.err.println("undo");
+	
+		//Undo();
+		
 	}
 
 	private void paintBoard(GC gc) {
