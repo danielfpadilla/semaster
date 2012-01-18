@@ -103,6 +103,14 @@ public class View implements IView
 		historyItem.setMenu(historyMenu);
 		MenuItem previousGameItem = new MenuItem(historyMenu, SWT.NONE);
 		previousGameItem.setText("Previous Game");
+		//history eventHandler
+		historyItem.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+			//history();
+			}
+			});
+		
+		
 
 		Menu rulesMenu = new Menu(menu);
 		rulesItem.setMenu(rulesMenu);
@@ -144,7 +152,7 @@ public class View implements IView
 				FileDialog fd = new FileDialog(s, SWT.SAVE);
 		        fd.setText("Save");
 		        fd.setFilterPath("C:/");
-		        String[] filterExt = { "*.txt", "*.doc", ".rtf", "*.*" };
+		        String[] filterExt = {"*.checkers"};//*.txt", "*.doc", ".rtf", "*.*" };
 		        fd.setFilterExtensions(filterExt);
 		        String selected = fd.open();
 		        System.out.println(selected);
@@ -155,6 +163,23 @@ public class View implements IView
 		    }
 		    openItem.addSelectionListener(new Open());
 		    saveItem.addSelectionListener(new Save());
+		    
+		    
+		    /*s.setMenuBar(m);
+		    s.open();
+
+		    while (!s.isDisposed()) {
+		      if (!d.readAndDispatch())
+		        d.sleep();
+		    }
+		    d.dispose();
+		  }
+
+		  public static void main(String[] argv) {
+		    new FileDialogExample();
+		  }
+
+		}*/
 
 		 //exitItem.addSelectionListener(new MenuItemListener());
 		  exitItem.addListener(SWT.Selection, new Listener()
@@ -171,22 +196,6 @@ public class View implements IView
 					
 				}
 		  });
-		  
-		  /*s.setMenuBar(m);
-		    s.open();
-
-		    while (!s.isDisposed()) {
-		      if (!d.readAndDispatch())
-		        d.sleep();
-		    }
-		    d.dispose();
-		  }
-
-		  public static void main(String[] argv) {
-		    new FileDialogExample();
-		  }
-
-		}*/
 		  
 		  
 		  GamerulesItem.addListener(SWT.Selection, new Listener()
