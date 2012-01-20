@@ -1,5 +1,6 @@
 package edu.semaster.checkers.model;
 import edu.semaster.checkers.baseproject.FigureType;
+import edu.semaster.checkers.baseproject.FigureType.Type;
 import edu.semaster.checkers.baseproject.Point;
 
 public class Board {
@@ -83,23 +84,32 @@ public class Board {
 	
 	public boolean isAValidWalk(Point source, Point destination)
 	{
-	
-	   	if(!isPositionPainted(source.getX(), source.getY())) 
-			 return false;
-	   	
+		FigureType.Type myFigure = getFigureTypeAt(source.getY(), source.getX()).getFigureType();
+		switch(myFigure)
+		{
+		case WHITE:
 			
-		if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
-				|| (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)) )
-			return false;
 		
-	   if(((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
-				|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)))
-		return false;
-	   
-	  /*if(!getFigureTypeAt(destination.getY(), destination.getX()).equals(FigureType.Type.NONE))
-	     return false;*/
-	
+			if(!isPositionPainted(source.getX(), source.getY())) 
+				 return false;
+		   	
+			if(!((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
+				|| (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)) )
+			  return false;
+			break;
+			
+		case BLACK:
+			if(!isPositionPainted(source.getX(), source.getY())) 
+				 return false;
+		   	
+			if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
+				|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)) )
+			  return false;
+			break;
+			
+		}
 		return true;
-	
+		
+	   	
     }
 }
