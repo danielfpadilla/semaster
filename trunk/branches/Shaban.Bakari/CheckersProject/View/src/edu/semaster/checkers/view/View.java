@@ -144,22 +144,25 @@ public class View implements IView {
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++)
 				m_board[i][j] = getDefaultFigure(i, j);// new
-														// FigureType(FigureType.Type.NONE);
+				//System.out.printf("(%d, %d) %s figure", i, j, getDefaultFigure(i, j).getFigureType());
+		     
+											// FigureType(FigureType.Type.NONE);
+		
 
 	}
 
 	private FigureType getDefaultFigure(int x, int y) {
 
 		if (x < 3) {
-			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
-				return new FigureType(FigureType.Type.BLACK);
+			if (((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
+					return new FigureType(FigureType.Type.BLACK);
 			}
 		}
 
 		if (x > 4) {
 
-			if (!((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
-				return new FigureType(FigureType.Type.WHITE);
+			if (((x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0))) {
+					return new FigureType(FigureType.Type.WHITE);
 			}
 		}
 
