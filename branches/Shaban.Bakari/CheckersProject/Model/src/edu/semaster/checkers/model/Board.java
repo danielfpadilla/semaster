@@ -49,17 +49,17 @@ public class Board {
 	public  FigureType getDefaultFigure(int x, int y) {
 
 		if (x < 3) {
-			if (!((x % 2 == 0 && y % 2 != 0)
+			if (((x % 2 == 0 && y % 2 != 0)
 					|| (x % 2 != 0 && y % 2 == 0))) {
-				return new FigureType(FigureType.Type.BLACK);
+						return new FigureType(FigureType.Type.BLACK);
 			}
 		}
 
 		if (x > 4) {
 
-			if (!((x % 2 == 0 && y % 2 != 0)
+			if (((x % 2 == 0 && y % 2 != 0)
 					|| (x % 2 != 0 && y % 2 == 0))) {
-				return new FigureType(FigureType.Type.WHITE);
+						return new FigureType(FigureType.Type.WHITE);
 			}
 		}
 
@@ -84,32 +84,28 @@ public class Board {
 	
 	public boolean isAValidWalk(Point source, Point destination)
 	{
-		FigureType.Type myFigure = getFigureTypeAt(source.getY(), source.getX()).getFigureType();
-		switch(myFigure)
+		if(!isPositionPainted(source.getX(), source.getY()))
+			return false;
+		
+		if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.WHITE)
+			{
+				if(!((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
+						   || (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)))
+					   return false;
+				
+			}
+		else
 		{
-		case WHITE:
-			
-		
-			if(!isPositionPainted(source.getX(), source.getY())) 
-				 return false;
-		   	
-			if(!((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
-				|| (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)) )
-			  return false;
-			break;
-			
-		case BLACK:
-			if(!isPositionPainted(source.getX(), source.getY())) 
-				 return false;
-		   	
-			if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
-				|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)) )
-			  return false;
-			break;
-			
+			if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.BLACK)
+			{
+				if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
+			   			|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)))
+				   return false;
+				
+			}
 		}
-		return true;
+			
+			return true;
 		
-	   	
     }
 }
