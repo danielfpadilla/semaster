@@ -28,5 +28,6 @@ public class Position {
 	public int gety() {
 		return y;
 	}
+	
 
 }
