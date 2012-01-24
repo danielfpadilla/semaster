@@ -87,22 +87,33 @@ public class Board {
 		if(!isPositionPainted(source.getX(), source.getY()))
 			return false;
 		
-		if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.WHITE)
+		if(!(getFigureTypeAt(destination.getX(), destination.getY()).getFigureType()==Type.NONE))
+			return false;
+		
+		if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.WHITE)  
 			{
 				if(!((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
 						   || (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)))
-					   return false;
+						      return false;
 				
 			}
 		else
 		{
-			if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.BLACK)
+			if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.BLACK) 
 			{
 				if(!((source.getX() == destination.getX()+1 && source.getY() == destination.getY()-1) 
 			   			|| (source.getX() == destination.getX()-1 && source.getY() ==destination.getY()-1)))
-				   return false;
+			   			   return false;
 				
 			}
+		}
+		
+		if(getFigureTypeAt(source.getX(), source.getY()).getFigureType()==Type.WHITE)  
+		{
+			if(!((source.getX() == destination.getX()-1 && source.getY() == destination.getY()+1) 
+					   || (source.getX() == destination.getX()+1 && source.getY() ==destination.getY()+1)))
+					      return false;
+			
 		}
 			
 			return true;
