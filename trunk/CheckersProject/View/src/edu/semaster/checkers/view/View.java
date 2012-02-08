@@ -133,7 +133,7 @@ public class View implements IView
 				FileDialog fd = new FileDialog(s, SWT.OPEN);
 		        fd.setText("Open");
 		        fd.setFilterPath("C:/");
-		        String[] filterExt = { "*.txt", "*.doc", ".rtf", "*.*" };
+		        String[] filterExt = { "*.checkers" };
 		        fd.setFilterExtensions(filterExt);
 		        String selected = fd.open();
 		        System.out.println(selected);
@@ -152,7 +152,7 @@ public class View implements IView
 				FileDialog fd = new FileDialog(s, SWT.SAVE);
 		        fd.setText("Save");
 		        fd.setFilterPath("C:/");
-		        String[] filterExt = {"*.checkers"};//*.txt", "*.doc", ".rtf", "*.*" };
+		        String[] filterExt = {"*.checkers"};
 		        fd.setFilterExtensions(filterExt);
 		        String selected = fd.open();
 		        System.out.println(selected);
@@ -206,14 +206,14 @@ public class View implements IView
 				        
 				        messageBox.setText("CHECKERS RULES");
 				        messageBox.setMessage(
-				        		"1-Each player is given amaximum of 3minutes to make amove.)=> " +
-				        		"2-No cheating is allowed.=>" +
-				        		"3-For those who decide to play against the computer watchout for game fines incase of an invalid move.=>" +
-				        		"4-Black moves first. Players then alternate moves.=>" +
-				        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).=>" +
-				        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.=>" +
-				        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn." +
-                                 "When a piece is captured, it is removed from the board." );
+				        		        "1-Each player is given amaximum of 3minutes to make amove. \n" +
+						        		"2-No cheating is allowed.\n" +
+						        		"3-For those who decide to play against the computer watchout for game fines incase of an invalid move.\n" +
+						        		"4-Black moves first. Players then alternate moves.\n" +
+						        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).\n" +
+						        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.\n" +
+						        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn.\n" +
+		                                 "When a piece is captured, it is removed from the board." );
 				        int buttonID = messageBox.open();
 				        switch(buttonID) {
 				          case SWT.YES:
@@ -270,13 +270,13 @@ public class View implements IView
 						        
 						        messageBox.setText("About Checkers");
 						        messageBox.setMessage(
-						        		"1-Checkers is played by two players. Each player begins the game with 12 colored discs.(Typically, one set of pieces is black and the other red.)=>" + 
-						        		"2-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.=>" +
-						        		"3-Each player places his or her pieces on the 12 dark squares closest to him or her.=>" +
-						        		"4-Black moves first. Players then alternate moves.=>" +
-						        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).=>" +
-						        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.=>" +
-						        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn." +
+						        		"1-Checkers is played by two players. Each player begins the game with 12 colored discs.(Typically, one set of pieces is black and the other red.)\n" + 
+						        		"2-The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.\n" +
+						        		"3-Each player places his or her pieces on the 12 dark squares closest to him or her.\n" +
+						        		"4-Black moves first. Players then alternate moves.\n" +
+						        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).\n" +
+						        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.\n" +
+						        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn.\n" +
 		                                 "When a piece is captured, it is removed from the board." );
 						        int buttonID = messageBox.open();
 						        switch(buttonID) {
