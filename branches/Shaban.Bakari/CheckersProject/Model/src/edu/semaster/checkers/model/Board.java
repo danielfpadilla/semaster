@@ -95,7 +95,7 @@ public class Board
 
 	}
 
-	public boolean isAValidWalk(Point source, Point destination)
+	public boolean isAValidMove(Point source, Point destination)
 	{
 		if (!isPositionPainted(source.getX(), source.getY()))
 			return false;
@@ -105,159 +105,136 @@ public class Board
 			return false;
 		if (Math.abs(source.getY() - destination.getY()) == 1)
 		{
+			return isAValidWalk(source, destination);
+		}
 
-			if (getFigureTypeAt(source.getX(), source.getY())
-					.getFigureType() == Type.WHITE)
-			{
-				if (!((source.getX() == destination.getX() - 1 && source
-						.getY() == destination.getY() + 1) || (source
-						.getX() == destination.getX() + 1 && source
-						.getY() == destination.getY() + 1)))
-					return false;
-			}
+		if (Math.abs(source.getY() - destination.getY()) > 1)
+		{
+			return isAValidJumpMove(source, destination);
+		}
 
-			else
+		return true;
+	}
+
+	private boolean isAValidJumpMove(Point source, Point destination)
+	{
+		if (getFigureTypeAt(source.getX(), source.getY())
+				.getFigureType() == Type.WHITE)
+		{
+			if ((getFigureTypeAt(
+					(source.getX() + destination.getX()) / 2,
+					(source.getY() + destination.getY()) / 2)
+					.getFigureType() == Type.WHITE))
+				return false;
+
+			if ((source.getX() == destination.getX() + 2 && source
+					.getY() == destination.getY() + 2)
+					|| (source.getX() == destination.getX() - 2 && source
+							.getY() == destination
+							.getY() + 2))
 			{
-				if (getFigureTypeAt(source.getX(),
-						source.getY()).getFigureType() == Type.BLACK)
+				if ((getFigureTypeAt(source.getX() + 1,
+						source.getY() - 1)
+						.getFigureType() == Type.BLACK))
 				{
-					if (!((source.getX() == destination
-							.getX() + 1 && source
-							.getY() == destination
-							.getY() - 1) || (source
-							.getX() == destination
-							.getX() - 1 && source
-							.getY() == destination
-							.getY() - 1)))
-						return false;
+					Point p = new Point(source.getX() + 1,
+							source.getY() - 1);
+					setFigurePosition(p, new FigureType(
+							Type.NONE));
+					return true;
 				}
+				else if ((getFigureTypeAt(source.getX() - 1,
+						source.getY() - 1)
+						.getFigureType() == Type.BLACK))
+				{
+					Point p = new Point(source.getX() - 1,
+							source.getY() - 1);
+					setFigurePosition(p, new FigureType(
+							Type.NONE));
+					return true;
+
+				}
+				return false;
 			}
 		}
 
+		else
 		{
-			if (Math.abs(source.getY() - destination.getY()) > 1)
+			if (getFigureTypeAt(source.getX(), source.getY())
+					.getFigureType() == Type.BLACK)
 			{
-				if (getFigureTypeAt(source.getX(),
-						source.getY()).getFigureType() == Type.WHITE)
-				{
-					if ((getFigureTypeAt((source.getX() + destination.getX())/2,
-							(source.getY() + destination.getY())/2)
-							.getFigureType() == Type.WHITE))
-						return false;
+				if ((getFigureTypeAt(
+						(source.getX() + destination
+								.getX()) / 2,
+						(source.getY() + destination
+								.getY()) / 2)
+						.getFigureType() == Type.BLACK))
+					return false;
 
-					/*
-					 * if(((source.getX() ==
-					 * destination.getX()+2 && source.getY()
-					 * == destination.getY()+2) ||
-					 * (source.getX() ==
-					 * destination.getX()-2 && source.getY()
-					 * ==destination.getY()+2))&&
-					 * ((getFigureTypeAt(source.getX()+1,
-					 * source
-					 * .getY()-1).getFigureType()==Type
-					 * .BLACK) ||
-					 * (getFigureTypeAt(source.getX()-1,
-					 * source
-					 * .getY()-1).getFigureType()==Type
-					 * .BLACK))) { return true; }
-					 */
-
-					if ((source.getX() == destination
-							.getX() + 2 && source
-							.getY() == destination
-							.getY() + 2)
-							|| (source.getX() == destination
-									.getX() - 2 && source
-									.getY() == destination
-									.getY() + 2))
-					{
-						if ((getFigureTypeAt(
-								source.getX() + 1,
-								source.getY() - 1)
-								.getFigureType() == Type.BLACK))
-						{
-							Point p = new Point(
-									source.getX() + 1,
-									source.getY() - 1);
-							setFigurePosition(
-									p,
-									new FigureType(
-											Type.NONE));
-							return true;
-						}
-						else if ((getFigureTypeAt(
-								source.getX() - 1,
-								source.getY() - 1)
-								.getFigureType() == Type.BLACK))
-						{
-							Point p = new Point(
-									source.getX() - 1,
-									source.getY() - 1);
-							setFigurePosition(
-									p,
-									new FigureType(
-											Type.NONE));
-							return true;
-
-						}
-						return false;
-					}
-				}
-
-				else
-				{
-					if (getFigureTypeAt(source.getX(),
-							source.getY())
-							.getFigureType() == Type.BLACK)
-					{
-						if ((getFigureTypeAt(
-								(source.getX() + destination.getX())/2,
-								(source.getY() + destination.getY())/2)
-								.getFigureType() == Type.BLACK))
-							return false;
-
-						if ((source.getX() == destination
-								.getX() + 2 && source
+				if ((source.getX() == destination.getX() + 2 && source
+						.getY() == destination.getY() - 2)
+						|| (source.getX() == destination
+								.getX() - 2 && source
 								.getY() == destination
-								.getY() - 2)
-								|| (source.getX() == destination
-										.getX() - 2 && source
-										.getY() == destination
-										.getY() - 2))
-						{
-							if (getFigureTypeAt(
-									source.getX() + 1,
-									source.getY() + 1)
-									.getFigureType() == Type.WHITE)
-							{
-								Point p = new Point(
-										source.getX() + 1,
-										source.getY() + 1);
-								setFigurePosition(
-										p,
-										new FigureType(
-												Type.NONE));
-								return true;
-							}
-							else if (getFigureTypeAt(
-									source.getX() - 1,
-									source.getY() + 1)
-									.getFigureType() == Type.WHITE)
-							{
-								Point p = new Point(
-										source.getX() - 1,
-										source.getY() + 1);
-								setFigurePosition(
-										p,
-										new FigureType(
-												Type.NONE));
-								return true;
-							}
-
-							return false;
-						}
+								.getY() - 2))
+				{
+					if (getFigureTypeAt(source.getX() + 1,
+							source.getY() + 1)
+							.getFigureType() == Type.WHITE)
+					{
+						Point p = new Point(
+								source.getX() + 1,
+								source.getY() + 1);
+						setFigurePosition(
+								p,
+								new FigureType(
+										Type.NONE));
+						return true;
 					}
+					else if (getFigureTypeAt(
+							source.getX() - 1,
+							source.getY() + 1)
+							.getFigureType() == Type.WHITE)
+					{
+						Point p = new Point(
+								source.getX() - 1,
+								source.getY() + 1);
+						setFigurePosition(
+								p,
+								new FigureType(
+										Type.NONE));
+						return true;
+					}
+
+					return false;
 				}
+			}
+		}
+		return true;
+	}
+
+	private boolean isAValidWalk(Point source, Point destination)
+	{
+		if (getFigureTypeAt(source.getX(), source.getY())
+				.getFigureType() == Type.WHITE)
+		{
+			if (!((source.getX() == destination.getX() - 1 && source
+					.getY() == destination.getY() + 1) || (source
+					.getX() == destination.getX() + 1 && source
+					.getY() == destination.getY() + 1)))
+				return false;
+		}
+
+		else
+		{
+			if (getFigureTypeAt(source.getX(), source.getY())
+					.getFigureType() == Type.BLACK)
+			{
+				if (!((source.getX() == destination.getX() + 1 && source
+						.getY() == destination.getY() - 1) || (source
+						.getX() == destination.getX() - 1 && source
+						.getY() == destination.getY() - 1)))
+					return false;
 			}
 		}
 		return true;
