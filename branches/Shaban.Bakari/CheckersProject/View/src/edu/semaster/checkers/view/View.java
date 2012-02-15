@@ -28,6 +28,8 @@ public class View implements IView
 	private Image m_boardImage;
 	private Image m_redFigure;
 	private Image m_yellowFigure;
+	private Image m_yellow_kingFigure;
+	private Image m_red_kingFigure;
 	private Presenter m_presenter;
 
 	private Position m_highlightedPosition = new Position(-1, -1);
@@ -115,6 +117,24 @@ public class View implements IView
 							BOARD_OFFSET_Y
 									+ FIGURE_WIDTH
 									* i);
+				
+				if (m_board[i][j].getFigureType() == FigureType.Type.WHITE_KING)
+					gc.drawImage(m_yellow_kingFigure,
+							BOARD_OFFSET_X
+									+ FIGURE_HEIGHT
+									* j,
+							BOARD_OFFSET_Y
+									+ FIGURE_WIDTH
+									* i);
+				
+				if (m_board[i][j].getFigureType() == FigureType.Type.BLACK_KING)
+					gc.drawImage(m_red_kingFigure,
+							BOARD_OFFSET_X
+									+ FIGURE_HEIGHT
+									* j,
+							BOARD_OFFSET_Y
+									+ FIGURE_WIDTH
+									* i);
 			}
 		}
 
@@ -186,6 +206,12 @@ public class View implements IView
 		m_yellowFigure = new Image(
 				display,
 				View.class.getResourceAsStream("yellow_normal.jpg"));
+		m_yellow_kingFigure = new Image(
+				display,
+				View.class.getResourceAsStream("yellow_king.jpg"));
+		m_red_kingFigure = new Image(
+				display,
+				View.class.getResourceAsStream("red_king.jpg"));
 	}
 
 	private void initializeBoard()
