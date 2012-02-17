@@ -1,5 +1,7 @@
 package edu.semaster.checkers.model;
 
+import org.omg.CORBA.CurrentHolder;
+
 import edu.semaster.checkers.baseproject.FigureType;
 import edu.semaster.checkers.baseproject.FigureType.Type;
 import edu.semaster.checkers.baseproject.Point;
@@ -7,6 +9,8 @@ import edu.semaster.checkers.baseproject.Point;
 public class Board
 {
 	private final FigureType[][] pieces;
+	private Player currentPlayer =Player.PLAYER_BLACK;
+		
 
 	public Board(final int rowCount, final int columnCount)
 	{
@@ -14,7 +18,7 @@ public class Board
 			throw new IllegalArgumentException();
 		this.pieces = new FigureType[rowCount][columnCount];
 	}
-
+	
 	public void InitializeBoard()
 	{
 		for (int i = 0; i < 8; i++)
@@ -81,12 +85,16 @@ public class Board
 	{
 		if (pieces[x][y] == null)
 			return new FigureType(FigureType.Type.NONE);
+		
 		if (pieces[x][y].getFigureType() == FigureType.Type.BLACK)
 			return new FigureType(FigureType.Type.BLACK);
+		
 		if (pieces[x][y].getFigureType() == FigureType.Type.WHITE)
 			return new FigureType(FigureType.Type.WHITE);
+		
 		if (pieces[x][y].getFigureType() == FigureType.Type.BLACK_KING)
 			return new FigureType(FigureType.Type.BLACK_KING);
+		
 		if (pieces[x][y].getFigureType() == FigureType.Type.WHITE_KING)
 			return new FigureType(FigureType.Type.WHITE_KING);
 
@@ -97,7 +105,16 @@ public class Board
 	public void setFigurePosition(Point p, FigureType type)
 	{
 		pieces[p.getY()][p.getX()] = type;
-
+		
+		if(type.equals(Type.BLACK))
+			currentPlayer=Player.PLAYER_BLACK;
+		else if(type.equals(Type.BLACK_KING))
+			currentPlayer=Player.PLAYER_BLACK;
+		else if(type.equals(Type.WHITE))
+			currentPlayer=Player.PLAYER_WHITE;
+		else if(type.equals(Type.WHITE_KING))
+			currentPlayer=Player.PLAYER_WHITE;
+			
 	}
 
 	public boolean isAValidMove(Point source, Point destination)
@@ -215,7 +232,7 @@ public class Board
 	private boolean isAValidKingJump(Point source, Point destination)
 	{
 		if (getFigureTypeAt(source.getX(), source.getY())
-				.getFigureType() == Type.WHITE_KING)
+				.getFigureType() == Type.WHITE_KING )
 		{
 			if (getFigureTypeAt(
 					(source.getX() + destination.getX()) / 2,
@@ -247,6 +264,9 @@ public class Board
 										.getY()) / 2)
 								.getFigureType() == Type.BLACK_KING))
 				{
+					
+					while(currentPlayer==Player.PLAYER_WHITE)
+					{
 					Point myPoint = new Point(
 							(source.getX() + destination
 									.getX()) / 2,
@@ -256,6 +276,11 @@ public class Board
 							myPoint,
 							new FigureType(
 									Type.NONE));
+					currentPlayer=Player.PLAYER_BLACK;
+					return true;
+					}
+					
+					
 					return true;
 
 				}
@@ -302,6 +327,8 @@ public class Board
 											.getY()) / 2)
 									.getFigureType() == Type.WHITE_KING))
 					{
+						while(currentPlayer==Player.PLAYER_BLACK)
+						{
 						Point myPoint = new Point(
 								(source.getX() + destination
 										.getX()) / 2,
@@ -311,7 +338,11 @@ public class Board
 								myPoint,
 								new FigureType(
 										Type.NONE));
+						currentPlayer=Player.PLAYER_WHITE;
 						return true;
+						}
+						
+						return false;
 
 					}
 
@@ -371,6 +402,8 @@ public class Board
 										.getY()) / 2)
 								.getFigureType() == Type.BLACK_KING))
 				{
+					while(currentPlayer == Player.PLAYER_WHITE)
+					{
 					Point myPoint = new Point(
 							(source.getX() + destination
 									.getX()) / 2,
@@ -380,7 +413,10 @@ public class Board
 							myPoint,
 							new FigureType(
 									Type.NONE));
+					currentPlayer=Player.PLAYER_BLACK;
 					return true;
+					}
+					return false;
 
 				}
 				return false;
@@ -429,6 +465,8 @@ public class Board
 											.getY()) / 2)
 									.getFigureType() == Type.WHITE_KING))
 					{
+						while(currentPlayer == Player.PLAYER_BLACK)
+						{
 						Point myPoint = new Point(
 								(source.getX() + destination
 										.getX()) / 2,
@@ -438,7 +476,10 @@ public class Board
 								myPoint,
 								new FigureType(
 										Type.NONE));
+						currentPlayer=Player.PLAYER_WHITE;
 						return true;
+						}
+						return false;
 
 					}
 					return false;
@@ -453,7 +494,7 @@ public class Board
 	private boolean isAValidWalk(Point source, Point destination)
 	{
 		if (getFigureTypeAt(source.getX(), source.getY())
-				.getFigureType() == Type.WHITE)
+				.getFigureType() == Type.WHITE )
 		{
 			if (!((source.getX() == destination.getX() - 1 && source
 					.getY() == destination.getY() + 1) || (source
@@ -465,7 +506,7 @@ public class Board
 		else
 		{
 			if (getFigureTypeAt(source.getX(), source.getY())
-					.getFigureType() == Type.BLACK)
+					.getFigureType() == Type.BLACK )
 			{
 				if (!((source.getX() == destination.getX() + 1 && source
 						.getY() == destination.getY() - 1) || (source
