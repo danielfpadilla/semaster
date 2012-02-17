@@ -91,12 +91,23 @@ public class View implements IView
 		actionItem.setMenu(actionMenu);
 		MenuItem undoItem = new MenuItem(actionMenu, SWT.NONE);
 		undoItem.setText("Undo Move");
-		//undo eventHandler
+		
 		actionItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
 			undo();
 			}
 			});
+		
+       /*Menu actionMenu = new Menu(menu);
+		actionItem.setMenu(actionMenu);
+		MenuItem redoItem = new MenuItem(actionMenu, SWT.NONE);
+		redoItem.setText("Redo Move");
+		//undo eventHandler
+		actionItem.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+			redo();
+			}
+			});*/
 		
 		
 		Menu historyMenu = new Menu(menu);
