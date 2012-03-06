@@ -263,9 +263,9 @@ public class View implements IView
 						private String helpMessage()
 						{
 							StringBuilder helpText = new StringBuilder();
-							helpText.append("1-How to play checkers");
-							helpText.append("2-How to install checkers on your computer");
-							helpText.append("3-Get updates of checkers.");
+							helpText.append("1-How to play checkers.\n");
+							helpText.append("2-How to install checkers on your computer.\n");
+							helpText.append("3-Get updates of checkers.\n");
 							
 							return helpText.toString();
 						}
