@@ -54,7 +54,7 @@ public class View implements IView
 
 	public void open() {
 
-		Display display = Display.getDefault();
+		final Display display = Display.getDefault();
 		createContents();
 		loadFigures(display);
 		initializeBoard();
@@ -74,6 +74,9 @@ public class View implements IView
 		aboutItem.setText("About Checkers");
 		MenuItem helpItem = new MenuItem(menu, SWT.CASCADE);
 		helpItem.setText("Help");
+		final MenuItem statisticsItem = new MenuItem(menu, SWT.CASCADE);
+		statisticsItem.setText("Statistics");
+
 
 		Menu gameMenu = new Menu(menu);
 		gameItem.setMenu(gameMenu);
@@ -121,6 +124,28 @@ public class View implements IView
 			}
 			});
 		
+		//popup window for statistics
+		 shell.addListener(SWT.MenuDetect, new Listener() {
+		public void handleEvent(Event event) {
+	        Menu menu = new Menu(shell, SWT.POP_UP);
+	        MenuItem statisticsItem = new MenuItem(menu, SWT.PUSH);
+	        statisticsItem.setText("Statistics");
+	        statisticsItem.addListener(SWT.Selection, new Listener() {
+	          public void handleEvent(Event e) {
+	            System.out.println("Statistics");
+	          }
+	        });
+	        menu.setLocation(event.x, event.y);
+	        menu.setVisible(true);
+	        while (!menu.isDisposed() && menu.isVisible()) {
+	          if (!display.readAndDispatch())
+	            display.sleep();
+	        }
+	        menu.dispose();
+	      }});
+		
+	    
+		//
 		
 
 		Menu rulesMenu = new Menu(menu);
