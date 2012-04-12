@@ -38,6 +38,10 @@ public class Presenter
 		m_view = view;
 		m_board.InitializeBoard();
 		updateView();
+		if(m_board.isGameOver())
+		{
+			System.out.println("Game OVer!!!");
+		}
 
 		// TODO (Charles): m_view.setStatusMessage("..."); which player
 		// to move
@@ -47,6 +51,7 @@ public class Presenter
 
 	public void onBoardPositionClicked(Point p)
 	{
+		updateView();
 		if (choice == FigureChoice.EXPECTING_FIGURE_SELECTION
 				&& m_board.getFigureTypeAt(p.x, p.y) != new FigureType(
 						FigureType.Type.NONE))
@@ -66,9 +71,9 @@ public class Presenter
 					m_selectedFigure.x, m_selectedFigure.y);
 
 			if ((type != null && type.getFigureType() == FigureType.Type.BLACK)
-					&& (m_board.isAValidMove(
-							m_selectedFigure, p))
-					&& m_currentPlayer == Player.PLAYER_BLACK)
+					 && (m_board.isAValidMove(
+							m_selectedFigure, p)) && m_currentPlayer == Player.PLAYER_BLACK )
+					
 			{
 				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(
@@ -82,9 +87,8 @@ public class Presenter
 			}
 
 			if ((type != null && type.getFigureType() == FigureType.Type.WHITE)
-					&& (m_board.isAValidMove(
-							m_selectedFigure, p))
-					&& m_currentPlayer == Player.PLAYER_WHITE)
+					 && (m_board.isAValidMove(
+							m_selectedFigure, p)) && m_currentPlayer == Player.PLAYER_WHITE)
 			{
 				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(
@@ -96,9 +100,9 @@ public class Presenter
 				m_currentPlayer = Player.PLAYER_BLACK;
 			}
 			if ((type != null && type.getFigureType() == FigureType.Type.WHITE_KING)
-					&& (m_board.isAValidMove(
-							m_selectedFigure, p))
-					&& m_currentPlayer == Player.PLAYER_WHITE)
+					  && (m_board.isAValidMove(
+							m_selectedFigure, p)) && m_currentPlayer == Player.PLAYER_WHITE)
+					
 			{
 				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(
@@ -111,9 +115,9 @@ public class Presenter
 			}
 
 			if ((type != null && type.getFigureType() == FigureType.Type.BLACK_KING)
-					&& (m_board.isAValidMove(
-							m_selectedFigure, p))
-					&& m_currentPlayer == Player.PLAYER_BLACK)
+					 && (m_board.isAValidMove(
+							m_selectedFigure, p)) && m_currentPlayer == Player.PLAYER_BLACK)
+					
 			{
 				m_view.highlightClickedSquarePosition(p, true);
 				m_board.setFigurePosition(
@@ -136,11 +140,13 @@ public class Presenter
 		updateView();
 		if (m_selectedFigure != null)
 		{
-			System.out.println(m_selectedFigure.x + " "
+			System.out.println("selected = " + m_selectedFigure.x + " "
 					+ m_selectedFigure.y);
 			
 				
 		}
+		System.out.println("choice = " + choice);
+		System.out.println("player = " + m_currentPlayer);
 
 		/*try
 		{
