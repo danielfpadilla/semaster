@@ -74,9 +74,28 @@ public class View implements IView
 		aboutItem.setText("About Checkers");
 		MenuItem helpItem = new MenuItem(menu, SWT.CASCADE);
 		helpItem.setText("Help");
-		final MenuItem statisticsItem = new MenuItem(menu, SWT.CASCADE);
+		MenuItem statisticsItem = new MenuItem(menu, SWT.CASCADE);
 		statisticsItem.setText("Statistics");
+		statisticsItem.addListener(SWT.Selection, new Listener()
+		  {
+				public void handleEvent(Event event)
+				{
+					  MessageBox messageBox = new MessageBox(shell, SWT.ICON_INFORMATION);
+				        
+				        messageBox.setText("CHECKERS RULES");
+				        messageBox.setMessage(
+				        		        "1-Each player is given amaximum of 3minutes to make amove. \n" +
+						        		"2-No cheating is allowed.\n" +
+						        		"3-For those who decide to play against the computer watchout for game fines incase of an invalid move.\n" +
+						        		"4-Black moves first. Players then alternate moves.\n" +
+						        		"5-Moves are allowed only on the dark squares, so pieces always move diagonally. Single pieces are always limited to forward moves (toward the opponent).\n" +
+						        		"6-A piece making a non-capturing move (not involving a jump) may move only one square.\n" +
+						        		"7-A piece making a capturing move (a jump) leaps over one of the opponent's pieces, landing in a straight diagonal line on the other side. Only one piece may be captured in a single jump; however, multiple jumps are allowed on a single turn.\n" +
+		                                 "When a piece is captured, it is removed from the board." );
+				        int buttonID = messageBox.open();
 
+				}
+				      });
 
 		Menu gameMenu = new Menu(menu);
 		gameItem.setMenu(gameMenu);
@@ -124,30 +143,7 @@ public class View implements IView
 			}
 			});
 		
-		//popup window for statistics
-		 shell.addListener(SWT.MenuDetect, new Listener() {
-		public void handleEvent(Event event) {
-	        Menu menu = new Menu(shell, SWT.POP_UP);
-	        MenuItem statisticsItem = new MenuItem(menu, SWT.PUSH);
-	        statisticsItem.setText("Statistics");
-	        statisticsItem.addListener(SWT.Selection, new Listener() {
-	          public void handleEvent(Event e) {
-	            System.out.println("Statistics");
-	          }
-	        });
-	        menu.setLocation(event.x, event.y);
-	        menu.setVisible(true);
-	        while (!menu.isDisposed() && menu.isVisible()) {
-	          if (!display.readAndDispatch())
-	            display.sleep();
-	        }
-	        menu.dispose();
-	      }});
-		
-	    
-		//
-		
-
+	
 		Menu rulesMenu = new Menu(menu);
 		rulesItem.setMenu(rulesMenu);
 		MenuItem GamerulesItem = new MenuItem(rulesMenu, SWT.NONE);
