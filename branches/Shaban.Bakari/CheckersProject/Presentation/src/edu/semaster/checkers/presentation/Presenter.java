@@ -38,10 +38,7 @@ public class Presenter
 		m_view = view;
 		m_board.InitializeBoard();
 		updateView();
-		if(m_board.isGameOver())
-		{
-			System.out.println("Game OVer!!!");
-		}
+		
 
 		// TODO (Charles): m_view.setStatusMessage("..."); which player
 		// to move
@@ -147,20 +144,11 @@ public class Presenter
 		}
 		System.out.println("choice = " + choice);
 		System.out.println("player = " + m_currentPlayer);
-
-		/*try
+       
+		if(m_board.isGameOver())
 		{
-			FileWriter fstream = new FileWriter("listOfMoves.txt");
-			BufferedWriter out = new BufferedWriter(fstream);
-			
-			String myString = m_selectedFigure.x + " " + m_selectedFigure.y;
-			out.write(myString);
-			out.close();
+			System.out.println("Game OVer!!!");
 		}
-		catch (IOException e)
-		{
-			System.err.println("Error: " + e.getMessage());
-		}*/
 
 	}
 
