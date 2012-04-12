@@ -52,7 +52,7 @@ public class Board
 		{
 			return false;
 		}
-
+	
 	}
 
 	public FigureType getDefaultFigure(int x, int y)
