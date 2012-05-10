@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder' xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.panel {
+			background-color: ivory;
+		}
+	</ui:style>
+
+	<g:FlowPanel styleName="{style.panel}">
+		<g:AbsolutePanel height="383px">
+			<g:at left="0" top="0">
+				<g:MenuBar width="403px" height="29px">
+					<g:MenuItem text="File">
+						<g:MenuBar vertical="true"/>
+					</g:MenuItem>
+					<g:MenuItem text="New item"/>
+					<g:MenuItem text="New item"/>
+				</g:MenuBar>
+			</g:at>
+			<g:at left="36" top="55">
+				<g:AbsolutePanel width="393px" height="280px">
+					<g:at left="0" top="10">
+						<g:Image width="383px" height="283px" url="board.jpg"/>
+					</g:at>
+				</g:AbsolutePanel>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:FlowPanel>
+</ui:UiBinder>
